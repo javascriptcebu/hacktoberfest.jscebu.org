@@ -1,5 +1,12 @@
 "use client";
-import { ArrowLeft, Eye, Github, Facebook } from "lucide-react";
+import {
+  ArrowLeft,
+  Eye,
+  Github,
+  Facebook,
+  GithubIcon,
+  GlobeIcon,
+} from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -17,16 +24,18 @@ export const Header: React.FC<Props> = ({ project, views }) => {
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
 
-  const links: { label: string; href: string }[] = [];
+  const links: { label: string; href: string; icon: React.ReactNode }[] = [];
   if (project.repository) {
     links.push({
       label: "GitHub",
+      icon: <GithubIcon className="w-6 h-6" />,
       href: `https://github.com/${project.repository}`,
     });
   }
   if (project.url) {
     links.push({
       label: "Website",
+      icon: <GlobeIcon className="w-6 h-6" />,
       href: project.url,
     });
   }
@@ -114,7 +123,10 @@ export const Header: React.FC<Props> = ({ project, views }) => {
             <div className="grid grid-cols-1 gap-y-6 gap-x-8 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
               {links.map((link) => (
                 <Link target="_blank" key={link.label} href={link.href}>
-                  {link.label} <span aria-hidden="true">&rarr;</span>
+                  <div className="flex items-center gap-2">
+                    {link.icon} {link.label}{" "}
+                    <span aria-hidden="true">&rarr;</span>
+                  </div>
                 </Link>
               ))}
             </div>
