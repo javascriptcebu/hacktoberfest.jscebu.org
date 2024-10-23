@@ -1,8 +1,17 @@
 ---
 title: CebEvents
-description: A web app for listing events aggregated from different sources from local communities here in Cebu.
+description: Explore all events from local communities here in Cebu aggregated in one place. Whether that's from meetup.com, Facebook, Eventbrite, Lu.ma, or any other event listing sites.
 date: "2024-10-23"
 url: https://events.dorelljames.dev
 published: true
 repository: dorelljames/events-ni
+image: /images/cebevents.png
 ---
+
+Initiated by [Dorell James](https://github.com/dorelljames) for the [Hacktoberfest 2024](https://hacktoberfest.jscebu.org), this web app's goal is to gather all events from local communities here in Cebu in one place so that it's easier for everyone to find and attend events that they might be interested in. But more than that, it's also a way to give back to the community by contributing to open source.
+
+![cebevents](/images/cebevents.png)
+
+This project is built with [Next.js](https://nextjs.org), [Tailwind CSS](https://tailwindcss.com), and [Supabase](https://supabase.com).
+
+The events service, which is where the data for this web app comes from, is sync through with the help of Supabase Edge Functions and cron triggers to regularly schedule the sync of events from Facebook pages.
