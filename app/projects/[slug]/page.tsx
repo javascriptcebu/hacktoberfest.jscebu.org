@@ -6,6 +6,7 @@ import "./mdx.css";
 import { ReportView } from "./view";
 import { Redis } from "@upstash/redis";
 import { Metadata } from "next";
+import { headers } from "next/headers";
 
 export const revalidate = 60;
 
@@ -35,6 +36,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const headersList = headers();
+  const host = headersList.get("host") || "hacktoberfest.jscebu.org";
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const baseUrl = `${protocol}://${host}`;
+
   return {
     title: project.title,
     description: project.description,
@@ -42,10 +48,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: project.title,
       description: project.description,
       type: "article",
-      url: `https://hacktoberfest.jscebu.org/projects/${project.slug}`,
+      url: `${baseUrl}/projects/${project.slug}`,
       images: [
         {
-          url: project?.image || "https://hacktoberfest.jscebu.org/og.png",
+          url: project?.image
+            ? `${baseUrl}${project.image}`
+            : `${baseUrl}/og.png`,
           width: 1920,
           height: 1080,
           alt: project.title,
@@ -56,7 +64,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: project.title,
       description: project.description,
-      images: project?.image || "https://hacktoberfest.jscebu.org/og.png",
+      images: project?.image
+        ? `${baseUrl}${project.image}`
+        : `${baseUrl}/og.png`,
     },
   };
 }
