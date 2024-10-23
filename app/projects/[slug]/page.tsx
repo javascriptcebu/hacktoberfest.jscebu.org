@@ -5,6 +5,7 @@ import { Header } from "./header";
 import "./mdx.css";
 import { ReportView } from "./view";
 import { Redis } from "@upstash/redis";
+import { Metadata } from "next";
 
 export const revalidate = 60;
 
@@ -22,6 +23,42 @@ export async function generateStaticParams(): Promise<Props["params"][]> {
     .map((p) => ({
       slug: p.slug,
     }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = params?.slug;
+  const project = allProjects.find((project) => project.slug === slug);
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  return {
+    title: project.title,
+    description: project.description,
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      type: "article",
+      url: `https://hacktoberfest.jscebu.org/projects/${project.slug}`,
+      images: [
+        {
+          url: project?.image || "https://hacktoberfest.jscebu.org/og.png",
+          width: 1920,
+          height: 1080,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.description,
+      images: project?.image || "https://hacktoberfest.jscebu.org/og.png",
+    },
+  };
 }
 
 export default async function PostPage({ params }: Props) {
