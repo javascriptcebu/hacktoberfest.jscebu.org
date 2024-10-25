@@ -4,7 +4,10 @@ import { useEffect } from "react";
 
 export const ReportView: React.FC<{ slug: string }> = ({ slug }) => {
   // Prevent reporting from local development
-  if (window.location.href.startsWith("http://localhost")) {
+  if (
+    typeof window !== "undefined" &&
+    window.location.href.startsWith("http://localhost")
+  ) {
     return null;
   }
 
