@@ -6,6 +6,7 @@ import { Card } from "../components/card";
 import { Article } from "./article";
 import { Redis } from "@upstash/redis";
 import { Eye, GithubIcon } from "lucide-react";
+import { BorderBeam } from "../components/border-beam";
 
 const redis = Redis.fromEnv();
 
@@ -63,6 +64,7 @@ export default async function ProjectsPage() {
 
         <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
           <Card>
+            <BorderBeam />
             <Link href={`/projects/${winners.top1.slug}`}>
               <article className="relative w-full h-full p-4 md:p-8">
                 <div className="flex items-center justify-between gap-2">
@@ -109,8 +111,9 @@ export default async function ProjectsPage() {
           </Card>
 
           <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
-            {[winners.top2, winners.top3].map((project) => (
+            {[winners.top2, winners.top3].map((project, index) => (
               <Card key={project.slug}>
+                <BorderBeam delay={index * 6} />
                 <Article
                   project={project}
                   views={views[project.slug] ?? 0}
@@ -126,6 +129,7 @@ export default async function ProjectsPage() {
         </div>
 
         <Card key={featured.slug}>
+          <BorderBeam delay={12} />
           <Link href={`https://github.com/dorelljames/event-ni/pull/5`}>
             <div className="mt-2 flex items-center justify-between gap-2">
               <span className="ml-2 text-xs text-zinc-100 bg-green-900 px-2 py-1 rounded-md">
