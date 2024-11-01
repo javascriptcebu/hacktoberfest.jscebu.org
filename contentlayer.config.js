@@ -12,7 +12,7 @@ const computedFields = {
   },
   slug: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    resolve: (doc) => doc._raw.flattenedPath.split("/").pop() // use last part of the path to also exclude year
   },
 };
 
