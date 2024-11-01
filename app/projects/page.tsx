@@ -9,6 +9,8 @@ import { Eye, GithubIcon } from "lucide-react";
 
 const redis = Redis.fromEnv();
 
+const YEAR = 2024;
+
 export const revalidate = 60;
 export default async function ProjectsPage() {
   const views = (
@@ -40,6 +42,8 @@ export default async function ProjectsPage() {
         project.slug !== featured.slug &&
         project.slug !== top2.slug &&
         project.slug !== top3.slug
+        // only include projects from this year
+        && new Date(project.date ?? Number.POSITIVE_INFINITY).getFullYear() === YEAR
     )
     .sort(
       (a, b) =>
@@ -57,7 +61,7 @@ export default async function ProjectsPage() {
           </h2>
           <p className="mt-4 text-zinc-400">
             Here are the winners of the Open Source Projects during Cebu
-            Hacktoberfest 2024...
+            Hacktoberfest {YEAR}...
           </p>
         </div>
 
@@ -151,7 +155,7 @@ export default async function ProjectsPage() {
           </h2>
           <p className="mt-4 text-zinc-400">
             These are the open source projects that were initiated during Cebu
-            Hacktoberfest 2024 opening day. See above list for winners...
+            Hacktoberfest {YEAR} opening day. See above list for winners...
           </p>
         </div>
 

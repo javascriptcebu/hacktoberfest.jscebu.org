@@ -2,6 +2,7 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import PastYearsDropdown from "./nav-dropdown";
 
 export const Navigation: React.FC = () => {
 	const ref = useRef<HTMLElement>(null);
@@ -28,12 +29,16 @@ export const Navigation: React.FC = () => {
 			>
 				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
 					<div className="flex justify-between gap-8">
-						<Link
-							href="/projects"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
-						>
-							Projects
-						</Link>
+						<div className="flex gap-0.5 items-center group">
+							<Link
+								href="/projects"
+								className="duration-200 text-zinc-400 group-hover:text-zinc-100"
+							>
+								Projects
+							</Link>
+							<PastYearsDropdown />
+						</div>
+						
 						<Link
 							href="/contact"
 							className="duration-200 text-zinc-400 hover:text-zinc-100"
