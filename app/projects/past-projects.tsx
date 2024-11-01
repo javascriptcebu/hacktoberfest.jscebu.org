@@ -3,8 +3,6 @@ import { Navigation } from "@/app/components/nav";
 import { Article } from "@/app/projects/article";
 import type { Project } from "contentlayer/generated";
 
-export const revalidate = 60;
-
 interface ProjectListProps {
   year: number;
   views: Record<string, number>;
