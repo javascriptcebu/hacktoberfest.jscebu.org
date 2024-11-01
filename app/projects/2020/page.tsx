@@ -4,7 +4,7 @@ import ProjectsList from "../past-projects";
 
 const redis = Redis.fromEnv();
 
-const YEAR = 2022;
+const YEAR = 2020;
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
