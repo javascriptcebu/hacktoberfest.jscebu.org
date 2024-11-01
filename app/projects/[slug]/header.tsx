@@ -8,6 +8,7 @@ import {
   GlobeIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 
 type Props = {
@@ -23,6 +24,7 @@ type Props = {
 export const Header: React.FC<Props> = ({ project, views }) => {
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
+  const router = useRouter()
 
   const links: { label: string; href: string; icon: React.ReactNode }[] = [];
   if (project.repository) {
@@ -96,8 +98,10 @@ export const Header: React.FC<Props> = ({ project, views }) => {
             </Link>
           </div>
 
-          <Link
-            href="/projects"
+          <button
+            type="button"
+            title="Go back" 
+            onClick={() => router.back()}
             className={`duration-200 hover:font-medium ${
               isIntersecting
                 ? " text-zinc-400 hover:text-zinc-100"
@@ -105,7 +109,7 @@ export const Header: React.FC<Props> = ({ project, views }) => {
             } `}
           >
             <ArrowLeft className="w-6 h-6 " />
-          </Link>
+          </button>
         </div>
       </div>
       <div className="container mx-auto relative isolate overflow-hidden  py-24 sm:py-32">
