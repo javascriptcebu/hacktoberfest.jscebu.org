@@ -1,6 +1,6 @@
 import { getLogtoContext, signIn, signOut } from "@logto/next/server-actions";
 
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import Particles from "./components/particles";
 import React from "react";
