@@ -20,9 +20,6 @@ importers:
       '@logto/next':
         specifier: ^4.2.5
         version: 4.2.5(next@14.2.32(@opentelemetry/api@1.4.1)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
-      '@next/font':
-        specifier: ^13.5.4
-        version: 13.5.7
       '@next/mdx':
         specifier: ^13.5.4
         version: 13.5.4
@@ -446,9 +443,6 @@ packages:
 
   '@next/eslint-plugin-next@14.2.32':
     resolution: {integrity: sha512-tyZMX8g4cWg/uPW4NxiJK13t62Pab47SKGJGVZJa6YtFwtfrXovH4j1n9tdpRdXW03PGQBugYEVGM7OhWfytdA==}
-
-  '@next/font@13.5.7':
-    resolution: {integrity: sha512-uzYv8ZGvVA9Ju2TyzrQ6WWb+XU45whWFdkfSS7tQ+ShggiHWUKIW94wCYUodGwR8oNv11lTwvVFXtcIL7DhKpA==}
 
   '@next/mdx@13.5.4':
     resolution: {integrity: sha512-WYdWeDZUvX9h0BnjDtwyFy2We4ko8ox5EuglN27rCoYz1xj8fQ8KAn7reZgXwT2RX2hxUOl4eTNbXBfsrw7Gew==}
@@ -3398,7 +3392,7 @@ snapshots:
   '@eslint/eslintrc@2.1.4':
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.4
+      debug: 4.4.1
       espree: 9.6.1
       globals: 13.24.0
       ignore: 5.3.2
@@ -3428,7 +3422,7 @@ snapshots:
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
-      debug: 4.3.4
+      debug: 4.4.1
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -3536,8 +3530,6 @@ snapshots:
   '@next/eslint-plugin-next@14.2.32':
     dependencies:
       glob: 10.3.10
-
-  '@next/font@13.5.7': {}
 
   '@next/mdx@13.5.4':
     dependencies:
@@ -4638,7 +4630,7 @@ snapshots:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.6
-      debug: 4.3.4
+      debug: 4.4.1
       doctrine: 3.0.0
       escape-string-regexp: 4.0.0
       eslint-scope: 7.2.2
