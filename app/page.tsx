@@ -21,17 +21,18 @@ export default async function Home() {
       <nav className="my-16 animate-fade-in">
         <ul className="flex items-center justify-center gap-4">
           {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm duration-500 text-zinc-500 hover:text-zinc-300"
-            >
-              {item.name}
-            </Link>
+            <li key={item.href}>
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm duration-500 text-zinc-500 hover:text-zinc-300"
+              >
+                {item.name}
+              </Link>
+            </li>
           ))}
           {isAuthenticated ? (
-            <p>
-              Hello, {claims?.sub},
+            <li>
               <SignOut
                 onSignOut={async () => {
                   "use server";
@@ -39,7 +40,7 @@ export default async function Home() {
                   await signOut(logtoConfig);
                 }}
               />
-            </p>
+            </li>
           ) : (
             <p>
               <SignIn
