@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function PastYearsDropdown() {
   const menuItems = [
-    { label: "2024", href: "/projects" },
+    { label: "2024", href: "/projects/2024" },
     { label: "2023", href: "/projects/2023" },
     { label: "2021", href: "/projects/2021" },
     { label: "2020", href: "/projects/2020" },
@@ -15,7 +15,7 @@ export default function PastYearsDropdown() {
 
       <div className="absolute hidden group-hover:block right-0">
         <div className="bg-zinc-900 shadow-lg w-28 text-sm py-1 mt-2 border border-zinc-800 rounded-lg">
-            {/* <span className="text-[0.7rem] leading-3 px-4 text-zinc-600">Previous years</span> */}
+          {/* <span className="text-[0.7rem] leading-3 px-4 text-zinc-600">Previous years</span> */}
           {menuItems.map((item) => (
             <Link
               key={item.label}
@@ -29,5 +29,4 @@ export default function PastYearsDropdown() {
       </div>
     </div>
   );
-};
-
+}

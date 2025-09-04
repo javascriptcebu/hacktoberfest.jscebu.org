@@ -2,7 +2,7 @@ import { allProjects } from "contentlayer/generated";
 import ProjectsList from "../past-projects";
 import { getProjectViews, getProjectsByYear } from "../utils";
 
-const YEAR = 2021;
+const YEAR = 2024;
 
 export const revalidate = 60;
 export default async function ProjectsPage() {

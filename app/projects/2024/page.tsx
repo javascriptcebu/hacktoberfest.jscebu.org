@@ -1,28 +1,32 @@
 import { Eye, GithubIcon } from "lucide-react";
-import { getProjectViews, getProjectsByYear } from "./utils";
+import { getProjectViews, getProjectsByYear } from "../utils";
 
-import { Article } from "./article";
-import { Card } from "../components/card";
+import { Article } from "../article";
+import { Card } from "../../components/card";
 import Link from "next/link";
-import { Navigation } from "../components/nav";
+import { Navigation } from "../../components/nav";
 import React from "react";
 import { allProjects } from "contentlayer/generated";
 
-const YEAR = 2025;
+const YEAR = 2024;
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
   const views = await getProjectViews(allProjects);
 
   const winners = {
-    top1: allProjects.find((project) => project.slug === "empty")!,
-    top2: allProjects.find((project) => project.slug === "empty")!,
-    top3: allProjects.find((project) => project.slug === "empty")!,
+    top1: allProjects.find((project) => project.slug === "varo-dev")!,
+    top2: allProjects.find((project) => project.slug === "what-can-i-cook")!,
+    top3: allProjects.find(
+      (project) => project.slug === "helpful-tooltips-extension"
+    )!,
   };
 
-  const featured = allProjects.find((project) => project.slug === "cebby")!;
-  const top2 = allProjects.find((project) => project.slug === "empty")!;
-  const top3 = allProjects.find((project) => project.slug === "empty")!;
+  const featured = allProjects.find((project) => project.slug === "cebevents")!;
+  const top2 = allProjects.find(
+    (project) => project.slug === "ph-startup-org"
+  )!;
+  const top3 = allProjects.find((project) => project.slug === "reflect-php")!;
   const currentYearProjects = getProjectsByYear(allProjects, YEAR);
   const sorted = currentYearProjects.filter(
     (project) =>
@@ -119,10 +123,8 @@ export default async function ProjectsPage() {
             <article className="p-4 md:p-8">
               <h2 className="mt-2 z-20 text-xl font-medium duration-1000 lg:text-2xl text-zinc-200 group-hover:text-white font-display">
                 <div className="flex items-center justify-center gap-2">
-                  <h2>Coming soon</h2>
-                  <span className="text-zinc-400">
-                    who will this year's winner be?
-                  </span>
+                  <GithubIcon /> dorelljames/event-ni → (PR #5: Sort by Month
+                  and Year Feature)
                 </div>
               </h2>
             </article>
@@ -140,12 +142,6 @@ export default async function ProjectsPage() {
             Hacktoberfest {YEAR} opening day. See above list for winners...
           </p>
         </div>
-
-        {sorted.length === 0 && (
-          <div className="flex items-center justify-center">
-            <p className="text-zinc-400">No projects yet...</p>
-          </div>
-        )}
 
         <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
           {Array.from({ length: 3 }).map((_, colIndex) => (
