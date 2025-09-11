@@ -4,10 +4,10 @@ import { Navigation } from "../components/nav";
 import { AdminPanel } from "./admin-panel";
 import { redirect } from "next/navigation";
 
-// Define admin emails - in production, this should come from environment variables
-const ADMIN_EMAILS = [
-  "dorelljames@gmail.com", // Add actual admin emails here
-];
+// Get admin emails from environment variable (comma-separated)
+const ADMIN_EMAILS = process.env.ADMIN_EMAILS 
+  ? process.env.ADMIN_EMAILS.split(',').map(email => email.trim())
+  : [];
 
 export default async function AdminPage() {
   const { isAuthenticated, claims } = await getLogtoContext(logtoConfig);
