@@ -10,6 +10,7 @@ import { logtoConfig } from "./logto";
 
 const navigation = [
   { name: "2025 Projects", href: "/projects" },
+  { name: "Submit Project", href: "/submit" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -75,13 +76,24 @@ export default async function Home() {
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
       <div className="my-16 text-center animate-fade-in">
         <h2 className="text-sm text-zinc-500">
-          <Link
-            target="_blank"
-            href="https://ggl.link/cebuhacktoberfest24-reg"
-            className="duration-500 hover:text-zinc-300"
-          >
-            → Submit your projects here
-          </Link>{" "}
+          {isAuthenticated ? (
+            <Link
+              href="/submit"
+              className="duration-500 hover:text-zinc-300"
+            >
+              → Submit your projects here
+            </Link>
+          ) : (
+            <span>
+              <SignIn
+                onSignIn={async () => {
+                  "use server";
+                  await signIn(logtoConfig);
+                }}
+              />{" "}
+              to submit your projects
+            </span>
+          )}
         </h2>
       </div>
     </div>
