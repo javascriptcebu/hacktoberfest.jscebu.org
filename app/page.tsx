@@ -1,6 +1,7 @@
 import { getLogtoContext, signIn, signOut } from "@logto/next/server-actions";
 
 import { Card } from "./components/card";
+import { Footer } from "./components/footer";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import Particles from "./components/particles";
@@ -66,7 +67,7 @@ const faqs = [
   {
     question: "Who can join?",
     answer:
-      "Anyone! Students, professionals, hobbyists — no matter your level, you're welcome.",
+      "Anyone! Students, professionals, hobbyists - no matter your level, you're welcome.",
   },
   {
     question: "Do I need to know coding?",
@@ -75,7 +76,7 @@ const faqs = [
   },
   {
     question: "Is this free?",
-    answer: "Yes — Hacktoberfest Cebu is free and open to the public.",
+    answer: "Yes - Hacktoberfest Cebu is free and open to the public.",
   },
   {
     question: "What if I don't have a team?",
@@ -85,7 +86,7 @@ const faqs = [
   {
     question: "What counts as an open source contribution?",
     answer:
-      "Any accepted pull request to a public open-source repo — it can be code, documentation, design assets, or translations.",
+      "Any accepted pull request to a public open-source repo - it can be code, documentation, design assets, or translations.",
   },
   {
     question: "Will there be online options?",
@@ -105,13 +106,13 @@ export default async function Home() {
   return (
     <div className="flex flex-col items-center w-screen min-h-screen overflow-x-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
       <nav className="my-16 animate-fade-in">
-        <ul className="flex items-center justify-center gap-4">
+        <ul className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
           {navigation.map((item) => (
             <li key={item.href}>
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm duration-500 text-zinc-500 hover:text-zinc-300"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
               >
                 {item.name}
               </Link>
@@ -128,7 +129,7 @@ export default async function Home() {
               />
             </li>
           ) : (
-            <p>
+            <li>
               <SignIn
                 onSignIn={async () => {
                   "use server";
@@ -136,7 +137,7 @@ export default async function Home() {
                   await signIn(logtoConfig);
                 }}
               />
-            </p>
+            </li>
           )}
         </ul>
       </nav>
@@ -159,14 +160,14 @@ export default async function Home() {
           />
         </div>
 
-        <h1 className="py-3.5 px-0.5 z-10 text-4xl text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text">
+        <h1 className="py-3.5 px-0.5 z-10 text-5xl text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display sm:text-7xl md:text-8xl whitespace-nowrap bg-clip-text">
           HACKTOBERFEST
         </h1>
         <div className="text-center mt-4">
-          <span className="text-xl md:text-2xl text-zinc-500 font-medium animate-fade-in">
+          <span className="text-lg sm:text-xl text-zinc-500 font-medium animate-fade-in">
             October 5-26, 2025
           </span>
-          <span className="block text-2xl sm:text-3xl md:text-4xl font-bold text-zinc-400 mt-2 animate-fade-in">
+          <span className="block text-2xl sm:text-3xl font-bold text-zinc-400 mt-2 animate-fade-in">
             CEBU 2025
           </span>
         </div>
@@ -177,21 +178,21 @@ export default async function Home() {
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-900/20 to-orange-900/20 px-4 py-2 rounded-full mb-6 border border-yellow-800/30">
             <span className="text-yellow-400">🔥</span>
             <span className="text-yellow-400 text-sm font-semibold">
-              Registration Opens Soon
+              Preptember begins...
             </span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-zinc-100 mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4 leading-tight">
             Build. Contribute. Win.{" "}
             <span className="text-zinc-400">Repeat.</span>
           </h2>
 
-          <p className="text-lg text-zinc-300 mb-4">
+          <p className="text-base sm:text-lg text-zinc-300 mb-4">
             Join <strong className="text-zinc-100">100+ developers</strong> for
             Cebu's biggest open source celebration
           </p>
 
-          <p className="text-zinc-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-zinc-400 mb-8 max-w-2xl mx-auto">
             21 days of hacking, workshops from 15+ partner communities,
             exclusive swag, and the chance to make your mark in open source
             history not just locally but globally.
@@ -206,15 +207,13 @@ export default async function Home() {
                 Submit Your Open Source Project →
               </Link>
             ) : (
-              <div className="inline-flex items-center justify-center px-6 py-3 bg-zinc-800 text-zinc-100 rounded-md">
-                <SignIn
-                  text="Submit your projects"
-                  onSignIn={async () => {
-                    "use server";
-                    await signIn(logtoConfig);
-                  }}
-                />
-              </div>
+              <SignIn
+                text="Submit your projects →"
+                onSignIn={async () => {
+                  "use server";
+                  await signIn(logtoConfig);
+                }}
+              />
             )}
             <Link
               href="/projects"
@@ -226,24 +225,26 @@ export default async function Home() {
         </div>
 
         <div className="w-full max-w-6xl px-4 space-y-16">
-          <section className="py-8">
-            <h3 className="text-3xl font-bold text-zinc-100 mb-4 text-center">
+          <section className="py-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-4 text-center">
               🏆 Hacktoberfest 2024 Highlights
-            </h3>
-            <p className="text-zinc-400 text-center max-w-3xl mx-auto mb-12">
-              Last year was incredible! Over 100+ developers, 25+ teams, and
-              amazing open source projects created in just 21 days.
+            </h2>
+            <p className="text-base sm:text-lg text-zinc-400 text-center max-w-3xl mx-auto mb-12">
+              Last year was incredible! Over 100 developers, 25+ teams, and
+              10 amazing open source projects created in just 21 days.
             </p>
 
             <div className="grid lg:grid-cols-3 gap-6 mb-12">
               <Card>
                 <div className="p-6 bg-gradient-to-br from-yellow-900/20 to-zinc-800/50 border-yellow-800/50">
                   <div className="text-3xl mb-3">🥇</div>
-                  <h4 className="text-lg font-bold text-yellow-400 mb-2">
+                  <h4 className="text-xl font-semibold text-yellow-400 mb-2">
                     Best Overall Project
                   </h4>
-                  <p className="text-zinc-100 font-semibold mb-1">Varo.dev</p>
-                  <p className="text-zinc-400 text-sm mb-3">
+                  <p className="text-lg text-zinc-100 font-medium mb-1">
+                    Varo.dev
+                  </p>
+                  <p className="text-base text-zinc-400 mb-3">
                     AI-powered developer matchmaking platform
                   </p>
                   <p className="text-zinc-500 text-xs">
@@ -256,13 +257,13 @@ export default async function Home() {
               <Card>
                 <div className="p-6 bg-gradient-to-br from-gray-700/20 to-zinc-800/50 border-gray-600/50">
                   <div className="text-3xl mb-3">🥈</div>
-                  <h4 className="text-lg font-bold text-gray-300 mb-2">
+                  <h4 className="text-xl font-semibold text-gray-300 mb-2">
                     Best Use of AI
                   </h4>
-                  <p className="text-zinc-100 font-semibold mb-1">
+                  <p className="text-lg text-zinc-100 font-medium mb-1">
                     What Can I Cook
                   </p>
-                  <p className="text-zinc-400 text-sm mb-3">
+                  <p className="text-base text-zinc-400 mb-3">
                     Recipe suggestions based on available ingredients
                   </p>
                   <p className="text-zinc-500 text-xs">
@@ -275,13 +276,13 @@ export default async function Home() {
               <Card>
                 <div className="p-6 bg-gradient-to-br from-orange-900/20 to-zinc-800/50 border-orange-800/50">
                   <div className="text-3xl mb-3">🥉</div>
-                  <h4 className="text-lg font-bold text-orange-400 mb-2">
+                  <h4 className="text-xl font-semibold text-orange-400 mb-2">
                     Most Fun / Best Easter Egg
                   </h4>
-                  <p className="text-zinc-100 font-semibold mb-1">
+                  <p className="text-lg text-zinc-100 font-medium mb-1">
                     Helpful Tooltips Extension
                   </p>
-                  <p className="text-zinc-400 text-sm mb-3">
+                  <p className="text-base text-zinc-400 mb-3">
                     Browser extension with humorous security insights
                   </p>
                   <p className="text-zinc-500 text-xs">
@@ -313,16 +314,16 @@ export default async function Home() {
                     </h4>
                     <ul className="space-y-2 text-zinc-400 text-sm">
                       <li className="flex items-center">
-                        <span className="text-green-500 mr-2">✓</span> 10+ open
+                        <span className="text-green-500 mr-2">✓</span> 10 open
                         source projects created
                       </li>
                       <li className="flex items-center">
-                        <span className="text-green-500 mr-2">✓</span> 100+ pull
-                        requests submitted
+                        <span className="text-green-500 mr-2">✓</span> 25+ teams
+                        participated in the hackathon
                       </li>
                       <li className="flex items-center">
-                        <span className="text-green-500 mr-2">✓</span> 50+
-                        contributors engaged
+                        <span className="text-green-500 mr-2">✓</span> 100+
+                        developers engaged
                       </li>
                       <li className="flex items-center">
                         <span className="text-green-500 mr-2">✓</span> 15+
@@ -344,18 +345,18 @@ export default async function Home() {
             </div>
           </section>
 
-          <section className="py-8">
-            <h3 className="text-3xl font-bold text-zinc-100 mb-12 text-center">
+          <section className="py-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mb-12 text-center">
               📅 Event Timeline
-            </h3>
+            </h2>
             <Timeline events={scheduleEvents} />
           </section>
 
-          <section className="py-8">
-            <h3 className="text-3xl font-bold text-zinc-100 mb-4 text-center">
+          <section className="py-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-4 text-center">
               ⚡ The 21-Day Hackathon Challenge
-            </h3>
-            <p className="text-zinc-400 text-center max-w-3xl mx-auto mb-12">
+            </h2>
+            <p className="text-base sm:text-lg text-zinc-400 text-center max-w-3xl mx-auto mb-12">
               Build something amazing from scratch. Form your team, ideate, and
               create an open source project that could change the world.
             </p>
@@ -425,11 +426,11 @@ export default async function Home() {
             </Card>
           </section>
 
-          <section className="py-8">
-            <h3 className="text-3xl font-bold text-zinc-100 mb-4 text-center">
+          <section className="py-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-4 text-center">
               🌟 Open Source Contributions
-            </h3>
-            <p className="text-zinc-400 text-center max-w-3xl mx-auto mb-12">
+            </h2>
+            <p className="text-base sm:text-lg text-zinc-400 text-center max-w-3xl mx-auto mb-12">
               Make your mark in the open source community!{" "}
               <span className="text-zinc-200 font-semibold">
                 Contributions to Cebu-based projects count double
@@ -620,15 +621,13 @@ export default async function Home() {
                           Submit Your Project →
                         </Link>
                       ) : (
-                        <div className="inline-flex items-center justify-center px-8 py-3 bg-zinc-800 text-zinc-100 rounded-md">
-                          <SignIn
-                            text="Sign in to submit projects"
-                            onSignIn={async () => {
-                              "use server";
-                              await signIn(logtoConfig);
-                            }}
-                          />
-                        </div>
+                        <SignIn
+                          text="Sign in to submit projects →"
+                          onSignIn={async () => {
+                            "use server";
+                            await signIn(logtoConfig);
+                          }}
+                        />
                       )}
                     </div>
                   </div>
@@ -637,48 +636,53 @@ export default async function Home() {
             </div>
           </section>
 
-          <section>
-            <h3 className="text-2xl font-bold text-zinc-100 mb-8 text-center">
+          <section className="py-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mb-8 text-center">
               🙌 Why Join?
-            </h3>
+            </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {reasons.map((reason, index) => (
                 <Card key={index}>
                   <div className="p-6">
-                    <p className="text-zinc-300">{reason}</p>
+                    <p className="text-base text-zinc-300">{reason}</p>
                   </div>
                 </Card>
               ))}
             </div>
           </section>
 
-          <section>
-            <h3 className="text-2xl font-bold text-zinc-100 mb-8 text-center">
+          <section className="py-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mb-8 text-center">
               🤝 Organizers & Partners
-            </h3>
+            </h2>
             <Card>
               <div className="p-8 text-center">
                 <p className="text-zinc-300 mb-4">
                   Hacktoberfest Cebu 2025 is spearheaded by{" "}
-                  <strong className="text-zinc-100">JavaScript Cebu</strong> and{" "}
+                  <strong className="text-zinc-100">JavaScript Cebu</strong>,{" "}
                   <strong className="text-zinc-100">
                     PizzaPy Cebu Python Users Group
+                  </strong>{" "}
+                  and{" "}
+                  <strong className="text-zinc-100">
+                    Etherium Philippines
                   </strong>
-                  , with support from local tech communities including:
+                  , with support from local tech communities including but not
+                  limited to:
                 </p>
                 <p className="text-zinc-400">
                   React Cebu, Laravel Cebu, Cebu Game Dev, DevCon Cebu, GDG
                   Cebu, Cebu WordPress Meetup, CebuXD, Web3 Cebu, AI Gen Cebu,
-                  and more.
+                  and other commuunity organizations of the Cebu Tech Community.
                 </p>
               </div>
             </Card>
           </section>
 
-          <section className="py-8">
-            <h3 className="text-2xl font-bold text-zinc-100 mb-8 text-center">
+          <section className="py-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mb-8 text-center">
               💎 Our Sponsors
-            </h3>
+            </h2>
             <div className="space-y-8">
               <div>
                 <h4 className="text-lg font-semibold text-zinc-300 mb-4 text-center">
@@ -686,10 +690,9 @@ export default async function Home() {
                 </h4>
                 <Card>
                   <div className="p-8 text-center">
-                    <p className="text-xl font-bold text-zinc-100 mb-2">
+                    <p className="text-lg text-zinc-100 mb-2">
                       To be announced
                     </p>
-                    <p className="text-zinc-400 text-sm">-</p>
                   </div>
                 </Card>
               </div>
@@ -700,12 +703,12 @@ export default async function Home() {
                 </h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   <Card>
-                    <div className="p-6 text-center bg-gradient-to-br from-yellow-900/10 to-zinc-800/50">
+                    <div className="p-8 text-center bg-gradient-to-br from-yellow-900/10 to-zinc-800/50">
                       <p className="text-zinc-400 text-sm">To be announced</p>
                     </div>
                   </Card>
                   <Card>
-                    <div className="p-6 text-center bg-gradient-to-br from-yellow-900/10 to-zinc-800/50">
+                    <div className="p-8 text-center bg-gradient-to-br from-yellow-900/10 to-zinc-800/50">
                       <p className="text-zinc-400 text-sm">To be announced</p>
                     </div>
                   </Card>
@@ -737,30 +740,44 @@ export default async function Home() {
 
               <div className="text-center mt-8">
                 <Card>
-                  <div className="p-6 bg-gradient-to-r from-zinc-800/50 to-zinc-800/30">
-                    <h4 className="text-lg font-bold text-zinc-100 mb-2">
-                      Interested in Sponsoring?
-                    </h4>
-                    <p className="text-zinc-400 text-sm mb-4">
-                      Support the local tech community and get visibility at
-                      Cebu's biggest open source event
-                    </p>
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center justify-center px-6 py-2 bg-zinc-700 text-zinc-100 rounded-md font-medium hover:bg-zinc-600 transition-colors text-sm"
-                    >
-                      Contact Us →
-                    </Link>
+                  <div className="relative p-8 bg-gradient-to-br from-yellow-900/20 via-zinc-800/50 to-orange-900/20 border border-yellow-800/30 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-transparent to-orange-500/5 animate-pulse"></div>
+                    <div className="relative z-10">
+                      <div className="inline-flex items-center gap-2 bg-yellow-900/30 px-3 py-1 rounded-full mb-4 border border-yellow-800/50">
+                        <span className="text-yellow-400 text-xs font-semibold uppercase tracking-wider">Limited Slots Available</span>
+                      </div>
+                      <h4 className="text-2xl font-bold text-zinc-100 mb-3">
+                        🎯 Interested in Sponsoring?
+                      </h4>
+                      <p className="text-base text-zinc-300 mb-6 max-w-md mx-auto">
+                        Join leading tech companies in supporting Cebu's developer community.
+                        Get <span className="text-yellow-400 font-semibold">premium visibility</span> at our biggest open source event.
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                        <Link
+                          href="/contact"
+                          className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-yellow-600 to-orange-600 text-white rounded-md font-semibold hover:from-yellow-500 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        >
+                          Become a Sponsor →
+                        </Link>
+                        <span className="text-zinc-500 text-sm">
+                          or email us at{" "}
+                          <a href="mailto:sponsors@hacktoberfest.jscebu.org" className="text-yellow-400 hover:text-yellow-300 underline">
+                            sponsors@hacktoberfest.jscebu.org
+                          </a>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </Card>
               </div>
             </div>
           </section>
 
-          <section>
-            <h3 className="text-2xl font-bold text-zinc-100 mb-8 text-center">
+          <section className="py-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mb-8 text-center">
               📝 Registration
-            </h3>
+            </h2>
             <Card>
               <div className="p-8">
                 <p className="text-zinc-100 text-lg font-semibold mb-4 text-center">
@@ -772,8 +789,7 @@ export default async function Home() {
                       Step 1:
                     </span>
                     <p className="text-zinc-400">
-                      Register via Major League Hacking (MLH){" "}
-                      <span className="text-zinc-500">(link coming soon)</span>
+                      Read about and register at Hacktoberfest.com
                     </p>
                   </div>
                   <div className="flex items-start">
@@ -781,8 +797,17 @@ export default async function Home() {
                       Step 2:
                     </span>
                     <p className="text-zinc-400">
-                      Sign up on Cebby to stay updated, find teams, and track
-                      your participation
+                      Sign up and{" "}
+                      <SignIn
+                        text="create an account here via Cebby"
+                        variant="inline"
+                        onSignIn={async () => {
+                          "use server";
+                          await signIn(logtoConfig);
+                        }}
+                      />{" "}
+                      to stay updated, find teams, and track your
+                      participation...
                     </p>
                   </div>
                 </div>
@@ -790,10 +815,10 @@ export default async function Home() {
             </Card>
           </section>
 
-          <section className="pb-16">
-            <h3 className="text-2xl font-bold text-zinc-100 mb-8 text-center">
+          <section className="py-12 pb-20">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mb-8 text-center">
               🙋 FAQ
-            </h3>
+            </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {faqs.map((faq, index) => (
                 <Card key={index}>
@@ -809,6 +834,7 @@ export default async function Home() {
           </section>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

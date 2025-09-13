@@ -27,12 +27,12 @@ export const Navigation: React.FC = () => {
 						: "bg-zinc-900/500  border-zinc-800 "
 				}`}
 			>
-				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
-					<div className="flex justify-between gap-8">
+				<div className="container flex flex-row-reverse items-center justify-between p-4 mx-auto">
+					<div className="flex items-center gap-2 sm:gap-4">
 						<div className="flex gap-0.5 items-center group">
 							<Link
 								href="/projects"
-								className="duration-200 text-zinc-400 group-hover:text-zinc-100"
+								className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
 							>
 								Projects
 							</Link>
@@ -41,14 +41,14 @@ export const Navigation: React.FC = () => {
 
 						<Link
 							href="/submit"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
+							className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
 						>
 							Submit Project
 						</Link>
 
 						<Link
 							href="/contact"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
+							className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
 						>
 							Contact
 						</Link>
@@ -56,9 +56,9 @@ export const Navigation: React.FC = () => {
 
 					<Link
 						href="/"
-						className="duration-200 text-zinc-300 hover:text-zinc-100"
+						className="inline-flex items-center justify-center p-2 transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
 					>
-						<ArrowLeft className="w-6 h-6 " />
+						<ArrowLeft className="w-5 h-5" />
 					</Link>
 				</div>
 			</div>
