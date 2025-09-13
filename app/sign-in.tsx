@@ -2,9 +2,10 @@
 
 type Props = {
   onSignIn: () => Promise<void>;
+  text?: string;
 };
 
-const SignIn = ({ onSignIn }: Props) => {
+const SignIn = ({ onSignIn, text = "" }: Props) => {
   return (
     <button
       className="text-sm duration-500 text-zinc-500 hover:text-zinc-300"
@@ -12,7 +13,7 @@ const SignIn = ({ onSignIn }: Props) => {
         onSignIn();
       }}
     >
-      Sign In via OneCebby
+      {text || "Sign In via OneCebby"}
     </button>
   );
 };
