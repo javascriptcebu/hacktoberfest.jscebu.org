@@ -1,7 +1,16 @@
-import { Facebook, GithubIcon, Linkedin, Twitter, Mail, MapPin, Calendar, Users } from "lucide-react";
+import {
+  Calendar,
+  Facebook,
+  GithubIcon,
+  Linkedin,
+  Mail,
+  MapPin,
+  Twitter,
+  Users,
+} from "lucide-react";
 
-import Link from "next/link";
 import Image from "next/legacy/image";
+import Link from "next/link";
 
 const footerLinks = {
   event: [
@@ -82,14 +91,16 @@ export function Footer() {
               className="opacity-80"
             />
             <Image
-              src="/images/LtBG_Rectangle.png"
+              src="/images/DkBG_Rectangle.png"
               alt="Ethereum Philippines"
-              width={110}
-              height={30}
+              width={88}
+              height={50}
               className="opacity-80"
             />
           </div>
-          <h2 className="text-2xl font-bold text-zinc-100 mb-2">Hacktoberfest Cebu 2025</h2>
+          <h2 className="text-2xl font-bold text-zinc-100 mb-2">
+            Hacktoberfest Cebu 2025
+          </h2>
           <p className="text-zinc-400 mb-4">Build. Contribute. Win. Repeat.</p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-zinc-500">
             <span className="flex items-center gap-1">
@@ -190,7 +201,8 @@ export function Footer() {
               Stay Connected
             </h3>
             <p className="text-sm text-zinc-400 mb-4">
-              Join our community and never miss an update about Hacktoberfest Cebu
+              Join our community and never miss an update about Hacktoberfest
+              Cebu
             </p>
             <div className="flex items-center gap-3 mb-4">
               {footerLinks.social.map((item) => {
@@ -222,8 +234,12 @@ export function Footer() {
         {/* Sponsor CTA Section */}
         <div className="mb-12 p-8 rounded-lg bg-gradient-to-r from-zinc-800/30 to-zinc-800/20 border border-zinc-800">
           <div className="text-center">
-            <h3 className="text-lg font-bold text-zinc-100 mb-2">Want to Support Hacktoberfest Cebu?</h3>
-            <p className="text-sm text-zinc-400 mb-4">Join us as a sponsor and help grow the local developer community</p>
+            <h3 className="text-lg font-bold text-zinc-100 mb-2">
+              Want to Support Hacktoberfest Cebu?
+            </h3>
+            <p className="text-sm text-zinc-400 mb-4">
+              Join us as a sponsor and help grow the local developer community
+            </p>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-2 bg-zinc-700 hover:bg-zinc-600 text-zinc-100 rounded-md font-medium transition-colors"
@@ -237,16 +253,21 @@ export function Footer() {
         <div className="border-t border-zinc-800 pt-8">
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div>
-              <h4 className="text-sm font-semibold text-zinc-100 mb-3">About Hacktoberfest Cebu</h4>
+              <h4 className="text-sm font-semibold text-zinc-100 mb-3">
+                About Hacktoberfest Cebu
+              </h4>
               <p className="text-sm text-zinc-400 leading-relaxed">
-                Hacktoberfest Cebu is the largest open source celebration in the Visayas region,
-                bringing together developers, designers, and tech enthusiasts to contribute to
-                open source projects, learn new skills, and build lasting connections within
-                the tech community.
+                Hacktoberfest Cebu is the largest open source celebration in the
+                Visayas region, bringing together developers, designers, and
+                tech enthusiasts to contribute to open source projects, learn
+                new skills, and build lasting connections within the tech
+                community.
               </p>
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-zinc-100 mb-3">Get Involved</h4>
+              <h4 className="text-sm font-semibold text-zinc-100 mb-3">
+                Get Involved
+              </h4>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <p className="text-zinc-300 mb-2">For Participants:</p>

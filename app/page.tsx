@@ -1,7 +1,20 @@
+import {
+  AnimatedSectionTitle,
+  AnimatedText,
+  AnimatedTimeline,
+} from "./components/home-sections";
 import { getLogtoContext, signIn, signOut } from "@logto/next/server-actions";
 
 import { Card } from "./components/card";
 import { Footer } from "./components/footer";
+import { HomeContributions } from "./components/home-contributions";
+import { HomeFAQ } from "./components/home-faq";
+import { HomeHackathon } from "./components/home-hackathon";
+import { HomeHighlights } from "./components/home-highlights";
+import { HomePartners } from "./components/home-partners";
+import { HomeRegistration } from "./components/home-registration";
+import { HomeSponsors } from "./components/home-sponsors";
+import { HomeWhyJoin } from "./components/home-why-join";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import Particles from "./components/particles";
@@ -10,15 +23,6 @@ import SignIn from "./sign-in";
 import SignOut from "./sign-out";
 import { Timeline } from "./components/timeline";
 import { logtoConfig } from "./logto";
-import { HomeHighlights } from "./components/home-highlights";
-import { HomeHackathon } from "./components/home-hackathon";
-import { HomeFAQ } from "./components/home-faq";
-import { HomeWhyJoin } from "./components/home-why-join";
-import { HomePartners } from "./components/home-partners";
-import { HomeSponsors } from "./components/home-sponsors";
-import { HomeRegistration } from "./components/home-registration";
-import { HomeContributions } from "./components/home-contributions";
-import { AnimatedSectionTitle, AnimatedText, AnimatedTimeline } from "./components/home-sections";
 
 const navigation = [
   { name: "2025 Projects", href: "/projects" },
@@ -176,10 +180,10 @@ export default async function Home() {
               className="opacity-90"
             />
             <Image
-              src="/images/LtBG_Rectangle.png"
-              alt="Ethereum Philippines"
-              width={180}
-              height={50}
+              src="/images/DkBG_Rectangle.png"
+              alt="ETHPH"
+              width={142}
+              height={80}
               className="opacity-90"
             />
           </div>
