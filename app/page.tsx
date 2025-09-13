@@ -160,13 +160,29 @@ export default async function Home() {
 
       <div className="flex flex-col items-center justify-center px-4 py-16">
         <div className="animate-fade-in mb-6">
-          <Image
-            src="/images/jscebu.png"
-            alt="jscebu"
-            width={196}
-            height={50}
-            className="opacity-90"
-          />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
+            <Image
+              src="/images/jscebu.png"
+              alt="JavaScript Cebu"
+              width={196}
+              height={50}
+              className="opacity-90"
+            />
+            <Image
+              src="/images/pizzapyhorizontal-primary-white.png"
+              alt="PizzaPy Python Users Group"
+              width={180}
+              height={50}
+              className="opacity-90"
+            />
+            <Image
+              src="/images/LtBG_Rectangle.png"
+              alt="Ethereum Philippines"
+              width={180}
+              height={50}
+              className="opacity-90"
+            />
+          </div>
         </div>
 
         <h1 className="py-3.5 px-0.5 z-10 text-5xl text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display sm:text-7xl md:text-8xl whitespace-nowrap bg-clip-text">

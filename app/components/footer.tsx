@@ -66,11 +66,25 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         {/* Top Section - Event Info */}
         <div className="mb-12 text-center">
-          <div className="inline-flex items-center gap-3 mb-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-6">
             <Image
               src="/images/jscebu.png"
-              alt="jscebu"
+              alt="JavaScript Cebu"
               width={120}
+              height={30}
+              className="opacity-80"
+            />
+            <Image
+              src="/images/pizzapyhorizontal-primary-white.png"
+              alt="PizzaPy Python Users Group"
+              width={110}
+              height={30}
+              className="opacity-80"
+            />
+            <Image
+              src="/images/LtBG_Rectangle.png"
+              alt="Ethereum Philippines"
+              width={110}
               height={30}
               className="opacity-80"
             />
