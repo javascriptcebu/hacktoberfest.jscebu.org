@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { Navigation } from "../components/nav";
 import { Footer } from "../components/footer";
-import { Card } from "../components/card";
+import { AnimatedCard } from "../components/animated-card";
+import { ScrollAnimation } from "../components/scroll-animation";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -13,17 +14,19 @@ export default function PrivacyPage() {
     <div className="relative min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black">
       <Navigation />
       <div className="px-6 pt-20 pb-20 mx-auto max-w-4xl lg:px-8 md:pt-24 lg:pt-32">
-        <div className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
-            Privacy Policy
-          </h1>
-          <p className="text-zinc-400">
-            Last updated: January 2025
-          </p>
-        </div>
+        <ScrollAnimation animation="fade-up">
+          <div className="mb-12">
+            <h1 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
+              Privacy Policy
+            </h1>
+            <p className="text-zinc-400">
+              Last updated: January 2025
+            </p>
+          </div>
+        </ScrollAnimation>
 
         <div className="space-y-8">
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Introduction</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -32,9 +35,9 @@ export default function PrivacyPage() {
                 when you participate in our events, visit our website, or interact with our community.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Information We Collect</h2>
               <div className="space-y-4">
@@ -79,9 +82,9 @@ export default function PrivacyPage() {
                 </div>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">How We Use Your Information</h2>
               <ul className="space-y-2 text-zinc-400">
@@ -111,9 +114,9 @@ export default function PrivacyPage() {
                 </li>
               </ul>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Information Sharing</h2>
               <div className="space-y-4 text-zinc-400">
@@ -141,9 +144,9 @@ export default function PrivacyPage() {
                 </ul>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Data Security</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -153,9 +156,9 @@ export default function PrivacyPage() {
                 and we cannot guarantee absolute security.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Your Rights</h2>
               <div className="space-y-4">
@@ -182,9 +185,9 @@ export default function PrivacyPage() {
                 </ul>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Cookies and Analytics</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -194,9 +197,9 @@ export default function PrivacyPage() {
                 but this may affect your ability to use certain features of our website.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Children's Privacy</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -205,9 +208,9 @@ export default function PrivacyPage() {
                 information from children under 13 without parental consent.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Changes to This Policy</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -217,9 +220,9 @@ export default function PrivacyPage() {
                 indicates your acceptance of the updated policy.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8 bg-gradient-to-r from-zinc-800/50 to-zinc-800/30">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Contact Us</h2>
               <p className="text-zinc-400 leading-relaxed mb-4">
@@ -243,7 +246,7 @@ export default function PrivacyPage() {
                 </p>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
         </div>
       </div>
       <Footer />

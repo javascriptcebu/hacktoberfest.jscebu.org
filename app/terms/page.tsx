@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { Navigation } from "../components/nav";
 import { Footer } from "../components/footer";
-import { Card } from "../components/card";
+import { AnimatedCard } from "../components/animated-card";
+import { ScrollAnimation } from "../components/scroll-animation";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -13,17 +14,19 @@ export default function TermsPage() {
     <div className="relative min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black">
       <Navigation />
       <div className="px-6 pt-20 pb-20 mx-auto max-w-4xl lg:px-8 md:pt-24 lg:pt-32">
-        <div className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
-            Terms of Service
-          </h1>
-          <p className="text-zinc-400">
-            Effective Date: January 2025
-          </p>
-        </div>
+        <ScrollAnimation animation="fade-up">
+          <div className="mb-12">
+            <h1 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
+              Terms of Service
+            </h1>
+            <p className="text-zinc-400">
+              Effective Date: January 2025
+            </p>
+          </div>
+        </ScrollAnimation>
 
         <div className="space-y-8">
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Acceptance of Terms</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -32,9 +35,9 @@ export default function TermsPage() {
                 If you do not agree to these terms, please do not participate in our events or use our services.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Event Participation</h2>
               <div className="space-y-4">
@@ -75,9 +78,9 @@ export default function TermsPage() {
                 </ul>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Hackathon Rules</h2>
               <div className="space-y-4">
@@ -126,9 +129,9 @@ export default function TermsPage() {
                 </div>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Intellectual Property</h2>
               <div className="space-y-4 text-zinc-400">
@@ -156,9 +159,9 @@ export default function TermsPage() {
                 </p>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Code of Conduct</h2>
               <p className="text-zinc-400 leading-relaxed mb-4">
@@ -187,9 +190,9 @@ export default function TermsPage() {
                 prohibition from future events.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Prizes and Recognition</h2>
               <ul className="space-y-2 text-zinc-400">
@@ -215,9 +218,9 @@ export default function TermsPage() {
                 </li>
               </ul>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Limitation of Liability</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -242,9 +245,9 @@ export default function TermsPage() {
                 </li>
               </ul>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Photography and Recording</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -253,9 +256,9 @@ export default function TermsPage() {
                 If you do not wish to be photographed, please inform event staff upon arrival.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Modifications to Terms</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -264,9 +267,9 @@ export default function TermsPage() {
                 constitutes acceptance of the updated terms.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Governing Law</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -275,9 +278,9 @@ export default function TermsPage() {
                 shall be resolved in the courts of Cebu City, Philippines.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8 bg-gradient-to-r from-zinc-800/50 to-zinc-800/30">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Contact Information</h2>
               <p className="text-zinc-400 leading-relaxed mb-4">
@@ -301,7 +304,7 @@ export default function TermsPage() {
                 </p>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
         </div>
       </div>
       <Footer />

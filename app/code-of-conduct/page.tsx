@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { Navigation } from "../components/nav";
 import { Footer } from "../components/footer";
-import { Card } from "../components/card";
+import { AnimatedCard } from "../components/animated-card";
+import { ScrollAnimation } from "../components/scroll-animation";
 
 export const metadata: Metadata = {
   title: "Code of Conduct",
@@ -13,17 +14,19 @@ export default function CodeOfConductPage() {
     <div className="relative min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black">
       <Navigation />
       <div className="px-6 pt-20 pb-20 mx-auto max-w-4xl lg:px-8 md:pt-24 lg:pt-32">
-        <div className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
-            Code of Conduct
-          </h1>
-          <p className="text-zinc-400">
-            Our pledge to foster an inclusive and welcoming community
-          </p>
-        </div>
+        <ScrollAnimation animation="fade-up">
+          <div className="mb-12">
+            <h1 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
+              Code of Conduct
+            </h1>
+            <p className="text-zinc-400">
+              Our pledge to foster an inclusive and welcoming community
+            </p>
+          </div>
+        </ScrollAnimation>
 
         <div className="space-y-8">
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8 bg-gradient-to-r from-orange-900/20 to-pink-900/20 border border-orange-800/30">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Our Commitment</h2>
               <p className="text-zinc-300 leading-relaxed">
@@ -37,9 +40,9 @@ export default function CodeOfConductPage() {
                 inclusive, and healthy community.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Expected Behavior</h2>
               <p className="text-zinc-400 mb-4">
@@ -83,9 +86,9 @@ export default function CodeOfConductPage() {
                 </li>
               </ul>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Unacceptable Behavior</h2>
               <p className="text-zinc-400 mb-4">
@@ -134,9 +137,9 @@ export default function CodeOfConductPage() {
                 </li>
               </ul>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Online Community Standards</h2>
               <div className="space-y-4">
@@ -167,9 +170,9 @@ export default function CodeOfConductPage() {
                 </ul>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Consequences of Unacceptable Behavior</h2>
               <p className="text-zinc-400 mb-4">
@@ -200,9 +203,9 @@ export default function CodeOfConductPage() {
                 </li>
               </ul>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Reporting Violations</h2>
               <div className="space-y-4">
@@ -258,9 +261,9 @@ export default function CodeOfConductPage() {
                 </p>
               </div>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Scope</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -288,9 +291,9 @@ export default function CodeOfConductPage() {
                 This code also applies when an individual is representing the community in public spaces.
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Attribution</h2>
               <p className="text-zinc-400 leading-relaxed">
@@ -315,9 +318,9 @@ export default function CodeOfConductPage() {
                 .
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
 
-          <Card>
+          <AnimatedCard delay={0.1}>
             <div className="p-8 bg-gradient-to-r from-orange-900/20 to-pink-900/20 border border-orange-800/30">
               <h2 className="text-xl font-bold text-zinc-100 mb-4">Questions?</h2>
               <p className="text-zinc-300 leading-relaxed mb-4">
@@ -341,7 +344,7 @@ export default function CodeOfConductPage() {
                 Together, let's build an inclusive and welcoming tech community in Cebu! 🧡
               </p>
             </div>
-          </Card>
+          </AnimatedCard>
         </div>
       </div>
       <Footer />
