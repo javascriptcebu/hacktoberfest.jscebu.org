@@ -1,8 +1,8 @@
 "use client";
 
 import { Card } from "./card";
-import { ScrollAnimation } from "./scroll-animation";
 import Image from "next/legacy/image";
+import { ScrollAnimation } from "./scroll-animation";
 
 export function HomePartners() {
   return (
@@ -16,7 +16,9 @@ export function HomePartners() {
         <Card>
           <div className="p-8">
             <div className="mb-8">
-              <h3 className="text-lg font-semibold text-zinc-200 mb-6 text-center">Lead Organizers</h3>
+              <h3 className="text-lg font-semibold text-zinc-200 mb-6 text-center">
+                Lead Organizers
+              </h3>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
                 <div className="flex flex-col items-center">
                   <Image
@@ -38,10 +40,10 @@ export function HomePartners() {
                 </div>
                 <div className="flex flex-col items-center">
                   <Image
-                    src="/images/LtBG_Rectangle.png"
+                    src="/images/DkBG_Rectangle.png"
                     alt="Ethereum Philippines"
-                    width={150}
-                    height={40}
+                    width={106}
+                    height={60}
                     className="opacity-80 hover:opacity-100 transition-opacity"
                   />
                 </div>
@@ -55,16 +57,14 @@ export function HomePartners() {
                   PizzaPy Cebu Python Users Group
                 </strong>{" "}
                 and{" "}
-                <strong className="text-zinc-100">
-                  Ethereum Philippines
-                </strong>
-                , with support from local tech communities including but not
+                <strong className="text-zinc-100">Ethereum Philippines</strong>,
+                with support from local tech communities including but not
                 limited to:
               </p>
               <p className="text-zinc-400">
-                React Cebu, Laravel Cebu, Cebu Game Dev, DevCon Cebu, GDG
-                Cebu, Cebu WordPress Meetup, CebuXD, Web3 Cebu, AI Gen Cebu,
-                and other community organizations of the Cebu Tech Community.
+                React Cebu, Laravel Cebu, Cebu Game Dev, DevCon Cebu, GDG Cebu,
+                Cebu WordPress Meetup, CebuXD, Web3 Cebu, AI Gen Cebu, and other
+                community organizations of the Cebu Tech Community.
               </p>
             </div>
           </div>

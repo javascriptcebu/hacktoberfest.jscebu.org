@@ -8,20 +8,20 @@ const hackathonInfo = [
     icon: "👥",
     title: "Team Formation",
     subtitle: "Up to 4 members per team",
-    description: "Mix of developers, designers, and other roles welcome"
+    description: "Mix of developers, designers, and other roles welcome",
   },
   {
     icon: "📅",
     title: "21 Days to Build",
     subtitle: "October 5-26, 2025",
-    description: "Create a brand new open source project from scratch"
+    description: "Create a brand new open source project from scratch",
   },
   {
     icon: "🎁",
-    title: "Amazing Prizes",
+    title: "Get Rewards",
     subtitle: "Exclusive swag & rewards",
-    description: "Recognition from the tech community"
-  }
+    description: "Recognition from the tech community",
+  },
 ];
 
 const categories = [
@@ -48,7 +48,11 @@ export function HomeHackathon() {
 
       <div className="grid lg:grid-cols-3 gap-6 mb-8">
         {hackathonInfo.map((info, index) => (
-          <ScrollAnimation key={index} animation="fade-up" delay={0.2 + index * 0.1}>
+          <ScrollAnimation
+            key={index}
+            animation="fade-up"
+            delay={0.2 + index * 0.1}
+          >
             <Card>
               <div className="p-8 text-center">
                 <div className="text-4xl mb-4">{info.icon}</div>
@@ -56,9 +60,7 @@ export function HomeHackathon() {
                   {info.title}
                 </h4>
                 <p className="text-zinc-400 mb-4">{info.subtitle}</p>
-                <p className="text-sm text-zinc-500">
-                  {info.description}
-                </p>
+                <p className="text-sm text-zinc-500">{info.description}</p>
               </div>
             </Card>
           </ScrollAnimation>

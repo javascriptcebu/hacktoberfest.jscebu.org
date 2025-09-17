@@ -1,11 +1,15 @@
 "use client";
 
+import {
+  ScrollAnimation,
+  StaggerAnimation,
+} from "./components/scroll-animation";
+
 import { Card } from "./components/card";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import SignIn from "./sign-in";
 import { Timeline } from "./components/timeline";
-import { ScrollAnimation, StaggerAnimation } from "./components/scroll-animation";
 
 interface HomeContentProps {
   isAuthenticated: boolean;
@@ -37,8 +41,7 @@ export function HomeContent({
         </div>
 
         <h2 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4 leading-tight">
-          Build. Contribute. Win.{" "}
-          <span className="text-zinc-400">Repeat.</span>
+          Build. Contribute. Win. <span className="text-zinc-400">Repeat.</span>
         </h2>
 
         <p className="text-base sm:text-lg text-zinc-300 mb-4">
@@ -47,9 +50,9 @@ export function HomeContent({
         </p>
 
         <p className="text-sm sm:text-base text-zinc-400 mb-8 max-w-2xl mx-auto">
-          21 days of hacking, workshops from 15+ partner communities,
-          exclusive swag, and the chance to make your mark in open source
-          history not just locally but globally.
+          21 days of hacking, workshops from 10+ partner communities, exclusive
+          swag, and the chance to make your mark in open source history not just
+          locally but globally.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,10 +64,7 @@ export function HomeContent({
               Submit Your Open Source Project →
             </Link>
           ) : (
-            <SignIn
-              text="Submit your projects →"
-              onSignIn={signInAction}
-            />
+            <SignIn text="Submit your projects →" onSignIn={signInAction} />
           )}
           <Link
             href="/projects"

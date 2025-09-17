@@ -28,7 +28,7 @@ export const Navigation: React.FC = () => {
 				}`}
 			>
 				<div className="container flex flex-row-reverse items-center justify-between p-4 mx-auto">
-					<div className="flex items-center gap-2 sm:gap-4">
+					<div className="flex flex-wrap items-center gap-2 sm:gap-4">
 						<div className="flex gap-0.5 items-center group">
 							<Link
 								href="/projects"
@@ -40,10 +40,45 @@ export const Navigation: React.FC = () => {
 						</div>
 
 						<Link
+							href="/events"
+							className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+						>
+							Events
+						</Link>
+
+						<Link
+							href="/join"
+							className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+						>
+							Join
+						</Link>
+
+						<Link
 							href="/submit"
 							className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
 						>
-							Submit Project
+							Submit
+						</Link>
+
+						<Link
+							href="/sponsor"
+							className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+						>
+							Sponsor
+						</Link>
+
+						<Link
+							href="/volunteer"
+							className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+						>
+							Volunteer
+						</Link>
+
+						<Link
+							href="/showcase"
+							className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+						>
+							Showcase
 						</Link>
 
 						<Link

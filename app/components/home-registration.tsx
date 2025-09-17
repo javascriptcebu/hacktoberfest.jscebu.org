@@ -9,7 +9,10 @@ interface HomeRegistrationProps {
   onSignIn: () => Promise<void>;
 }
 
-export function HomeRegistration({ isAuthenticated, onSignIn }: HomeRegistrationProps) {
+export function HomeRegistration({
+  isAuthenticated,
+  onSignIn,
+}: HomeRegistrationProps) {
   return (
     <section className="py-12">
       <ScrollAnimation animation="fade-up">
@@ -39,12 +42,12 @@ export function HomeRegistration({ isAuthenticated, onSignIn }: HomeRegistration
                 <p className="text-zinc-400">
                   Sign up and{" "}
                   <SignIn
-                    text="create an account here via Cebby"
+                    text="create an account here via OneCebby"
                     variant="inline"
                     onSignIn={onSignIn}
-                  />{" "}
-                  to stay updated, find teams, and track your
-                  participation...
+                  />
+                  <span className="ml-1"></span>
+                  to stay updated, find teams, and track your participation...
                 </p>
               </div>
             </div>

@@ -241,7 +241,7 @@ export function Footer() {
               Join us as a sponsor and help grow the local developer community
             </p>
             <Link
-              href="/contact"
+              href="/sponsor"
               className="inline-flex items-center justify-center px-6 py-2 bg-zinc-700 hover:bg-zinc-600 text-zinc-100 rounded-md font-medium transition-colors"
             >
               Become a Sponsor

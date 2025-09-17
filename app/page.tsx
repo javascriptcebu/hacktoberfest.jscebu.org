@@ -25,12 +25,24 @@ import { Timeline } from "./components/timeline";
 import { logtoConfig } from "./logto";
 
 const navigation = [
-  { name: "2025 Projects", href: "/projects" },
-  { name: "Submit Project", href: "/submit" },
+  { name: "Projects", href: "/projects" },
+  { name: "Events", href: "/events" },
+  { name: "Join", href: "/join" },
+  { name: "Submit", href: "/submit" },
+  { name: "Sponsor", href: "/sponsor" },
+  { name: "Volunteer", href: "/volunteer" },
+  { name: "Showcase", href: "/showcase" },
   { name: "Contact", href: "/contact" },
 ];
 
 const scheduleEvents = [
+  {
+    date: "Sep .",
+    title: "Pre-September",
+    icon: "📅",
+    description:
+      "Preparation month! Join pre-event workshops, form teams, brainstorm project ideas, and get familiar with Git and open-source contribution guidelines.",
+  },
   {
     date: "Oct 5",
     title: "Kickoff",
@@ -222,9 +234,9 @@ export default async function Home() {
           </p>
 
           <p className="text-sm sm:text-base text-zinc-400 mb-8 max-w-2xl mx-auto">
-            21 days of hacking, workshops from 15+ partner communities,
-            exclusive swag, and the chance to make your mark in open source
-            history not just locally but globally.
+            21 days of hacking, workshops from partner communities, get rewards,
+            and the chance to make your mark in open source history not just
+            locally but globally.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -255,6 +267,86 @@ export default async function Home() {
 
         <div className="w-full max-w-6xl px-4 space-y-16">
           <HomeHighlights />
+
+          {/* Quick Links Section */}
+          <section className="py-12">
+            <AnimatedSectionTitle className="text-3xl md:text-4xl font-bold text-zinc-100 mb-8 text-center">
+              Get Involved
+            </AnimatedSectionTitle>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Link href="/events" className="group">
+                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                  <div className="text-3xl mb-3">📅</div>
+                  <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-blue-400 transition">
+                    Register for Events
+                  </h3>
+                  <p className="text-sm text-zinc-400">
+                    Join workshops, hackathons, and the culmination ceremony
+                  </p>
+                </div>
+              </Link>
+
+              <Link href="/join" className="group">
+                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                  <div className="text-3xl mb-3">🚀</div>
+                  <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-blue-400 transition">
+                    Join Hacktoberfest
+                  </h3>
+                  <p className="text-sm text-zinc-400">
+                    Choose to contribute to existing projects or create new ones
+                  </p>
+                </div>
+              </Link>
+
+              <Link href="/showcase" className="group">
+                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                  <div className="text-3xl mb-3">🌟</div>
+                  <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-blue-400 transition">
+                    View Showcase
+                  </h3>
+                  <p className="text-sm text-zinc-400">
+                    Explore featured local projects and success stories
+                  </p>
+                </div>
+              </Link>
+
+              <Link href="/sponsor" className="group">
+                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                  <div className="text-3xl mb-3">💎</div>
+                  <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-purple-400 transition">
+                    Become a Sponsor
+                  </h3>
+                  <p className="text-sm text-zinc-400">
+                    Support the community with sponsorship opportunities
+                  </p>
+                </div>
+              </Link>
+
+              <Link href="/volunteer" className="group">
+                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                  <div className="text-3xl mb-3">🤝</div>
+                  <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-green-400 transition">
+                    Volunteer With Us
+                  </h3>
+                  <p className="text-sm text-zinc-400">
+                    Help organize and run Hacktoberfest Cebu 2025
+                  </p>
+                </div>
+              </Link>
+
+              <Link href="/submit" className="group">
+                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                  <div className="text-3xl mb-3">📝</div>
+                  <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-orange-400 transition">
+                    Submit Project
+                  </h3>
+                  <p className="text-sm text-zinc-400">
+                    Get your open-source project featured and contributed on
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </section>
 
           <section className="py-12">
             <AnimatedSectionTitle className="text-3xl md:text-4xl font-bold text-zinc-100 mb-12 text-center">

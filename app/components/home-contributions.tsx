@@ -1,8 +1,8 @@
 "use client";
 
 import { Card } from "./card";
-import { ScrollAnimation } from "./scroll-animation";
 import Link from "next/link";
+import { ScrollAnimation } from "./scroll-animation";
 import SignIn from "../sign-in";
 
 interface HomeContributionsProps {
@@ -10,7 +10,10 @@ interface HomeContributionsProps {
   onSignIn: () => Promise<void>;
 }
 
-export function HomeContributions({ isAuthenticated, onSignIn }: HomeContributionsProps) {
+export function HomeContributions({
+  isAuthenticated,
+  onSignIn,
+}: HomeContributionsProps) {
   return (
     <section className="py-12">
       <ScrollAnimation animation="fade-up">
@@ -96,7 +99,7 @@ export function HomeContributions({ isAuthenticated, onSignIn }: HomeContributio
                       Local Project Contributions
                     </p>
                     <p className="text-zinc-500 text-sm">
-                      PRs to Cebu-based projects count double! Support your
+                      PRs to Cebu-based projects score more points! Support your
                       local dev community
                     </p>
                   </div>
@@ -115,9 +118,7 @@ export function HomeContributions({ isAuthenticated, onSignIn }: HomeContributio
                 <li className="flex items-start">
                   <span className="text-green-500 mr-3 mt-1">✓</span>
                   <div>
-                    <p className="text-zinc-300 font-medium">
-                      Documentation
-                    </p>
+                    <p className="text-zinc-300 font-medium">Documentation</p>
                     <p className="text-zinc-500 text-sm">
                       README improvements, API docs, tutorials
                     </p>
@@ -184,8 +185,7 @@ export function HomeContributions({ isAuthenticated, onSignIn }: HomeContributio
                       Submit Your Project
                     </p>
                     <p className="text-zinc-500 text-sm">
-                      Get contributions and compete for Most Contributed
-                      Project
+                      Get contributions and compete for Most Contributed Project
                     </p>
                   </div>
                 </div>
@@ -209,8 +209,7 @@ export function HomeContributions({ isAuthenticated, onSignIn }: HomeContributio
                     contribute!
                   </p>
                   <p className="text-zinc-500 text-sm">
-                    Projects with the most contributions win special
-                    recognition
+                    Projects with the most contributions win special recognition
                   </p>
                 </div>
                 <div className="text-center md:text-right">

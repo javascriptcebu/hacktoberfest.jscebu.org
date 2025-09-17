@@ -1,8 +1,8 @@
 "use client";
 
 import { Card } from "./card";
-import { ScrollAnimation } from "./scroll-animation";
 import Link from "next/link";
+import { ScrollAnimation } from "./scroll-animation";
 
 interface HighlightCard {
   icon: string;
@@ -21,8 +21,9 @@ const highlights: HighlightCard[] = [
     subtitle: "Varo.dev",
     description: "AI-powered developer matchmaking platform",
     team: "Team Mugnavo: Nathaniel Tampus, Josh Dimpas, Khent Amancio, Marion Buhat",
-    bgGradient: "bg-gradient-to-br from-yellow-900/20 to-zinc-800/50 border-yellow-800/50",
-    titleColor: "text-yellow-400"
+    bgGradient:
+      "bg-gradient-to-br from-yellow-900/20 to-zinc-800/50 border-yellow-800/50",
+    titleColor: "text-yellow-400",
   },
   {
     icon: "🥈",
@@ -30,8 +31,9 @@ const highlights: HighlightCard[] = [
     subtitle: "What Can I Cook",
     description: "Recipe suggestions based on available ingredients",
     team: "Team Solucion: Mac Dylan Balagtas, Niño Angelo Balagtas, John Laurence Sison",
-    bgGradient: "bg-gradient-to-br from-gray-700/20 to-zinc-800/50 border-gray-600/50",
-    titleColor: "text-gray-300"
+    bgGradient:
+      "bg-gradient-to-br from-gray-700/20 to-zinc-800/50 border-gray-600/50",
+    titleColor: "text-gray-300",
   },
   {
     icon: "🥉",
@@ -39,9 +41,10 @@ const highlights: HighlightCard[] = [
     subtitle: "Helpful Tooltips Extension",
     description: "Browser extension with humorous security insights",
     team: "Team AI-MARRK: Arcgel Chavez, Rowen Borgonia, Kent Otadoy, Manuel Cando",
-    bgGradient: "bg-gradient-to-br from-orange-900/20 to-zinc-800/50 border-orange-800/50",
-    titleColor: "text-orange-400"
-  }
+    bgGradient:
+      "bg-gradient-to-br from-orange-900/20 to-zinc-800/50 border-orange-800/50",
+    titleColor: "text-orange-400",
+  },
 ];
 
 export function HomeHighlights() {
@@ -54,18 +57,24 @@ export function HomeHighlights() {
       </ScrollAnimation>
       <ScrollAnimation animation="fade-up" delay={0.1}>
         <p className="text-base sm:text-lg text-zinc-400 text-center max-w-3xl mx-auto mb-12">
-          Last year was incredible! Over 100 developers, 25+ teams, and
-          10 amazing open source projects created in just 21 days.
+          Last year was incredible! Over 100 developers, 5+ teams, and 7+
+          amazing open source projects created in just 21 days.
         </p>
       </ScrollAnimation>
 
       <div className="grid lg:grid-cols-3 gap-6 mb-12">
         {highlights.map((highlight, index) => (
-          <ScrollAnimation key={index} animation="fade-up" delay={0.2 + index * 0.1}>
+          <ScrollAnimation
+            key={index}
+            animation="fade-up"
+            delay={0.2 + index * 0.1}
+          >
             <Card>
               <div className={`p-6 ${highlight.bgGradient}`}>
                 <div className="text-3xl mb-3">{highlight.icon}</div>
-                <h4 className={`text-lg font-semibold ${highlight.titleColor} mb-2`}>
+                <h4
+                  className={`text-lg font-semibold ${highlight.titleColor} mb-2`}
+                >
                   {highlight.title}
                 </h4>
                 <p className="text-base text-zinc-100 font-medium mb-1">
@@ -74,9 +83,7 @@ export function HomeHighlights() {
                 <p className="text-sm text-zinc-400 mb-3">
                   {highlight.description}
                 </p>
-                <p className="text-zinc-500 text-xs">
-                  {highlight.team}
-                </p>
+                <p className="text-zinc-500 text-xs">{highlight.team}</p>
               </div>
             </Card>
           </ScrollAnimation>
@@ -95,8 +102,8 @@ export function HomeHighlights() {
                   dorelljames/event-ni (PR #5)
                 </p>
                 <p className="text-zinc-400 text-sm">
-                  Implemented Sort by Month and Year Feature for better
-                  event organization
+                  Implemented Sort by Month and Year Feature for better event
+                  organization
                 </p>
               </div>
               <div>
@@ -105,11 +112,11 @@ export function HomeHighlights() {
                 </h4>
                 <ul className="space-y-2 text-zinc-400 text-sm">
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 10 open
+                    <span className="text-green-500 mr-2">✓</span> 7+ open
                     source projects created
                   </li>
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 25+ teams
+                    <span className="text-green-500 mr-2">✓</span> 7+ teams
                     participated in the hackathon
                   </li>
                   <li className="flex items-center">
@@ -117,8 +124,8 @@ export function HomeHighlights() {
                     developers engaged
                   </li>
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 15+
-                    partner communities involved
+                    <span className="text-green-500 mr-2">✓</span> 10+ partner
+                    communities involved
                   </li>
                 </ul>
               </div>
