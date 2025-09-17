@@ -7,6 +7,19 @@ import Link from "next/link";
 import { Navigation } from "../components/nav";
 import React from "react";
 import { allProjects } from "contentlayer/generated";
+import { Footer } from "../components/footer";
+
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Open Source Projects",
+  description: "Explore open source projects from the Cebu developer community. Submit your projects and contribute to local initiatives during Hacktoberfest 2025.",
+  openGraph: {
+    title: "Open Source Projects | Hacktoberfest Cebu 2025",
+    description: "Explore open source projects from the Cebu developer community. Submit your projects and contribute to local initiatives.",
+    url: "https://hacktoberfest.jscebu.org/projects",
+  },
+};
 
 const YEAR = 2025;
 
@@ -35,7 +48,44 @@ export default async function ProjectsPage() {
     <div className="relative pb-16">
       <Navigation />
       <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
-        <div className="max-w-4xl mx-auto lg:mx-0">
+        
+          <div className="max-w-4xl mx-auto lg:mx-0">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100">
+              Open Source Projects
+            </h2>
+            <p className="mt-4 text-base text-zinc-400">
+              These are the open source projects from our very own local
+              community...
+            </p>
+          </div>
+        
+
+        {sorted.length === 0 && (
+          <div className="flex items-center justify-center">
+            <p className="text-zinc-400">No projects yet...</p>
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
+          {Array.from({ length: 3 }).map((_, colIndex) => (
+            <div key={colIndex} className="grid grid-cols-1 gap-4">
+              {sorted
+                .filter((_, i) => i % 3 === colIndex)
+                .map((project) => (
+                  <Card key={project.slug}>
+                    <Article
+                      project={project}
+                      views={views[project.slug] ?? 0}
+                    />
+                  </Card>
+                ))}
+            </div>
+          ))}
+        </div>
+
+        <div className="hidden w-full h-px md:block bg-zinc-800" />
+
+        {/* <div className="max-w-4xl mx-auto lg:mx-0 hidden">
           <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
             Open Source Projects Winners
           </h2>
@@ -45,7 +95,7 @@ export default async function ProjectsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
+        <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2  hidden">
           <Card>
             <Link href={`/projects/${winners.top1.slug}`}>
               <article className="relative w-full h-full p-4 md:p-8">
@@ -129,56 +179,24 @@ export default async function ProjectsPage() {
           </Link>
         </Card>
 
-        <div className="hidden w-full h-px md:block bg-zinc-800" />
+        <div className="hidden w-full h-px md:block bg-zinc-800" /> */}
 
-        <div className="max-w-4xl mx-auto lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-            Open Source Projects
-          </h2>
-          <p className="mt-4 text-zinc-400">
-            These are the open source projects that were initiated during Cebu
-            Hacktoberfest {YEAR} opening day. See above list for winners...
-          </p>
-        </div>
-
-        {sorted.length === 0 && (
-          <div className="flex items-center justify-center">
-            <p className="text-zinc-400">No projects yet...</p>
+        
+          <div className="max-w-2xl mx-auto lg:mx-0">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100">
+              Featured Projects
+            </h2>
+            <p className="mt-4 text-base text-zinc-400">
+              These projects are from our very own local developers here in Cebu,
+              PH.
+            </p>
           </div>
-        )}
-
-        <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
-          {Array.from({ length: 3 }).map((_, colIndex) => (
-            <div key={colIndex} className="grid grid-cols-1 gap-4">
-              {sorted
-                .filter((_, i) => i % 3 === colIndex)
-                .map((project) => (
-                  <Card key={project.slug}>
-                    <Article
-                      project={project}
-                      views={views[project.slug] ?? 0}
-                    />
-                  </Card>
-                ))}
-            </div>
-          ))}
-        </div>
-
-        <div className="hidden w-full h-px md:block bg-zinc-800" />
-
-        <div className="max-w-2xl mx-auto lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-            Noteworthy Projects
-          </h2>
-          <p className="mt-4 text-zinc-400">
-            These projects are from our very own local developers here in Cebu,
-            PH.
-          </p>
-        </div>
+        
 
         <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
-          <Card>
-            <Link href={`/projects/${featured.slug}`}>
+          
+            <Card>
+              <Link href={`/projects/${featured.slug}`}>
               <article className="relative w-full h-full p-4 md:p-8">
                 <div className="flex items-center justify-between gap-2">
                   <div className="text-xs text-zinc-100">
@@ -215,8 +233,9 @@ export default async function ProjectsPage() {
                   </p>
                 </div>
               </article>
-            </Link>
-          </Card>
+              </Link>
+            </Card>
+          
 
           <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
             {[top2, top3].map((project) => (
@@ -227,6 +246,7 @@ export default async function ProjectsPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

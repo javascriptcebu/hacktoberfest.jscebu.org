@@ -17,12 +17,19 @@ export default async function SubmitPage() {
       <div className="px-6 pt-20 mx-auto max-w-4xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="max-w-2xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-              Submit Your Project
+            <span className="text-sm font-semibold tracking-wider text-zinc-400 uppercase">
+              Cebu Hacktoberfest 2025
+            </span>
+            <h1 className="mt-4 text-4xl font-bold tracking-tight text-zinc-100 sm:text-5xl lg:text-6xl">
+              SUBMIT YOUR OPEN-SOURCE PROJECT
             </h1>
-            <p className="mt-4 text-zinc-400">
-              Share your project with the Cebu Hacktoberfest 2025 community. All submissions will be reviewed before being published.
+            <p className="mt-6 text-lg text-zinc-400">
+              Get your projects contributed on. We prioritize our very own local projects...
             </p>
+            <div className="mt-8 flex items-center gap-2 text-sm text-zinc-500">
+              <span>→</span>
+              <span className="font-mono tracking-wide">HF.CEBUTECHCOMMUNITIES.ORG/SUBMIT</span>
+            </div>
           </div>
 
           <SubmissionForm userEmail={claims?.email || undefined} />
