@@ -12,7 +12,7 @@ const hackathonInfo = [
   },
   {
     icon: "📅",
-    title: "21 Days to Build",
+    title: "20 Days to Build",
     subtitle: "October 5-26, 2025",
     description: "Create a brand new open source project from scratch",
   },

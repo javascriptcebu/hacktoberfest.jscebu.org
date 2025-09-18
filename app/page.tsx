@@ -62,7 +62,7 @@ const scheduleEvents = [
     title: "20-Day Hackathon",
     icon: "⚡",
     description:
-      "Teams of up to 4 will have 21 days to create a brand-new open source project. Submissions will be judged across categories, with winners taking home exclusive prizes and swag.",
+      "Teams of up to 4 will have 20 days to create a brand-new open source project. Submissions will be judged across categories, with winners taking home exclusive prizes and swag.",
   },
   {
     date: "Oct 26",
@@ -234,7 +234,7 @@ export default async function Home() {
           </p>
 
           <p className="text-sm sm:text-base text-zinc-400 mb-8 max-w-2xl mx-auto">
-            21 days of hacking, workshops from partner communities, get rewards,
+            20 days of hacking, workshops from partner communities, get rewards,
             and the chance to make your mark in open source history not just
             locally but globally.
           </p>

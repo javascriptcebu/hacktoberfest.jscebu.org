@@ -50,7 +50,7 @@ export function HomeContent({
         </p>
 
         <p className="text-sm sm:text-base text-zinc-400 mb-8 max-w-2xl mx-auto">
-          21 days of hacking, workshops from 10+ partner communities, exclusive
+          20 days of hacking, workshops from 10+ partner communities, exclusive
           swag, and the chance to make your mark in open source history not just
           locally but globally.
         </p>
