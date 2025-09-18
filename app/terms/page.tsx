@@ -1,12 +1,13 @@
+import { AnimatedCard } from "../components/animated-card";
+import { Footer } from "../components/footer";
 import { Metadata } from "next";
 import { Navigation } from "../components/nav";
-import { Footer } from "../components/footer";
-import { AnimatedCard } from "../components/animated-card";
 import { ScrollAnimation } from "../components/scroll-animation";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms of Service for Hacktoberfest Cebu 2025 - Guidelines and conditions for participation.",
+  description:
+    "Terms of Service for Hacktoberfest Cebu 2025 - Guidelines and conditions for participation.",
 };
 
 export default function TermsPage() {
@@ -19,53 +20,75 @@ export default function TermsPage() {
             <h1 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
               Terms of Service
             </h1>
-            <p className="text-zinc-400">
-              Effective Date: January 2025
-            </p>
+            <p className="text-zinc-400">Effective Date: January 2025</p>
           </div>
         </ScrollAnimation>
 
         <div className="space-y-8">
           <AnimatedCard delay={0.1}>
             <div className="p-8">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Acceptance of Terms</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Acceptance of Terms
+              </h2>
               <p className="text-zinc-400 leading-relaxed">
-                By registering for, attending, or participating in Hacktoberfest Cebu 2025 events,
-                accessing our website, or submitting projects, you agree to be bound by these Terms of Service.
-                If you do not agree to these terms, please do not participate in our events or use our services.
+                By registering for, attending, or participating in Hacktoberfest
+                Cebu 2025 events, accessing our website, or submitting projects,
+                you agree to be bound by these Terms of Service. If you do not
+                agree to these terms, please do not participate in our events or
+                use our services.
               </p>
             </div>
           </AnimatedCard>
 
           <AnimatedCard delay={0.1}>
             <div className="p-8">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Event Participation</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Event Participation
+              </h2>
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-zinc-200">Registration</h3>
+                <h3 className="text-lg font-semibold text-zinc-200">
+                  Registration
+                </h3>
                 <ul className="space-y-2 text-zinc-400">
                   <li className="flex items-start">
                     <span className="text-zinc-500 mr-2">•</span>
-                    <span>Registration is free and open to all individuals regardless of skill level</span>
+                    <span>
+                      Registration is free and open to all individuals
+                      regardless of skill level
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-zinc-500 mr-2">•</span>
-                    <span>You must provide accurate and complete registration information</span>
+                    <span>
+                      You must provide accurate and complete registration
+                      information
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-zinc-500 mr-2">•</span>
-                    <span>One registration per person; duplicate registrations will be removed</span>
+                    <span>
+                      One registration per person; duplicate registrations will
+                      be removed
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-zinc-500 mr-2">•</span>
-                    <span>Participants under 18 should have parental consent</span>
+                    <span>
+                      Participants under 18 should have parental consent
+                    </span>
                   </li>
                 </ul>
 
-                <h3 className="text-lg font-semibold text-zinc-200 mt-6">Attendance</h3>
+                <h3 className="text-lg font-semibold text-zinc-200 mt-6">
+                  Attendance
+                </h3>
                 <ul className="space-y-2 text-zinc-400">
                   <li className="flex items-start">
                     <span className="text-zinc-500 mr-2">•</span>
-                    <span>Follow venue rules and dress code (no shorts, no slippers at certain venues)</span>
+                    <span>
+                      Follow venue rules and dress code (no shorts, no slippers
+                      at certain venues)
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-zinc-500 mr-2">•</span>
@@ -82,10 +105,14 @@ export default function TermsPage() {
 
           <AnimatedCard delay={0.1}>
             <div className="p-8">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Hackathon Rules</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Hackathon Rules
+              </h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-lg font-semibold text-zinc-200 mb-2">Team Formation</h3>
+                  <h3 className="text-lg font-semibold text-zinc-200 mb-2">
+                    Team Formation
+                  </h3>
                   <ul className="space-y-2 text-zinc-400">
                     <li className="flex items-start">
                       <span className="text-green-500 mr-2">✓</span>
@@ -93,11 +120,16 @@ export default function TermsPage() {
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-500 mr-2">✓</span>
-                      <span>Team members can be developers, designers, or other roles</span>
+                      <span>
+                        Team members can be developers, designers, or other
+                        roles
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-500 mr-2">✓</span>
-                      <span>Teams can be formed before or during the opening day</span>
+                      <span>
+                        Teams can be formed before or during the opening day
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-500 mr-2">✓</span>
@@ -107,23 +139,36 @@ export default function TermsPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-zinc-200 mb-2">Project Requirements</h3>
+                  <h3 className="text-lg font-semibold text-zinc-200 mb-2">
+                    Project Requirements
+                  </h3>
                   <ul className="space-y-2 text-zinc-400">
                     <li className="flex items-start">
                       <span className="text-green-500 mr-2">✓</span>
-                      <span>Projects must be new and created during the 21-day hackathon period</span>
+                      <span>
+                        Projects must be new and created during the 20-day
+                        hackathon period
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-500 mr-2">✓</span>
-                      <span>All code must be open source and publicly accessible on GitHub</span>
+                      <span>
+                        All code must be open source and publicly accessible on
+                        GitHub
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-500 mr-2">✓</span>
-                      <span>Projects must include proper documentation and README files</span>
+                      <span>
+                        Projects must include proper documentation and README
+                        files
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-500 mr-2">✓</span>
-                      <span>Use of AI tools is allowed but must be disclosed</span>
+                      <span>
+                        Use of AI tools is allowed but must be disclosed
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -133,29 +178,44 @@ export default function TermsPage() {
 
           <AnimatedCard delay={0.1}>
             <div className="p-8">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Intellectual Property</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Intellectual Property
+              </h2>
               <div className="space-y-4 text-zinc-400">
                 <p className="leading-relaxed">
-                  <strong className="text-zinc-300">Your Rights:</strong> You retain all rights to the code and content you create.
-                  By submitting projects to Hacktoberfest Cebu, you grant us a non-exclusive license to:
+                  <strong className="text-zinc-300">Your Rights:</strong> You
+                  retain all rights to the code and content you create. By
+                  submitting projects to Hacktoberfest Cebu, you grant us a
+                  non-exclusive license to:
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <span className="text-zinc-500 mr-2">•</span>
-                    <span>Display your project on our website and promotional materials</span>
+                    <span>
+                      Display your project on our website and promotional
+                      materials
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-zinc-500 mr-2">•</span>
-                    <span>Share your project with the community for educational purposes</span>
+                    <span>
+                      Share your project with the community for educational
+                      purposes
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-zinc-500 mr-2">•</span>
-                    <span>Include your project in event recaps and case studies</span>
+                    <span>
+                      Include your project in event recaps and case studies
+                    </span>
                   </li>
                 </ul>
                 <p className="leading-relaxed mt-4">
-                  <strong className="text-zinc-300">Open Source Requirement:</strong> All hackathon projects must be released under an
-                  OSI-approved open source license of your choice.
+                  <strong className="text-zinc-300">
+                    Open Source Requirement:
+                  </strong>{" "}
+                  All hackathon projects must be released under an OSI-approved
+                  open source license of your choice.
                 </p>
               </div>
             </div>
@@ -163,9 +223,12 @@ export default function TermsPage() {
 
           <AnimatedCard delay={0.1}>
             <div className="p-8">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Code of Conduct</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Code of Conduct
+              </h2>
               <p className="text-zinc-400 leading-relaxed mb-4">
-                All participants must adhere to our Code of Conduct, which promotes:
+                All participants must adhere to our Code of Conduct, which
+                promotes:
               </p>
               <ul className="space-y-2 text-zinc-400">
                 <li className="flex items-start">
@@ -186,19 +249,24 @@ export default function TermsPage() {
                 </li>
               </ul>
               <p className="text-zinc-400 mt-4">
-                Violations may result in removal from the event without refund (if applicable) and
-                prohibition from future events.
+                Violations may result in removal from the event without refund
+                (if applicable) and prohibition from future events.
               </p>
             </div>
           </AnimatedCard>
 
           <AnimatedCard delay={0.1}>
             <div className="p-8">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Prizes and Recognition</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Prizes and Recognition
+              </h2>
               <ul className="space-y-2 text-zinc-400">
                 <li className="flex items-start">
                   <span className="text-zinc-500 mr-2">•</span>
-                  <span>Prizes are awarded at the sole discretion of the judging panel</span>
+                  <span>
+                    Prizes are awarded at the sole discretion of the judging
+                    panel
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-zinc-500 mr-2">•</span>
@@ -206,15 +274,22 @@ export default function TermsPage() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-zinc-500 mr-2">•</span>
-                  <span>Winners must be present at the culmination event or arrange for prize collection</span>
+                  <span>
+                    Winners must be present at the culmination event or arrange
+                    for prize collection
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-zinc-500 mr-2">•</span>
-                  <span>Prizes are non-transferable and cannot be exchanged for cash</span>
+                  <span>
+                    Prizes are non-transferable and cannot be exchanged for cash
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-zinc-500 mr-2">•</span>
-                  <span>Tax obligations on prizes are the responsibility of winners</span>
+                  <span>
+                    Tax obligations on prizes are the responsibility of winners
+                  </span>
                 </li>
               </ul>
             </div>
@@ -222,18 +297,25 @@ export default function TermsPage() {
 
           <AnimatedCard delay={0.1}>
             <div className="p-8">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Limitation of Liability</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Limitation of Liability
+              </h2>
               <p className="text-zinc-400 leading-relaxed">
-                Hacktoberfest Cebu, its organizers, sponsors, and partners are not liable for:
+                Hacktoberfest Cebu, its organizers, sponsors, and partners are
+                not liable for:
               </p>
               <ul className="space-y-2 text-zinc-400 mt-4">
                 <li className="flex items-start">
                   <span className="text-zinc-500 mr-2">•</span>
-                  <span>Any damages or losses arising from event participation</span>
+                  <span>
+                    Any damages or losses arising from event participation
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-zinc-500 mr-2">•</span>
-                  <span>Technical issues, including website downtime or data loss</span>
+                  <span>
+                    Technical issues, including website downtime or data loss
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-zinc-500 mr-2">•</span>
@@ -249,21 +331,28 @@ export default function TermsPage() {
 
           <AnimatedCard delay={0.1}>
             <div className="p-8">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Photography and Recording</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Photography and Recording
+              </h2>
               <p className="text-zinc-400 leading-relaxed">
-                By attending our events, you consent to being photographed, filmed, or recorded.
-                These materials may be used for promotional purposes, documentation, and future event marketing.
-                If you do not wish to be photographed, please inform event staff upon arrival.
+                By attending our events, you consent to being photographed,
+                filmed, or recorded. These materials may be used for promotional
+                purposes, documentation, and future event marketing. If you do
+                not wish to be photographed, please inform event staff upon
+                arrival.
               </p>
             </div>
           </AnimatedCard>
 
           <AnimatedCard delay={0.1}>
             <div className="p-8">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Modifications to Terms</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Modifications to Terms
+              </h2>
               <p className="text-zinc-400 leading-relaxed">
-                We reserve the right to modify these Terms of Service at any time. Changes will be effective
-                immediately upon posting to our website. Your continued participation after any modifications
+                We reserve the right to modify these Terms of Service at any
+                time. Changes will be effective immediately upon posting to our
+                website. Your continued participation after any modifications
                 constitutes acceptance of the updated terms.
               </p>
             </div>
@@ -271,36 +360,48 @@ export default function TermsPage() {
 
           <AnimatedCard delay={0.1}>
             <div className="p-8">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Governing Law</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Governing Law
+              </h2>
               <p className="text-zinc-400 leading-relaxed">
-                These Terms of Service are governed by the laws of the Republic of the Philippines.
-                Any disputes arising from these terms or your participation in Hacktoberfest Cebu
-                shall be resolved in the courts of Cebu City, Philippines.
+                These Terms of Service are governed by the laws of the Republic
+                of the Philippines. Any disputes arising from these terms or
+                your participation in Hacktoberfest Cebu shall be resolved in
+                the courts of Cebu City, Philippines.
               </p>
             </div>
           </AnimatedCard>
 
           <AnimatedCard delay={0.1}>
             <div className="p-8 bg-gradient-to-r from-zinc-800/50 to-zinc-800/30">
-              <h2 className="text-xl font-bold text-zinc-100 mb-4">Contact Information</h2>
+              <h2 className="text-xl font-bold text-zinc-100 mb-4">
+                Contact Information
+              </h2>
               <p className="text-zinc-400 leading-relaxed mb-4">
                 For questions about these Terms of Service, please contact:
               </p>
               <div className="space-y-2 text-zinc-300">
                 <p>
                   <strong>Email:</strong>{" "}
-                  <a href="mailto:legal@hacktoberfest.jscebu.org" className="text-yellow-400 hover:text-yellow-300">
+                  <a
+                    href="mailto:legal@hacktoberfest.jscebu.org"
+                    className="text-yellow-400 hover:text-yellow-300"
+                  >
                     legal@hacktoberfest.jscebu.org
                   </a>
                 </p>
                 <p>
                   <strong>Website:</strong>{" "}
-                  <a href="https://hacktoberfest.jscebu.org" className="text-yellow-400 hover:text-yellow-300">
+                  <a
+                    href="https://hacktoberfest.jscebu.org"
+                    className="text-yellow-400 hover:text-yellow-300"
+                  >
                     hacktoberfest.jscebu.org
                   </a>
                 </p>
                 <p>
-                  <strong>Event Organizers:</strong> JavaScript Cebu, PizzaPy Cebu, Ethereum Philippines
+                  <strong>Event Organizers:</strong> JavaScript Cebu, PizzaPy
+                  Cebu, Ethereum Philippines
                 </p>
               </div>
             </div>

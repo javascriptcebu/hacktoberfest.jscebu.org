@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Hacktoberfest Cebu 2025",
   },
   description:
-    "Join 100+ developers for Cebu's biggest open source celebration. October 5-26, 2025. 21-day hackathon, workshops from 10+ partner communities, exclusive swag, and prizes.",
+    "Join 100+ developers for Cebu's biggest open source celebration. October 5-26, 2025. 20-day hackathon, workshops from 10+ partner communities, exclusive swag, and prizes.",
   keywords: [
     "Hacktoberfest",
     "Hacktoberfest Cebu",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Hacktoberfest Cebu 2025 | Build. Contribute. Win.",
     description:
-      "Join 100+ developers for Cebu's biggest open source celebration. October 5-26, 2025. 21-day hackathon, workshops, exclusive swag, and prizes.",
+      "Join 100+ developers for Cebu's biggest open source celebration. October 5-26, 2025. 20-day hackathon, workshops, exclusive swag, and prizes.",
     url: "https://hacktoberfest.jscebu.org",
     siteName: "Hacktoberfest Cebu 2025",
     images: [
@@ -109,7 +109,7 @@ export default function RootLayout({
               "@type": "Event",
               name: "Hacktoberfest Cebu 2025",
               description:
-                "Join 100+ developers for Cebu's biggest open source celebration. 21-day hackathon, workshops from 15+ partner communities, exclusive swag, and prizes.",
+                "Join 100+ developers for Cebu's biggest open source celebration. 20-day hackathon, workshops from 15+ partner communities, exclusive swag, and prizes.",
               startDate: "2025-10-05",
               endDate: "2025-10-26",
               eventStatus: "https://schema.org/EventScheduled",

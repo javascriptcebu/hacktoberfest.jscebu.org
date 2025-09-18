@@ -59,7 +59,7 @@ const scheduleEvents = [
   },
   {
     date: "Oct 5-26",
-    title: "21-Day Hackathon",
+    title: "20-Day Hackathon",
     icon: "⚡",
     description:
       "Teams of up to 4 will have 21 days to create a brand-new open source project. Submissions will be judged across categories, with winners taking home exclusive prizes and swag.",

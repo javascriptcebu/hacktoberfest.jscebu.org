@@ -271,7 +271,7 @@ export default function JoinPage() {
 
           <div className="mt-16 p-8 bg-gradient-to-r from-orange-900/20 to-red-900/20 border border-zinc-800 rounded-lg">
             <h2 className="text-2xl font-bold text-zinc-100 mb-4">
-              21-Day Hackathon
+              20-Day Hackathon
             </h2>
             <p className="text-zinc-400 mb-6">
               Join our month-long hackathon and compete to get rewarded while

@@ -36,7 +36,7 @@ export function HomeHackathon() {
     <section className="py-12">
       <ScrollAnimation animation="fade-up">
         <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-4 text-center">
-          ⚡ The 21-Day Hackathon Challenge
+          ⚡ The 20-Day Hackathon Challenge
         </h2>
       </ScrollAnimation>
       <ScrollAnimation animation="fade-up" delay={0.1}>

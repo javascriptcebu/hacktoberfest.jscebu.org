@@ -15,7 +15,7 @@ import Link from "next/link";
 const footerLinks = {
   event: [
     { name: "Event Schedule", href: "#schedule" },
-    { name: "21-Day Hackathon", href: "#hackathon" },
+    { name: "20-Day Hackathon", href: "#hackathon" },
     { name: "Open Source Contributions", href: "#contributions" },
     { name: "Categories & Prizes", href: "#prizes" },
     { name: "Registration", href: "#registration" },
