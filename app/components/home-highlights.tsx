@@ -139,7 +139,7 @@ export function HomeHighlights() {
           href="/projects/2024"
           className="inline-flex items-center justify-center px-6 py-3 border border-zinc-700 text-zinc-300 rounded-md font-medium hover:bg-zinc-800 transition-colors"
         >
-          View All 2024 Projects →
+          View Last Year's Projects →
         </Link>
       </div>
     </section>

@@ -37,8 +37,8 @@ const navigation = [
 
 const scheduleEvents = [
   {
-    date: "Sep .",
-    title: "Pre-September",
+    date: "Sep",
+    title: "Preptember",
     icon: "📅",
     description:
       "Preparation month! Join pre-event workshops, form teams, brainstorm project ideas, and get familiar with Git and open-source contribution guidelines.",
@@ -118,18 +118,13 @@ const faqs = [
     answer:
       "Yes, we aim for hybrid participation. Details will be announced closer to the event.",
   },
-  {
-    question: "Venue rules?",
-    answer:
-      "Our venue partner enspace Cebu observes a no shorts, no slippers policy. Please dress appropriately.",
-  },
 ];
 
 export default async function Home() {
   const { isAuthenticated, claims } = await getLogtoContext(logtoConfig);
 
   return (
-    <div className="flex flex-col items-center w-screen min-h-screen overflow-x-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+    <div className="flex flex-col items-center w-screen min-h-screen overflow-x-hidden bg-gradient-to-tl from-void via-space-haze/20 to-void">
       <nav className="my-16 animate-fade-in">
         <ul className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
           {navigation.map((item) => (
@@ -137,7 +132,7 @@ export default async function Home() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg text-space-dust hover:text-melrose hover:bg-east-bay/50 border border-transparent hover:border-blue-violet/30"
               >
                 {item.name}
               </Link>
@@ -167,7 +162,7 @@ export default async function Home() {
         </ul>
       </nav>
 
-      <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
+      <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-lavender/0 via-lavender/50 to-lavender/0" />
 
       <Particles
         className="absolute inset-0 -z-10 animate-fade-in"
@@ -201,19 +196,19 @@ export default async function Home() {
           </div>
         </div>
 
-        <h1 className="py-3.5 px-0.5 z-10 text-5xl text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display sm:text-7xl md:text-8xl whitespace-nowrap bg-clip-text">
+        <h1 className="py-3.5 px-0.5 z-10 text-5xl text-transparent duration-1000 bg-gradient-to-r from-melrose via-lavender to-blue-violet cursor-default animate-title font-display sm:text-7xl md:text-8xl whitespace-nowrap bg-clip-text">
           HACKTOBERFEST
         </h1>
         <div className="text-center mt-4">
-          <span className="text-lg sm:text-xl text-zinc-500 font-medium animate-fade-in">
+          <span className="text-lg sm:text-xl text-space-dust font-medium animate-fade-in">
             October 5-26, 2025
           </span>
-          <span className="block text-2xl sm:text-3xl font-bold text-zinc-400 mt-2 animate-fade-in">
+          <span className="block text-2xl sm:text-3xl font-bold text-melrose mt-2 animate-fade-in">
             CEBU 2025
           </span>
         </div>
 
-        <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 mt-8" />
+        <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-lavender/0 via-lavender/50 to-lavender/0 mt-8" />
 
         <div className="mt-8 mb-16 text-center animate-fade-in max-w-3xl">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-900/20 to-orange-900/20 px-4 py-2 rounded-full mb-6 border border-yellow-800/30">
@@ -223,17 +218,17 @@ export default async function Home() {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-space-white mb-4 leading-tight">
             Build. Contribute. Win.{" "}
-            <span className="text-zinc-400">Repeat.</span>
+            <span className="text-lavender">Repeat.</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-zinc-300 mb-4">
-            Join <strong className="text-zinc-100">100+ developers</strong> for
+          <p className="text-base sm:text-lg text-space-dust mb-4">
+            Join <strong className="text-melrose">100+ developers</strong> for
             Cebu's biggest open source celebration
           </p>
 
-          <p className="text-sm sm:text-base text-zinc-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-space-haze mb-8 max-w-2xl mx-auto">
             20 days of hacking, workshops from partner communities, get rewards,
             and the chance to make your mark in open source history not just
             locally but globally.
@@ -243,7 +238,7 @@ export default async function Home() {
             {isAuthenticated ? (
               <Link
                 href="/submit"
-                className="inline-flex items-center justify-center px-6 py-3 bg-zinc-100 text-zinc-900 rounded-md font-medium hover:bg-zinc-200 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-lavender text-void rounded-md font-medium hover:bg-melrose transition-colors"
               >
                 Submit Your Open Source Project →
               </Link>
@@ -258,7 +253,7 @@ export default async function Home() {
             )}
             <Link
               href="/projects"
-              className="inline-flex items-center justify-center px-6 py-3 border border-zinc-700 text-zinc-300 rounded-md font-medium hover:bg-zinc-800 transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 border border-blue-violet/50 text-space-dust rounded-md font-medium hover:bg-east-bay/50 transition-colors"
             >
               Browse 2025 Projects
             </Link>
@@ -270,38 +265,38 @@ export default async function Home() {
 
           {/* Quick Links Section */}
           <section className="py-12">
-            <AnimatedSectionTitle className="text-3xl md:text-4xl font-bold text-zinc-100 mb-8 text-center">
+            <AnimatedSectionTitle className="text-3xl md:text-4xl font-bold text-space-white mb-8 text-center">
               Get Involved
             </AnimatedSectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link href="/events" className="group">
-                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                <div className="p-6 bg-east-bay/30 border border-blue-violet/30 rounded-lg hover:border-lavender/50 transition-all">
                   <div className="text-3xl mb-3">📅</div>
-                  <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-blue-400 transition">
+                  <h3 className="text-lg font-semibold text-space-white mb-2 group-hover:text-melrose transition">
                     Register for Events
                   </h3>
-                  <p className="text-sm text-zinc-400">
+                  <p className="text-sm text-space-dust">
                     Join workshops, hackathons, and the culmination ceremony
                   </p>
                 </div>
               </Link>
 
               <Link href="/join" className="group">
-                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                <div className="p-6 bg-east-bay/30 border border-blue-violet/30 rounded-lg hover:border-lavender/50 transition-all">
                   <div className="text-3xl mb-3">🚀</div>
-                  <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-blue-400 transition">
+                  <h3 className="text-lg font-semibold text-space-white mb-2 group-hover:text-melrose transition">
                     Join Hacktoberfest
                   </h3>
-                  <p className="text-sm text-zinc-400">
+                  <p className="text-sm text-space-dust">
                     Choose to contribute to existing projects or create new ones
                   </p>
                 </div>
               </Link>
 
               <Link href="/showcase" className="group">
-                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                <div className="p-6 bg-east-bay/30 border border-blue-violet/30 rounded-lg hover:border-lavender/50 transition-all">
                   <div className="text-3xl mb-3">🌟</div>
-                  <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-blue-400 transition">
+                  <h3 className="text-lg font-semibold text-space-white mb-2 group-hover:text-melrose transition">
                     View Showcase
                   </h3>
                   <p className="text-sm text-zinc-400">

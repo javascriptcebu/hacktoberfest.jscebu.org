@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     "Philippines Tech",
   ],
   authors: [
-    { name: "JavaScript Cebu", url: "https://javascriptcebu.org" },
-    { name: "PizzaPy Cebu", url: "https://python.ph" },
+    { name: "JavaScript Cebu", url: "https://jscebu.org" },
+    { name: "PizzaPy Cebu", url: "https://pizzapy.ph" },
   ],
   creator: "JavaScript Cebu",
   publisher: "JavaScript Cebu",
@@ -90,6 +90,8 @@ const inter = Inter({
 const calSans = LocalFont({
   src: "../public/fonts/CalSans-SemiBold.ttf",
   variable: "--font-calsans",
+  display: "swap",
+  weight: "600",
 });
 
 export default function RootLayout({
@@ -129,12 +131,12 @@ export default function RootLayout({
                 {
                   "@type": "Organization",
                   name: "JavaScript Cebu",
-                  url: "https://javascriptcebu.org",
+                  url: "https://jscebu.org",
                 },
                 {
                   "@type": "Organization",
                   name: "PizzaPy Cebu",
-                  url: "https://python.ph",
+                  url: "https://pizzapy.ph",
                 },
               ],
               offers: {
@@ -151,7 +153,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`bg-black ${
+        className={`bg-void ${
           process.env.NODE_ENV === "development" ? "debug-screens" : undefined
         }`}
       >

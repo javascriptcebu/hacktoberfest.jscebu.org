@@ -33,11 +33,6 @@ const faqs = [
     answer:
       "Yes, we aim for hybrid participation. Details will be announced closer to the event.",
   },
-  {
-    question: "Venue rules?",
-    answer:
-      "Our venue partner enspace Cebu observes a no shorts, no slippers policy. Please dress appropriately.",
-  },
 ];
 
 export function HomeFAQ() {

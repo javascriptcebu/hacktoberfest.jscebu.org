@@ -10,6 +10,25 @@ module.exports = {
 
 	theme: {
 		extend: {
+			colors: {
+				// Main colors from the brand palette
+				void: "#1C1C3F",
+				"space-white": "#FFFFFF",
+				"space-gray": "#F2F4F7",
+				"space-dust": "#D0CCE3",
+				"space-haze": "#5E577C",
+				melrose: "#C2C2FF",
+				lavender: "#A0A0FF",
+				"blue-violet": "#5A5AB5",
+				"east-bay": "#403F7D",
+				// Keep existing grays for compatibility
+				gray: {
+					50: "#F2F4F7",
+					100: "#D0CCE3",
+					500: "#5E577C",
+					900: "#1C1C3F",
+				},
+			},
 			typography: {
 				DEFAULT: {
 					css: {
@@ -30,7 +49,7 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
-				display: ["var(--font-calsans)"],
+				display: ["var(--font-calsans)", ...defaultTheme.fontFamily.sans],
 			},
 			backgroundImage: {
 				"gradient-radial":

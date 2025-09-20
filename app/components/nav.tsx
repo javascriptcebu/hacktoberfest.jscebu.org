@@ -23,8 +23,8 @@ export const Navigation: React.FC = () => {
 			<div
 				className={`fixed inset-x-0 top-0 z-50 backdrop-blur  duration-200 border-b  ${
 					isIntersecting
-						? "bg-zinc-900/0 border-transparent"
-						: "bg-zinc-900/500  border-zinc-800 "
+						? "bg-void/0 border-transparent"
+						: "bg-void/90 border-space-haze/30"
 				}`}
 			>
 				<div className="container flex flex-row-reverse items-center justify-between p-4 mx-auto">
@@ -32,7 +32,7 @@ export const Navigation: React.FC = () => {
 						<div className="flex gap-0.5 items-center group">
 							<Link
 								href="/projects"
-								className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+								className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-space-dust hover:text-melrose hover:bg-east-bay/50 border border-transparent hover:border-blue-violet/30"
 							>
 								Projects
 							</Link>
@@ -91,7 +91,7 @@ export const Navigation: React.FC = () => {
 
 					<Link
 						href="/"
-						className="inline-flex items-center justify-center p-2 transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+						className="inline-flex items-center justify-center p-2 transition-all duration-300 rounded-lg text-space-dust hover:text-melrose hover:bg-east-bay/50 border border-transparent hover:border-blue-violet/30"
 					>
 						<ArrowLeft className="w-5 h-5" />
 					</Link>
