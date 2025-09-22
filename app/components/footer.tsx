@@ -30,10 +30,10 @@ const footerLinks = {
     { name: "Contact Us", href: "/contact" },
   ],
   community: [
-    { name: "JavaScript Cebu", href: "https://javascriptcebu.org" },
-    { name: "PizzaPy Cebu", href: "https://python.ph" },
+    { name: "JavaScript Cebu", href: "https://jscebu.org" },
+    { name: "PizzaPy Cebu", href: "https://pizzapy.ph" },
     { name: "Ethereum Philippines", href: "https://ethereum.ph" },
-    { name: "React Cebu", href: "https://reactcebu.org" },
+    { name: "React Cebu", href: "https://react.jscebu.org" },
     { name: "Laravel Cebu", href: "https://laravelcebu.org" },
     { name: "Cebu Game Dev", href: "https://cebugamedev.org" },
   ],
@@ -71,7 +71,7 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="relative mt-16 border-t border-zinc-800 bg-gradient-to-b from-zinc-900/50 to-black backdrop-blur-sm">
+    <footer className="relative mt-16 border-t border-blue-violet/30 bg-gradient-to-b from-east-bay/20 to-void backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         {/* Top Section - Event Info */}
         <div className="mb-12 text-center">
@@ -98,11 +98,13 @@ export function Footer() {
               className="opacity-80"
             />
           </div>
-          <h2 className="text-2xl font-bold text-zinc-100 mb-2">
+          <h2 className="text-2xl font-bold text-space-white mb-2">
             Hacktoberfest Cebu 2025
           </h2>
-          <p className="text-zinc-400 mb-4">Build. Contribute. Win. Repeat.</p>
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-zinc-500">
+          <p className="text-space-dust mb-4">
+            Build. Contribute. Win. Repeat.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-space-haze">
             <span className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
               October 5-26, 2025
@@ -121,7 +123,7 @@ export function Footer() {
         {/* Main Links Grid */}
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6 mb-12">
           <div className="col-span-1">
-            <h3 className="text-sm font-semibold leading-6 text-zinc-100 mb-4">
+            <h3 className="text-sm font-semibold leading-6 text-melrose mb-4">
               Event Details
             </h3>
             <ul role="list" className="space-y-2">
@@ -129,7 +131,7 @@ export function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
+                    className="text-sm text-space-dust hover:text-lavender transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -139,7 +141,7 @@ export function Footer() {
           </div>
 
           <div className="col-span-1">
-            <h3 className="text-sm font-semibold leading-6 text-zinc-100 mb-4">
+            <h3 className="text-sm font-semibold leading-6 text-melrose mb-4">
               Resources
             </h3>
             <ul role="list" className="space-y-2">
@@ -147,7 +149,7 @@ export function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
+                    className="text-sm text-space-dust hover:text-lavender transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -157,7 +159,7 @@ export function Footer() {
           </div>
 
           <div className="col-span-1">
-            <h3 className="text-sm font-semibold leading-6 text-zinc-100 mb-4">
+            <h3 className="text-sm font-semibold leading-6 text-melrose mb-4">
               Organizers
             </h3>
             <ul role="list" className="space-y-2">
@@ -167,7 +169,7 @@ export function Footer() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
+                    className="text-sm text-space-dust hover:text-lavender transition-colors"
                   >
                     {item.name}
                   </a>
@@ -177,7 +179,7 @@ export function Footer() {
           </div>
 
           <div className="col-span-1">
-            <h3 className="text-sm font-semibold leading-6 text-zinc-100 mb-4">
+            <h3 className="text-sm font-semibold leading-6 text-melrose mb-4">
               Partners
             </h3>
             <ul role="list" className="space-y-2">
@@ -187,7 +189,7 @@ export function Footer() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
+                    className="text-sm text-space-dust hover:text-lavender transition-colors"
                   >
                     {item.name}
                   </a>
@@ -197,7 +199,7 @@ export function Footer() {
           </div>
 
           <div className="col-span-2 lg:col-span-2">
-            <h3 className="text-sm font-semibold leading-6 text-zinc-100 mb-4">
+            <h3 className="text-sm font-semibold leading-6 text-melrose mb-4">
               Stay Connected
             </h3>
             <p className="text-sm text-zinc-400 mb-4">
@@ -298,7 +300,7 @@ export function Footer() {
               <span className="text-xs text-zinc-500">
                 Organized by{" "}
                 <a
-                  href="https://javascriptcebu.org"
+                  href="https://jscebu.org"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-400 hover:text-zinc-200 transition-colors"
@@ -307,7 +309,7 @@ export function Footer() {
                 </a>
                 ,{" "}
                 <a
-                  href="https://python.ph"
+                  href="https://pizzapy.ph"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-400 hover:text-zinc-200 transition-colors"

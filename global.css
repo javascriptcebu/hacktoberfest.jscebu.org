@@ -3,6 +3,19 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Brand Colors */
+    --color-void: #1C1C3F;
+    --color-space-white: #FFFFFF;
+    --color-space-gray: #F2F4F7;
+    --color-space-dust: #D0CCE3;
+    --color-space-haze: #5E577C;
+    --color-melrose: #C2C2FF;
+    --color-lavender: #A0A0FF;
+    --color-blue-violet: #5A5AB5;
+    --color-east-bay: #403F7D;
+  }
+
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
   }
