@@ -49,55 +49,34 @@ export default function TermsPage() {
                 <h3 className="text-lg font-semibold text-zinc-200">
                   Registration
                 </h3>
-                <ul className="space-y-2 text-zinc-400">
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>
-                      Registration is free and open to all individuals
-                      regardless of skill level
-                    </span>
+                <ul className="space-y-2 text-zinc-400 list-disc list-inside">
+                  <li>
+                    Registration is free and open to all individuals
+                    regardless of skill level
                   </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>
-                      You must provide accurate and complete registration
-                      information
-                    </span>
+                  <li>
+                    You must provide accurate and complete registration
+                    information
                   </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>
-                      One registration per person; duplicate registrations will
-                      be removed
-                    </span>
+                  <li>
+                    One registration per person; duplicate registrations will
+                    be removed
                   </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>
-                      Participants under 18 should have parental consent
-                    </span>
+                  <li>
+                    Participants under 18 should have parental consent
                   </li>
                 </ul>
 
                 <h3 className="text-lg font-semibold text-zinc-200 mt-6">
                   Attendance
                 </h3>
-                <ul className="space-y-2 text-zinc-400">
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>
-                      Follow venue rules and dress code (no shorts, no slippers
-                      at certain venues)
-                    </span>
+                <ul className="space-y-2 text-zinc-400 list-disc list-inside">
+                  <li>
+                    Follow venue rules and dress code (no shorts, no slippers
+                    at certain venues)
                   </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>Respect event schedules and session timings</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>Maintain professional behavior at all times</span>
-                  </li>
+                  <li>Respect event schedules and session timings</li>
+                  <li>Maintain professional behavior at all times</li>
                 </ul>
               </div>
             </div>
@@ -188,26 +167,17 @@ export default function TermsPage() {
                   submitting projects to Hacktoberfest Cebu, you grant us a
                   non-exclusive license to:
                 </p>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>
-                      Display your project on our website and promotional
-                      materials
-                    </span>
+                <ul className="space-y-2 list-disc list-inside">
+                  <li>
+                    Display your project on our website and promotional
+                    materials
                   </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>
-                      Share your project with the community for educational
-                      purposes
-                    </span>
+                  <li>
+                    Share your project with the community for educational
+                    purposes
                   </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>
-                      Include your project in event recaps and case studies
-                    </span>
+                  <li>
+                    Include your project in event recaps and case studies
                   </li>
                 </ul>
                 <p className="leading-relaxed mt-4">
@@ -230,23 +200,11 @@ export default function TermsPage() {
                 All participants must adhere to our Code of Conduct, which
                 promotes:
               </p>
-              <ul className="space-y-2 text-zinc-400">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>Inclusive and respectful behavior</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>Professional and constructive communication</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>Collaboration and knowledge sharing</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>Zero tolerance for harassment or discrimination</span>
-                </li>
+              <ul className="space-y-2 text-zinc-400 list-disc list-inside">
+                <li>Inclusive and respectful behavior</li>
+                <li>Professional and constructive communication</li>
+                <li>Collaboration and knowledge sharing</li>
+                <li>Zero tolerance for harassment or discrimination</li>
               </ul>
               <p className="text-zinc-400 mt-4">
                 Violations may result in removal from the event without refund
@@ -260,36 +218,21 @@ export default function TermsPage() {
               <h2 className="text-xl font-bold text-zinc-100 mb-4">
                 Prizes and Recognition
               </h2>
-              <ul className="space-y-2 text-zinc-400">
-                <li className="flex items-start">
-                  <span className="text-zinc-500 mr-2">•</span>
-                  <span>
-                    Prizes are awarded at the sole discretion of the judging
-                    panel
-                  </span>
+              <ul className="space-y-2 text-zinc-400 list-disc list-inside">
+                <li>
+                  Prizes are awarded at the sole discretion of the judging
+                  panel
                 </li>
-                <li className="flex items-start">
-                  <span className="text-zinc-500 mr-2">•</span>
-                  <span>Judges' decisions are final and binding</span>
+                <li>Judges' decisions are final and binding</li>
+                <li>
+                  Winners must be present at the culmination event or arrange
+                  for prize collection
                 </li>
-                <li className="flex items-start">
-                  <span className="text-zinc-500 mr-2">•</span>
-                  <span>
-                    Winners must be present at the culmination event or arrange
-                    for prize collection
-                  </span>
+                <li>
+                  Prizes are non-transferable and cannot be exchanged for cash
                 </li>
-                <li className="flex items-start">
-                  <span className="text-zinc-500 mr-2">•</span>
-                  <span>
-                    Prizes are non-transferable and cannot be exchanged for cash
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-zinc-500 mr-2">•</span>
-                  <span>
-                    Tax obligations on prizes are the responsibility of winners
-                  </span>
+                <li>
+                  Tax obligations on prizes are the responsibility of winners
                 </li>
               </ul>
             </div>
@@ -304,27 +247,15 @@ export default function TermsPage() {
                 Hacktoberfest Cebu, its organizers, sponsors, and partners are
                 not liable for:
               </p>
-              <ul className="space-y-2 text-zinc-400 mt-4">
-                <li className="flex items-start">
-                  <span className="text-zinc-500 mr-2">•</span>
-                  <span>
-                    Any damages or losses arising from event participation
-                  </span>
+              <ul className="space-y-2 text-zinc-400 mt-4 list-disc list-inside">
+                <li>
+                  Any damages or losses arising from event participation
                 </li>
-                <li className="flex items-start">
-                  <span className="text-zinc-500 mr-2">•</span>
-                  <span>
-                    Technical issues, including website downtime or data loss
-                  </span>
+                <li>
+                  Technical issues, including website downtime or data loss
                 </li>
-                <li className="flex items-start">
-                  <span className="text-zinc-500 mr-2">•</span>
-                  <span>Actions of other participants or third parties</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-zinc-500 mr-2">•</span>
-                  <span>Loss or damage to personal property during events</span>
-                </li>
+                <li>Actions of other participants or third parties</li>
+                <li>Loss or damage to personal property during events</li>
               </ul>
             </div>
           </AnimatedCard>

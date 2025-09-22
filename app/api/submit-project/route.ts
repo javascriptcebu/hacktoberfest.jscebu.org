@@ -15,12 +15,24 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     // Parse and validate request body
     const body = await req.json();
-    const { title, description, repository, url, image, email } = body;
+    const {
+      title,
+      description,
+      repository,
+      url,
+      image,
+      email,
+      projectType,
+      category,
+      techStack,
+      lookingFor,
+      teamMembers
+    } = body;
 
     // Basic validation
-    if (!title || !description || !repository || !email) {
+    if (!title || !description || !repository || !email || !projectType || !category || !techStack) {
       return NextResponse.json(
-        { error: "Title, description, repository, and email are required" },
+        { error: "Title, description, repository, email, project type, category, and tech stack are required" },
         { status: 400 }
       );
     }
@@ -33,6 +45,31 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       );
     }
 
+    // Additional validation for existing projects
+    if (projectType === "existing" && !lookingFor) {
+      return NextResponse.json(
+        { error: "Please specify what kind of contributions you're looking for" },
+        { status: 400 }
+      );
+    }
+
+    // Validate team members for hackathon projects
+    if (projectType === "hackathon") {
+      const validTeamMembers = teamMembers?.filter((m: any) => m.name && m.email) || [];
+      if (validTeamMembers.length === 0) {
+        return NextResponse.json(
+          { error: "At least one team member is required for hackathon projects" },
+          { status: 400 }
+        );
+      }
+      if (validTeamMembers.length > 4) {
+        return NextResponse.json(
+          { error: "Maximum 4 team members allowed" },
+          { status: 400 }
+        );
+      }
+    }
+
     // Create submission object
     const submission = {
       id: crypto.randomUUID(),
@@ -42,6 +79,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       url: url?.trim() || null,
       image: image?.trim() || null,
       email: email.trim(),
+      projectType,
+      category,
+      techStack: techStack.trim(),
+      lookingFor: projectType === "existing" ? lookingFor?.trim() : null,
+      teamMembers: projectType === "hackathon" ? (teamMembers?.filter((m: any) => m.name) || []) : [],
       submittedBy: claims?.email || email,
       submittedAt: new Date().toISOString(),
       status: "pending", // pending, approved, rejected

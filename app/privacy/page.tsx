@@ -43,41 +43,20 @@ export default function PrivacyPage() {
               <div className="space-y-4">
                 <div>
                   <h3 className="text-lg font-semibold text-zinc-200 mb-2">Personal Information</h3>
-                  <ul className="space-y-2 text-zinc-400">
-                    <li className="flex items-start">
-                      <span className="text-zinc-500 mr-2">•</span>
-                      <span>Name and email address when you register for events</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-zinc-500 mr-2">•</span>
-                      <span>GitHub username for hackathon participation</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-zinc-500 mr-2">•</span>
-                      <span>Contact information for prize distribution</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-zinc-500 mr-2">•</span>
-                      <span>Professional information (company, role) if voluntarily provided</span>
-                    </li>
+                  <ul className="space-y-2 text-zinc-400 list-disc list-inside">
+                    <li>Name and email address when you register for events</li>
+                    <li>GitHub username for hackathon participation</li>
+                    <li>Contact information for prize distribution</li>
+                    <li>Professional information (company, role) if voluntarily provided</li>
                   </ul>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-semibold text-zinc-200 mb-2">Usage Information</h3>
-                  <ul className="space-y-2 text-zinc-400">
-                    <li className="flex items-start">
-                      <span className="text-zinc-500 mr-2">•</span>
-                      <span>Website analytics (page views, session duration)</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-zinc-500 mr-2">•</span>
-                      <span>Project submission and contribution data</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-zinc-500 mr-2">•</span>
-                      <span>Event attendance and participation records</span>
-                    </li>
+                  <ul className="space-y-2 text-zinc-400 list-disc list-inside">
+                    <li>Website analytics (page views, session duration)</li>
+                    <li>Project submission and contribution data</li>
+                    <li>Event attendance and participation records</li>
                   </ul>
                 </div>
               </div>
@@ -124,23 +103,11 @@ export default function PrivacyPage() {
                   We do not sell, trade, or rent your personal information to third parties.
                   We may share your information only in the following circumstances:
                 </p>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>With event partners and sponsors for prize distribution (with your consent)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>With service providers who assist in event management (under confidentiality agreements)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>When required by law or to protect our rights and safety</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span>Publicly display project submissions and contributor names (as part of the open source nature of the event)</span>
-                  </li>
+                <ul className="space-y-2 list-disc list-inside">
+                  <li>With event partners and sponsors for prize distribution (with your consent)</li>
+                  <li>With service providers who assist in event management (under confidentiality agreements)</li>
+                  <li>When required by law or to protect our rights and safety</li>
+                  <li>Publicly display project submissions and contributor names (as part of the open source nature of the event)</li>
                 </ul>
               </div>
             </div>
@@ -165,23 +132,11 @@ export default function PrivacyPage() {
                 <p className="text-zinc-400 leading-relaxed">
                   You have the following rights regarding your personal information:
                 </p>
-                <ul className="space-y-2 text-zinc-400">
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span><strong className="text-zinc-300">Access:</strong> Request a copy of the personal information we hold about you</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span><strong className="text-zinc-300">Correction:</strong> Request correction of inaccurate or incomplete information</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span><strong className="text-zinc-300">Deletion:</strong> Request deletion of your personal information (subject to legal requirements)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-zinc-500 mr-2">•</span>
-                    <span><strong className="text-zinc-300">Opt-out:</strong> Unsubscribe from marketing communications at any time</span>
-                  </li>
+                <ul className="space-y-2 text-zinc-400 list-disc list-inside">
+                  <li><strong className="text-zinc-300">Access:</strong> Request a copy of the personal information we hold about you</li>
+                  <li><strong className="text-zinc-300">Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                  <li><strong className="text-zinc-300">Deletion:</strong> Request deletion of your personal information (subject to legal requirements)</li>
+                  <li><strong className="text-zinc-300">Opt-out:</strong> Unsubscribe from marketing communications at any time</li>
                 </ul>
               </div>
             </div>
