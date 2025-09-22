@@ -1,282 +1,232 @@
 import Link from "next/link";
 import { Navigation } from "../components/nav";
+import { Code, GitBranch, GitPullRequest, Rocket, Users, Trophy, Calendar, ArrowRight } from "lucide-react";
 
 export default function JoinPage() {
   return (
     <div className="relative pb-16">
       <Navigation />
       <div className="px-6 pt-20 mx-auto max-w-6xl lg:px-8 md:pt-24 lg:pt-32">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-sm font-semibold tracking-wider text-zinc-400 uppercase">
-            Cebu Hacktoberfest 2025
-          </span>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-zinc-100 sm:text-5xl lg:text-7xl">
-            PREPARE TO CONTRIBUTE &|| CREATE
-          </h1>
-          <p className="mt-6 text-lg text-zinc-400 max-w-2xl mx-auto">
-            Prepare to make the best contribution and build the best open-source
-            project(s)...
-          </p>
-          <div className="mt-8 flex items-center justify-center gap-2 text-sm text-zinc-500">
-            <span>→</span>
-            <span className="font-mono tracking-wide">
-              HF.CEBUTECHCOMMUNITIES.ORG/JOIN
+        <div className="max-w-5xl mx-auto">
+          {/* Hero Section */}
+          <div className="text-center mb-16">
+            <span className="inline-flex items-center gap-2 text-sm font-semibold tracking-wider text-space-haze uppercase mb-4">
+              <Calendar className="w-4 h-4" />
+              October 5-26, 2025 • Cebu
             </span>
-          </div>
-
-          {/* User Journey Section */}
-          <div className="mt-16 p-8 bg-gradient-to-r from-indigo-900/20 to-purple-900/20 border border-zinc-800 rounded-lg">
-            <h2 className="text-2xl font-bold text-zinc-100 mb-2">
-              Our Mission
-            </h2>
-            <p className="text-zinc-400 mb-8">
-              Hacktoberfest is the Cebu Tech Communities' flagship event, out of
-              our desire{" "}
-              <span className="text-zinc-100 font-semibold">
-                to level up the Tech Scene in Cebu
-              </span>
-              .
+            <h1 className="mt-4 text-4xl font-bold tracking-tight text-space-white sm:text-5xl lg:text-7xl">
+              CONTRIBUTE <span className="text-lavender">&</span> CREATE
+            </h1>
+            <p className="mt-6 text-xl text-space-dust max-w-3xl mx-auto leading-relaxed">
+              Join Cebu's biggest open-source celebration. Whether you're contributing to existing projects or building something new, this is your chance to level up.
             </p>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-4 bg-zinc-800 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-12 h-12 text-zinc-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-zinc-100 mb-2">User</h3>
-                <p className="text-sm text-zinc-400">
-                  Most of us are Open Source Software Users
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-4 bg-zinc-800 rounded-full flex items-center justify-center relative">
-                  <span className="absolute -left-8 text-3xl text-purple-400">
-                    →
-                  </span>
-                  <svg
-                    className="w-12 h-12 text-zinc-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-zinc-100 mb-2">
-                  Contributor
-                </h3>
-                <p className="text-sm text-zinc-400">
-                  We help more People become Open Source Contributors
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-4 bg-zinc-800 rounded-full flex items-center justify-center relative">
-                  <span className="absolute -left-8 text-3xl text-purple-400">
-                    →
-                  </span>
-                  <svg
-                    className="w-12 h-12 text-zinc-100"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-zinc-100 mb-2">
-                  Builder
-                </h3>
-                <p className="text-sm text-zinc-400">
-                  And eventually be Open Source Project Creators
-                </p>
-              </div>
-            </div>
-            <p className="text-center mt-8 text-sm text-zinc-400">
-              The goal is to encourage People from level up from simply{" "}
-              <span className="text-zinc-300">Using</span> Open-Source Software,
-              into <span className="text-zinc-300">Contributing</span> to those
-              projects, then into eventually{" "}
-              <span className="text-zinc-300">
-                Building World-Class Open Source Projects
-              </span>{" "}
-              of their own.
-            </p>
-          </div>
-
-          {/* Two Modes Section */}
-          <div className="mt-16">
-            <h2 className="text-3xl font-bold text-zinc-100 mb-8">
-              Two Modes for Cebu Hacktoberfest
-            </h2>
-            <div className="p-8 bg-gradient-to-r from-pink-900/20 to-purple-900/20 border border-zinc-800 rounded-lg mb-8">
-              <h3 className="text-xl font-bold text-zinc-100 mb-4">
-                Project Modes:{" "}
-                <span className="text-zinc-400">Existing and/or New</span>
-              </h3>
-              <p className="text-zinc-400">
-                Participants have a choice of going in one or both: Contribute
-                to Existing Open Source Projects, Form a Team to Create a New
-                Open Source Project
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="p-8 bg-zinc-900 border-2 border-pink-800/50 rounded-lg">
-                <h3 className="text-2xl font-bold text-pink-400 mb-4">
-                  Contribute
-                </h3>
-                <p className="text-zinc-400 mb-6">
-                  Contribute to existing Open Source Projects by submitting Pull
-                  Requests to the GitHub/GitLab Codebase.
-                </p>
-                <ul className="space-y-3 text-sm text-zinc-400">
-                  <li className="flex items-start">
-                    <span className="text-pink-400 mr-2">•</span>
-                    <span>Find issues labeled "hacktoberfest"</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-pink-400 mr-2">•</span>
-                    <span>Submit quality pull requests</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-pink-400 mr-2">•</span>
-                    <span>Get them reviewed and merged</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-pink-400 mr-2">•</span>
-                    <span>Earn recognition for contributions</span>
-                  </li>
-                </ul>
-                <Link
-                  href="/projects"
-                  className="inline-block mt-6 px-6 py-3 bg-pink-600 text-white font-medium rounded-lg hover:bg-pink-700 transition"
-                >
-                  Find Projects to Contribute
-                </Link>
-              </div>
-
-              <div className="p-8 bg-zinc-900 border-2 border-purple-800/50 rounded-lg">
-                <h3 className="text-2xl font-bold text-purple-400 mb-4">
-                  Create
-                </h3>
-                <p className="text-zinc-400 mb-6">
-                  Join as a team of 1-4 Individuals, open for Professionals and
-                  Students, to create a new Open Source Project.
-                </p>
-                <ul className="space-y-3 text-sm text-zinc-400">
-                  <li className="flex items-start">
-                    <span className="text-purple-400 mr-2">•</span>
-                    <span>Form a team (1-4 members)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-purple-400 mr-2">•</span>
-                    <span>Build something innovative</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-purple-400 mr-2">•</span>
-                    <span>Open source your project</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-purple-400 mr-2">•</span>
-                    <span>Compete for prizes</span>
-                  </li>
-                </ul>
-                <Link
-                  href="/submit"
-                  className="inline-block mt-6 px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition"
-                >
-                  Submit Your Project
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-16 grid gap-8 md:grid-cols-2">
-            <div className="p-8 bg-zinc-900 border border-zinc-800 rounded-lg text-left">
-              <h2 className="text-2xl font-bold text-zinc-100 mb-4">
-                Why Contribute?
-              </h2>
-              <ul className="space-y-3 text-zinc-400">
-                <li className="flex items-start">
-                  <span className="text-green-400 mr-2">✓</span>
-                  <span>Find local open-source projects to contribute to</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-400 mr-2">✓</span>
-                  <span>
-                    Learn from experienced developers in the community
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-400 mr-2">✓</span>
-                  <span>Make meaningful contributions that matter</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-400 mr-2">✓</span>
-                  <span>Build your portfolio with real-world projects</span>
-                </li>
-              </ul>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/projects"
-                className="inline-block mt-6 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"
+                className="inline-flex items-center justify-center px-8 py-4 bg-lavender text-void font-semibold rounded-lg hover:bg-melrose transition-all transform hover:scale-105 shadow-lg"
               >
-                Browse Projects
+                <GitBranch className="w-5 h-5 mr-2" />
+                Start Contributing
               </Link>
-            </div>
-
-            <div className="p-8 bg-zinc-900 border border-zinc-800 rounded-lg text-left">
-              <h2 className="text-2xl font-bold text-zinc-100 mb-4">
-                Why Build?
-              </h2>
-              <ul className="space-y-3 text-zinc-400">
-                <li className="flex items-start">
-                  <span className="text-green-400 mr-2">✓</span>
-                  <span>Get your project featured to local developers</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-400 mr-2">✓</span>
-                  <span>Receive quality contributions from the community</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-400 mr-2">✓</span>
-                  <span>Compete for prizes and recognition</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-400 mr-2">✓</span>
-                  <span>Grow your project with community support</span>
-                </li>
-              </ul>
               <Link
                 href="/submit"
-                className="inline-block mt-6 px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition"
+                className="inline-flex items-center justify-center px-8 py-4 bg-east-bay/50 border-2 border-blue-violet text-melrose font-semibold rounded-lg hover:bg-east-bay/70 transition-all transform hover:scale-105"
               >
+                <Rocket className="w-5 h-5 mr-2" />
                 Submit Project
               </Link>
             </div>
           </div>
 
-          <div className="mt-16 p-8 bg-gradient-to-r from-orange-900/20 to-red-900/20 border border-zinc-800 rounded-lg">
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4">
-              20-Day Hackathon
-            </h2>
-            <p className="text-zinc-400 mb-6">
-              Join our month-long hackathon and compete to get rewarded while
-              building something meaningful for the community.
-            </p>
+          {/* Journey Section */}
+          <div className="mb-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-space-white mb-4">
+                Your Open Source Journey
+              </h2>
+              <p className="text-lg text-space-dust max-w-2xl mx-auto">
+                Level up from user to contributor to builder. Join us in creating a thriving tech ecosystem in Cebu.
+              </p>
+            </div>
+
+            <div className="relative">
+              <div className="grid md:grid-cols-3 gap-8 relative">
+                <div className="group">
+                  <div className="bg-gradient-to-br from-east-bay/50 to-east-bay/30 border border-blue-violet/30 rounded-xl p-8 hover:border-lavender/50 transition-all duration-300 hover:transform hover:-translate-y-1">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-violet to-lavender rounded-full flex items-center justify-center">
+                      <Users className="w-8 h-8 text-void" />
+                    </div>
+                    <h3 className="text-xl font-bold text-melrose mb-3 text-center">User</h3>
+                    <p className="text-sm text-space-dust/80 text-center leading-relaxed">
+                      Start your journey as an open source user, discovering amazing projects
+                    </p>
+                  </div>
+                </div>
+
+                <div className="group">
+                  <div className="bg-gradient-to-br from-blue-violet/30 to-lavender/20 border-2 border-lavender/50 rounded-xl p-8 transform scale-105 shadow-xl">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-lavender to-melrose rounded-full flex items-center justify-center">
+                      <GitPullRequest className="w-8 h-8 text-void" />
+                    </div>
+                    <h3 className="text-xl font-bold text-lavender mb-3 text-center">Contributor</h3>
+                    <p className="text-sm text-space-dust text-center leading-relaxed">
+                      Make meaningful contributions to projects that matter
+                    </p>
+                  </div>
+                </div>
+
+                <div className="group">
+                  <div className="bg-gradient-to-br from-east-bay/50 to-east-bay/30 border border-blue-violet/30 rounded-xl p-8 hover:border-lavender/50 transition-all duration-300 hover:transform hover:-translate-y-1">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-violet to-lavender rounded-full flex items-center justify-center">
+                      <Rocket className="w-8 h-8 text-void" />
+                    </div>
+                    <h3 className="text-xl font-bold text-melrose mb-3 text-center">Builder</h3>
+                    <p className="text-sm text-space-dust/80 text-center leading-relaxed">
+                      Create world-class open source projects of your own
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Two Modes Section */}
+          <div className="mb-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-space-white mb-4">
+                Choose Your Path
+              </h2>
+              <p className="text-lg text-space-dust max-w-2xl mx-auto">
+                Participate in one or both tracks: contribute to existing projects or create something entirely new
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-lavender/10 to-melrose/10 border border-lavender/30 hover:border-lavender/50 transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-lavender/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative p-8">
+                  <div className="flex items-center mb-6">
+                    <GitPullRequest className="w-10 h-10 text-lavender mr-4" />
+                    <h3 className="text-2xl font-bold text-lavender">
+                      Contribute
+                    </h3>
+                  </div>
+                  <p className="text-space-dust mb-6 leading-relaxed">
+                    Jump into existing open source projects and make meaningful contributions through pull requests.
+                  </p>
+                <ul className="space-y-3 text-sm text-zinc-400 list-disc list-inside">
+                  <li>Find issues labeled "hacktoberfest"</li>
+                  <li>Submit quality pull requests</li>
+                  <li>Get them reviewed and merged</li>
+                  <li>Earn recognition for contributions</li>
+                </ul>
+                  <Link
+                    href="/projects"
+                    className="inline-flex items-center text-lavender font-semibold hover:text-melrose transition group/link"
+                  >
+                    Browse Projects
+                    <ArrowRight className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-melrose/10 to-lavender/10 border border-melrose/30 hover:border-melrose/50 transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-melrose/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative p-8">
+                  <div className="flex items-center mb-6">
+                    <Code className="w-10 h-10 text-melrose mr-4" />
+                    <h3 className="text-2xl font-bold text-melrose">
+                      Create
+                    </h3>
+                  </div>
+                  <p className="text-space-dust mb-6 leading-relaxed">
+                    Form a team of 1-4 members and build an innovative open source project from scratch.
+                  </p>
+                <ul className="space-y-3 text-sm text-zinc-400 list-disc list-inside">
+                  <li>Form a team (1-4 members)</li>
+                  <li>Build something innovative</li>
+                  <li>Open source your project</li>
+                  <li>Compete for prizes</li>
+                </ul>
+                  <Link
+                    href="/submit"
+                    className="inline-flex items-center text-melrose font-semibold hover:text-lavender transition group/link"
+                  >
+                    Submit Project
+                    <ArrowRight className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Benefits Section */}
+          <div className="mb-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-space-white mb-4">
+                Why Join Hacktoberfest Cebu?
+              </h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="p-8 bg-gradient-to-br from-east-bay/30 to-east-bay/20 border border-blue-violet/30 rounded-2xl">
+                <div className="flex items-center mb-6">
+                  <Trophy className="w-8 h-8 text-lavender mr-3" />
+                  <h3 className="text-2xl font-bold text-melrose">
+                    For Contributors
+                  </h3>
+                </div>
+              <ul className="space-y-3 text-zinc-400 list-disc list-inside">
+                <li>Find local open-source projects to contribute to</li>
+                <li>Learn from experienced developers in the community</li>
+                <li>Make meaningful contributions that matter</li>
+                <li>Build your portfolio with real-world projects</li>
+              </ul>
+              </div>
+
+              <div className="p-8 bg-gradient-to-br from-blue-violet/20 to-lavender/10 border border-lavender/30 rounded-2xl">
+                <div className="flex items-center mb-6">
+                  <Rocket className="w-8 h-8 text-melrose mr-3" />
+                  <h3 className="text-2xl font-bold text-lavender">
+                    For Builders
+                  </h3>
+                </div>
+              <ul className="space-y-3 text-zinc-400 list-disc list-inside">
+                <li>Get your project featured to local developers</li>
+                <li>Receive quality contributions from the community</li>
+                <li>Compete for prizes and recognition</li>
+                <li>Grow your project with community support</li>
+              </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-lavender/20 via-melrose/10 to-blue-violet/20 border border-lavender/30 p-12 text-center">
+            <div className="absolute inset-0 bg-gradient-to-t from-void/50 to-transparent" />
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold text-space-white mb-4">
+                Ready to Start Your Journey?
+              </h2>
+              <p className="text-lg text-space-dust mb-8 max-w-2xl mx-auto">
+                Join 100+ developers in Cebu's biggest open-source celebration.
+                October 5-26, 2025.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-lavender text-void font-semibold rounded-lg hover:bg-melrose transition-all transform hover:scale-105 shadow-lg"
+                >
+                  Start Contributing Now
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+                <Link
+                  href="/volunteer"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-east-bay/50 border-2 border-blue-violet text-melrose font-semibold rounded-lg hover:bg-east-bay/70 transition-all transform hover:scale-105"
+                >
+                  Become a Volunteer
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

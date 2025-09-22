@@ -273,18 +273,18 @@ export function Footer() {
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <p className="text-zinc-300 mb-2">For Participants:</p>
-                  <ul className="space-y-1 text-zinc-500">
-                    <li>• Register for free</li>
-                    <li>• Join the hackathon</li>
-                    <li>• Contribute to projects</li>
+                  <ul className="space-y-1 text-zinc-400 list-disc list-inside">
+                    <li>Register for free</li>
+                    <li>Join the hackathon</li>
+                    <li>Contribute to projects</li>
                   </ul>
                 </div>
                 <div>
                   <p className="text-zinc-300 mb-2">For Companies:</p>
-                  <ul className="space-y-1 text-zinc-500">
-                    <li>• Sponsor the event</li>
-                    <li>• Host workshops</li>
-                    <li>• Recruit talents</li>
+                  <ul className="space-y-1 text-zinc-400 list-disc list-inside">
+                    <li>Sponsor the event</li>
+                    <li>Host workshops</li>
+                    <li>Recruit talents</li>
                   </ul>
                 </div>
               </div>
