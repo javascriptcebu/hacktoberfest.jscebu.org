@@ -32,7 +32,10 @@ const footerLinks = {
   community: [
     { name: "JavaScript Cebu", href: "https://jscebu.org" },
     { name: "PizzaPy Cebu", href: "https://pizzapy.ph" },
-    { name: "Ethereum Philippines", href: "https://ethereum.ph" },
+    {
+      name: "Ethereum Philippines",
+      href: "https://www.facebook.com/ethphilippines",
+    },
     { name: "React Cebu", href: "https://react.jscebu.org" },
     { name: "Laravel Cebu", href: "https://laravelcebu.org" },
     { name: "Cebu Game Dev", href: "https://cebugamedev.org" },
@@ -115,139 +118,8 @@ export function Footer() {
             </span>
             <span className="flex items-center gap-1">
               <Users className="w-4 h-4" />
-              100+ Developers Expected
+              Contribute & Create
             </span>
-          </div>
-        </div>
-
-        {/* Main Links Grid */}
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6 mb-12">
-          <div className="col-span-1">
-            <h3 className="text-sm font-semibold leading-6 text-melrose mb-4">
-              Event Details
-            </h3>
-            <ul role="list" className="space-y-2">
-              {footerLinks.event.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-space-dust hover:text-lavender transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="col-span-1">
-            <h3 className="text-sm font-semibold leading-6 text-melrose mb-4">
-              Resources
-            </h3>
-            <ul role="list" className="space-y-2">
-              {footerLinks.resources.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-space-dust hover:text-lavender transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="col-span-1">
-            <h3 className="text-sm font-semibold leading-6 text-melrose mb-4">
-              Organizers
-            </h3>
-            <ul role="list" className="space-y-2">
-              {footerLinks.community.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-space-dust hover:text-lavender transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="col-span-1">
-            <h3 className="text-sm font-semibold leading-6 text-melrose mb-4">
-              Partners
-            </h3>
-            <ul role="list" className="space-y-2">
-              {footerLinks.partners.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-space-dust hover:text-lavender transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="col-span-2 lg:col-span-2">
-            <h3 className="text-sm font-semibold leading-6 text-melrose mb-4">
-              Stay Connected
-            </h3>
-            <p className="text-sm text-zinc-400 mb-4">
-              Join our community and never miss an update about Hacktoberfest
-              Cebu
-            </p>
-            <div className="flex items-center gap-3 mb-4">
-              {footerLinks.social.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-800/50 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-100 transition-all duration-300"
-                  >
-                    <span className="sr-only">{item.name}</span>
-                    <Icon className="h-5 w-5" />
-                  </a>
-                );
-              })}
-            </div>
-            <a
-              href="mailto:hello@hacktoberfest.jscebu.org"
-              className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-200 transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              hello@hacktoberfest.jscebu.org
-            </a>
-          </div>
-        </div>
-
-        {/* Sponsor CTA Section */}
-        <div className="mb-12 p-8 rounded-lg bg-gradient-to-r from-zinc-800/30 to-zinc-800/20 border border-zinc-800">
-          <div className="text-center">
-            <h3 className="text-lg font-bold text-zinc-100 mb-2">
-              Want to Support Hacktoberfest Cebu?
-            </h3>
-            <p className="text-sm text-zinc-400 mb-4">
-              Join us as a sponsor and help grow the local developer community
-            </p>
-            <Link
-              href="/sponsor"
-              className="inline-flex items-center justify-center px-6 py-2 bg-zinc-700 hover:bg-zinc-600 text-zinc-100 rounded-md font-medium transition-colors"
-            >
-              Become a Sponsor
-            </Link>
           </div>
         </div>
 
@@ -318,7 +190,7 @@ export function Footer() {
                 </a>
                 {" & "}
                 <a
-                  href="https://ethereum.ph"
+                  href="https://www.facebook.com/ethphilippines"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-400 hover:text-zinc-200 transition-colors"
