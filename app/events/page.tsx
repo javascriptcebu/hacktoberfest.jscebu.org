@@ -1,6 +1,6 @@
+import { Card } from "../components/card";
 import Link from "next/link";
 import { Navigation } from "../components/nav";
-import { Card } from "../components/card";
 
 export default function EventsPage() {
   return (
@@ -18,10 +18,10 @@ export default function EventsPage() {
             Cebu Hacktoberfest 2025 Events
           </h1>
           <p className="mt-6 text-lg text-space-dust max-w-3xl mx-auto">
-            A month of open-source celebration through contribution, collaboration, and building.
-            Join keynotes, workshops, hack nights, and awards ceremonies throughout October.
+            A month of open-source celebration through contribution,
+            collaboration, and building. Join keynotes, workshops, hack nights,
+            and awards ceremonies throughout October.
           </p>
-
         </div>
 
         <div className="mb-16">
@@ -45,7 +45,9 @@ export default function EventsPage() {
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">📅</span>
                     <div>
-                      <p className="text-sm text-space-haze font-medium">Date & Time</p>
+                      <p className="text-sm text-space-haze font-medium">
+                        Date & Time
+                      </p>
                       <p className="text-space-dust">Sunday, October 5, 2025</p>
                       <p className="text-space-dust">10:00 AM - 5:00 PM</p>
                     </div>
@@ -54,9 +56,13 @@ export default function EventsPage() {
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">📍</span>
                     <div>
-                      <p className="text-sm text-space-haze font-medium">Venue</p>
+                      <p className="text-sm text-space-haze font-medium">
+                        Venue
+                      </p>
                       <p className="text-space-dust">Performing Arts Hall</p>
-                      <p className="text-space-dust">UP Cebu, Lahug, Cebu City</p>
+                      <p className="text-space-dust">
+                        UP Cebu, Lahug, Cebu City
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -65,7 +71,9 @@ export default function EventsPage() {
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">🎯</span>
                     <div>
-                      <p className="text-sm text-space-haze font-medium">What to Expect</p>
+                      <p className="text-sm text-space-haze font-medium">
+                        What to Expect
+                      </p>
                       <ul className="text-space-dust text-sm space-y-1 mt-1">
                         <li>• Keynote speakers from the tech community</li>
                         <li>• Hacktoberfest orientation & guidelines</li>
@@ -79,10 +87,11 @@ export default function EventsPage() {
               </div>
 
               <p className="text-space-dust mb-8">
-                Kick off a month of open-source celebration! Learn about contributing to open source,
-                form your hackathon team, and connect with Cebu's vibrant developer community.
-                Whether you're new to open source or a seasoned contributor, this is your starting point
-                for an amazing Hacktoberfest journey.
+                Kick off a month of open-source celebration! Learn about
+                contributing to open source, form your hackathon team, and
+                connect with Cebu's vibrant developer community. Whether you're
+                new to open source or a seasoned contributor, this is your
+                starting point for an amazing Hacktoberfest journey.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -104,8 +113,10 @@ export default function EventsPage() {
 
               <div className="mt-8 p-4 bg-yellow-900/20 border border-yellow-800/30 rounded-lg">
                 <p className="text-sm text-yellow-400">
-                  <span className="font-semibold">⚡ Pro tip:</span> Registration requires a OneCebby account -
-                  the unified identity for Cebu's tech community. Create one when you register!
+                  <span className="font-semibold">⚡ Pro tip:</span>{" "}
+                  Registration requires a OneCebby account - the unified
+                  identity for Cebu's tech community. Create one when you
+                  register!
                 </p>
               </div>
             </div>
@@ -123,21 +134,28 @@ export default function EventsPage() {
                 October 6-20, 2025
               </p>
               <p className="text-space-dust mb-4">
-                Partner communities across Cebu host specialized talks, technical workshops,
-                and mini hack nights. Learn new technologies, frameworks, and best practices.
+                Partner communities across Cebu host specialized talks,
+                technical workshops, and mini hack nights. Learn new
+                technologies, frameworks, and best practices.
               </p>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-sm">
                   <span className="text-lavender">•</span>
-                  <span className="text-space-dust">JavaScript Cebu sessions</span>
+                  <span className="text-space-dust">
+                    JavaScript Cebu sessions
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <span className="text-lavender">•</span>
-                  <span className="text-space-dust">PizzaPy Python workshops</span>
+                  <span className="text-space-dust">
+                    PizzaPy Python workshops
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <span className="text-lavender">•</span>
-                  <span className="text-space-dust">Web3 & blockchain talks</span>
+                  <span className="text-space-dust">
+                    Web3 & blockchain talks
+                  </span>
                 </div>
               </div>
               <div className="mt-6">
@@ -158,8 +176,8 @@ export default function EventsPage() {
                 October 5-26, 2025
               </p>
               <p className="text-space-dust mb-4">
-                Teams of up to 4 members compete to build innovative open-source projects
-                from scratch. Win prizes across multiple categories!
+                Teams of up to 4 members compete to build innovative open-source
+                projects from scratch. Win prizes across multiple categories!
               </p>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-sm">
@@ -196,13 +214,16 @@ export default function EventsPage() {
                 Saturday, October 26, 2025
               </p>
               <p className="text-space-dust mb-4">
-                Demo Day showcase where teams present their projects. Awards ceremony
-                recognizing outstanding contributions and innovative solutions.
+                Demo Day showcase where teams present their projects. Awards
+                ceremony recognizing outstanding contributions and innovative
+                solutions.
               </p>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-sm">
                   <span className="text-lavender">•</span>
-                  <span className="text-space-dust">Project demonstrations</span>
+                  <span className="text-space-dust">
+                    Project demonstrations
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <span className="text-lavender">•</span>
@@ -228,8 +249,9 @@ export default function EventsPage() {
               Don't Miss Out on Any Event
             </h2>
             <p className="text-space-dust mb-8 max-w-2xl mx-auto">
-              Stay connected with the Cebu tech community. Get notified about workshops,
-              speaker announcements, and important updates throughout Hacktoberfest.
+              Stay connected with the Cebu tech community. Get notified about
+              workshops, speaker announcements, and important updates throughout
+              Hacktoberfest.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -248,15 +270,6 @@ export default function EventsPage() {
             </div>
           </div>
         </Card>
-
-        <div className="mt-16 text-center">
-          <p className="text-sm text-space-haze">
-            Organized by JavaScript Cebu • PizzaPy • Web3PH • Cebu Tech Communities
-          </p>
-          <p className="text-xs text-space-haze mt-2">
-            Verified Partner Event • Free and Open to All
-          </p>
-        </div>
       </div>
     </div>
   );
