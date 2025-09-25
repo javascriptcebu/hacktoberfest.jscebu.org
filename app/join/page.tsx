@@ -113,16 +113,18 @@ export default function JoinPage() {
                   </div>
                   <p className="text-space-dust mb-6 leading-relaxed">
                     Jump into existing open source projects and make meaningful contributions through pull requests.
+                    <span className="text-lavender font-semibold"> Local projects submitted early are prioritized and featured prominently!</span>
                   </p>
-                <ul className="space-y-3 text-sm text-zinc-400 list-disc list-inside">
-                  <li>Find issues labeled "hacktoberfest"</li>
-                  <li>Submit quality pull requests</li>
-                  <li>Get them reviewed and merged</li>
-                  <li>Earn recognition for contributions</li>
-                </ul>
+                  <ul className="space-y-3 text-sm text-zinc-400 list-disc list-inside mb-6">
+                    <li><span className="text-lavender">Priority:</span> Local Cebu projects submitted via our platform</li>
+                    <li>Find issues labeled "hacktoberfest" or "good first issue"</li>
+                    <li>Submit quality pull requests to existing projects</li>
+                    <li>Get them reviewed and merged by maintainers</li>
+                    <li>Earn recognition and prizes for contributions</li>
+                  </ul>
                   <Link
                     href="/projects"
-                    className="inline-flex items-center text-lavender font-semibold hover:text-melrose transition group/link"
+                    className="inline-flex items-center text-lavender font-semibold hover:text-melrose transition group/link mt-4"
                   >
                     Browse Projects
                     <ArrowRight className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition" />
@@ -142,15 +144,15 @@ export default function JoinPage() {
                   <p className="text-space-dust mb-6 leading-relaxed">
                     Form a team of 1-4 members and build an innovative open source project from scratch.
                   </p>
-                <ul className="space-y-3 text-sm text-zinc-400 list-disc list-inside">
-                  <li>Form a team (1-4 members)</li>
-                  <li>Build something innovative</li>
-                  <li>Open source your project</li>
-                  <li>Compete for prizes</li>
-                </ul>
+                  <ul className="space-y-3 text-sm text-zinc-400 list-disc list-inside mb-6">
+                    <li>Form a team (1-4 members)</li>
+                    <li>Build something innovative</li>
+                    <li>Open source your project</li>
+                    <li>Compete for prizes</li>
+                  </ul>
                   <Link
                     href="/submit"
-                    className="inline-flex items-center text-melrose font-semibold hover:text-lavender transition group/link"
+                    className="inline-flex items-center text-melrose font-semibold hover:text-lavender transition group/link mt-4"
                   >
                     Submit Project
                     <ArrowRight className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition" />
@@ -176,9 +178,10 @@ export default function JoinPage() {
                   </h3>
                 </div>
               <ul className="space-y-3 text-zinc-400 list-disc list-inside">
-                <li>Find local open-source projects to contribute to</li>
+                <li>Contribute to prioritized local Cebu projects</li>
+                <li>Projects submitted early get featured during workshops</li>
                 <li>Learn from experienced developers in the community</li>
-                <li>Make meaningful contributions that matter</li>
+                <li>Make meaningful contributions that matter locally</li>
                 <li>Build your portfolio with real-world projects</li>
               </ul>
               </div>

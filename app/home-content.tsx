@@ -8,7 +8,6 @@ import {
 import { Card } from "./components/card";
 import Image from "next/legacy/image";
 import Link from "next/link";
-import SignIn from "./sign-in";
 import { Timeline } from "./components/timeline";
 
 interface HomeContentProps {
@@ -18,7 +17,6 @@ interface HomeContentProps {
   hackathonCategories: any[];
   reasons: string[];
   faqs: any[];
-  signInAction: () => Promise<void>;
 }
 
 export function HomeContent({
@@ -28,7 +26,6 @@ export function HomeContent({
   hackathonCategories,
   reasons,
   faqs,
-  signInAction,
 }: HomeContentProps) {
   return (
     <>
@@ -64,7 +61,12 @@ export function HomeContent({
               Submit Your Open Source Project →
             </Link>
           ) : (
-            <SignIn text="Submit your projects →" onSignIn={signInAction} />
+            <Link
+              href="/signin?returnTo=/submit"
+              className="inline-flex items-center justify-center px-6 py-3 bg-zinc-100 text-zinc-900 rounded-md font-medium hover:bg-zinc-200 transition-colors"
+            >
+              Submit your projects →
+            </Link>
           )}
           <Link
             href="/projects"

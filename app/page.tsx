@@ -3,7 +3,7 @@ import {
   AnimatedText,
   AnimatedTimeline,
 } from "./components/home-sections";
-import { getLogtoContext, signIn, signOut } from "@logto/next/server-actions";
+import { getLogtoContext, signOut } from "@logto/next/server-actions";
 
 import { Card } from "./components/card";
 import { Footer } from "./components/footer";
@@ -19,7 +19,6 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 import Particles from "./components/particles";
 import React from "react";
-import SignIn from "./sign-in";
 import SignOut from "./sign-out";
 import { Timeline } from "./components/timeline";
 import { logtoConfig } from "./logto";
@@ -31,7 +30,6 @@ const navigation = [
   { name: "Submit", href: "/submit" },
   { name: "Sponsor", href: "/sponsor" },
   { name: "Volunteer", href: "/volunteer" },
-  { name: "Showcase", href: "/showcase" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -150,13 +148,12 @@ export default async function Home() {
             </li>
           ) : (
             <li>
-              <SignIn
-                onSignIn={async () => {
-                  "use server";
-
-                  await signIn(logtoConfig);
-                }}
-              />
+              <Link
+                href="/signin"
+                className="inline-flex items-center text-sm duration-200 text-space-dust hover:text-space-white"
+              >
+                Sign In
+              </Link>
             </li>
           )}
         </ul>
@@ -243,13 +240,12 @@ export default async function Home() {
                 Submit Your Open Source Project →
               </Link>
             ) : (
-              <SignIn
-                text="Submit your projects →"
-                onSignIn={async () => {
-                  "use server";
-                  await signIn(logtoConfig);
-                }}
-              />
+              <Link
+                href="/signin?returnTo=/submit"
+                className="inline-flex items-center justify-center px-6 py-3 bg-lavender text-void rounded-md font-medium hover:bg-melrose transition-colors"
+              >
+                Submit Your Open Source Project →
+              </Link>
             )}
             <Link
               href="/projects"
@@ -293,17 +289,6 @@ export default async function Home() {
                 </div>
               </Link>
 
-              <Link href="/showcase" className="group">
-                <div className="p-6 bg-east-bay/30 border border-blue-violet/30 rounded-lg hover:border-lavender/50 transition-all">
-                  <div className="text-3xl mb-3">🌟</div>
-                  <h3 className="text-lg font-semibold text-space-white mb-2 group-hover:text-melrose transition">
-                    View Showcase
-                  </h3>
-                  <p className="text-sm text-zinc-400">
-                    Explore featured local projects and success stories
-                  </p>
-                </div>
-              </Link>
 
               <Link href="/sponsor" className="group">
                 <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
@@ -356,10 +341,6 @@ export default async function Home() {
 
           <HomeContributions
             isAuthenticated={isAuthenticated}
-            onSignIn={async () => {
-              "use server";
-              await signIn(logtoConfig);
-            }}
           />
 
           <HomeWhyJoin />
@@ -370,10 +351,6 @@ export default async function Home() {
 
           <HomeRegistration
             isAuthenticated={isAuthenticated}
-            onSignIn={async () => {
-              "use server";
-              await signIn(logtoConfig);
-            }}
           />
 
           <HomeFAQ />

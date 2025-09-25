@@ -3,16 +3,13 @@
 import { Card } from "./card";
 import Link from "next/link";
 import { ScrollAnimation } from "./scroll-animation";
-import SignIn from "../sign-in";
 
 interface HomeContributionsProps {
   isAuthenticated: boolean;
-  onSignIn: () => Promise<void>;
 }
 
 export function HomeContributions({
   isAuthenticated,
-  onSignIn,
 }: HomeContributionsProps) {
   return (
     <section className="py-12">
@@ -221,10 +218,12 @@ export function HomeContributions({
                       Submit Your Project →
                     </Link>
                   ) : (
-                    <SignIn
-                      text="Sign in to submit projects →"
-                      onSignIn={onSignIn}
-                    />
+                    <Link
+                      href="/signin?returnTo=/submit"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-lavender text-void rounded-md font-medium hover:bg-melrose transition-colors"
+                    >
+                      Sign in to submit projects →
+                    </Link>
                   )}
                 </div>
               </div>

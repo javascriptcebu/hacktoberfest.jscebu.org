@@ -2,16 +2,14 @@
 
 import { Card } from "./card";
 import { ScrollAnimation } from "./scroll-animation";
-import SignIn from "../sign-in";
+import Link from "next/link";
 
 interface HomeRegistrationProps {
   isAuthenticated: boolean;
-  onSignIn: () => Promise<void>;
 }
 
 export function HomeRegistration({
   isAuthenticated,
-  onSignIn,
 }: HomeRegistrationProps) {
   return (
     <section className="py-12">
@@ -41,11 +39,12 @@ export function HomeRegistration({
                 </span>
                 <p className="text-zinc-400">
                   Sign up and{" "}
-                  <SignIn
-                    text="create an account here via OneCebby"
-                    variant="inline"
-                    onSignIn={onSignIn}
-                  />
+                  <Link
+                    href="/signin"
+                    className="text-lavender hover:text-melrose underline transition-colors"
+                  >
+                    create an account here via OneCebby
+                  </Link>
                   <span className="ml-1"></span>
                   to stay updated, find teams, and track your participation...
                 </p>
