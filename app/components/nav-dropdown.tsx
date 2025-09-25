@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export default function PastYearsDropdown() {
   const menuItems = [
+    { label: "2025", href: "/projects" },
     { label: "2024", href: "/projects/2024" },
     { label: "2023", href: "/projects/2023" },
     { label: "2021", href: "/projects/2021" },
