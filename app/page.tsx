@@ -15,24 +15,13 @@ import { HomePartners } from "./components/home-partners";
 import { HomeRegistration } from "./components/home-registration";
 import { HomeSponsors } from "./components/home-sponsors";
 import { HomeWhyJoin } from "./components/home-why-join";
+import { Navigation } from "./components/nav";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import Particles from "./components/particles";
 import React from "react";
-import SignOut from "./sign-out";
 import { Timeline } from "./components/timeline";
 import { logtoConfig } from "./logto";
-
-const navigation = [
-  { name: "Projects", href: "/projects" },
-  { name: "Events", href: "/events" },
-  { name: "Join", href: "/join" },
-  { name: "Submit", href: "/submit" },
-  { name: "Contributions", href: "/contributions" },
-  { name: "Sponsor", href: "/sponsor" },
-  { name: "Volunteer", href: "/volunteer" },
-  { name: "Contact", href: "/contact" },
-];
 
 const scheduleEvents = [
   {
@@ -124,41 +113,14 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col items-center w-screen min-h-screen overflow-x-hidden bg-gradient-to-tl from-void via-space-haze/20 to-void">
-      <nav className="my-16 animate-fade-in">
-        <ul className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
-          {navigation.map((item) => (
-            <li key={item.href}>
-              <Link
-                key={item.href}
-                href={item.href}
-                className="inline-flex items-center px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg text-space-dust hover:text-melrose hover:bg-east-bay/50 border border-transparent hover:border-blue-violet/30"
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-          {isAuthenticated ? (
-            <li>
-              <SignOut
-                onSignOut={async () => {
-                  "use server";
-
-                  await signOut(logtoConfig);
-                }}
-              />
-            </li>
-          ) : (
-            <li>
-              <Link
-                href="/signin"
-                className="inline-flex items-center text-sm duration-200 text-space-dust hover:text-space-white"
-              >
-                Sign In
-              </Link>
-            </li>
-          )}
-        </ul>
-      </nav>
+      <Navigation
+        isHomepage={true}
+        isAuthenticated={isAuthenticated}
+        onSignOut={async () => {
+          "use server";
+          await signOut(logtoConfig);
+        }}
+      />
 
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-lavender/0 via-lavender/50 to-lavender/0" />
 
