@@ -15,13 +15,28 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
       return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
     }
 
-    const allVolunteerIds = await redis.lrange("pending-volunteers", 0, -1) as string[];
+    // Get all volunteer IDs from different lists
+    const [pendingIds, approvedIds] = await Promise.all([
+      redis.lrange("pending-volunteers", 0, -1) as Promise<string[]>,
+      redis.lrange("approved-volunteers", 0, -1) as Promise<string[]>
+    ]);
+
+    // Combine all volunteer IDs and remove duplicates
+    const allVolunteerIds = Array.from(new Set([...pendingIds, ...approvedIds]));
 
     const allVolunteers = await Promise.all(
       allVolunteerIds.map(async (id) => {
-        const volunteerData = await redis.get(`volunteer:${id}`);
-        if (volunteerData) {
-          return JSON.parse(volunteerData as string);
+        try {
+          const volunteerData = await redis.get(`volunteer:${id}`);
+          if (volunteerData) {
+            // Handle both string and object responses
+            const parsed = typeof volunteerData === 'string'
+              ? JSON.parse(volunteerData)
+              : volunteerData;
+            return parsed;
+          }
+        } catch (e) {
+          console.error(`Error fetching/parsing volunteer ${id}:`, e);
         }
         return null;
       })
@@ -69,7 +84,11 @@ export async function PATCH(req: NextRequest): Promise<NextResponse> {
       );
     }
 
-    const volunteer = JSON.parse(volunteerData as string);
+    // Handle both string and object responses
+    const volunteer = typeof volunteerData === 'string'
+      ? JSON.parse(volunteerData)
+      : volunteerData;
+
     volunteer.status = status;
     volunteer.reviewedBy = claims.email;
     volunteer.reviewedAt = new Date().toISOString();
