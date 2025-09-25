@@ -28,6 +28,7 @@ const navigation = [
   { name: "Events", href: "/events" },
   { name: "Join", href: "/join" },
   { name: "Submit", href: "/submit" },
+  { name: "Contributions", href: "/contributions" },
   { name: "Sponsor", href: "/sponsor" },
   { name: "Volunteer", href: "/volunteer" },
   { name: "Contact", href: "/contact" },

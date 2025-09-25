@@ -54,11 +54,14 @@ export function AdminPanel() {
       const response = await fetch("/api/admin/submissions");
       if (response.ok) {
         const data = await response.json();
+        console.log("Fetched submissions:", data.submissions);
         setSubmissions(data.submissions || []);
       } else {
+        console.error("Failed to fetch submissions:", response.status, response.statusText);
         throw new Error("Failed to fetch submissions");
       }
     } catch (err) {
+      console.error("Error fetching submissions:", err);
       setError("Failed to load submissions");
     } finally {
       setLoading(false);

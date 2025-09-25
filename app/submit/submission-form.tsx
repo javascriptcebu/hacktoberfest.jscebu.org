@@ -127,7 +127,14 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
                 : "bg-red-900/20 border border-red-800 text-red-400"
             }`}
           >
-            {submitStatus.message}
+            <div>
+              <p className="font-medium">{submitStatus.message}</p>
+              {submitStatus.type === "success" && (
+                <p className="text-sm mt-2 opacity-90">
+                  Note: Your project is now pending admin review. Once approved, it will be displayed on the projects page for others to discover and contribute to.
+                </p>
+              )}
+            </div>
           </div>
         )}
 
@@ -465,6 +472,9 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
           >
             {isSubmitting ? "Submitting..." : "Submit Project"}
           </button>
+          <p className="text-xs text-space-haze text-center mt-3">
+            Projects are reviewed by our admin team before being published
+          </p>
         </div>
 
         <div className="text-sm text-space-dust/80">

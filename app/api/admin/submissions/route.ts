@@ -27,28 +27,36 @@ export async function GET(): Promise<NextResponse> {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Get all pending submission IDs
-    const pendingIds = await redis.lrange("pending-submissions", 0, -1);
-    
+    // Get all submission IDs from different lists
+    const [pendingIds, approvedIds, rejectedIds] = await Promise.all([
+      redis.lrange("pending-submissions", 0, -1) as Promise<string[]>,
+      redis.lrange("approved-submissions", 0, -1) as Promise<string[]>,
+      redis.lrange("rejected-submissions", 0, -1) as Promise<string[]>
+    ]);
+
+    console.log("Fetching submissions - Pending:", pendingIds.length, "Approved:", approvedIds.length, "Rejected:", rejectedIds.length);
+
+    // Combine all IDs
+    const allIds = [...pendingIds, ...approvedIds, ...rejectedIds];
+
     // Get all submissions
     const submissions = [];
-    if (pendingIds.length > 0) {
-      const keys = pendingIds.map((id: string) => `submission:${id}`);
-      const submissionData = await redis.mget(...keys);
-      
-      for (const data of submissionData) {
-        if (data) {
-          try {
-            submissions.push(JSON.parse(data as string));
-          } catch (e) {
-            console.error("Failed to parse submission data:", e);
+    if (allIds.length > 0) {
+      // Fetch in batches to avoid issues with large datasets
+      for (const id of allIds) {
+        try {
+          const submissionData = await redis.get(`submission:${id}`);
+          if (submissionData) {
+            const parsed = typeof submissionData === 'string'
+              ? JSON.parse(submissionData)
+              : submissionData;
+            submissions.push(parsed);
           }
+        } catch (e) {
+          console.error(`Failed to parse submission ${id}:`, e);
         }
       }
     }
-
-    // Also get approved/rejected submissions from a separate list
-    // For now, we'll just return pending ones
     
     return NextResponse.json({ 
       submissions: submissions.sort((a, b) => 

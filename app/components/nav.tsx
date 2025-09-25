@@ -61,6 +61,13 @@ export const Navigation: React.FC = () => {
 						</Link>
 
 						<Link
+							href="/contributions"
+							className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+						>
+							Contributions
+						</Link>
+
+						<Link
 							href="/sponsor"
 							className="inline-flex items-center px-3 py-1.5 text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
 						>

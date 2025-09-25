@@ -38,3 +38,55 @@ export function getProjectsByYear(projects: Project[], year: number) {
 	const filtered = filterProjectsByYear(projects, year);
 	return sortProjectsByDate(filtered);
 }
+
+export interface SubmittedProject {
+	id: string;
+	title: string;
+	description: string;
+	repository: string;
+	url?: string;
+	image?: string;
+	email: string;
+	submittedBy: string;
+	submittedAt: string;
+	status: "pending" | "approved" | "rejected";
+	year: number;
+}
+
+export async function getApprovedSubmittedProjects(): Promise<SubmittedProject[]> {
+	try {
+		// Get all approved submission IDs
+		const approvedIds = await redis.lrange("approved-submissions", 0, -1) as string[];
+
+		if (approvedIds.length === 0) {
+			return [];
+		}
+
+		// Fetch all approved submissions
+		const approvedProjects = await Promise.all(
+			approvedIds.map(async (id) => {
+				try {
+					const submissionData = await redis.get(`submission:${id}`);
+					if (submissionData) {
+						const parsed = typeof submissionData === 'string'
+							? JSON.parse(submissionData)
+							: submissionData;
+						return parsed as SubmittedProject;
+					}
+				} catch (e) {
+					console.error(`Error fetching submission ${id}:`, e);
+				}
+				return null;
+			})
+		);
+
+		// Filter out nulls and sort by submission date (newest first)
+		return approvedProjects
+			.filter((p): p is SubmittedProject => p !== null)
+			.filter((p) => p.year === 2025) // Only show 2025 projects
+			.sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime());
+	} catch (error) {
+		console.error("Error fetching approved projects:", error);
+		return [];
+	}
+}
