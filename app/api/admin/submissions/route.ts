@@ -11,13 +11,20 @@ const ADMIN_EMAILS = process.env.ADMIN_EMAILS
   : [];
 
 async function checkAdmin() {
-  const { isAuthenticated, claims } = await getLogtoContext(logtoConfig);
-  
-  if (!isAuthenticated || !claims?.email || !ADMIN_EMAILS.includes(claims.email)) {
+  try {
+    const { isAuthenticated, claims } = await getLogtoContext(logtoConfig);
+
+    console.log("Admin check - Authenticated:", isAuthenticated, "Email:", claims?.email, "Is Admin:", claims?.email ? ADMIN_EMAILS.includes(claims.email) : false);
+
+    if (!isAuthenticated || !claims?.email || !ADMIN_EMAILS.includes(claims.email)) {
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Error checking admin status:", error);
     return false;
   }
-  
-  return true;
 }
 
 export async function GET(): Promise<NextResponse> {
@@ -77,15 +84,18 @@ export async function PATCH(req: NextRequest): Promise<NextResponse> {
   try {
     const isAdmin = await checkAdmin();
     if (!isAdmin) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      console.log("PATCH request denied - not an admin");
+      return NextResponse.json({ error: "Unauthorized - Admin access required" }, { status: 401 });
     }
 
     const body = await req.json();
     const { submissionId, status } = body;
 
+    console.log("PATCH request - Submission ID:", submissionId, "Status:", status);
+
     if (!submissionId || !["approved", "rejected"].includes(status)) {
       return NextResponse.json(
-        { error: "Invalid submission ID or status" },
+        { error: `Invalid submission ID (${submissionId}) or status (${status})` },
         { status: 400 }
       );
     }
@@ -93,15 +103,21 @@ export async function PATCH(req: NextRequest): Promise<NextResponse> {
     // Get the submission
     const submissionData = await redis.get(`submission:${submissionId}`);
     if (!submissionData) {
+      console.error(`Submission not found with ID: ${submissionId}`);
       return NextResponse.json(
-        { error: "Submission not found" },
+        { error: `Submission not found with ID: ${submissionId}` },
         { status: 404 }
       );
     }
 
-    const submission = JSON.parse(submissionData as string);
+    const submission = typeof submissionData === 'string'
+      ? JSON.parse(submissionData)
+      : submissionData;
+
     submission.status = status;
     submission.reviewedAt = new Date().toISOString();
+
+    console.log(`Updating submission ${submissionId} to status: ${status}`);
 
     // Update the submission
     await redis.set(`submission:${submissionId}`, JSON.stringify(submission));
@@ -112,11 +128,10 @@ export async function PATCH(req: NextRequest): Promise<NextResponse> {
     // Add to appropriate list
     if (status === "approved") {
       await redis.lpush("approved-submissions", submissionId);
-      
-      // TODO: Here you could automatically create the MDX file or add to a queue
-      console.log(`Approved submission: ${submission.title}`);
+      console.log(`Approved submission: ${submission.title} (ID: ${submissionId})`);
     } else {
       await redis.lpush("rejected-submissions", submissionId);
+      console.log(`Rejected submission: ${submission.title} (ID: ${submissionId})`);
     }
 
     return NextResponse.json({ 

@@ -104,12 +104,18 @@ export function AdminPanel() {
       });
 
       if (response.ok) {
+        const data = await response.json();
+        console.log("Update successful:", data);
         await fetchSubmissions();
+        // Optional: Show success message
       } else {
-        throw new Error("Failed to update submission");
+        const errorData = await response.json();
+        console.error("Failed to update submission:", errorData);
+        alert(`Failed to update submission: ${errorData.error || 'Unknown error'}`);
       }
     } catch (err) {
-      alert("Failed to update submission status");
+      console.error("Error updating submission status:", err);
+      alert("Failed to update submission status - check console for details");
     }
   };
 
