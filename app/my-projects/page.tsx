@@ -21,7 +21,7 @@ export default async function MyProjectsPage() {
   return (
     <MyProjectsClient
       isAuthenticated={isAuthenticated}
-      userEmail={claims?.email}
+      userEmail={claims?.email || undefined}
       onSignOut={handleSignOut}
     />
   );

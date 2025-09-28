@@ -25,8 +25,8 @@ export async function NavWrapper({ isHomepage = false }: NavWrapperProps = {}) {
     <Navigation
       isHomepage={isHomepage}
       isAuthenticated={isAuthenticated}
-      userEmail={claims?.email}
-      userName={claims?.name}
+      userEmail={claims?.email || undefined}
+      userName={claims?.name || undefined}
       onSignOut={handleSignOut}
     />
   );
