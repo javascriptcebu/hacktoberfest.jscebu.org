@@ -188,11 +188,13 @@ export function MyProjectsClient({ isAuthenticated, userEmail, onSignOut }: MyPr
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-start gap-2">
-                      {project.projectType === "hackathon" ? (
-                        <Users className="w-5 h-5 text-purple-400 mt-1" title="Hackathon Project" />
-                      ) : (
-                        <Code className="w-5 h-5 text-blue-400 mt-1" title="Existing Project" />
-                      )}
+                      <span title={project.projectType === "hackathon" ? "Hackathon Project" : "Existing Project"}>
+                        {project.projectType === "hackathon" ? (
+                          <Users className="w-5 h-5 text-purple-400 mt-1" />
+                        ) : (
+                          <Code className="w-5 h-5 text-blue-400 mt-1" />
+                        )}
+                      </span>
                       <h3 className="text-xl font-bold text-zinc-100">
                         {project.title}
                       </h3>
