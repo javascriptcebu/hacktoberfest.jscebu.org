@@ -255,17 +255,17 @@ export default function EventsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="https://www.facebook.com/javascriptcebu"
+                href="https://www.getcebby.com"
                 target="_blank"
                 className="inline-flex items-center justify-center px-6 py-3 bg-lavender text-void rounded-md font-medium hover:bg-melrose transition-colors"
               >
-                Follow JavaScript Cebu
+                Check out Cebby for latest events...
               </Link>
               <Link
-                href="/contact"
+                href="/join"
                 className="inline-flex items-center justify-center px-6 py-3 border border-blue-violet/50 text-space-dust rounded-md font-medium hover:bg-east-bay/50 transition-colors"
               >
-                Contact Organizers
+                Join Today
               </Link>
             </div>
           </div>

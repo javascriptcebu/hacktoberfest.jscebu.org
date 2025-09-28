@@ -1,6 +1,16 @@
+import {
+  ArrowRight,
+  Calendar,
+  Code,
+  GitBranch,
+  GitPullRequest,
+  Rocket,
+  Trophy,
+  Users,
+} from "lucide-react";
+
 import Link from "next/link";
 import { Navigation } from "../components/nav";
-import { Code, GitBranch, GitPullRequest, Rocket, Users, Trophy, Calendar, ArrowRight } from "lucide-react";
 
 export default function JoinPage() {
   return (
@@ -18,7 +28,9 @@ export default function JoinPage() {
               CONTRIBUTE <span className="text-lavender">&</span> CREATE
             </h1>
             <p className="mt-6 text-xl text-space-dust max-w-3xl mx-auto leading-relaxed">
-              Join Cebu's biggest open-source celebration. Whether you're contributing to existing projects or building something new, this is your chance to level up.
+              Join Cebu's biggest open-source celebration. Whether you're
+              contributing to existing projects or building something new, this
+              is your chance to level up.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -45,7 +57,8 @@ export default function JoinPage() {
                 Your Open Source Journey
               </h2>
               <p className="text-lg text-space-dust max-w-2xl mx-auto">
-                Level up from user to contributor to builder. Join us in creating a thriving tech ecosystem in Cebu.
+                Level up from user to contributor to builder. Join us in
+                creating a thriving tech ecosystem in Cebu.
               </p>
             </div>
 
@@ -56,9 +69,12 @@ export default function JoinPage() {
                     <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-violet to-lavender rounded-full flex items-center justify-center">
                       <Users className="w-8 h-8 text-void" />
                     </div>
-                    <h3 className="text-xl font-bold text-melrose mb-3 text-center">User</h3>
+                    <h3 className="text-xl font-bold text-melrose mb-3 text-center">
+                      User
+                    </h3>
                     <p className="text-sm text-space-dust/80 text-center leading-relaxed">
-                      Start your journey as an open source user, discovering amazing projects
+                      Start your journey as an open source user, discovering
+                      amazing projects
                     </p>
                   </div>
                 </div>
@@ -68,7 +84,9 @@ export default function JoinPage() {
                     <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-lavender to-melrose rounded-full flex items-center justify-center">
                       <GitPullRequest className="w-8 h-8 text-void" />
                     </div>
-                    <h3 className="text-xl font-bold text-lavender mb-3 text-center">Contributor</h3>
+                    <h3 className="text-xl font-bold text-lavender mb-3 text-center">
+                      Contributor
+                    </h3>
                     <p className="text-sm text-space-dust text-center leading-relaxed">
                       Make meaningful contributions to projects that matter
                     </p>
@@ -80,7 +98,9 @@ export default function JoinPage() {
                     <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-violet to-lavender rounded-full flex items-center justify-center">
                       <Rocket className="w-8 h-8 text-void" />
                     </div>
-                    <h3 className="text-xl font-bold text-melrose mb-3 text-center">Builder</h3>
+                    <h3 className="text-xl font-bold text-melrose mb-3 text-center">
+                      Builder
+                    </h3>
                     <p className="text-sm text-space-dust/80 text-center leading-relaxed">
                       Create world-class open source projects of your own
                     </p>
@@ -97,7 +117,8 @@ export default function JoinPage() {
                 Choose Your Path
               </h2>
               <p className="text-lg text-space-dust max-w-2xl mx-auto">
-                Participate in one or both tracks: contribute to existing projects or create something entirely new
+                Participate in one or both tracks: contribute to existing
+                projects or create something entirely new
               </p>
             </div>
 
@@ -112,12 +133,22 @@ export default function JoinPage() {
                     </h3>
                   </div>
                   <p className="text-space-dust mb-6 leading-relaxed">
-                    Jump into existing open source projects and make meaningful contributions through pull requests.
-                    <span className="text-lavender font-semibold"> Local projects submitted early are prioritized and featured prominently!</span>
+                    Jump into existing open source projects and make meaningful
+                    contributions through pull requests.
+                    <span className="text-lavender font-semibold">
+                      {" "}
+                      Local projects submitted early are prioritized and
+                      featured prominently!
+                    </span>
                   </p>
                   <ul className="space-y-3 text-sm text-zinc-400 list-disc list-inside mb-6">
-                    <li><span className="text-lavender">Priority:</span> Local Cebu projects submitted via our platform</li>
-                    <li>Find issues labeled "hacktoberfest" or "good first issue"</li>
+                    <li>
+                      <span className="text-lavender">Priority:</span> Local
+                      Cebu projects submitted via our platform
+                    </li>
+                    <li>
+                      Find issues labeled "hacktoberfest" or "good first issue"
+                    </li>
                     <li>Submit quality pull requests to existing projects</li>
                     <li>Get them reviewed and merged by maintainers</li>
                     <li>Earn recognition and prizes for contributions</li>
@@ -137,12 +168,11 @@ export default function JoinPage() {
                 <div className="relative p-8">
                   <div className="flex items-center mb-6">
                     <Code className="w-10 h-10 text-melrose mr-4" />
-                    <h3 className="text-2xl font-bold text-melrose">
-                      Create
-                    </h3>
+                    <h3 className="text-2xl font-bold text-melrose">Create</h3>
                   </div>
                   <p className="text-space-dust mb-6 leading-relaxed">
-                    Form a team of 1-4 members and build an innovative open source project from scratch.
+                    Form a team of 1-4 members and build an innovative open
+                    source project from scratch.
                   </p>
                   <ul className="space-y-3 text-sm text-zinc-400 list-disc list-inside mb-6">
                     <li>Form a team (1-4 members)</li>
@@ -177,13 +207,19 @@ export default function JoinPage() {
                     For Contributors
                   </h3>
                 </div>
-              <ul className="space-y-3 text-zinc-400 list-disc list-inside">
-                <li>Contribute to prioritized local Cebu projects</li>
-                <li>Projects submitted early get featured during workshops</li>
-                <li>Learn from experienced developers in the community</li>
-                <li>Make meaningful contributions that matter locally</li>
-                <li>Build your portfolio with real-world projects</li>
-              </ul>
+                <ul className="space-y-3 text-zinc-400 list-disc list-inside">
+                  <li>
+                    Contribute to prioritized local Cebu projects for more
+                    points
+                  </li>
+                  <li>Contribute to other projects globally</li>
+                  <li>
+                    Projects submitted early get featured during workshops
+                  </li>
+                  <li>Learn from experienced developers in the community</li>
+                  <li>Make meaningful contributions that matter locally</li>
+                  <li>Build your portfolio with real-world projects</li>
+                </ul>
               </div>
 
               <div className="p-8 bg-gradient-to-br from-blue-violet/20 to-lavender/10 border border-lavender/30 rounded-2xl">
@@ -193,12 +229,12 @@ export default function JoinPage() {
                     For Builders
                   </h3>
                 </div>
-              <ul className="space-y-3 text-zinc-400 list-disc list-inside">
-                <li>Get your project featured to local developers</li>
-                <li>Receive quality contributions from the community</li>
-                <li>Compete for prizes and recognition</li>
-                <li>Grow your project with community support</li>
-              </ul>
+                <ul className="space-y-3 text-zinc-400 list-disc list-inside">
+                  <li>Get your project featured to local developers</li>
+                  <li>Receive quality contributions from the community</li>
+                  <li>Compete for prizes and recognition</li>
+                  <li>Grow your project with community support</li>
+                </ul>
               </div>
             </div>
           </div>
