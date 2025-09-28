@@ -5,7 +5,7 @@ import { Navigation } from "../components/nav";
 import { Footer } from "../components/footer";
 import { Card } from "../components/card";
 import { SubmittedProject } from "../projects/utils";
-import { Pencil, Trash2, Eye, ExternalLink, GitBranch, Plus, Loader2 } from "lucide-react";
+import { Pencil, Trash2, Eye, ExternalLink, GitBranch, Plus, Loader2, Users, Code, Calendar } from "lucide-react";
 import Link from "next/link";
 import { EditProjectModal } from "./edit-project-modal";
 import { useRouter } from "next/navigation";
@@ -187,9 +187,16 @@ export function MyProjectsClient({ isAuthenticated, userEmail, onSignOut }: MyPr
               <Card key={project.id}>
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl font-bold text-zinc-100">
-                      {project.title}
-                    </h3>
+                    <div className="flex items-start gap-2">
+                      {project.projectType === "hackathon" ? (
+                        <Users className="w-5 h-5 text-purple-400 mt-1" title="Hackathon Project" />
+                      ) : (
+                        <Code className="w-5 h-5 text-blue-400 mt-1" title="Existing Project" />
+                      )}
+                      <h3 className="text-xl font-bold text-zinc-100">
+                        {project.title}
+                      </h3>
+                    </div>
                     <span className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-full border ${getStatusColor(project.status)}`}>
                       {project.status}
                     </span>
@@ -233,6 +240,20 @@ export function MyProjectsClient({ isAuthenticated, userEmail, onSignOut }: MyPr
                       </div>
                     )}
                   </div>
+
+                  {/* Show team members for hackathon projects */}
+                  {project.projectType === "hackathon" && project.teamMembers && project.teamMembers.length > 0 && (
+                    <div className="mb-4 p-3 bg-purple-900/20 rounded-md border border-purple-800/30">
+                      <p className="text-xs font-semibold text-purple-400 mb-2">Team Members:</p>
+                      <div className="flex flex-wrap gap-1">
+                        {project.teamMembers.map((member, idx) => (
+                          <span key={idx} className="text-xs px-2 py-1 bg-purple-800/30 rounded text-purple-300">
+                            {member.name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   <div className="flex items-center justify-between pt-4 border-t border-zinc-800">
                     <span className="text-xs text-zinc-500">

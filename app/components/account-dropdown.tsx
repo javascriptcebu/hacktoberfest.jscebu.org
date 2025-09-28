@@ -1,6 +1,6 @@
 "use client";
 
-import { User, LogOut, FolderOpen, Settings, ChevronDown, Shield } from "lucide-react";
+import { User, LogOut, FolderOpen, Settings, ChevronDown, Shield, GitPullRequest, Users } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -19,6 +19,16 @@ export default function AccountDropdown({ userEmail, userName, isAdmin, onSignOu
       label: "My Projects",
       href: "/my-projects",
       icon: FolderOpen
+    },
+    {
+      label: "My Contributions",
+      href: "/my-contributions",
+      icon: GitPullRequest
+    },
+    {
+      label: "My Volunteer",
+      href: "/my-volunteer",
+      icon: Users
     },
     {
       label: "Settings",
