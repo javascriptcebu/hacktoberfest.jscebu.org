@@ -15,9 +15,9 @@ import { HomePartners } from "./components/home-partners";
 import { HomeRegistration } from "./components/home-registration";
 import { HomeSponsors } from "./components/home-sponsors";
 import { HomeWhyJoin } from "./components/home-why-join";
-import { Navigation } from "./components/nav";
 import Image from "next/legacy/image";
 import Link from "next/link";
+import { Navigation } from "./components/nav";
 import Particles from "./components/particles";
 import React from "react";
 import { Timeline } from "./components/timeline";
@@ -174,7 +174,7 @@ export default async function Home() {
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-900/20 to-orange-900/20 px-4 py-2 rounded-full mb-6 border border-yellow-800/30">
             <span className="text-yellow-400">🔥</span>
             <span className="text-yellow-400 text-sm font-semibold">
-              Preptember begins...
+              Kickoff is coming...
             </span>
           </div>
 
@@ -252,9 +252,8 @@ export default async function Home() {
                 </div>
               </Link>
 
-
               <Link href="/sponsor" className="group">
-                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                <div className="p-6 bg-east-bay/30 border border-blue-violet/30 rounded-lg hover:border-lavender/50 transition-all">
                   <div className="text-3xl mb-3">💎</div>
                   <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-purple-400 transition">
                     Become a Sponsor
@@ -266,7 +265,7 @@ export default async function Home() {
               </Link>
 
               <Link href="/volunteer" className="group">
-                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                <div className="p-6 bg-east-bay/30 border border-blue-violet/30 rounded-lg hover:border-lavender/50 transition-all">
                   <div className="text-3xl mb-3">🤝</div>
                   <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-green-400 transition">
                     Volunteer With Us
@@ -278,13 +277,26 @@ export default async function Home() {
               </Link>
 
               <Link href="/submit" className="group">
-                <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg hover:border-zinc-700 transition-all">
+                <div className="p-6 bg-east-bay/30 border border-blue-violet/30 rounded-lg hover:border-lavender/50 transition-all">
                   <div className="text-3xl mb-3">📝</div>
                   <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-orange-400 transition">
                     Submit Project
                   </h3>
                   <p className="text-sm text-zinc-400">
                     Get your open-source project featured and contributed on
+                  </p>
+                </div>
+              </Link>
+
+              <Link href="/submit" className="group">
+                <div className="p-6 bg-east-bay/30 border border-blue-violet/30 rounded-lg hover:border-lavender/50 transition-all">
+                  <div className="text-3xl mb-3">📅</div>
+                  <h3 className="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-orange-400 transition">
+                    Organize Events
+                  </h3>
+                  <p className="text-sm text-zinc-400">
+                    Partner communities can help us organize in betweens for
+                    Hacktoberfest
                   </p>
                 </div>
               </Link>
@@ -302,9 +314,7 @@ export default async function Home() {
 
           <HomeHackathon />
 
-          <HomeContributions
-            isAuthenticated={isAuthenticated}
-          />
+          <HomeContributions isAuthenticated={isAuthenticated} />
 
           <HomeWhyJoin />
 
@@ -312,9 +322,7 @@ export default async function Home() {
 
           <HomeSponsors />
 
-          <HomeRegistration
-            isAuthenticated={isAuthenticated}
-          />
+          <HomeRegistration isAuthenticated={isAuthenticated} />
 
           <HomeFAQ />
         </div>

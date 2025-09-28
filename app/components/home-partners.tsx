@@ -62,9 +62,9 @@ export function HomePartners() {
                 limited to:
               </p>
               <p className="text-zinc-400">
-                React Cebu, Laravel Cebu, Cebu Game Dev, DevCon Cebu, GDG Cebu,
-                Cebu WordPress Meetup, CebuXD, Web3 Cebu, AI Gen Cebu, and other
-                community organizations of the Cebu Tech Community.
+                React Cebu, Laravel Cebu x PHPxCebu, Cebu Game Dev, DevCon Cebu,
+                GDG Cebu, Cebu WordPress Meetup, CebuXD, Web3 Cebu, AI Gen Cebu,
+                and other community organizations of the Cebu Tech Community.
               </p>
             </div>
           </div>

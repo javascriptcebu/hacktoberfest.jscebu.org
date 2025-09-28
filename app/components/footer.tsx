@@ -37,7 +37,7 @@ const footerLinks = {
       href: "https://www.facebook.com/ethphilippines",
     },
     { name: "React Cebu", href: "https://react.jscebu.org" },
-    { name: "Laravel Cebu", href: "https://laravelcebu.org" },
+    { name: "Laravel Cebu x PHPxCebu", href: "https://laravelcebu.org" },
     { name: "Cebu Game Dev", href: "https://cebugamedev.org" },
   ],
   partners: [
