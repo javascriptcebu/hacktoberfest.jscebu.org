@@ -5,17 +5,22 @@ import React, { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 import PastYearsDropdown from "./nav-dropdown";
+import AccountDropdown from "./account-dropdown";
 
 interface NavigationProps {
   isHomepage?: boolean;
   isAuthenticated?: boolean;
   onSignOut?: () => Promise<void>;
+  userEmail?: string;
+  userName?: string;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
   isHomepage = false,
   isAuthenticated = false,
   onSignOut,
+  userEmail,
+  userName,
 }) => {
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
@@ -91,14 +96,13 @@ export const Navigation: React.FC<NavigationProps> = ({
                 )}
               </li>
             ))}
-            {isAuthenticated && onSignOut ? (
+            {isAuthenticated ? (
               <li>
-                <button
-                  onClick={onSignOut}
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg text-space-dust hover:text-melrose hover:bg-east-bay/50 border border-transparent hover:border-blue-violet/30"
-                >
-                  Sign Out
-                </button>
+                <AccountDropdown
+                  userEmail={userEmail}
+                  userName={userName}
+                  onSignOut={onSignOut}
+                />
               </li>
             ) : (
               <li>
@@ -180,16 +184,40 @@ export const Navigation: React.FC<NavigationProps> = ({
                     </div>
                   ))}
                   <div className="pt-4 border-t border-space-haze/30">
-                    {isAuthenticated && onSignOut ? (
-                      <button
-                        onClick={() => {
-                          onSignOut();
-                          setMobileMenuOpen(false);
-                        }}
-                        className="block w-full text-left px-4 py-3 text-base font-medium transition-all duration-300 rounded-lg text-space-dust hover:text-melrose hover:bg-east-bay/50 border border-transparent hover:border-blue-violet/30"
-                      >
-                        Sign Out
-                      </button>
+                    {isAuthenticated ? (
+                      <>
+                        {userEmail && (
+                          <div className="px-4 py-2 mb-2">
+                            <p className="text-xs text-space-haze">Signed in as</p>
+                            <p className="text-sm text-melrose font-medium truncate">{userEmail}</p>
+                          </div>
+                        )}
+                        <Link
+                          href="/my-projects"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block px-4 py-3 text-base font-medium transition-all duration-300 rounded-lg text-space-dust hover:text-melrose hover:bg-east-bay/50 border border-transparent hover:border-blue-violet/30"
+                        >
+                          My Projects
+                        </Link>
+                        <Link
+                          href="/settings"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block px-4 py-3 text-base font-medium transition-all duration-300 rounded-lg text-space-dust hover:text-melrose hover:bg-east-bay/50 border border-transparent hover:border-blue-violet/30"
+                        >
+                          Settings
+                        </Link>
+                        {onSignOut && (
+                          <button
+                            onClick={() => {
+                              onSignOut();
+                              setMobileMenuOpen(false);
+                            }}
+                            className="block w-full text-left px-4 py-3 text-base font-medium transition-all duration-300 rounded-lg text-space-dust hover:text-red-400 hover:bg-red-900/20 border border-transparent hover:border-red-900/30"
+                          >
+                            Sign Out
+                          </button>
+                        )}
+                      </>
                     ) : (
                       <Link
                         href="/signin"
@@ -258,6 +286,21 @@ export const Navigation: React.FC<NavigationProps> = ({
                   {link.hasDropdown && <PastYearsDropdown />}
                 </div>
               ))}
+              {/* Account/Auth section */}
+              {isAuthenticated ? (
+                <AccountDropdown
+                  userEmail={userEmail}
+                  userName={userName}
+                  onSignOut={onSignOut}
+                />
+              ) : (
+                <Link
+                  href="/signin"
+                  className="inline-flex items-center px-2 lg:px-3 py-1.5 text-xs lg:text-sm font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+                >
+                  Sign In
+                </Link>
+              )}
             </div>
 
             {/* Mobile Menu Button - Always on right */}
@@ -324,6 +367,53 @@ export const Navigation: React.FC<NavigationProps> = ({
                     </Link>
                   </div>
                 ))}
+
+                {/* Account section for mobile */}
+                <div className="pt-4 mt-4 border-t border-space-haze/30">
+                  {isAuthenticated ? (
+                    <>
+                      {userEmail && (
+                        <div className="px-4 py-2 mb-2">
+                          <p className="text-xs text-space-haze">Signed in as</p>
+                          <p className="text-sm text-melrose font-medium truncate">{userEmail}</p>
+                        </div>
+                      )}
+                      <Link
+                        href="/my-projects"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block px-4 py-3 text-base font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+                      >
+                        My Projects
+                      </Link>
+                      <Link
+                        href="/settings"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block px-4 py-3 text-base font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+                      >
+                        Settings
+                      </Link>
+                      {onSignOut && (
+                        <button
+                          onClick={() => {
+                            onSignOut();
+                            setMobileMenuOpen(false);
+                          }}
+                          className="block w-full text-left px-4 py-3 text-base font-medium transition-all duration-300 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-900/20 border border-transparent hover:border-red-900/30"
+                        >
+                          Sign Out
+                        </button>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      href="/signin"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-3 text-base font-medium transition-all duration-300 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50"
+                    >
+                      Sign In
+                    </Link>
+                  )}
+                </div>
               </div>
             </nav>
 

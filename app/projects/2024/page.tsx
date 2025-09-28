@@ -4,7 +4,7 @@ import { getProjectViews, getProjectsByYear } from "../utils";
 import { Article } from "../article";
 import { Card } from "../../components/card";
 import Link from "next/link";
-import { Navigation } from "../../components/nav";
+import { NavWrapper } from "../../components/nav-wrapper";
 import React from "react";
 import { allProjects } from "contentlayer/generated";
 
@@ -37,7 +37,7 @@ export default async function ProjectsPage() {
 
   return (
     <div className="relative pb-16">
-      <Navigation />
+      <NavWrapper />
       <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
         <div className="max-w-4xl mx-auto lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">

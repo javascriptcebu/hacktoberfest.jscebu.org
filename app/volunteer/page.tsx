@@ -2,7 +2,7 @@ import { ArrowRight, Shield } from "lucide-react";
 
 import { Card } from "../components/card";
 import Link from "next/link";
-import { Navigation } from "../components/nav";
+import { NavWrapper } from "../components/nav-wrapper";
 import { VolunteerForm } from "./volunteer-form";
 import { getLogtoContext } from "@logto/next/server-actions";
 import { logtoConfig } from "../logto";
@@ -12,7 +12,7 @@ export default async function VolunteerPage() {
 
   return (
     <div className="relative pb-16">
-      <Navigation />
+      <NavWrapper />
       <div className="px-6 pt-20 mx-auto max-w-6xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">

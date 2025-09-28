@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Navigation } from "../components/nav";
+import { NavWrapper } from "../components/nav-wrapper";
 import { Footer } from "../components/footer";
 import { AnimatedCard } from "../components/animated-card";
 import { ScrollAnimation } from "../components/scroll-animation";
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function CodeOfConductPage() {
   return (
     <div className="relative min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black">
-      <Navigation />
+      <NavWrapper />
       <div className="px-6 pt-20 pb-20 mx-auto max-w-4xl lg:px-8 md:pt-24 lg:pt-32">
         <ScrollAnimation animation="fade-up">
           <div className="mb-12">

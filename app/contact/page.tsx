@@ -1,7 +1,6 @@
-"use client";
+import { NavWrapper } from "../components/nav-wrapper";
 import { Facebook, Github, Mail } from "lucide-react";
 import Link from "next/link";
-import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 
 const socials = [
@@ -25,37 +24,95 @@ const socials = [
 	},
 ];
 
-export default function Example() {
+export default function ContactPage() {
 	return (
-		<div className=" bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
-			<Navigation />
-			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-				<div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-3 lg:gap-16">
-					{socials.map((s) => (
-						<Card>
-							<Link
-								href={s.href}
-								target="_blank"
-								className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24  lg:pb-48  md:p-16"
-							>
-								<span
-									className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent"
-									aria-hidden="true"
-								/>
-								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200 drop-shadow-orange">
-									{s.icon}
-								</span>{" "}
-								<div className="z-10 flex flex-col items-center">
-									<span className="lg:text-xl font-medium duration-150 xl:text-3xl text-zinc-200 group-hover:text-white font-display">
-										{s.handle}
-									</span>
-									<span className="mt-4 text-sm text-center duration-1000 text-zinc-400 group-hover:text-zinc-200">
-										{s.label}
-									</span>
-								</div>
-							</Link>
-						</Card>
-					))}
+		<div className="relative pb-16">
+			<NavWrapper />
+			<div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
+				<div className="max-w-2xl mx-auto lg:mx-0">
+					<h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+						Contact
+					</h2>
+					<p className="mt-4 text-zinc-400">
+						We&apos;d love to hear from you. Reach out to us on any of our
+						social media channels.
+					</p>
+				</div>
+				<div className="w-full h-px bg-zinc-800" />
+
+				<div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
+					<Card>
+						<Link
+							href={socials[0].href}
+							target="_blank"
+							className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24 lg:pb-48 md:p-16"
+						>
+							<span
+								className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent"
+								aria-hidden="true"
+							/>
+							<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200 drop-shadow-orange">
+								{socials[0].icon}
+							</span>{" "}
+							<div className="z-10 flex flex-col items-center">
+								<span className="lg:text-xl font-medium duration-150 text-zinc-200 group-hover:text-white font-display">
+									{socials[0].handle}
+								</span>
+								<span className="mt-4 text-sm text-center duration-1000 text-zinc-400 group-hover:text-zinc-200">
+									{socials[0].label}
+								</span>
+							</div>
+						</Link>
+					</Card>
+					<Card>
+						<Link
+							href={socials[1].href}
+							target="_blank"
+							className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24 lg:pb-48 md:p-16"
+						>
+							<span
+								className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent"
+								aria-hidden="true"
+							/>
+							<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200 drop-shadow-orange">
+								{socials[1].icon}
+							</span>{" "}
+							<div className="z-10 flex flex-col items-center">
+								<span className="lg:text-xl font-medium duration-150 text-zinc-200 group-hover:text-white font-display">
+									{socials[1].handle}
+								</span>
+								<span className="mt-4 text-sm text-center duration-1000 text-zinc-400 group-hover:text-zinc-200">
+									{socials[1].label}
+								</span>
+							</div>
+						</Link>
+					</Card>
+				</div>
+
+				<div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0">
+					<Card>
+						<Link
+							href={socials[2].href}
+							target="_blank"
+							className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24 lg:pb-48 md:p-16"
+						>
+							<span
+								className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent"
+								aria-hidden="true"
+							/>
+							<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200 drop-shadow-orange">
+								{socials[2].icon}
+							</span>{" "}
+							<div className="z-10 flex flex-col items-center">
+								<span className="text-xl font-medium duration-150 lg:text-3xl text-zinc-200 group-hover:text-white font-display">
+									{socials[2].handle}
+								</span>
+								<span className="mt-4 text-sm text-center duration-1000 text-zinc-400 group-hover:text-zinc-200">
+									{socials[2].label}
+								</span>
+							</div>
+						</Link>
+					</Card>
 				</div>
 			</div>
 		</div>

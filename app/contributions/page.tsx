@@ -1,6 +1,6 @@
 import { getLogtoContext } from "@logto/next/server-actions";
 import { logtoConfig } from "../logto";
-import { Navigation } from "../components/nav";
+import { NavWrapper } from "../components/nav-wrapper";
 import { ContributionForm } from "./contribution-form";
 import { Card } from "../components/card";
 import Link from "next/link";
@@ -11,7 +11,7 @@ export default async function ContributionsPage() {
 
   return (
     <div className="relative pb-16">
-      <Navigation />
+      <NavWrapper />
       <div className="px-6 pt-20 mx-auto max-w-4xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="max-w-3xl mx-auto">
           <div className="mb-8">

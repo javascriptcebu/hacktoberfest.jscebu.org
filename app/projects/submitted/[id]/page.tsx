@@ -1,6 +1,6 @@
 import { Redis } from "@upstash/redis";
 import { notFound } from "next/navigation";
-import { Navigation } from "../../../components/nav";
+import { NavWrapper } from "../../../components/nav-wrapper";
 import { Footer } from "../../../components/footer";
 import { Card } from "../../../components/card";
 import { GitBranch, ExternalLink, User, Calendar, Mail, ArrowLeft } from "lucide-react";
@@ -70,7 +70,7 @@ export default async function SubmittedProjectPage({
 
   return (
     <div className="relative pb-16">
-      <Navigation />
+      <NavWrapper />
       <div className="px-6 pt-20 mx-auto space-y-8 max-w-4xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
         {/* Back Button */}
         <Link
@@ -95,6 +95,14 @@ export default async function SubmittedProjectPage({
           <p className="text-lg text-zinc-400 leading-relaxed">
             {project.description}
           </p>
+
+          {/* Special Note */}
+          {project.specialNote && (
+            <div className="p-4 bg-lavender/10 rounded-lg border border-lavender/20">
+              <p className="text-sm font-semibold text-lavender mb-2">Special Note from Maintainer:</p>
+              <p className="text-zinc-300">{project.specialNote}</p>
+            </div>
+          )}
 
           {/* Project Meta Info */}
           <div className="flex flex-wrap gap-6 text-sm text-zinc-400">

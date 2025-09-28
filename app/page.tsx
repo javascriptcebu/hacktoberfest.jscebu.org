@@ -3,7 +3,6 @@ import {
   AnimatedText,
   AnimatedTimeline,
 } from "./components/home-sections";
-import { getLogtoContext, signOut } from "@logto/next/server-actions";
 
 import { Card } from "./components/card";
 import { Footer } from "./components/footer";
@@ -17,11 +16,10 @@ import { HomeSponsors } from "./components/home-sponsors";
 import { HomeWhyJoin } from "./components/home-why-join";
 import Image from "next/legacy/image";
 import Link from "next/link";
-import { Navigation } from "./components/nav";
+import { NavWrapper } from "./components/nav-wrapper";
 import Particles from "./components/particles";
 import React from "react";
 import { Timeline } from "./components/timeline";
-import { logtoConfig } from "./logto";
 
 const scheduleEvents = [
   {
@@ -109,18 +107,9 @@ const faqs = [
 ];
 
 export default async function Home() {
-  const { isAuthenticated, claims } = await getLogtoContext(logtoConfig);
-
   return (
     <div className="flex flex-col items-center w-screen min-h-screen overflow-x-hidden bg-gradient-to-tl from-void via-space-haze/20 to-void">
-      <Navigation
-        isHomepage={true}
-        isAuthenticated={isAuthenticated}
-        onSignOut={async () => {
-          "use server";
-          await signOut(logtoConfig);
-        }}
-      />
+      <NavWrapper isHomepage={true} />
 
       <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-lavender/0 via-lavender/50 to-lavender/0" />
 

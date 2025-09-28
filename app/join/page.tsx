@@ -10,12 +10,12 @@ import {
 } from "lucide-react";
 
 import Link from "next/link";
-import { Navigation } from "../components/nav";
+import { NavWrapper } from "../components/nav-wrapper";
 
 export default function JoinPage() {
   return (
     <div className="relative pb-16">
-      <Navigation />
+      <NavWrapper />
       <div className="px-6 pt-20 mx-auto max-w-6xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="max-w-5xl mx-auto">
           {/* Hero Section */}
@@ -37,8 +37,8 @@ export default function JoinPage() {
                 href="/projects"
                 className="inline-flex items-center justify-center px-8 py-4 bg-lavender text-void font-semibold rounded-lg hover:bg-melrose transition-all transform hover:scale-105 shadow-lg"
               >
-                <GitBranch className="w-5 h-5 mr-2" />
-                Start Contributing
+                <Rocket className="w-5 h-5 mr-2" />
+                Check Projects to Contribute
               </Link>
               <Link
                 href="/submit"
@@ -46,6 +46,13 @@ export default function JoinPage() {
               >
                 <Rocket className="w-5 h-5 mr-2" />
                 Submit Project
+              </Link>
+              <Link
+                href="/contributions"
+                className="inline-flex items-center justify-center px-8 py-4 bg-east-bay/50 border-2 border-blue-violet text-melrose font-semibold rounded-lg hover:bg-east-bay/70 transition-all transform hover:scale-105"
+              >
+                <GitBranch className="w-5 h-5 mr-2" />
+                Submit Contribution
               </Link>
             </div>
           </div>

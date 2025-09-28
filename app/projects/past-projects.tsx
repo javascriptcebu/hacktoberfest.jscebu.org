@@ -1,5 +1,5 @@
 import { Card } from "@/app/components/card";
-import { Navigation } from "@/app/components/nav";
+import { NavWrapper } from "@/app/components/nav-wrapper";
 import { Article } from "@/app/projects/article";
 import type { Project } from "contentlayer/generated";
 
@@ -17,7 +17,7 @@ export default async function ProjectsList({
 }: ProjectListProps) {
 	return (
 		<div className="relative pb-16">
-			<Navigation />
+			<NavWrapper />
 			<div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
 				<div className="max-w-4xl mx-auto lg:mx-0">
 					<h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">

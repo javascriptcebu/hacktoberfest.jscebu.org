@@ -23,6 +23,12 @@ export function SubmittedProjectCard({ project }: { project: SubmittedProject })
             {project.description}
           </p>
 
+          {project.specialNote && (
+            <div className="mb-4 p-2 bg-lavender/10 rounded border border-lavender/20">
+              <p className="text-xs text-zinc-300 line-clamp-2">{project.specialNote}</p>
+            </div>
+          )}
+
           <div className="space-y-3">
             <div className="flex items-center gap-2">
               <GitBranch className="w-4 h-4 text-zinc-500" />

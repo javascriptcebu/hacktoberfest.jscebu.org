@@ -15,12 +15,12 @@ import {
 
 import { Card } from "../components/card";
 import Link from "next/link";
-import { Navigation } from "../components/nav";
+import { NavWrapper } from "../components/nav-wrapper";
 
 export default function SponsorPage() {
   return (
     <div className="relative pb-16">
-      <Navigation />
+      <NavWrapper />
       <div className="px-6 pt-20 mx-auto max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="max-w-5xl mx-auto">
           {/* Hero Section */}

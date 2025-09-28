@@ -18,6 +18,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const {
       title,
       description,
+      specialNote,
       repository,
       url,
       image,
@@ -75,6 +76,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       id: crypto.randomUUID(),
       title: title.trim(),
       description: description.trim(),
+      specialNote: specialNote?.trim() || null,
       repository: repository.trim(),
       url: url?.trim() || null,
       image: image?.trim() || null,

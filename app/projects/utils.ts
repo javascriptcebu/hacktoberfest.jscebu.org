@@ -51,6 +51,13 @@ export interface SubmittedProject {
 	submittedAt: string;
 	status: "pending" | "approved" | "rejected";
 	year: number;
+	specialNote?: string;
+	projectType?: string;
+	category?: string;
+	techStack?: string;
+	lookingFor?: string;
+	teamMembers?: Array<{ name: string; email: string }>;
+	lastUpdatedAt?: string;
 }
 
 export async function getApprovedSubmittedProjects(): Promise<SubmittedProject[]> {

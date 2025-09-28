@@ -20,6 +20,7 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    specialNote: "",
     repository: "",
     url: "",
     image: "",
@@ -67,6 +68,7 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
         setFormData({
           title: "",
           description: "",
+          specialNote: "",
           repository: "",
           url: "",
           image: "",
@@ -218,6 +220,24 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
                   : "Describe your project, its purpose, and what kind of contributions you're looking for"
               }
             />
+          </div>
+
+          <div>
+            <label htmlFor="specialNote" className="block text-sm font-medium text-melrose mb-2">
+              Special Note <span className="text-space-haze">(optional)</span>
+            </label>
+            <textarea
+              id="specialNote"
+              name="specialNote"
+              value={formData.specialNote}
+              onChange={handleInputChange}
+              rows={3}
+              className="w-full px-3 py-2 bg-east-bay/30 border border-blue-violet/30 rounded-md text-space-white focus:ring-2 focus:ring-lavender focus:border-transparent"
+              placeholder="Add any special announcements, instructions, or notes for contributors (e.g., 'Looking for first-time contributors!', 'Hackathon deadline is Oct 31', etc.)"
+            />
+            <p className="mt-1 text-xs text-space-haze">
+              This note will be prominently displayed on your project page to catch contributors' attention
+            </p>
           </div>
 
           <div>
