@@ -13,6 +13,7 @@ interface NavigationProps {
   onSignOut?: () => Promise<void>;
   userEmail?: string;
   userName?: string;
+  isAdmin?: boolean;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
@@ -21,6 +22,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   onSignOut,
   userEmail,
   userName,
+  isAdmin = false,
 }) => {
   const ref = useRef<HTMLElement>(null);
   const [isIntersecting, setIntersecting] = useState(true);
@@ -101,6 +103,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                 <AccountDropdown
                   userEmail={userEmail}
                   userName={userName}
+                  isAdmin={isAdmin}
                   onSignOut={onSignOut}
                 />
               </li>
@@ -291,6 +294,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                 <AccountDropdown
                   userEmail={userEmail}
                   userName={userName}
+                  isAdmin={isAdmin}
                   onSignOut={onSignOut}
                 />
               ) : (

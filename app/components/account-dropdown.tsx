@@ -1,16 +1,17 @@
 "use client";
 
-import { User, LogOut, FolderOpen, Settings, ChevronDown } from "lucide-react";
+import { User, LogOut, FolderOpen, Settings, ChevronDown, Shield } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 interface AccountDropdownProps {
   userEmail?: string;
   userName?: string;
+  isAdmin?: boolean;
   onSignOut?: () => Promise<void>;
 }
 
-export default function AccountDropdown({ userEmail, userName, onSignOut }: AccountDropdownProps) {
+export default function AccountDropdown({ userEmail, userName, isAdmin, onSignOut }: AccountDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
@@ -25,6 +26,14 @@ export default function AccountDropdown({ userEmail, userName, onSignOut }: Acco
       icon: Settings
     },
   ];
+
+  // Add admin menu item if user is admin
+  const adminMenuItem = isAdmin ? {
+    label: "Admin Dashboard",
+    href: "/admin",
+    icon: Shield,
+    className: "text-lavender hover:text-melrose"
+  } : null;
 
   const handleSignOut = async () => {
     setIsOpen(false);
@@ -58,6 +67,23 @@ export default function AccountDropdown({ userEmail, userName, onSignOut }: Acco
                 <p className="text-xs text-space-haze">Signed in as</p>
                 <p className="text-sm text-melrose font-medium truncate">{userEmail}</p>
               </div>
+            )}
+
+            {/* Admin menu item if applicable */}
+            {adminMenuItem && (
+              <>
+                <div className="py-1">
+                  <Link
+                    href={adminMenuItem.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center gap-2 py-2 px-4 transition-colors ${adminMenuItem.className} hover:bg-lavender/10`}
+                  >
+                    <Shield className="w-4 h-4" />
+                    {adminMenuItem.label}
+                  </Link>
+                </div>
+                <div className="border-t border-blue-violet/20"></div>
+              </>
             )}
 
             {/* Menu items */}
