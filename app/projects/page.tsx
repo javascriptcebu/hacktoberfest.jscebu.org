@@ -1,4 +1,4 @@
-import { ExternalLink, Eye, GitBranch, GithubIcon } from "lucide-react";
+import { Eye } from "lucide-react";
 import {
   getApprovedSubmittedProjects,
   getProjectViews,
@@ -13,6 +13,7 @@ import { Metadata } from "next";
 import { Navigation } from "../components/nav";
 import React from "react";
 import { allProjects } from "contentlayer/generated";
+import { SubmittedProjectCard } from "./submitted-project-card";
 
 export const metadata: Metadata = {
   title: "Open Source Projects",
@@ -166,73 +167,7 @@ export default async function ProjectsPage() {
 
             <div className="grid grid-cols-1 gap-6 mx-auto lg:grid-cols-2 xl:grid-cols-3">
               {submittedProjects.map((project) => (
-                <Card key={project.id}>
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <h3 className="text-xl font-bold text-zinc-100 group-hover:text-white">
-                        {project.title}
-                      </h3>
-                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-green-400 bg-green-900/50 border border-green-800 rounded-full">
-                        Open for PRs
-                      </span>
-                    </div>
-
-                    <p className="text-sm text-zinc-400 mb-4 line-clamp-3">
-                      {project.description}
-                    </p>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <GitBranch className="w-4 h-4 text-zinc-500" />
-                        <a
-                          href={project.repository}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm text-blue-400 hover:text-blue-300 truncate"
-                        >
-                          {project.repository.replace(
-                            "https://github.com/",
-                            ""
-                          )}
-                        </a>
-                      </div>
-
-                      {project.url && (
-                        <div className="flex items-center gap-2">
-                          <ExternalLink className="w-4 h-4 text-zinc-500" />
-                          <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-blue-400 hover:text-blue-300 truncate"
-                          >
-                            Live Demo
-                          </a>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="mt-4 pt-4 border-t border-zinc-800">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-zinc-500">
-                          Submitted{" "}
-                          {new Date(project.submittedAt).toLocaleDateString()}
-                        </span>
-                        <div className="flex gap-2">
-                          <a
-                            href={project.repository}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium text-zinc-100 bg-zinc-800 hover:bg-zinc-700 rounded-md transition-colors"
-                          >
-                            <GithubIcon className="w-3 h-3" />
-                            View Repo
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
+                <SubmittedProjectCard key={project.id} project={project} />
               ))}
             </div>
 
