@@ -38,7 +38,7 @@ export default function JoinPage() {
                 className="inline-flex items-center justify-center px-8 py-4 bg-lavender text-void font-semibold rounded-lg hover:bg-melrose transition-all transform hover:scale-105 shadow-lg"
               >
                 <Rocket className="w-5 h-5 mr-2" />
-                Check Projects to Contribute
+                Browse Projects to Contribute
               </Link>
               <Link
                 href="/submit"

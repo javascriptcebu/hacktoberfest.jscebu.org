@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { Code, Info, Plus, Users, X } from "lucide-react";
+
 import { Card } from "../components/card";
-import { Plus, X, Users, Code, Info } from "lucide-react";
+import { useState } from "react";
 
 interface SubmissionFormProps {
   userEmail?: string;
@@ -16,7 +17,9 @@ interface TeamMember {
 }
 
 export function SubmissionForm({ userEmail }: SubmissionFormProps) {
-  const [projectType, setProjectType] = useState<"hackathon" | "existing">("hackathon");
+  const [projectType, setProjectType] = useState<"hackathon" | "existing">(
+    "existing"
+  );
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -31,7 +34,7 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
   });
 
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([
-    { name: "", email: userEmail || "", github: "", role: "Team Lead" }
+    { name: "", email: userEmail || "", github: "", role: "Team Lead" },
   ]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,7 +51,8 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
     const submissionData = {
       ...formData,
       projectType,
-      teamMembers: projectType === "hackathon" ? teamMembers.filter(m => m.name) : [],
+      teamMembers:
+        projectType === "hackathon" ? teamMembers.filter((m) => m.name) : [],
     };
 
     try {
@@ -63,7 +67,8 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
       if (response.ok) {
         setSubmitStatus({
           type: "success",
-          message: "Project submitted successfully! We'll review it and get back to you soon.",
+          message:
+            "Project submitted successfully! We'll review it and get back to you soon.",
         });
         setFormData({
           title: "",
@@ -77,12 +82,15 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
           techStack: "",
           lookingFor: "",
         });
-        setTeamMembers([{ name: "", email: userEmail || "", github: "", role: "Team Lead" }]);
+        setTeamMembers([
+          { name: "", email: userEmail || "", github: "", role: "Team Lead" },
+        ]);
       } else {
         const errorData = await response.json();
         setSubmitStatus({
           type: "error",
-          message: errorData.error || "Failed to submit project. Please try again.",
+          message:
+            errorData.error || "Failed to submit project. Please try again.",
         });
       }
     } catch (error) {
@@ -95,12 +103,20 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleTeamMemberChange = (index: number, field: keyof TeamMember, value: string) => {
+  const handleTeamMemberChange = (
+    index: number,
+    field: keyof TeamMember,
+    value: string
+  ) => {
     const updatedMembers = [...teamMembers];
     updatedMembers[index] = { ...updatedMembers[index], [field]: value };
     setTeamMembers(updatedMembers);
@@ -108,7 +124,10 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
 
   const addTeamMember = () => {
     if (teamMembers.length < 4) {
-      setTeamMembers([...teamMembers, { name: "", email: "", github: "", role: "" }]);
+      setTeamMembers([
+        ...teamMembers,
+        { name: "", email: "", github: "", role: "" },
+      ]);
     }
   };
 
@@ -133,7 +152,9 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
               <p className="font-medium">{submitStatus.message}</p>
               {submitStatus.type === "success" && (
                 <p className="text-sm mt-2 opacity-90">
-                  Note: Your project is now pending admin review. Once approved, it will be displayed on the projects page for others to discover and contribute to.
+                  Note: Your project is now pending admin review. Once approved,
+                  it will be displayed on the projects page for others to
+                  discover and contribute to.
                 </p>
               )}
             </div>
@@ -187,7 +208,10 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
         {/* Basic Project Information */}
         <div className="space-y-6">
           <div>
-            <label htmlFor="title" className="block text-sm font-medium text-melrose mb-2">
+            <label
+              htmlFor="title"
+              className="block text-sm font-medium text-melrose mb-2"
+            >
               Project Title *
             </label>
             <input
@@ -203,7 +227,10 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
           </div>
 
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-melrose mb-2">
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-melrose mb-2"
+            >
               Description *
             </label>
             <textarea
@@ -223,7 +250,10 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
           </div>
 
           <div>
-            <label htmlFor="specialNote" className="block text-sm font-medium text-melrose mb-2">
+            <label
+              htmlFor="specialNote"
+              className="block text-sm font-medium text-melrose mb-2"
+            >
               Special Note <span className="text-space-haze">(optional)</span>
             </label>
             <textarea
@@ -236,12 +266,16 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
               placeholder="Add any special announcements, instructions, or notes for contributors (e.g., 'Looking for first-time contributors!', 'Hackathon deadline is Oct 31', etc.)"
             />
             <p className="mt-1 text-xs text-space-haze">
-              This note will be prominently displayed on your project page to catch contributors' attention
+              This note will be prominently displayed on your project page to
+              catch contributors' attention
             </p>
           </div>
 
           <div>
-            <label htmlFor="category" className="block text-sm font-medium text-melrose mb-2">
+            <label
+              htmlFor="category"
+              className="block text-sm font-medium text-melrose mb-2"
+            >
               Category *
             </label>
             <select
@@ -266,7 +300,10 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
           </div>
 
           <div>
-            <label htmlFor="techStack" className="block text-sm font-medium text-melrose mb-2">
+            <label
+              htmlFor="techStack"
+              className="block text-sm font-medium text-melrose mb-2"
+            >
               Tech Stack *
             </label>
             <input
@@ -285,7 +322,10 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
           </div>
 
           <div>
-            <label htmlFor="repository" className="block text-sm font-medium text-melrose mb-2">
+            <label
+              htmlFor="repository"
+              className="block text-sm font-medium text-melrose mb-2"
+            >
               Repository URL *
             </label>
             <input
@@ -301,7 +341,10 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
           </div>
 
           <div>
-            <label htmlFor="url" className="block text-sm font-medium text-melrose mb-2">
+            <label
+              htmlFor="url"
+              className="block text-sm font-medium text-melrose mb-2"
+            >
               Live URL <span className="text-space-haze">(optional)</span>
             </label>
             <input
@@ -316,7 +359,10 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
           </div>
 
           <div>
-            <label htmlFor="image" className="block text-sm font-medium text-melrose mb-2">
+            <label
+              htmlFor="image"
+              className="block text-sm font-medium text-melrose mb-2"
+            >
               Image URL <span className="text-space-haze">(optional)</span>
             </label>
             <input
@@ -336,7 +382,10 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
           {/* Existing Project Specific Field */}
           {projectType === "existing" && (
             <div>
-              <label htmlFor="lookingFor" className="block text-sm font-medium text-melrose mb-2">
+              <label
+                htmlFor="lookingFor"
+                className="block text-sm font-medium text-melrose mb-2"
+              >
                 Looking For *
               </label>
               <textarea
@@ -350,7 +399,8 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
                 placeholder="Describe what kind of contributions you need: bug fixes, new features, documentation, UI/UX improvements, etc."
               />
               <p className="mt-1 text-xs text-space-haze">
-                Be specific about the help you need to attract the right contributors
+                Be specific about the help you need to attract the right
+                contributors
               </p>
             </div>
           )}
@@ -379,14 +429,17 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
               <div className="flex items-start gap-2">
                 <Info className="w-4 h-4 text-lavender mt-0.5 flex-shrink-0" />
                 <p className="text-xs text-space-dust">
-                  Add your team members for the hackathon. Teams can have 1-4 members total.
-                  The first member is the team lead.
+                  Add your team members for the hackathon. Teams can have 1-4
+                  members total. The first member is the team lead.
                 </p>
               </div>
             </div>
 
             {teamMembers.map((member, index) => (
-              <div key={index} className="p-4 bg-east-bay/20 border border-blue-violet/30 rounded-lg space-y-4">
+              <div
+                key={index}
+                className="p-4 bg-east-bay/20 border border-blue-violet/30 rounded-lg space-y-4"
+              >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-semibold text-melrose">
                     {index === 0 ? "Team Lead" : `Team Member ${index}`}
@@ -410,7 +463,9 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
                     <input
                       type="text"
                       value={member.name}
-                      onChange={(e) => handleTeamMemberChange(index, "name", e.target.value)}
+                      onChange={(e) =>
+                        handleTeamMemberChange(index, "name", e.target.value)
+                      }
                       required={index === 0}
                       className="w-full px-3 py-2 bg-east-bay/30 border border-blue-violet/30 rounded-md text-space-white text-sm focus:ring-2 focus:ring-lavender focus:border-transparent"
                       placeholder="Full name"
@@ -424,7 +479,9 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
                     <input
                       type="email"
                       value={member.email}
-                      onChange={(e) => handleTeamMemberChange(index, "email", e.target.value)}
+                      onChange={(e) =>
+                        handleTeamMemberChange(index, "email", e.target.value)
+                      }
                       required={index === 0}
                       className="w-full px-3 py-2 bg-east-bay/30 border border-blue-violet/30 rounded-md text-space-white text-sm focus:ring-2 focus:ring-lavender focus:border-transparent"
                       placeholder="email@example.com"
@@ -438,7 +495,9 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
                     <input
                       type="text"
                       value={member.github}
-                      onChange={(e) => handleTeamMemberChange(index, "github", e.target.value)}
+                      onChange={(e) =>
+                        handleTeamMemberChange(index, "github", e.target.value)
+                      }
                       className="w-full px-3 py-2 bg-east-bay/30 border border-blue-violet/30 rounded-md text-space-white text-sm focus:ring-2 focus:ring-lavender focus:border-transparent"
                       placeholder="username"
                     />
@@ -451,11 +510,17 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
                     <input
                       type="text"
                       value={member.role}
-                      onChange={(e) => handleTeamMemberChange(index, "role", e.target.value)}
+                      onChange={(e) =>
+                        handleTeamMemberChange(index, "role", e.target.value)
+                      }
                       required={index > 0 && member.name !== ""}
                       readOnly={index === 0}
                       className="w-full px-3 py-2 bg-east-bay/30 border border-blue-violet/30 rounded-md text-space-white text-sm focus:ring-2 focus:ring-lavender focus:border-transparent"
-                      placeholder={index === 0 ? "Team Lead" : "e.g., Frontend Dev, Designer"}
+                      placeholder={
+                        index === 0
+                          ? "Team Lead"
+                          : "e.g., Frontend Dev, Designer"
+                      }
                     />
                   </div>
                 </div>
@@ -466,7 +531,10 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
 
         {/* Contact Information */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-melrose mb-2">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-melrose mb-2"
+          >
             Primary Contact Email *
           </label>
           <input
@@ -498,9 +566,7 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
         </div>
 
         <div className="text-sm text-space-dust/80">
-          <p>
-            By submitting your project, you agree that:
-          </p>
+          <p>By submitting your project, you agree that:</p>
           <ul className="list-disc list-inside mt-2 space-y-1">
             <li>Your project is or will be open source</li>
             <li>You have the rights to submit this project</li>
