@@ -1,5 +1,6 @@
-import { Redis } from "@upstash/redis";
 import { NextRequest, NextResponse } from "next/server";
+
+import { Redis } from "@upstash/redis";
 import { getLogtoContext } from "@logto/next/server-actions";
 import { logtoConfig } from "../../logto";
 
@@ -20,17 +21,25 @@ interface Contribution {
   year: number;
 }
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest): Promise<NextResponse> {
   try {
     // Check authentication
     const { isAuthenticated, claims } = await getLogtoContext(logtoConfig);
     if (!isAuthenticated) {
-      return NextResponse.json({ error: "Authentication required" }, { status: 401 });
+      return NextResponse.json(
+        { error: "Authentication required" },
+        { status: 401 }
+      );
     }
 
     const userEmail = claims?.email;
     if (!userEmail) {
-      return NextResponse.json({ error: "User email not found" }, { status: 400 });
+      return NextResponse.json(
+        { error: "User email not found" },
+        { status: 400 }
+      );
     }
 
     // Get all contribution IDs from different lists
@@ -53,14 +62,17 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
         try {
           const contributionData = await redis.get(`contribution:${id}`);
           if (contributionData) {
-            const parsed = typeof contributionData === 'string'
-              ? JSON.parse(contributionData)
-              : contributionData;
+            const parsed =
+              typeof contributionData === "string"
+                ? JSON.parse(contributionData)
+                : contributionData;
 
             // Check if this contribution belongs to the user
-            if (parsed.email === userEmail ||
-                parsed.submittedBy === userEmail ||
-                parsed.submittedBy === claims?.name) {
+            if (
+              parsed.email === userEmail ||
+              parsed.submittedBy === userEmail ||
+              parsed.submittedBy === claims?.name
+            ) {
               return parsed as Contribution;
             }
           }
@@ -74,10 +86,12 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     // Filter out nulls and sort by submission date (newest first)
     const filteredContributions = userContributions
       .filter((c): c is Contribution => c !== null)
-      .sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime());
+      .sort(
+        (a, b) =>
+          new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime()
+      );
 
     return NextResponse.json({ contributions: filteredContributions });
-
   } catch (error) {
     console.error("Error fetching user contributions:", error);
     return NextResponse.json(

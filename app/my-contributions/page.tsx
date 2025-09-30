@@ -1,6 +1,7 @@
+import { getLogtoContext, signOut } from "@logto/next/server-actions";
+
 import { Metadata } from "next";
 import { MyContributionsClient } from "./client";
-import { getLogtoContext, signOut } from "@logto/next/server-actions";
 import { logtoConfig } from "../logto";
 import { redirect } from "next/navigation";
 

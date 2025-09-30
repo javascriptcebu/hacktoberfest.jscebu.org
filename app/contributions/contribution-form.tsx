@@ -1,8 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import {
+  AlertCircle,
+  CheckCircle,
+  ExternalLink,
+  GitPullRequest,
+  Loader2,
+} from "lucide-react";
+
 import { Card } from "../components/card";
-import { GitPullRequest, Loader2, CheckCircle, AlertCircle, ExternalLink } from "lucide-react";
+import { useState } from "react";
 
 interface ContributionFormProps {
   userEmail?: string;
@@ -43,7 +50,8 @@ export function ContributionForm({ userEmail }: ContributionFormProps) {
       if (response.ok) {
         setSubmitStatus({
           type: "success",
-          message: "Contribution submitted successfully! We'll review and track your PR.",
+          message:
+            "Contribution submitted successfully! We'll review and track your PR.",
         });
         setFormData({
           prUrl: "",
@@ -70,11 +78,16 @@ export function ContributionForm({ userEmail }: ContributionFormProps) {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value, type } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+      [name]:
+        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -85,15 +98,19 @@ export function ContributionForm({ userEmail }: ContributionFormProps) {
           <div className="w-10 h-10 bg-lavender/20 rounded-full flex items-center justify-center">
             <GitPullRequest className="w-5 h-5 text-lavender" />
           </div>
-          <h2 className="text-xl font-bold text-melrose">Submit Your Pull Request</h2>
+          <h2 className="text-xl font-bold text-melrose">
+            Submit Your Pull Request
+          </h2>
         </div>
 
         {submitStatus.type && (
-          <div className={`mb-6 p-4 rounded-lg border ${
-            submitStatus.type === "success"
-              ? "bg-green-900/20 border-green-800/50 text-green-400"
-              : "bg-red-900/20 border-red-800/50 text-red-400"
-          }`}>
+          <div
+            className={`mb-6 p-4 rounded-lg border ${
+              submitStatus.type === "success"
+                ? "bg-green-900/20 border-green-800/50 text-green-400"
+                : "bg-red-900/20 border-red-800/50 text-red-400"
+            }`}
+          >
             <div className="flex items-center gap-2">
               {submitStatus.type === "success" ? (
                 <CheckCircle className="w-5 h-5" />
@@ -107,7 +124,10 @@ export function ContributionForm({ userEmail }: ContributionFormProps) {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="prUrl" className="block text-sm font-medium text-space-dust mb-2">
+            <label
+              htmlFor="prUrl"
+              className="block text-sm font-medium text-space-dust mb-2"
+            >
               Pull Request URL <span className="text-red-400">*</span>
             </label>
             <input
@@ -127,7 +147,10 @@ export function ContributionForm({ userEmail }: ContributionFormProps) {
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="projectName" className="block text-sm font-medium text-space-dust mb-2">
+              <label
+                htmlFor="projectName"
+                className="block text-sm font-medium text-space-dust mb-2"
+              >
                 Project Name <span className="text-red-400">*</span>
               </label>
               <input
@@ -143,7 +166,10 @@ export function ContributionForm({ userEmail }: ContributionFormProps) {
             </div>
 
             <div>
-              <label htmlFor="projectUrl" className="block text-sm font-medium text-space-dust mb-2">
+              <label
+                htmlFor="projectUrl"
+                className="block text-sm font-medium text-space-dust mb-2"
+              >
                 Project Repository URL <span className="text-red-400">*</span>
               </label>
               <input
@@ -160,7 +186,10 @@ export function ContributionForm({ userEmail }: ContributionFormProps) {
           </div>
 
           <div>
-            <label htmlFor="contributionType" className="block text-sm font-medium text-space-dust mb-2">
+            <label
+              htmlFor="contributionType"
+              className="block text-sm font-medium text-space-dust mb-2"
+            >
               Contribution Type <span className="text-red-400">*</span>
             </label>
             <select
@@ -182,7 +211,10 @@ export function ContributionForm({ userEmail }: ContributionFormProps) {
           </div>
 
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-space-dust mb-2">
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-space-dust mb-2"
+            >
               Brief Description <span className="text-red-400">*</span>
             </label>
             <textarea
@@ -207,15 +239,21 @@ export function ContributionForm({ userEmail }: ContributionFormProps) {
               className="w-5 h-5 rounded border-blue-violet/30 bg-east-bay/50 text-lavender focus:ring-lavender/50"
             />
             <label htmlFor="isLocalProject" className="flex-1 cursor-pointer">
-              <span className="font-semibold text-melrose">This is a Cebu-based project</span>
+              <span className="font-semibold text-melrose">
+                This is a Cebu-based project
+              </span>
               <p className="text-xs text-space-dust mt-1">
-                Check this if the project is created by Cebu developers or companies (2x points!)
+                Check this if the project is created by Cebu developers or
+                companies (2x points!)
               </p>
             </label>
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-space-dust mb-2">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-space-dust mb-2"
+            >
               Email <span className="text-red-400">*</span>
             </label>
             <input
@@ -256,8 +294,9 @@ export function ContributionForm({ userEmail }: ContributionFormProps) {
 
         <div className="mt-6 p-4 bg-yellow-900/20 border border-yellow-800/30 rounded-lg">
           <p className="text-sm text-yellow-400">
-            <span className="font-semibold">💡 Tips:</span> You can submit multiple PRs! Each valid contribution
-            counts towards your total score. Focus on quality over quantity for better chances of winning.
+            <span className="font-semibold">💡 Tips:</span> You can submit
+            multiple PRs! Each valid contribution counts towards your total
+            score. Focus on quality over quantity for better chances of winning.
           </p>
         </div>
       </div>

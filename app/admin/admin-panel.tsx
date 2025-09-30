@@ -1,8 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import {
+  Calendar,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+  Clock,
+  Code,
+  FileText,
+  GitBranch,
+  Linkedin,
+  Mail,
+  Phone,
+  User,
+  Users,
+  XCircle,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+
 import { Card } from "../components/card";
-import { Users, Code, Calendar, Mail, Phone, GitBranch, Linkedin, CheckCircle, XCircle, Clock, ChevronDown, ChevronUp, User, FileText } from "lucide-react";
 
 interface Submission {
   id: string;
@@ -44,9 +60,15 @@ export function AdminPanel() {
   const [volunteers, setVolunteers] = useState<Volunteer[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [projectFilter, setProjectFilter] = useState<"all" | "pending" | "approved" | "rejected">("pending");
-  const [volunteerFilter, setVolunteerFilter] = useState<"all" | "pending" | "approved" | "rejected">("pending");
-  const [expandedVolunteers, setExpandedVolunteers] = useState<Set<string>>(new Set());
+  const [projectFilter, setProjectFilter] = useState<
+    "all" | "pending" | "approved" | "rejected"
+  >("pending");
+  const [volunteerFilter, setVolunteerFilter] = useState<
+    "all" | "pending" | "approved" | "rejected"
+  >("pending");
+  const [expandedVolunteers, setExpandedVolunteers] = useState<Set<string>>(
+    new Set()
+  );
 
   const fetchSubmissions = async () => {
     try {
@@ -57,10 +79,22 @@ export function AdminPanel() {
         console.log("Fetched submissions:", data.submissions);
         setSubmissions(data.submissions || []);
       } else {
-        console.error("Failed to fetch submissions:", response.status, response.statusText);
+        console.error(
+          "Failed to fetch submissions:",
+          response.status,
+          response.statusText
+        );
         throw new Error("Failed to fetch submissions");
       }
     } catch (err) {
+      if (
+        err instanceof Error &&
+        "digest" in err &&
+        err.digest === "DYNAMIC_SERVER_USAGE"
+      ) {
+        throw error;
+      }
+
       console.error("Error fetching submissions:", err);
       setError("Failed to load submissions");
     } finally {
@@ -79,6 +113,14 @@ export function AdminPanel() {
         throw new Error("Failed to fetch volunteers");
       }
     } catch (err) {
+      if (
+        err instanceof Error &&
+        "digest" in err &&
+        err.digest === "DYNAMIC_SERVER_USAGE"
+      ) {
+        throw error;
+      }
+
       setError("Failed to load volunteers");
     } finally {
       setLoading(false);
@@ -93,7 +135,10 @@ export function AdminPanel() {
     }
   }, [activeTab]);
 
-  const updateSubmissionStatus = async (submissionId: string, status: "approved" | "rejected") => {
+  const updateSubmissionStatus = async (
+    submissionId: string,
+    status: "approved" | "rejected"
+  ) => {
     try {
       const response = await fetch("/api/admin/submissions", {
         method: "PATCH",
@@ -111,15 +156,28 @@ export function AdminPanel() {
       } else {
         const errorData = await response.json();
         console.error("Failed to update submission:", errorData);
-        alert(`Failed to update submission: ${errorData.error || 'Unknown error'}`);
+        alert(
+          `Failed to update submission: ${errorData.error || "Unknown error"}`
+        );
       }
     } catch (err) {
+      if (
+        err instanceof Error &&
+        "digest" in err &&
+        err.digest === "DYNAMIC_SERVER_USAGE"
+      ) {
+        throw error;
+      }
+
       console.error("Error updating submission status:", err);
       alert("Failed to update submission status - check console for details");
     }
   };
 
-  const updateVolunteerStatus = async (volunteerId: string, status: "approved" | "rejected") => {
+  const updateVolunteerStatus = async (
+    volunteerId: string,
+    status: "approved" | "rejected"
+  ) => {
     try {
       const response = await fetch("/api/admin/volunteers", {
         method: "PATCH",
@@ -135,6 +193,14 @@ export function AdminPanel() {
         throw new Error("Failed to update volunteer");
       }
     } catch (err) {
+      if (
+        err instanceof Error &&
+        "digest" in err &&
+        err.digest === "DYNAMIC_SERVER_USAGE"
+      ) {
+        throw error;
+      }
+
       alert("Failed to update volunteer status");
     }
   };
@@ -149,57 +215,61 @@ export function AdminPanel() {
     setExpandedVolunteers(newExpanded);
   };
 
-  const filteredSubmissions = submissions.filter(s =>
+  const filteredSubmissions = submissions.filter((s) =>
     projectFilter === "all" ? true : s.status === projectFilter
   );
 
-  const filteredVolunteers = volunteers.filter(v =>
+  const filteredVolunteers = volunteers.filter((v) =>
     volunteerFilter === "all" ? true : v.status === volunteerFilter
   );
 
   const getStatusBadge = (status: string) => {
-    switch(status) {
+    switch (status) {
       case "approved":
-        return <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-green-400 bg-green-900/50 border border-green-800 rounded-full">
-          <CheckCircle className="w-3 h-3" />
-          Approved
-        </span>;
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-green-400 bg-green-900/50 border border-green-800 rounded-full">
+            <CheckCircle className="w-3 h-3" />
+            Approved
+          </span>
+        );
       case "rejected":
-        return <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-red-400 bg-red-900/50 border border-red-800 rounded-full">
-          <XCircle className="w-3 h-3" />
-          Rejected
-        </span>;
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-red-400 bg-red-900/50 border border-red-800 rounded-full">
+            <XCircle className="w-3 h-3" />
+            Rejected
+          </span>
+        );
       default:
-        return <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-amber-400 bg-amber-900/50 border border-amber-800 rounded-full">
-          <Clock className="w-3 h-3" />
-          Pending
-        </span>;
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-amber-400 bg-amber-900/50 border border-amber-800 rounded-full">
+            <Clock className="w-3 h-3" />
+            Pending
+          </span>
+        );
     }
   };
 
   const roleDisplayNames: Record<string, string> = {
     "speaker-coordinator": "Speaker Coordinator",
-    "emcee": "Emcee/Host",
+    emcee: "Emcee/Host",
     "opensource-coordinator": "Open Source Coordinator",
     "judging-committee": "Judging Committee",
     "raffle-committee": "Raffle Committee",
-    "marketing": "Marketing Team",
-    "creatives": "Creatives/Design Team",
-    "photographer": "Photographer",
-    "socmed": "Social Media Team",
+    marketing: "Marketing Team",
+    creatives: "Creatives/Design Team",
+    photographer: "Photographer",
+    socmed: "Social Media Team",
     "tech-team": "Tech Team (Audio/Video)",
-    "livestreaming": "Livestreaming Team",
-    "logistics": "Logistics Team",
-    "registration": "Registration Team",
-    "any": "Any Role (Flexible)"
+    livestreaming: "Livestreaming Team",
+    logistics: "Logistics Team",
+    registration: "Registration Team",
+    any: "Any Role (Flexible)",
   };
 
   if (loading) {
     return (
       <Card>
-        <div className="p-8 text-center text-space-dust">
-          Loading...
-        </div>
+        <div className="p-8 text-center text-space-dust">Loading...</div>
       </Card>
     );
   }
@@ -207,9 +277,7 @@ export function AdminPanel() {
   if (error) {
     return (
       <Card>
-        <div className="p-8 text-center text-red-400">
-          {error}
-        </div>
+        <div className="p-8 text-center text-red-400">{error}</div>
       </Card>
     );
   }
@@ -247,19 +315,27 @@ export function AdminPanel() {
         <>
           {/* Filter Tabs */}
           <div className="flex gap-2">
-            {(["all", "pending", "approved", "rejected"] as const).map((status) => (
-              <button
-                key={status}
-                onClick={() => setProjectFilter(status)}
-                className={`px-4 py-2 rounded-md font-medium capitalize transition-colors ${
-                  projectFilter === status
-                    ? "bg-melrose text-void"
-                    : "bg-east-bay/50 text-space-dust hover:bg-east-bay/70"
-                }`}
-              >
-                {status} ({submissions.filter(s => status === "all" || s.status === status).length})
-              </button>
-            ))}
+            {(["all", "pending", "approved", "rejected"] as const).map(
+              (status) => (
+                <button
+                  key={status}
+                  onClick={() => setProjectFilter(status)}
+                  className={`px-4 py-2 rounded-md font-medium capitalize transition-colors ${
+                    projectFilter === status
+                      ? "bg-melrose text-void"
+                      : "bg-east-bay/50 text-space-dust hover:bg-east-bay/70"
+                  }`}
+                >
+                  {status} (
+                  {
+                    submissions.filter(
+                      (s) => status === "all" || s.status === status
+                    ).length
+                  }
+                  )
+                </button>
+              )
+            )}
           </div>
 
           {/* Submissions List */}
@@ -267,7 +343,8 @@ export function AdminPanel() {
             {filteredSubmissions.length === 0 ? (
               <Card>
                 <div className="p-8 text-center text-space-dust">
-                  No {projectFilter === "all" ? "" : projectFilter} submissions found.
+                  No {projectFilter === "all" ? "" : projectFilter} submissions
+                  found.
                 </div>
               </Card>
             ) : (
@@ -287,7 +364,9 @@ export function AdminPanel() {
                             <div className="flex items-start gap-2">
                               <GitBranch className="w-4 h-4 text-lavender mt-0.5" />
                               <div>
-                                <span className="text-space-haze">Repository: </span>
+                                <span className="text-space-haze">
+                                  Repository:{" "}
+                                </span>
                                 <a
                                   href={submission.repository}
                                   target="_blank"
@@ -317,15 +396,21 @@ export function AdminPanel() {
                               <Mail className="w-4 h-4 text-lavender mt-0.5" />
                               <div>
                                 <span className="text-space-haze">Email: </span>
-                                <span className="text-space-white">{submission.email}</span>
+                                <span className="text-space-white">
+                                  {submission.email}
+                                </span>
                               </div>
                             </div>
                             <div className="flex items-start gap-2">
                               <Calendar className="w-4 h-4 text-lavender mt-0.5" />
                               <div>
-                                <span className="text-space-haze">Submitted: </span>
+                                <span className="text-space-haze">
+                                  Submitted:{" "}
+                                </span>
                                 <span className="text-space-white">
-                                  {new Date(submission.submittedAt).toLocaleDateString()}
+                                  {new Date(
+                                    submission.submittedAt
+                                  ).toLocaleDateString()}
                                 </span>
                               </div>
                             </div>
@@ -340,14 +425,18 @@ export function AdminPanel() {
                     {submission.status === "pending" && (
                       <div className="flex gap-2 pt-4 border-t border-east-bay/50">
                         <button
-                          onClick={() => updateSubmissionStatus(submission.id, "approved")}
+                          onClick={() =>
+                            updateSubmissionStatus(submission.id, "approved")
+                          }
                           className="px-4 py-2 bg-green-600/20 text-green-400 border border-green-600/50 rounded-md hover:bg-green-600/30 transition-colors flex items-center gap-2"
                         >
                           <CheckCircle className="w-4 h-4" />
                           Approve
                         </button>
                         <button
-                          onClick={() => updateSubmissionStatus(submission.id, "rejected")}
+                          onClick={() =>
+                            updateSubmissionStatus(submission.id, "rejected")
+                          }
                           className="px-4 py-2 bg-red-600/20 text-red-400 border border-red-600/50 rounded-md hover:bg-red-600/30 transition-colors flex items-center gap-2"
                         >
                           <XCircle className="w-4 h-4" />
@@ -368,19 +457,27 @@ export function AdminPanel() {
         <>
           {/* Filter Tabs */}
           <div className="flex gap-2">
-            {(["all", "pending", "approved", "rejected"] as const).map((status) => (
-              <button
-                key={status}
-                onClick={() => setVolunteerFilter(status)}
-                className={`px-4 py-2 rounded-md font-medium capitalize transition-colors ${
-                  volunteerFilter === status
-                    ? "bg-melrose text-void"
-                    : "bg-east-bay/50 text-space-dust hover:bg-east-bay/70"
-                }`}
-              >
-                {status} ({volunteers.filter(v => status === "all" || v.status === status).length})
-              </button>
-            ))}
+            {(["all", "pending", "approved", "rejected"] as const).map(
+              (status) => (
+                <button
+                  key={status}
+                  onClick={() => setVolunteerFilter(status)}
+                  className={`px-4 py-2 rounded-md font-medium capitalize transition-colors ${
+                    volunteerFilter === status
+                      ? "bg-melrose text-void"
+                      : "bg-east-bay/50 text-space-dust hover:bg-east-bay/70"
+                  }`}
+                >
+                  {status} (
+                  {
+                    volunteers.filter(
+                      (v) => status === "all" || v.status === status
+                    ).length
+                  }
+                  )
+                </button>
+              )
+            )}
           </div>
 
           {/* Volunteers List */}
@@ -388,7 +485,8 @@ export function AdminPanel() {
             {filteredVolunteers.length === 0 ? (
               <Card>
                 <div className="p-8 text-center text-space-dust">
-                  No {volunteerFilter === "all" ? "" : volunteerFilter} volunteer applications found.
+                  No {volunteerFilter === "all" ? "" : volunteerFilter}{" "}
+                  volunteer applications found.
                 </div>
               </Card>
             ) : (
@@ -416,28 +514,37 @@ export function AdminPanel() {
                               <Mail className="w-4 h-4 text-melrose mt-0.5" />
                               <div>
                                 <span className="text-space-haze">Email: </span>
-                                <span className="text-space-white">{volunteer.email}</span>
+                                <span className="text-space-white">
+                                  {volunteer.email}
+                                </span>
                               </div>
                             </div>
                             <div className="flex items-start gap-2">
                               <Phone className="w-4 h-4 text-melrose mt-0.5" />
                               <div>
                                 <span className="text-space-haze">Phone: </span>
-                                <span className="text-space-white">{volunteer.phone}</span>
+                                <span className="text-space-white">
+                                  {volunteer.phone}
+                                </span>
                               </div>
                             </div>
                             {volunteer.github && (
                               <div className="flex items-start gap-2">
                                 <GitBranch className="w-4 h-4 text-melrose mt-0.5" />
                                 <div>
-                                  <span className="text-space-haze">GitHub: </span>
+                                  <span className="text-space-haze">
+                                    GitHub:{" "}
+                                  </span>
                                   <a
                                     href={volunteer.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-lavender hover:text-melrose underline"
                                   >
-                                    {volunteer.github.replace('https://github.com/', '')}
+                                    {volunteer.github.replace(
+                                      "https://github.com/",
+                                      ""
+                                    )}
                                   </a>
                                 </div>
                               </div>
@@ -447,15 +554,21 @@ export function AdminPanel() {
                             <div className="flex items-start gap-2">
                               <Calendar className="w-4 h-4 text-melrose mt-0.5" />
                               <div>
-                                <span className="text-space-haze">Availability: </span>
-                                <span className="text-space-white">{volunteer.availability}</span>
+                                <span className="text-space-haze">
+                                  Availability:{" "}
+                                </span>
+                                <span className="text-space-white">
+                                  {volunteer.availability}
+                                </span>
                               </div>
                             </div>
                             {volunteer.linkedin && (
                               <div className="flex items-start gap-2">
                                 <Linkedin className="w-4 h-4 text-melrose mt-0.5" />
                                 <div>
-                                  <span className="text-space-haze">LinkedIn: </span>
+                                  <span className="text-space-haze">
+                                    LinkedIn:{" "}
+                                  </span>
                                   <a
                                     href={volunteer.linkedin}
                                     target="_blank"
@@ -468,9 +581,13 @@ export function AdminPanel() {
                               </div>
                             )}
                             <div>
-                              <span className="text-space-haze">Submitted: </span>
+                              <span className="text-space-haze">
+                                Submitted:{" "}
+                              </span>
                               <span className="text-space-white">
-                                {new Date(volunteer.submittedAt).toLocaleDateString()}
+                                {new Date(
+                                  volunteer.submittedAt
+                                ).toLocaleDateString()}
                               </span>
                             </div>
                           </div>
@@ -498,17 +615,29 @@ export function AdminPanel() {
                           <div className="mt-4 space-y-4 p-4 bg-east-bay/30 rounded-lg border border-blue-violet/30">
                             {volunteer.skills && (
                               <div>
-                                <h4 className="font-semibold text-melrose mb-1">Technical Skills:</h4>
-                                <p className="text-sm text-space-dust">{volunteer.skills}</p>
+                                <h4 className="font-semibold text-melrose mb-1">
+                                  Technical Skills:
+                                </h4>
+                                <p className="text-sm text-space-dust">
+                                  {volunteer.skills}
+                                </p>
                               </div>
                             )}
                             <div>
-                              <h4 className="font-semibold text-melrose mb-1">Experience:</h4>
-                              <p className="text-sm text-space-dust whitespace-pre-wrap">{volunteer.experience}</p>
+                              <h4 className="font-semibold text-melrose mb-1">
+                                Experience:
+                              </h4>
+                              <p className="text-sm text-space-dust whitespace-pre-wrap">
+                                {volunteer.experience}
+                              </p>
                             </div>
                             <div>
-                              <h4 className="font-semibold text-melrose mb-1">Motivation:</h4>
-                              <p className="text-sm text-space-dust whitespace-pre-wrap">{volunteer.motivation}</p>
+                              <h4 className="font-semibold text-melrose mb-1">
+                                Motivation:
+                              </h4>
+                              <p className="text-sm text-space-dust whitespace-pre-wrap">
+                                {volunteer.motivation}
+                              </p>
                             </div>
                           </div>
                         )}
@@ -521,14 +650,18 @@ export function AdminPanel() {
                     {volunteer.status === "pending" && (
                       <div className="flex gap-2 pt-4 border-t border-east-bay/50">
                         <button
-                          onClick={() => updateVolunteerStatus(volunteer.id, "approved")}
+                          onClick={() =>
+                            updateVolunteerStatus(volunteer.id, "approved")
+                          }
                           className="px-4 py-2 bg-green-600/20 text-green-400 border border-green-600/50 rounded-md hover:bg-green-600/30 transition-colors flex items-center gap-2"
                         >
                           <CheckCircle className="w-4 h-4" />
                           Approve
                         </button>
                         <button
-                          onClick={() => updateVolunteerStatus(volunteer.id, "rejected")}
+                          onClick={() =>
+                            updateVolunteerStatus(volunteer.id, "rejected")
+                          }
                           className="px-4 py-2 bg-red-600/20 text-red-400 border border-red-600/50 rounded-md hover:bg-red-600/30 transition-colors flex items-center gap-2"
                         >
                           <XCircle className="w-4 h-4" />
