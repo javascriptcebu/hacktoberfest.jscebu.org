@@ -3,8 +3,8 @@
 import { ChevronDown, ChevronUp, Info, Shield } from "lucide-react";
 
 import { Card } from "../components/card";
-import { useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
 
 interface VolunteerFormProps {
   userEmail?: string;
@@ -111,6 +111,8 @@ export function VolunteerForm({
       "Coordinate with judges, manage scoring sheets, ensure fair evaluation process.",
     "raffle-committee":
       "Manage stamp collection and validation, pack raffle prizes, coordinate with finance/sponsors.",
+    mentor:
+      "Guide participants through open source contributions, provide technical assistance, help troubleshoot issues, support first-time contributors.",
     marketing:
       "Coordinate with sponsors, create sponsor letters, manage booth arrangements, prepare VIP letters, create post-event reports.",
     creatives:
@@ -198,6 +200,14 @@ export function VolunteerForm({
                       </span>
                       <span className="text-space-dust ml-2">
                         {roleDescriptions["raffle-committee"]}
+                      </span>
+                    </div>
+                    <div className="p-3 bg-east-bay/20 rounded-lg border border-blue-violet/20">
+                      <span className="font-semibold text-melrose">
+                        Mentor (∞):
+                      </span>
+                      <span className="text-space-dust ml-2">
+                        {roleDescriptions["mentor"]}
                       </span>
                     </div>
                   </div>
@@ -398,6 +408,7 @@ export function VolunteerForm({
                 <option value="raffle-committee">
                   Raffle Committee (4 positions)
                 </option>
+                <option value="mentor">Mentor (∞ positions)</option>
               </optgroup>
               <optgroup label="Marketing & Content">
                 <option value="marketing">Marketing Team (4 positions)</option>
@@ -551,9 +562,7 @@ export function VolunteerForm({
               disabled={isSubmitting}
               className="w-full bg-lavender text-void py-3 px-6 rounded-md font-medium hover:bg-melrose disabled:bg-east-bay disabled:text-space-haze disabled:cursor-not-allowed transition-colors"
             >
-              {isSubmitting
-                ? "Submitting..."
-                : "Submit Volunteer Application"}
+              {isSubmitting ? "Submitting..." : "Submit Volunteer Application"}
             </button>
           </div>
 
