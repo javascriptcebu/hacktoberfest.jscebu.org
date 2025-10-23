@@ -1,28 +1,201 @@
-import {
-  Award,
-  Crown,
-  Gift,
-  Heart,
-  Medal,
-  Sparkles,
-  Star,
-  Target,
-  TrendingUp,
-  Trophy,
-  Users,
-  Zap,
-} from "lucide-react";
+"use client";
 
 import { Card } from "../components/card";
 import Link from "next/link";
 import { NavWrapper } from "../components/nav-wrapper";
+import { Sparkles, Heart, ExternalLink } from "lucide-react";
+import Image from "next/image";
+
+type Sponsor = {
+  id: number;
+  name: string;
+  logo: string;
+  facebook?: string;
+  tier: "gold" | "silver" | "community";
+};
 
 export default function SponsorPage() {
+  const sponsors: Sponsor[] = [
+    // Gold Sponsors
+    {
+      id: 1,
+      name: "Yello Hotel",
+      logo: "/images/sponsor-logo/Yello-Hotel-Logo.png",
+      facebook: "https://www.yellohotel.ph/",
+      tier: "gold",
+    },
+    {
+      id: 2,
+      name: "Lisk",
+      logo: "/images/sponsor-logo/lisk-wordmark-b.svg",
+      facebook: "https://www.facebook.com/profile.php?id=61580288592380",
+      tier: "gold",
+    },
+    {
+      id: 3,
+      name: "Innodata Knowledge Services, Inc.",
+      logo: "/images/sponsor-logo/Innodatalogo.webp",
+      facebook: "https://www.facebook.com/innodataksi",
+      tier: "gold",
+    },
+
+    {
+      id: 4,
+      name: "LegalMatch Philippines",
+      logo: "/images/sponsor-logo/LegalMatch.svg",
+      facebook: "https://www.facebook.com/LegalMatchPH",
+      tier: "gold",
+    },
+    {
+      id: 5,
+      name: "The Company Philippines",
+      logo: "/images/sponsor-logo/thecompany.png",
+      facebook: "https://www.facebook.com/TheCompanyCebu",
+      tier: "gold",
+    },
+    {
+      id: 6,
+      name: "lyf Cebu City",
+      logo: "/images/sponsor-logo/lyfCebuCitylogo.jpg",
+      facebook: "https://www.facebook.com/lyf.cebucity",
+      tier: "gold",
+    },
+    {
+      id: 7,
+      name: "CoDev Philippines",
+      logo: "/images/sponsor-logo/CoDevLogoFull.png",
+      facebook: "https://www.facebook.com/CoDevPH",
+      tier: "gold",
+    },
+
+    
+    // Silver Sponsors
+    {
+      id: 8,
+      name: "VBP",
+      logo: "/images/sponsor-logo/VBP-DarkGreen.svg",
+      facebook: "https://www.facebook.com/vbpcareers",
+      tier: "silver",
+    },
+    {
+      id: 9,
+      name: "NEC Philippines",
+      logo: "/images/sponsor-logo/NEC Philippines.png",
+      facebook: "https://www.facebook.com/NECPHL",
+      tier: "silver",
+    },
+    
+
+    // Community Partners
+    {
+      id: 10,
+      name: "JavaScript Cebu",
+      logo: "/images/sponsor-logo/jscebu.png",
+      facebook: "https://www.facebook.com/JavaScriptCebu",
+      tier: "community",
+    },
+    {
+      id: 11,
+      name: "PHPXCEBU",
+      logo: "/images/sponsor-logo/PHPXCEBUlogo.jpg",
+      facebook: "",
+      tier: "community",
+    },
+    {
+      id: 12,
+      name: "ETHPH",
+      logo: "/images/sponsor-logo/ETHPHLogo.png",
+      facebook: "https://www.facebook.com/ethphilippines",
+      tier: "community",
+    },
+    {
+      id: 13,
+      name: "PizzaPy",
+      logo: "/images/sponsor-logo/pizzapyhorizontal-primary-white.png",
+      facebook: "https://www.facebook.com/PizzaPy.PH",
+      tier: "community",
+    },
+     {
+      id: 14,
+      name: "Laravel Cebu",
+      logo: "/images/sponsor-logo/Laravel Cebu.png",
+      facebook: "https://www.facebook.com/laravelcebu",
+      tier: "community",
+    },
+    {
+      id: 15,
+      name: "Cebu Tech Communities",
+      logo: "/images/sponsor-logo/ctc.png",
+      facebook: "https://www.facebook.com/cebutechcommunities",
+      tier: "community",
+    },
+    {
+      id: 16,
+      name: "AWS User Group Cebu",
+      logo: "/images/sponsor-logo/AWSUGLogo.png",
+      facebook: "https://www.facebook.com/awsugcebu",
+      tier: "community",
+    },
+    {
+      id: 17,
+      name: "CEBUXD",
+      logo: "/images/sponsor-logo/CebUXD Logo New.png",
+      facebook: "https://www.facebook.com/CebUXD",
+      tier: "community",
+    },
+    {
+      id: 18,
+      name: "CeGNULUG",
+      logo: "/images/sponsor-logo/CeGNULUG.png",
+      facebook: "https://www.facebook.com/profile.php?id=61574523064047",
+      tier: "community",
+    },
+    {
+      id: 19,
+      name: "DEVCON Cebu",
+      logo: "/images/sponsor-logo/DEVCON Cebu - White Horizontal.png",
+      facebook: "https://www.facebook.com/devconcebu",
+      tier: "community",
+    },
+    {
+      id: 20,
+      name: "UPCSG",
+      logo: "/images/sponsor-logo/UPCSG_Logo.png",
+      facebook: "https://www.facebook.com/UPCSG",
+      tier: "community",
+    },
+    {
+      id: 21,
+      name: "Juantronics",
+      logo: "/images/sponsor-logo/juantronicsLogo.jpg",
+      facebook: "https://www.facebook.com/juantronics",
+      tier: "community",
+    },
+    {
+      id: 22,
+      name: "START DOST",
+      logo: "/images/sponsor-logo/startDOSTLogo.png",
+      facebook: "https://www.facebook.com/STARTDOST",
+      tier: "community",
+    },
+    {
+      id: 23,
+       name: "DOST Region VII",
+      logo: "/images/sponsor-logo/DOST_seal.svg.png",
+      facebook: "https://www.facebook.com/DOST.Region7",
+      tier: "community",
+    },
+  ];
+
+  const goldSponsors = sponsors.filter(s => s.tier === "gold");
+  const silverSponsors = sponsors.filter(s => s.tier === "silver");
+  const communityPartners = sponsors.filter(s => s.tier === "community");
+
   return (
     <div className="relative pb-16">
       <NavWrapper />
       <div className="px-6 pt-20 mx-auto max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-16">
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-lavender/10 border border-lavender/30 rounded-full text-sm font-semibold tracking-wider text-lavender uppercase mb-6">
@@ -30,412 +203,200 @@ export default function SponsorPage() {
               Cebu Hacktoberfest 2025
               <Sparkles className="w-4 h-4" />
             </span>
-            <h1 className="mt-4 text-5xl font-bold tracking-tight text-space-white sm:text-6xl lg:text-7xl">
-              BECOME A{" "}
+            <h1 className="mt-4 text-4xl font-bold tracking-tight text-space-white sm:text-5xl lg:text-6xl">
+              OUR{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-lavender to-melrose">
-                SPONSOR
+                AMAZING SPONSORS
               </span>
             </h1>
-            <p className="mt-6 text-xl text-space-dust max-w-3xl mx-auto leading-relaxed">
-              Partner with Cebu's premier open-source event and connect with
-              100+ passionate developers building the future of technology in
-              the Philippines.
+            <p className="mt-6 text-lg text-space-dust max-w-3xl mx-auto leading-relaxed">
+              A huge thank you to our generous sponsors and partners who make Cebu Hacktoberfest 2025 possible. 
+              Your support empowers our community to innovate, learn, and grow together.
             </p>
-            <div className="mt-8 flex items-center justify-center gap-2 text-sm text-space-haze">
-              <span>→</span>
-              <span className="font-mono tracking-wide">
-                HF.CEBUTECHCOMMUNITIES.ORG/SPONSOR
-              </span>
+          </div>
+
+          {/* Gold Sponsors */}
+          <div className="mb-20">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-900/40 to-yellow-900/40 border-2 border-amber-500/50 rounded-full mb-4">
+                <h2 className="text-2xl font-bold text-amber-400">Gold Sponsors</h2>
+              </div>
+              <p className="text-sm text-space-dust">Premier partners supporting innovation</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {goldSponsors.map((sponsor) => (
+                <Card key={sponsor.id} className="group overflow-hidden">
+                  <div className="relative">
+                    {/* Gradient Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-600/20 to-yellow-600/20 opacity-50 group-hover:opacity-100 transition-opacity" />
+                    
+                    <div className="relative p-8 flex flex-col items-center justify-center min-h-[280px]">
+                      {/* Logo Container */}
+                      <div className="w-full h-32 mb-6 relative bg-white/5 rounded-lg flex items-center justify-center border border-amber-500/30 group-hover:border-amber-400/50 transition-colors p-4">
+                        <Image
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          width={200}
+                          height={100}
+                          className="object-contain max-w-full max-h-full"
+                        />
+                      </div>
+                      
+                      {/* Sponsor Name */}
+                      <h3 className="text-xl font-bold text-amber-400 text-center mb-4 group-hover:text-amber-300 transition-colors">
+                        {sponsor.name}
+                      </h3>
+                      
+                      {/* Facebook Link */}
+                      {sponsor.facebook && (
+                        <Link
+                          href={sponsor.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 hover:border-amber-400/70 rounded-lg text-sm font-medium text-amber-300 hover:text-amber-200 transition-all"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          Visit Page
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </Card>
+              ))}
             </div>
           </div>
 
-          {/* Value Proposition */}
-          <div className="mb-16 grid md:grid-cols-3 gap-6">
-            <Card>
-              <div className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-lavender/20 rounded-full flex items-center justify-center">
-                  <Users className="w-6 h-6 text-lavender" />
-                </div>
-                <h3 className="text-lg font-bold text-melrose mb-2">
-                  100+ Developers
-                </h3>
-                <p className="text-sm text-space-dust">
-                  Direct access to talented professionals and future tech
-                  leaders
-                </p>
+          {/* Silver Sponsors */}
+          <div className="mb-20">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-800/40 to-slate-800/40 border-2 border-gray-500/50 rounded-full mb-4">
+                <h2 className="text-2xl font-bold text-gray-300">Silver Sponsors</h2>
               </div>
-            </Card>
-            <Card>
-              <div className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-melrose/20 rounded-full flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6 text-melrose" />
-                </div>
-                <h3 className="text-lg font-bold text-lavender mb-2">
-                  Month-long Exposure
-                </h3>
-                <p className="text-sm text-space-dust">
-                  October 5-26 event with pre and post-event marketing
-                  visibility
-                </p>
-              </div>
-            </Card>
-            <Card>
-              <div className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 bg-blue-violet/20 rounded-full flex items-center justify-center">
-                  <Target className="w-6 h-6 text-blue-violet" />
-                </div>
-                <h3 className="text-lg font-bold text-melrose mb-2">
-                  Targeted Reach
-                </h3>
-                <p className="text-sm text-space-dust">
-                  Connect with developers, designers, and tech enthusiasts in
-                  Cebu
-                </p>
-              </div>
-            </Card>
+              <p className="text-sm text-space-dust">Key supporters of our community</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {silverSponsors.map((sponsor) => (
+                <Card key={sponsor.id} className="group overflow-hidden">
+                  <div className="relative">
+                    {/* Gradient Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-600/20 to-slate-600/20 opacity-50 group-hover:opacity-100 transition-opacity" />
+                    
+                    <div className="relative p-6 flex flex-col items-center justify-center min-h-[240px]">
+                      {/* Logo Container */}
+                      <div className="w-full h-24 mb-4 relative bg-white/5 rounded-lg flex items-center justify-center border border-gray-500/30 group-hover:border-gray-400/50 transition-colors p-3">
+                        <Image
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          width={150}
+                          height={80}
+                          className="object-contain max-w-full max-h-full"
+                        />
+                      </div>
+                      
+                      {/* Sponsor Name */}
+                      <h3 className="text-lg font-bold text-gray-300 text-center mb-3 group-hover:text-gray-200 transition-colors">
+                        {sponsor.name}
+                      </h3>
+                      
+                      {/* Facebook Link */}
+                      {sponsor.facebook && (
+                        <Link
+                          href={sponsor.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-500/20 hover:bg-gray-500/30 border border-gray-500/50 hover:border-gray-400/70 rounded-lg text-xs font-medium text-gray-300 hover:text-gray-200 transition-all"
+                        >
+                          <ExternalLink className="w-3 h-3" />
+                          Visit
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
 
-          {/* Sponsorship Tiers */}
+          {/* Community Partners */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center text-space-white mb-4">
-              Sponsorship Levels
-            </h2>
-            <p className="text-center text-space-dust mb-12 max-w-2xl mx-auto">
-              Choose a partnership level that aligns with your goals. All
-              packages are customizable.
-            </p>
-
-            <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-4">
-              {/* Co-Presenter - Most Premium */}
-              <div className="relative group transform hover:scale-105 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-pink-600/30 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
-                <div className="relative h-full p-8 bg-gradient-to-br from-purple-900/40 via-pink-900/30 to-purple-900/40 border-2 border-purple-500/50 rounded-2xl hover:border-purple-400/70">
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold rounded-full uppercase">
-                      Best Value
-                    </span>
-                  </div>
-                  <div className="text-center mb-6">
-                    <Crown className="w-12 h-12 mx-auto mb-3 text-purple-400" />
-                    <div className="text-purple-400 font-bold text-sm tracking-widest mb-2">
-                      CO-PRESENTER
-                    </div>
-                    <div className="text-3xl font-bold text-space-white">
-                      Premium Partner
-                    </div>
-                  </div>
-                  <ul className="space-y-3 text-sm">
-                    <li className="flex items-start">
-                      <Star className="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Event co-branding rights
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Star className="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Keynote speaking opportunity
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Star className="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Premium booth location
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Star className="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Exclusive recruitment access
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Star className="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Award category naming
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Star className="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        VIP event invitations
-                      </span>
-                    </li>
-                  </ul>
-                  <div className="mt-6 pt-6 border-t border-purple-500/30">
-                    <p className="text-xs text-purple-300 text-center">
-                      Maximum Impact & Visibility
-                    </p>
-                  </div>
-                </div>
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-lavender/20 to-melrose/20 border-2 border-lavender/50 rounded-full mb-4">
+                <h2 className="text-2xl font-bold text-lavender">Community Partners</h2>
               </div>
-
-              {/* Platinum */}
-              <div className="relative group transform hover:scale-105 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-400/20 to-slate-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
-                <div className="relative h-full p-8 bg-gradient-to-br from-slate-800/40 to-slate-900/40 border-2 border-slate-500/50 rounded-2xl hover:border-slate-400/70">
-                  <div className="text-center mb-6">
-                    <Trophy className="w-10 h-10 mx-auto mb-3 text-slate-300" />
-                    <div className="text-slate-300 font-bold text-sm tracking-widest mb-2">
-                      PLATINUM
-                    </div>
-                    <div className="text-2xl font-bold text-space-white">
-                      Major Partner
-                    </div>
-                  </div>
-                  <ul className="space-y-3 text-sm">
-                    <li className="flex items-start">
-                      <Zap className="w-4 h-4 text-slate-300 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Logo on all materials
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Zap className="w-4 h-4 text-slate-300 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Main event speaking slot
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Zap className="w-4 h-4 text-slate-300 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Dedicated booth space
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Zap className="w-4 h-4 text-slate-300 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Workshop sponsorship
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Zap className="w-4 h-4 text-slate-300 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Talent database access
-                      </span>
-                    </li>
-                  </ul>
-                  <div className="mt-6 pt-6 border-t border-slate-500/30">
-                    <p className="text-xs text-slate-400 text-center">
-                      Premium Visibility
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Gold */}
-              <div className="relative group transform hover:scale-105 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-600/20 to-yellow-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
-                <div className="relative h-full p-8 bg-gradient-to-br from-amber-900/30 to-yellow-900/30 border-2 border-amber-600/50 rounded-2xl hover:border-amber-500/70">
-                  <div className="text-center mb-6">
-                    <Medal className="w-10 h-10 mx-auto mb-3 text-amber-400" />
-                    <div className="text-amber-400 font-bold text-sm tracking-widest mb-2">
-                      GOLD
-                    </div>
-                    <div className="text-2xl font-bold text-space-white">
-                      Key Partner
+              <p className="text-sm text-space-dust">Growing together with our ecosystem</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+              {communityPartners.map((sponsor) => (
+                <Card key={sponsor.id} className="group overflow-hidden">
+                  <div className="relative">
+                    {/* Gradient Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-lavender/10 to-melrose/10 opacity-50 group-hover:opacity-100 transition-opacity" />
+                    
+                    <div className="relative p-4 flex flex-col items-center justify-center min-h-[200px]">
+                      {/* Logo Container */}
+                      <div className="w-full h-20 mb-3 relative bg-white/5 rounded-lg flex items-center justify-center border border-lavender/30 group-hover:border-lavender/50 transition-colors p-2">
+                        <Image
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          width={120}
+                          height={60}
+                          className="object-contain max-w-full max-h-full"
+                        />
+                      </div>
+                      
+                      {/* Sponsor Name */}
+                      <h3 className="text-sm font-bold text-melrose text-center mb-3 group-hover:text-lavender transition-colors line-clamp-2">
+                        {sponsor.name}
+                      </h3>
+                      
+                      {/* Facebook Link */}
+                      {sponsor.facebook && (
+                        <Link
+                          href={sponsor.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 px-3 py-1.5 bg-lavender/20 hover:bg-lavender/30 border border-lavender/50 hover:border-lavender/70 rounded-lg text-xs font-medium text-lavender hover:text-melrose transition-all"
+                        >
+                          <ExternalLink className="w-3 h-3" />
+                          Visit
+                        </Link>
+                      )}
                     </div>
                   </div>
-                  <ul className="space-y-3 text-sm">
-                    <li className="flex items-start">
-                      <Star className="w-4 h-4 text-amber-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Logo on event materials
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Star className="w-4 h-4 text-amber-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Speaking opportunity
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Star className="w-4 h-4 text-amber-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Social media features
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Star className="w-4 h-4 text-amber-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">Recruitment booth</span>
-                    </li>
-                  </ul>
-                  <div className="mt-6 pt-6 border-t border-amber-600/30">
-                    <p className="text-xs text-amber-500 text-center">
-                      Strong Presence
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Silver */}
-              <div className="relative group transform hover:scale-105 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-500/20 to-gray-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
-                <div className="relative h-full p-8 bg-gradient-to-br from-gray-800/40 to-gray-900/40 border-2 border-gray-600/50 rounded-2xl hover:border-gray-500/70">
-                  <div className="text-center mb-6">
-                    <Award className="w-10 h-10 mx-auto mb-3 text-gray-400" />
-                    <div className="text-gray-400 font-bold text-sm tracking-widest mb-2">
-                      SILVER
-                    </div>
-                    <div className="text-2xl font-bold text-space-white">
-                      Supporter
-                    </div>
-                  </div>
-                  <ul className="space-y-3 text-sm">
-                    <li className="flex items-start">
-                      <Heart className="w-4 h-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">Logo on website</span>
-                    </li>
-                    <li className="flex items-start">
-                      <Heart className="w-4 h-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Social media mentions
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <Heart className="w-4 h-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">Event recognition</span>
-                    </li>
-                    <li className="flex items-start">
-                      <Heart className="w-4 h-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-space-dust">
-                        Certificate of support
-                      </span>
-                    </li>
-                  </ul>
-                  <div className="mt-6 pt-6 border-t border-gray-600/30">
-                    <p className="text-xs text-gray-500 text-center">
-                      Community Support
-                    </p>
-                  </div>
-                </div>
-              </div>
+                </Card>
+              ))}
             </div>
           </div>
 
-          {/* In-Kind Partnerships */}
-          <Card>
-            <div className="p-10">
-              <div className="text-center mb-8">
-                <Gift className="w-12 h-12 mx-auto mb-4 text-lavender" />
-                <h2 className="text-3xl font-bold text-space-white mb-3">
-                  In-Kind Partnerships
-                </h2>
-                <p className="text-space-dust max-w-2xl mx-auto">
-                  Support us through venues, catering, prizes, swag, or
-                  professional services. Every contribution makes a meaningful
-                  impact on our community's growth.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="group p-6 bg-gradient-to-br from-lavender/10 to-transparent rounded-xl border border-lavender/30 hover:border-lavender/50 transition-all text-center">
-                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
-                    📍
-                  </div>
-                  <div className="font-semibold text-melrose">Venue Space</div>
-                  <div className="text-xs text-space-dust mt-1">
-                    Host our events
-                  </div>
-                </div>
-                <div className="group p-6 bg-gradient-to-br from-melrose/10 to-transparent rounded-xl border border-melrose/30 hover:border-melrose/50 transition-all text-center">
-                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
-                    🍕
-                  </div>
-                  <div className="font-semibold text-lavender">
-                    Food & Drinks
-                  </div>
-                  <div className="text-xs text-space-dust mt-1">
-                    Keep us energized
-                  </div>
-                </div>
-                <div className="group p-6 bg-gradient-to-br from-blue-violet/10 to-transparent rounded-xl border border-blue-violet/30 hover:border-blue-violet/50 transition-all text-center">
-                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
-                    🎁
-                  </div>
-                  <div className="font-semibold text-melrose">
-                    Prizes & Swag
-                  </div>
-                  <div className="text-xs text-space-dust mt-1">
-                    Reward excellence
-                  </div>
-                </div>
-                <div className="group p-6 bg-gradient-to-br from-lavender/10 to-transparent rounded-xl border border-lavender/30 hover:border-lavender/50 transition-all text-center">
-                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
-                    🎓
-                  </div>
-                  <div className="font-semibold text-lavender">Workshops</div>
-                  <div className="text-xs text-space-dust mt-1">
-                    Share expertise
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-
-          {/* Benefits & CTA */}
-          <div className="mt-16 p-10 bg-gradient-to-br from-lavender/20 via-melrose/10 to-blue-violet/20 border-2 border-lavender/30 rounded-2xl relative overflow-hidden">
+          {/* Thank You Section */}
+          <div className="mt-20 p-10 bg-gradient-to-br from-lavender/20 via-melrose/10 to-blue-violet/20 border-2 border-lavender/30 rounded-2xl relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-t from-void/50 to-transparent" />
-            <div className="relative z-10">
-              <h2 className="text-3xl font-bold text-center text-space-white mb-8">
-                Why Partner with Hacktoberfest Cebu?
+            <div className="relative z-10 text-center">
+              <Heart className="w-16 h-16 mx-auto mb-6 text-lavender" />
+              <h2 className="text-3xl font-bold text-space-white mb-4">
+                Thank You to All Our Supporters!
               </h2>
-              <div className="grid md:grid-cols-3 gap-8 mb-10">
-                <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-lavender/20 rounded-full flex items-center justify-center">
-                    <Users className="w-8 h-8 text-lavender" />
-                  </div>
-                  <h3 className="font-bold text-lg text-melrose mb-2">
-                    Talent Pipeline
-                  </h3>
-                  <p className="text-sm text-space-dust">
-                    Connect directly with passionate developers and tech
-                    professionals building the future
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-melrose/20 rounded-full flex items-center justify-center">
-                    <TrendingUp className="w-8 h-8 text-melrose" />
-                  </div>
-                  <h3 className="font-bold text-lg text-lavender mb-2">
-                    Brand Visibility
-                  </h3>
-                  <p className="text-sm text-space-dust">
-                    Showcase your commitment to innovation and the local tech
-                    ecosystem
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-blue-violet/20 rounded-full flex items-center justify-center">
-                    <Target className="w-8 h-8 text-blue-violet" />
-                  </div>
-                  <h3 className="font-bold text-lg text-melrose mb-2">
-                    Community Impact
-                  </h3>
-                  <p className="text-sm text-space-dust">
-                    Help cultivate technical excellence and innovation in
-                    Central Philippines
-                  </p>
-                </div>
-              </div>
-
-              <div className="text-center">
-                <p className="text-lg text-space-dust mb-8">
-                  <span className="text-lavender font-semibold">
-                    Every partnership is customizable
-                  </span>{" "}
-                  to align with your goals and budget.
-                </p>
+              <p className="text-lg text-space-dust max-w-2xl mx-auto mb-8">
+                Your generosity and commitment to the tech community make events like Cebu Hacktoberfest possible. 
+                Together, we're building a stronger, more innovative future for developers in Central Philippines.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-3 px-10 py-4 bg-lavender text-void font-bold rounded-xl hover:bg-melrose transform hover:scale-105 transition-all shadow-lg"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-lavender text-void font-bold rounded-xl hover:bg-melrose transform hover:scale-105 transition-all shadow-lg"
                 >
                   <Sparkles className="w-5 h-5" />
-                  Become a Partner Today
-                  <Sparkles className="w-5 h-5" />
+                  Become a Sponsor
                 </Link>
-                <p className="mt-4 text-sm text-space-haze">
-                  Let's create a partnership that works for everyone
-                </p>
+                <Link
+                  href="/events"
+                  className="inline-flex items-center gap-2 px-8 py-3 bg-transparent border-2 border-lavender text-lavender font-bold rounded-xl hover:bg-lavender/10 transition-all"
+                >
+                  View Events
+                </Link>
               </div>
             </div>
           </div>
