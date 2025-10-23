@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Menu, X } from "lucide-react";
@@ -60,6 +61,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 
   const navLinks = [
     { name: "Projects", href: "/projects", hasDropdown: true },
+    { name: "Criteria", href: "/criteria" },
     { name: "Events", href: "/events" },
     { name: "Join", href: "/join" },
     { name: "Submit", href: "/submit" },
