@@ -33,31 +33,38 @@ const scheduleEvents = [
   },
   {
     date: "Oct 5",
-    title: "Kickoff",
+    title: "Cebu Hacktoberfest 2025 Kickoff",
     icon: "🚀",
     description:
-      "Kick off Hacktoberfest with keynotes, orientation, and community mixers. Meet fellow developers and form teams for the month-long hackathon.",
+      "Kick off a month of open-source celebration! Learn about contributing to open source, form your hackathon team, and connect with Cebu's vibrant developer community.",
   },
   {
-    date: "Oct 6-20",
-    title: "Community Events",
+    date: "Oct 11",
+    title: "Lisk Pitching Day",
     icon: "💡",
     description:
-      "Partner communities across Cebu will host talks, workshops, and mini hack nights. Watch out for announcements and join the sessions that fit your interests.",
+      "Teams pitch their project ideas to the community and receive feedback. A great opportunity to refine concepts and get early validation.",
   },
   {
-    date: "Oct 5-26",
-    title: "20-Day Hackathon",
-    icon: "⚡",
+    date: "Oct 18",
+    title: "Deployment Day",
+    icon: "🚀",
     description:
-      "Teams of up to 4 will have 20 days to create a brand-new open source project. Submissions will be judged across categories, with winners taking home exclusive prizes and swag.",
+      "Focused session on deploying projects to production. Teams learn best practices for deployment, CI/CD, and making their projects accessible to the world.",
+  },
+  {
+    date: "Oct 25",
+    title: "PHPxCebu: Ai Ai Captain!",
+    icon: "🐘",
+    description:
+      "Special PHP community event exploring AI integration in PHP applications. Join PHP developers and learn about the latest trends in AI-powered web development.",
   },
   {
     date: "Oct 26",
-    title: "Culmination & Awards",
+    title: "Cebu Hacktoberfest Awarding Day",
     icon: "🏆",
     description:
-      "Celebrate the best of Hacktoberfest Cebu 2025. Winning teams, top contributors, and outstanding community efforts will be recognized.",
+      "The grand finale! Demo Day showcase where teams present their projects. Awards ceremony recognizing outstanding contributions, innovative solutions, and celebrating a month of open-source excellence.",
   },
 ];
 
