@@ -1,13 +1,74 @@
+"use client";
+
 import { Card } from "../components/card";
 import Link from "next/link";
 import { NavWrapper } from "../components/nav-wrapper";
+import { useState } from "react";
 
 export default function EventsPage() {
+
+  const events = [
+    {
+      id: 1,
+      title: "🚀 Cebu Hacktoberfest 2025 Kickoff",
+      date: "October 5, 2025",
+      status: "completed" as const,
+      attendees: "170+ Attended",
+      description: "Kick off a month of open-source celebration! Learn about contributing to open source, form your hackathon team, and connect with Cebu's vibrant developer community.",
+      links: [
+        { label: "View on Facebook", url: "https://www.facebook.com/share/v/19kQHaVJ1d/" }
+      ]
+    },
+    {
+      id: 2,
+      title: "💡 Lisk Pitching Day",
+      date: "October 11, 2025",
+      status: "completed" as const,
+      attendees: "60+ Attended",
+      description: "Teams pitched their project ideas to the community and received feedback. A great opportunity to refine concepts and get early validation.",
+      links: [{ label: "View on Facebook", url: "https://www.facebook.com/share/v/1BBK5vwERd/" }]
+    },
+    {
+      id: 3,
+      title: "🚀 Deployment Day",
+      date: "October 18, 2025",
+      status: "completed" as const,
+      attendees: "40+ Attended",
+      description: "Focused session on deploying projects to production. Teams learned best practices for deployment, CI/CD, and making their projects accessible to the world.",
+      links: [{ label: "View on Facebook", url: "https://www.facebook.com/share/v/1Zs9VDEumi/" }]
+    },
+    {
+      id: 4,
+      title: "🐘 PHPxCebu: Ai Ai Captain!",
+      date: "October 25, 2025",
+      status: "upcoming" as const,
+      badge: "SPECIAL EVENT",
+      description: "Special PHP community event exploring AI integration in PHP applications. Join PHP developers and learn about the latest trends in AI-powered web development.",
+      links: [
+        { label: "View on Cebby", url: "https://www.getcebby.com/events/phpxcebu-ai-ai-captain?utm_source=copy&utm_medium=share&utm_campaign=share"},
+        { label: "RSVP on Luma", url: "https://luma.com/sst27zom?tk=6vvm4B"}
+      ]
+    },
+    {
+      id: 5,
+      title: "🏆 Cebu Hacktoberfest Awarding Day",
+      date: "October 26, 2025",
+      status: "upcoming" as const,
+      badge: "MAIN EVENT",
+      highlight: true,
+      description: "The grand finale! Demo Day showcase where teams present their projects. Awards ceremony recognizing outstanding contributions, innovative solutions, and celebrating a month of open-source excellence.",
+      links: [
+        { label: "RSVP on Cebby", url: "https://www.getcebby.com/events/cebu-hacktoberfest-2025-awarding-ceremony--4739784?utm_source=copy&utm_medium=share&utm_campaign=share" },
+        { label: "View on Facebook", url: "https://www.facebook.com/share/19xoMAAAEE/" }
+      ]
+    }
+  ];
+
   return (
     <div className="relative pb-16">
       <NavWrapper />
       <div className="px-6 pt-20 mx-auto max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className="max-w-4xl mx-auto text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-900/20 to-orange-900/20 px-4 py-2 rounded-full mb-6 border border-yellow-800/30">
             <span className="text-yellow-400">🎉</span>
             <span className="text-yellow-400 text-sm font-semibold">
@@ -24,104 +85,93 @@ export default function EventsPage() {
           </p>
         </div>
 
-        <div className="mb-16">
-          <Card className="overflow-hidden bg-gradient-to-br from-lavender/10 via-melrose/5 to-blue-violet/10 border-lavender/30">
-            <div className="p-8 md:p-12">
-              <div className="flex items-start gap-2 mb-4">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-lavender/20 text-lavender border border-lavender/30">
-                  MAIN EVENT
-                </span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400 border border-green-500/30">
-                  84+ Attending
-                </span>
-              </div>
-
-              <h2 className="text-3xl md:text-4xl font-bold text-space-white mb-4">
-                🚀 Cebu Hacktoberfest 2025 Kickoff
-              </h2>
-
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">📅</span>
-                    <div>
-                      <p className="text-sm text-space-haze font-medium">
-                        Date & Time
-                      </p>
-                      <p className="text-space-dust">Sunday, October 5, 2025</p>
-                      <p className="text-space-dust">10:00 AM - 5:00 PM</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">📍</span>
-                    <div>
-                      <p className="text-sm text-space-haze font-medium">
-                        Venue
-                      </p>
-                      <p className="text-space-dust">Performing Arts Hall</p>
-                      <p className="text-space-dust">
-                        UP Cebu, Lahug, Cebu City
-                      </p>
-                    </div>
-                  </div>
+        {/* Events Grid - Compact Square Cards */}
+        <div className="mb-16 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {events.map((event) => (
+            <Card 
+              key={event.id}
+              className={`overflow-hidden transition-all mb-2 ${
+                event.status === "completed"
+                  ? "bg-gradient-to-br from-zinc-800/40 via-zinc-700/20 to-zinc-800/40 border-zinc-700/50 opacity-75"
+                  : "bg-gradient-to-br from-lavender/10 via-melrose/5 to-blue-violet/10 border-lavender/30"
+              } ${event.highlight ? "ring-2 ring-lavender/50" : ""}`}
+            >
+              <div className="p-6 flex flex-col h-full">
+                {/* Badges */}
+                <div className="flex flex-wrap gap-2 mb-5">
+                  <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
+                    event.status === "completed"
+                      ? "bg-zinc-600/30 text-zinc-400 border border-zinc-600/30"
+                      : "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 animate-pulse"
+                  }`}>
+                    {event.status === "completed" ? "COMPLETED" : "UPCOMING"}
+                  </span>
+                  {event.attendees && (
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400 border border-green-500/30">
+                      {event.attendees}
+                    </span>
+                  )}
+                  {event.badge && (
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-lavender/20 text-lavender border border-lavender/30">
+                      {event.badge}
+                    </span>
+                  )}
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">🎯</span>
-                    <div>
-                      <p className="text-sm text-space-haze font-medium">
-                        What to Expect
-                      </p>
-                      <ul className="text-space-dust text-sm space-y-1 mt-1">
-                        <li>• Keynote speakers from the tech community</li>
-                        <li>• Hacktoberfest orientation & guidelines</li>
-                        <li>• Team formation for hackathon</li>
-                        <li>• Networking with 100+ developers</li>
-                        <li>• Free swag and refreshments</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-space-dust mb-8">
-                Kick off a month of open-source celebration! Learn about
-                contributing to open source, form your hackathon team, and
-                connect with Cebu's vibrant developer community. Whether you're
-                new to open source or a seasoned contributor, this is your
-                starting point for an amazing Hacktoberfest journey.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="https://www.getcebby.com/events/cebu-hacktoberfest-2025-kickoff--4208054"
-                  target="_blank"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-lavender text-void rounded-md font-medium hover:bg-melrose transition-colors"
-                >
-                  Register on Cebby →
-                </Link>
-                <Link
-                  href="https://www.facebook.com/events/1471381994068060"
-                  target="_blank"
-                  className="inline-flex items-center justify-center px-6 py-3 border border-blue-violet/50 text-space-dust rounded-md font-medium hover:bg-east-bay/50 transition-colors"
-                >
-                  View on Facebook
-                </Link>
-              </div>
-
-              <div className="mt-8 p-4 bg-yellow-900/20 border border-yellow-800/30 rounded-lg">
-                <p className="text-sm text-yellow-400">
-                  <span className="font-semibold">⚡ Pro tip:</span>{" "}
-                  Registration requires a OneCebby account - the unified
-                  identity for Cebu's tech community. Create one when you
-                  register!
+                {/* Title */}
+                <h2 className={`text-xl font-bold mb-3 ${
+                  event.status === "completed" ? "text-zinc-300" : "text-space-white"
+                }`}>
+                  {event.title}
+                </h2>
+        
+                {/* Description */}
+                <p className={`text-sm mb-4 flex-grow ${
+                  event.status === "completed" ? "text-zinc-400" : "text-space-dust"
+                }`}>
+                  {event.description}
                 </p>
+
+                {/* Links/Actions */}
+                <div className="mt-4 space-y-4">
+                  {event.links && event.links.length > 0 ? (
+                    event.links.map((link, idx) => (
+                      <Link
+                        key={idx}
+                        href={link.url}
+                        target="_blank"
+                        className={`block text-center px-4 py-2 border rounded-md text-sm font-medium transition-colors ${
+                          event.status === "completed"
+                            ? "border-zinc-600/50 text-zinc-400 hover:bg-zinc-700/30"
+                            : "border-lavender/50 text-lavender hover:bg-lavender/10"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    ))
+                  ) : (
+                    <span className={`block text-center px-4 py-2 border rounded-md text-sm font-medium cursor-not-allowed ${
+                      event.status === "completed"
+                        ? "border-zinc-600/50 text-zinc-400"
+                        : "border-lavender/50 text-lavender opacity-50"
+                    }`}>
+                      {event.status === "completed" ? "Event Ended" : "Registration Link TBA"}
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          ))}
         </div>
+
+        {/* Empty State */}
+        {events.length === 0 && (
+          <div className="text-center py-16 mb-16">
+            <div className="text-6xl mb-4">📅</div>
+            <h3 className="text-xl font-semibold text-space-white mb-2">No events found</h3>
+            <p className="text-space-dust">Try selecting a different filter</p>
+          </div>
+        )}
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
           <Card className="group hover:border-lavender/50 transition-all">
