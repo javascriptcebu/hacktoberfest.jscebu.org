@@ -1,7 +1,7 @@
-import { getLogtoContext, signOut } from "@logto/next/server-actions";
+import { getLogtoContext } from "@logto/next/server-actions";
 import { logtoConfig } from "../logto";
-import { redirect } from "next/navigation";
 import { Navigation } from "./nav";
+import { handleSignOut } from "./nav-actions";
 
 // Get admin emails from environment variable (comma-separated)
 const ADMIN_EMAILS = process.env.ADMIN_EMAILS
@@ -22,12 +22,6 @@ export async function NavWrapper({ isHomepage = false }: NavWrapperProps = {}) {
 
   // Check if user is admin
   const isAdmin = claims?.email && ADMIN_EMAILS.includes(claims.email) || false;
-
-  const handleSignOut = async () => {
-    "use server";
-    await signOut(logtoConfig);
-    redirect("/");
-  };
 
   return (
     <Navigation
