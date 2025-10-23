@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { NavWrapper } from "./components/nav-wrapper";
 import { Footer } from "./components/footer";
-import { Home, ArrowLeft } from "lucide-react";
+import { Home } from "lucide-react";
 import Particles from "./components/particles";
 
 export default function NotFound() {
@@ -38,7 +38,7 @@ export default function NotFound() {
               href="/"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-lavender text-void rounded-md font-medium hover:bg-melrose transition-colors"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <Home className="w-4 h-4" />
               Go Home
             </Link>
 
