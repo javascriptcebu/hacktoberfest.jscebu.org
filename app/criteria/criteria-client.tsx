@@ -159,7 +159,7 @@ export function CriteriaClient({ navWrapper }: CriteriaClientProps) {
                             </div>
                           </td>
                           <td className="p-3 md:p-4 text-right">
-                            <div className="text-lavender font-bold text-lg md:text-xl">30%</div>
+                            <div className="text-lavender font-bold text-lg md:text-xl">25%</div>
                           </td>
                         </tr>
                         
