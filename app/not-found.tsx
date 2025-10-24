@@ -39,7 +39,7 @@ export default function NotFound() {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-lavender text-void rounded-md font-medium hover:bg-melrose transition-colors"
             >
               <Home className="w-4 h-4" />
-              Go Home
+              Home
             </Link>
 
             <Link
