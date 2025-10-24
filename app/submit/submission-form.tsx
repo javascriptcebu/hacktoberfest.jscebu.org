@@ -377,6 +377,15 @@ export function SubmissionForm({ userEmail }: SubmissionFormProps) {
             <p className="mt-1 text-xs text-space-haze">
               A screenshot or logo for your project
             </p>
+            <p className="mt-3 text-m font-medium text-melrose">
+              For demo video submissions, please email the video URL to{" "}
+              <a
+                href="mailto:hacktoberfest@jscebu.org"
+                className="underline hover:text-space-white"
+              >
+                hacktoberfest@jscebu.org
+              </a>
+            </p>
           </div>
 
           {/* Existing Project Specific Field */}

@@ -28,7 +28,7 @@ export default function SponsorPage() {
       id: 2,
       name: "Lisk",
       logo: "/images/sponsor-logo/lisk-wordmark-b.svg",
-      facebook: "https://www.facebook.com/profile.php?id=61580288592380",
+      facebook: "https://lisk.com/",
       tier: "gold",
     },
     {
@@ -50,14 +50,14 @@ export default function SponsorPage() {
       id: 5,
       name: "The Company Philippines",
       logo: "/images/sponsor-logo/thecompany.png",
-      facebook: "https://www.facebook.com/TheCompanyCebu",
+      facebook: "https://thecompany.ph/",
       tier: "gold",
     },
     {
       id: 6,
       name: "lyf Cebu City",
       logo: "/images/sponsor-logo/lyfCebuCitylogo.jpg",
-      facebook: "https://www.facebook.com/lyf.cebucity",
+      facebook: "https://www.discoverasr.com/en/lyf/philippines/lyf-cebu-city",
       tier: "gold",
     },
     {
@@ -153,7 +153,7 @@ export default function SponsorPage() {
     {
       id: 19,
       name: "DEVCON Cebu",
-      logo: "/images/sponsor-logo/DEVCON Cebu - White Horizontal.png",
+      logo: "/images/sponsor-logo/DEVCON Cebu - Black Horizontal.png",
       facebook: "https://www.facebook.com/devconcebu",
       tier: "community",
     },
@@ -233,7 +233,7 @@ export default function SponsorPage() {
                     
                     <div className="relative p-8 flex flex-col items-center justify-center min-h-[280px]">
                       {/* Logo Container */}
-                      <div className="w-full h-32 mb-6 relative bg-white/5 rounded-lg flex items-center justify-center border border-amber-500/30 group-hover:border-amber-400/50 transition-colors p-4">
+                      <div className="w-full h-32 mb-6 relative bg-white rounded-lg flex items-center justify-center border border-amber-500/30 group-hover:border-amber-400/50 transition-colors p-4">
                         <Image
                           src={sponsor.logo}
                           alt={sponsor.name}
@@ -285,7 +285,7 @@ export default function SponsorPage() {
                     
                     <div className="relative p-6 flex flex-col items-center justify-center min-h-[240px]">
                       {/* Logo Container */}
-                      <div className="w-full h-24 mb-4 relative bg-white/5 rounded-lg flex items-center justify-center border border-gray-500/30 group-hover:border-gray-400/50 transition-colors p-3">
+                      <div className="w-full h-24 mb-4 relative bg-white rounded-lg flex items-center justify-center border border-gray-500/30 group-hover:border-gray-400/50 transition-colors p-3">
                         <Image
                           src={sponsor.logo}
                           alt={sponsor.name}
@@ -337,7 +337,7 @@ export default function SponsorPage() {
                     
                     <div className="relative p-4 flex flex-col items-center justify-center min-h-[200px]">
                       {/* Logo Container */}
-                      <div className="w-full h-20 mb-3 relative bg-white/5 rounded-lg flex items-center justify-center border border-lavender/30 group-hover:border-lavender/50 transition-colors p-2">
+                      <div className="w-full h-20 mb-3 relative bg-white rounded-lg flex items-center justify-center border border-lavender/30 group-hover:border-lavender/50 transition-colors p-2">
                         <Image
                           src={sponsor.logo}
                           alt={sponsor.name}
