@@ -1,6 +1,7 @@
 import { Eye } from "lucide-react";
 import {
   getApprovedSubmittedProjects,
+  getApprovedContributions,
   getProjectViews,
   getProjectsByYear,
 } from "./utils";
@@ -14,6 +15,7 @@ import { NavWrapper } from "../components/nav-wrapper";
 import React from "react";
 import { allProjects } from "contentlayer/generated";
 import { SubmittedProjectCard } from "./submitted-project-card";
+import { ContributionCard } from "./contribution-card";
 
 export const metadata: Metadata = {
   title: "Open Source Projects",
@@ -33,6 +35,43 @@ export const revalidate = 60;
 export default async function ProjectsPage() {
   const views = await getProjectViews(allProjects);
   const submittedProjects = await getApprovedSubmittedProjects();
+  const contributions = await getApprovedContributions();
+
+  // Helper function to deduplicate projects by repository URL
+  // Keeps the most recent submission for each unique repository
+  const deduplicateProjects = (projects: typeof submittedProjects) => {
+    const uniqueProjects = new Map<string, typeof submittedProjects[0]>();
+
+    projects.forEach((project) => {
+      const repoKey = project.repository.toLowerCase().trim();
+      const existing = uniqueProjects.get(repoKey);
+
+      // Keep the most recent submission
+      if (!existing || new Date(project.submittedAt) > new Date(existing.submittedAt)) {
+        uniqueProjects.set(repoKey, project);
+      }
+    });
+
+    return Array.from(uniqueProjects.values());
+  };
+
+  // Separate and deduplicate hackathon projects
+  const hackathonProjectsRaw = submittedProjects.filter(
+    (p) => p.projectType === "hackathon"
+  );
+  const hackathonProjects = deduplicateProjects(hackathonProjectsRaw);
+
+  // Get hackathon project repositories for cross-category deduplication
+  const hackathonRepos = new Set(
+    hackathonProjects.map((p) => p.repository.toLowerCase().trim())
+  );
+
+  // Filter and deduplicate existing projects, excluding any that already appear in hackathon projects
+  const existingProjectsRaw = submittedProjects.filter(
+    (p) => (p.projectType === "existing" || !p.projectType) &&
+    !hackathonRepos.has(p.repository.toLowerCase().trim())
+  );
+  const existingProjects = deduplicateProjects(existingProjectsRaw);
 
   const winners = {
     top1: allProjects.find((project) => project.slug === "empty")!,
@@ -150,46 +189,99 @@ export default async function ProjectsPage() {
         </Card>
 
         <div className="hidden w-full h-px md:block bg-zinc-800" /> */}
-        {/* Submitted Projects Section */}
-        {submittedProjects.length > 0 && (
+
+        {/* Hackathon Projects Section */}
+        {hackathonProjects.length > 0 && (
           <>
             <div className="hidden w-full h-px md:block bg-zinc-800" />
 
             <div className="max-w-2xl mx-auto lg:mx-0">
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100">
-                Community Submitted Projects
+                Hackathon Projects
               </h2>
               <p className="mt-4 text-base text-zinc-400">
-                Open source projects submitted by our community members for
-                Hacktoberfest {YEAR}. Looking for contributors!
+                New projects created for the 20-day hackathon with teams competing for prizes!
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-6 mx-auto lg:grid-cols-2 xl:grid-cols-3">
-              {submittedProjects.map((project) => (
+              {hackathonProjects.map((project) => (
                 <SubmittedProjectCard key={project.id} project={project} />
               ))}
             </div>
+          </>
+        )}
 
-            {/* Call to Action */}
-            <Card>
-              <div className="p-8 text-center">
-                <h3 className="text-xl font-bold text-zinc-100 mb-2">
-                  Want your project featured here?
-                </h3>
-                <p className="text-zinc-400 mb-4">
-                  Submit your open source project and get contributions from the
-                  community!
-                </p>
+        {/* Existing Projects Section */}
+        {existingProjects.length > 0 && (
+          <>
+            <div className="hidden w-full h-px md:block bg-zinc-800" />
+
+            <div className="max-w-2xl mx-auto lg:mx-0">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100">
+                Existing Projects Seeking Contributors
+              </h2>
+              <p className="mt-4 text-base text-zinc-400">
+                Open source projects from our community looking for contributors!
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 mx-auto lg:grid-cols-2 xl:grid-cols-3">
+              {existingProjects.map((project) => (
+                <SubmittedProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* Approved Contributions Section */}
+        {contributions.length > 0 && (
+          <>
+            <div className="hidden w-full h-px md:block bg-zinc-800" />
+
+            <div className="max-w-2xl mx-auto lg:mx-0">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100">
+                Community Contributions
+              </h2>
+              <p className="mt-4 text-base text-zinc-400">
+                Pull requests submitted by our community members during Hacktoberfest {YEAR}.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 mx-auto lg:grid-cols-2 xl:grid-cols-3">
+              {contributions.map((contribution) => (
+                <ContributionCard key={contribution.id} contribution={contribution} />
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* Call to Action */}
+        {(hackathonProjects.length > 0 || existingProjects.length > 0 || contributions.length > 0) && (
+          <Card>
+            <div className="p-8 text-center">
+              <h3 className="text-xl font-bold text-zinc-100 mb-2">
+                Want to participate?
+              </h3>
+              <p className="text-zinc-400 mb-4">
+                Submit your open source project or track your contributions!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
                   href="/submit"
                   className="inline-flex items-center justify-center px-6 py-3 bg-lavender text-void rounded-md font-medium hover:bg-melrose transition-colors"
                 >
                   Submit Your Project →
                 </Link>
+                <Link
+                  href="/contributions"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-blue-violet text-space-white rounded-md font-medium hover:bg-lavender hover:text-void transition-colors"
+                >
+                  Track Contributions →
+                </Link>
               </div>
-            </Card>
-          </>
+            </div>
+          </Card>
         )}
 
         <div className="max-w-2xl mx-auto lg:mx-0">

@@ -97,3 +97,57 @@ export async function getApprovedSubmittedProjects(): Promise<SubmittedProject[]
 		return [];
 	}
 }
+
+export interface ApprovedContribution {
+	id: string;
+	prUrl: string;
+	projectName: string;
+	projectUrl: string;
+	isLocalProject: boolean;
+	contributionType: string;
+	description: string;
+	email: string;
+	submittedBy: string;
+	submittedAt: string;
+	status: "pending" | "approved" | "rejected";
+	year: number;
+	points?: number;
+}
+
+export async function getApprovedContributions(): Promise<ApprovedContribution[]> {
+	try {
+		// Get all approved contribution IDs
+		const approvedIds = await redis.lrange("approved-contributions", 0, -1) as string[];
+
+		if (approvedIds.length === 0) {
+			return [];
+		}
+
+		// Fetch all approved contributions
+		const approvedContributions = await Promise.all(
+			approvedIds.map(async (id) => {
+				try {
+					const contributionData = await redis.get(`contribution:${id}`);
+					if (contributionData) {
+						const parsed = typeof contributionData === 'string'
+							? JSON.parse(contributionData)
+							: contributionData;
+						return parsed as ApprovedContribution;
+					}
+				} catch (e) {
+					console.error(`Error fetching contribution ${id}:`, e);
+				}
+				return null;
+			})
+		);
+
+		// Filter out nulls and sort by submission date (newest first)
+		return approvedContributions
+			.filter((c): c is ApprovedContribution => c !== null)
+			.filter((c) => c.year === 2025) // Only show 2025 contributions
+			.sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime());
+	} catch (error) {
+		console.error("Error fetching approved contributions:", error);
+		return [];
+	}
+}
