@@ -222,6 +222,44 @@ export function AdminPanel() {
     }
   };
 
+  const updateSubmissionProjectType = async (
+    submissionId: string,
+    projectType: "hackathon" | "existing"
+  ) => {
+    try {
+      const response = await fetch("/api/admin/submissions", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ submissionId, projectType }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Project type update successful:", data);
+        await fetchSubmissions();
+      } else {
+        const errorData = await response.json();
+        console.error("Failed to update project type:", errorData);
+        alert(
+          `Failed to update project type: ${errorData.error || "Unknown error"}`
+        );
+      }
+    } catch (err) {
+      if (
+        err instanceof Error &&
+        "digest" in err &&
+        err.digest === "DYNAMIC_SERVER_USAGE"
+      ) {
+        throw error;
+      }
+
+      console.error("Error updating project type:", err);
+      alert("Failed to update project type - check console for details");
+    }
+  };
+
   const updateVolunteerStatus = async (
     volunteerId: string,
     status: "approved" | "rejected"
@@ -473,11 +511,33 @@ export function AdminPanel() {
                             {submission.title}
                           </h3>
                         </div>
-                        {submission.projectType && (
-                          <div className="mb-2">
-                            {getProjectTypeBadge(submission.projectType)}
+                        <div className="mb-2 flex items-center gap-3">
+                          {submission.projectType && (
+                            <div>
+                              {getProjectTypeBadge(submission.projectType)}
+                            </div>
+                          )}
+                          <div className="flex items-center gap-2">
+                            <label htmlFor={`project-type-${submission.id}`} className="text-xs text-space-haze">
+                              Change type:
+                            </label>
+                            <select
+                              id={`project-type-${submission.id}`}
+                              value={submission.projectType || ""}
+                              onChange={(e) => {
+                                const newType = e.target.value as "hackathon" | "existing";
+                                if (newType) {
+                                  updateSubmissionProjectType(submission.id, newType);
+                                }
+                              }}
+                              className="px-2 py-1 text-xs bg-east-bay/50 text-space-white border border-blue-violet/30 rounded-md hover:bg-east-bay/70 focus:outline-none focus:ring-2 focus:ring-lavender/50"
+                            >
+                              <option value="">Select type...</option>
+                              <option value="hackathon">Hackathon Project</option>
+                              <option value="existing">Existing Project</option>
+                            </select>
                           </div>
-                        )}
+                        </div>
                         <p className="text-sm text-space-dust mb-4">
                           {submission.description}
                         </p>

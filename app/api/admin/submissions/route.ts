@@ -43,8 +43,10 @@ export async function GET(): Promise<NextResponse> {
 
     console.log("Fetching submissions - Pending:", pendingIds.length, "Approved:", approvedIds.length, "Rejected:", rejectedIds.length);
 
-    // Combine all IDs
-    const allIds = [...pendingIds, ...approvedIds, ...rejectedIds];
+    // Combine all IDs and remove duplicates
+    const allIds = [...new Set([...pendingIds, ...approvedIds, ...rejectedIds])];
+
+    console.log("Total unique IDs:", allIds.length, "Before dedup:", pendingIds.length + approvedIds.length + rejectedIds.length);
 
     // Get all submissions
     const submissions = [];
@@ -89,13 +91,37 @@ export async function PATCH(req: NextRequest): Promise<NextResponse> {
     }
 
     const body = await req.json();
-    const { submissionId, status } = body;
+    const { submissionId, status, projectType } = body;
 
-    console.log("PATCH request - Submission ID:", submissionId, "Status:", status);
+    console.log("PATCH request - Submission ID:", submissionId, "Status:", status, "Project Type:", projectType);
 
-    if (!submissionId || !["approved", "rejected"].includes(status)) {
+    if (!submissionId) {
       return NextResponse.json(
-        { error: `Invalid submission ID (${submissionId}) or status (${status})` },
+        { error: `Invalid submission ID (${submissionId})` },
+        { status: 400 }
+      );
+    }
+
+    // Validate that either status or projectType is provided
+    if (!status && !projectType) {
+      return NextResponse.json(
+        { error: "Either status or projectType must be provided" },
+        { status: 400 }
+      );
+    }
+
+    // Validate status if provided
+    if (status && !["approved", "rejected"].includes(status)) {
+      return NextResponse.json(
+        { error: `Invalid status (${status})` },
+        { status: 400 }
+      );
+    }
+
+    // Validate projectType if provided
+    if (projectType && !["hackathon", "existing"].includes(projectType)) {
+      return NextResponse.json(
+        { error: `Invalid project type (${projectType})` },
         { status: 400 }
       );
     }
@@ -114,29 +140,41 @@ export async function PATCH(req: NextRequest): Promise<NextResponse> {
       ? JSON.parse(submissionData)
       : submissionData;
 
-    submission.status = status;
-    submission.reviewedAt = new Date().toISOString();
+    // Update status if provided
+    if (status) {
+      submission.status = status;
+      submission.reviewedAt = new Date().toISOString();
+      console.log(`Updating submission ${submissionId} to status: ${status}`);
 
-    console.log(`Updating submission ${submissionId} to status: ${status}`);
+      // Remove from all lists to prevent duplicates
+      await Promise.all([
+        redis.lrem("pending-submissions", 0, submissionId),
+        redis.lrem("approved-submissions", 0, submissionId),
+        redis.lrem("rejected-submissions", 0, submissionId)
+      ]);
+
+      // Add to appropriate list
+      if (status === "approved") {
+        await redis.lpush("approved-submissions", submissionId);
+        console.log(`Approved submission: ${submission.title} (ID: ${submissionId})`);
+      } else {
+        await redis.lpush("rejected-submissions", submissionId);
+        console.log(`Rejected submission: ${submission.title} (ID: ${submissionId})`);
+      }
+    }
+
+    // Update project type if provided
+    if (projectType) {
+      submission.projectType = projectType;
+      console.log(`Updating submission ${submissionId} project type to: ${projectType}`);
+    }
 
     // Update the submission
     await redis.set(`submission:${submissionId}`, JSON.stringify(submission));
 
-    // Remove from pending list
-    await redis.lrem("pending-submissions", 0, submissionId);
-
-    // Add to appropriate list
-    if (status === "approved") {
-      await redis.lpush("approved-submissions", submissionId);
-      console.log(`Approved submission: ${submission.title} (ID: ${submissionId})`);
-    } else {
-      await redis.lpush("rejected-submissions", submissionId);
-      console.log(`Rejected submission: ${submission.title} (ID: ${submissionId})`);
-    }
-
-    return NextResponse.json({ 
-      success: true, 
-      message: `Submission ${status} successfully`
+    return NextResponse.json({
+      success: true,
+      message: `Submission updated successfully`
     });
 
   } catch (error) {
