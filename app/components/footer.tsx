@@ -199,19 +199,31 @@ export function Footer() {
                 </a>
               </span>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4 justify-center md:justify-end">
+              <a
+                href="https://github.com/javascriptcebu/hacktoberfest.jscebu.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-200 transition-colors"
+              >
+                <GithubIcon className="w-3.5 h-3.6" />
+                View Source
+              </a>
+              <span className="text-zinc-700">·</span>
               <Link
                 href="/privacy"
                 className="text-xs text-zinc-500 hover:text-zinc-200 transition-colors"
               >
                 Privacy Policy
               </Link>
+              <span className="text-zinc-700">·</span>
               <Link
                 href="/terms"
                 className="text-xs text-zinc-500 hover:text-zinc-200 transition-colors"
               >
                 Terms of Service
               </Link>
+              <span className="text-zinc-700">·</span>
               <Link
                 href="/code-of-conduct"
                 className="text-xs text-zinc-500 hover:text-zinc-200 transition-colors"
