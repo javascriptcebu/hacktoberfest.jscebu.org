@@ -32,6 +32,7 @@ interface Submission {
   submittedAt: string;
   status: "pending" | "approved" | "rejected";
   year: number;
+  projectType?: "hackathon" | "existing";
 }
 
 interface Volunteer {
@@ -249,6 +250,26 @@ export function AdminPanel() {
     }
   };
 
+  const getProjectTypeBadge = (projectType?: "hackathon" | "existing") => {
+    if (!projectType) return null;
+
+    if (projectType === "hackathon") {
+      return (
+        <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-purple-400 bg-purple-900/50 border border-purple-800 rounded-full">
+          <Users className="w-3 h-3" />
+          Hackathon Project
+        </span>
+      );
+    }
+
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-blue-400 bg-blue-900/50 border border-blue-800 rounded-full">
+        <Code className="w-3 h-3" />
+        Existing Project
+      </span>
+    );
+  };
+
   const roleDisplayNames: Record<string, string> = {
     "speaker-coordinator": "Speaker Coordinator",
     emcee: "Emcee/Host",
@@ -353,9 +374,16 @@ export function AdminPanel() {
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-space-white mb-2">
-                          {submission.title}
-                        </h3>
+                        <div className="flex items-center gap-2 mb-2">
+                          <h3 className="text-xl font-bold text-space-white">
+                            {submission.title}
+                          </h3>
+                        </div>
+                        {submission.projectType && (
+                          <div className="mb-2">
+                            {getProjectTypeBadge(submission.projectType)}
+                          </div>
+                        )}
                         <p className="text-sm text-space-dust mb-4">
                           {submission.description}
                         </p>
