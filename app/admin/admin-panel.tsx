@@ -53,18 +53,38 @@ interface Volunteer {
   year: number;
 }
 
-type TabType = "projects" | "volunteers";
+interface Contribution {
+  id: string;
+  prUrl: string;
+  projectName: string;
+  projectUrl: string;
+  isLocalProject: boolean;
+  contributionType: string;
+  description: string;
+  email: string;
+  submittedBy: string;
+  submittedAt: string;
+  status: "pending" | "approved" | "rejected";
+  year: number;
+  points?: number;
+}
+
+type TabType = "projects" | "volunteers" | "contributions";
 
 export function AdminPanel() {
   const [activeTab, setActiveTab] = useState<TabType>("projects");
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [volunteers, setVolunteers] = useState<Volunteer[]>([]);
+  const [contributions, setContributions] = useState<Contribution[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [projectFilter, setProjectFilter] = useState<
     "all" | "pending" | "approved" | "rejected"
   >("pending");
   const [volunteerFilter, setVolunteerFilter] = useState<
+    "all" | "pending" | "approved" | "rejected"
+  >("pending");
+  const [contributionFilter, setContributionFilter] = useState<
     "all" | "pending" | "approved" | "rejected"
   >("pending");
   const [expandedVolunteers, setExpandedVolunteers] = useState<Set<string>>(
@@ -128,11 +148,38 @@ export function AdminPanel() {
     }
   };
 
+  const fetchContributions = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("/api/admin/contributions");
+      if (response.ok) {
+        const data = await response.json();
+        setContributions(data.contributions || []);
+      } else {
+        throw new Error("Failed to fetch contributions");
+      }
+    } catch (err) {
+      if (
+        err instanceof Error &&
+        "digest" in err &&
+        err.digest === "DYNAMIC_SERVER_USAGE"
+      ) {
+        throw error;
+      }
+
+      setError("Failed to load contributions");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (activeTab === "projects") {
       fetchSubmissions();
-    } else {
+    } else if (activeTab === "volunteers") {
       fetchVolunteers();
+    } else if (activeTab === "contributions") {
+      fetchContributions();
     }
   }, [activeTab]);
 
@@ -206,6 +253,38 @@ export function AdminPanel() {
     }
   };
 
+  const updateContributionStatus = async (
+    contributionId: string,
+    status: "approved" | "rejected"
+  ) => {
+    try {
+      const response = await fetch("/api/admin/contributions", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ contributionId, status }),
+      });
+
+      if (response.ok) {
+        await fetchContributions();
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to update contribution: ${errorData.error || "Unknown error"}`);
+      }
+    } catch (err) {
+      if (
+        err instanceof Error &&
+        "digest" in err &&
+        err.digest === "DYNAMIC_SERVER_USAGE"
+      ) {
+        throw error;
+      }
+
+      alert("Failed to update contribution status");
+    }
+  };
+
   const toggleVolunteerExpand = (id: string) => {
     const newExpanded = new Set(expandedVolunteers);
     if (newExpanded.has(id)) {
@@ -222,6 +301,10 @@ export function AdminPanel() {
 
   const filteredVolunteers = volunteers.filter((v) =>
     volunteerFilter === "all" ? true : v.status === volunteerFilter
+  );
+
+  const filteredContributions = contributions.filter((c) =>
+    contributionFilter === "all" ? true : c.status === contributionFilter
   );
 
   const getStatusBadge = (status: string) => {
@@ -317,6 +400,17 @@ export function AdminPanel() {
         >
           <Code className="w-4 h-4" />
           Project Submissions ({submissions.length})
+        </button>
+        <button
+          onClick={() => setActiveTab("contributions")}
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-md font-medium transition-all ${
+            activeTab === "contributions"
+              ? "bg-lavender text-void"
+              : "text-space-dust hover:text-space-white hover:bg-east-bay/50"
+          }`}
+        >
+          <GitBranch className="w-4 h-4" />
+          Contributions ({contributions.length})
         </button>
         <button
           onClick={() => setActiveTab("volunteers")}
@@ -689,6 +783,170 @@ export function AdminPanel() {
                         <button
                           onClick={() =>
                             updateVolunteerStatus(volunteer.id, "rejected")
+                          }
+                          className="px-4 py-2 bg-red-600/20 text-red-400 border border-red-600/50 rounded-md hover:bg-red-600/30 transition-colors flex items-center gap-2"
+                        >
+                          <XCircle className="w-4 h-4" />
+                          Reject
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </Card>
+              ))
+            )}
+          </div>
+        </>
+      )}
+
+      {/* Contributions Tab */}
+      {activeTab === "contributions" && (
+        <>
+          {/* Filter Tabs */}
+          <div className="flex gap-2">
+            {(["all", "pending", "approved", "rejected"] as const).map(
+              (status) => (
+                <button
+                  key={status}
+                  onClick={() => setContributionFilter(status)}
+                  className={`px-4 py-2 rounded-md font-medium capitalize transition-colors ${
+                    contributionFilter === status
+                      ? "bg-melrose text-void"
+                      : "bg-east-bay/50 text-space-dust hover:bg-east-bay/70"
+                  }`}
+                >
+                  {status} (
+                  {
+                    contributions.filter(
+                      (c) => status === "all" || c.status === status
+                    ).length
+                  }
+                  )
+                </button>
+              )
+            )}
+          </div>
+
+          {/* Contributions List */}
+          <div className="space-y-4">
+            {filteredContributions.length === 0 ? (
+              <Card>
+                <div className="p-8 text-center text-space-dust">
+                  No {contributionFilter === "all" ? "" : contributionFilter}{" "}
+                  contributions found.
+                </div>
+              </Card>
+            ) : (
+              filteredContributions.map((contribution) => (
+                <Card key={contribution.id}>
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <h3 className="text-xl font-bold text-space-white">
+                            {contribution.projectName}
+                          </h3>
+                          {contribution.isLocalProject && (
+                            <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-purple-400 bg-purple-900/50 border border-purple-800 rounded-full">
+                              2x Cebu Project
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-sm text-space-dust mb-4">
+                          {contribution.description}
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                          <div className="space-y-2">
+                            <div className="flex items-start gap-2">
+                              <GitBranch className="w-4 h-4 text-lavender mt-0.5" />
+                              <div>
+                                <span className="text-space-haze">PR: </span>
+                                <a
+                                  href={contribution.prUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-melrose hover:text-lavender underline break-all"
+                                >
+                                  {contribution.prUrl}
+                                </a>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <Code className="w-4 h-4 text-lavender mt-0.5" />
+                              <div>
+                                <span className="text-space-haze">
+                                  Project:{" "}
+                                </span>
+                                <a
+                                  href={contribution.projectUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-melrose hover:text-lavender underline"
+                                >
+                                  {contribution.projectUrl}
+                                </a>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <span className="text-space-haze">Type: </span>
+                              <span className="text-space-white capitalize">
+                                {contribution.contributionType}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <div className="flex items-start gap-2">
+                              <Mail className="w-4 h-4 text-lavender mt-0.5" />
+                              <div>
+                                <span className="text-space-haze">Email: </span>
+                                <span className="text-space-white">
+                                  {contribution.email}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <Calendar className="w-4 h-4 text-lavender mt-0.5" />
+                              <div>
+                                <span className="text-space-haze">
+                                  Submitted:{" "}
+                                </span>
+                                <span className="text-space-white">
+                                  {new Date(
+                                    contribution.submittedAt
+                                  ).toLocaleDateString()}
+                                </span>
+                              </div>
+                            </div>
+                            {contribution.points && (
+                              <div className="flex items-start gap-2">
+                                <span className="text-space-haze">Points: </span>
+                                <span className="text-lavender font-semibold">
+                                  {contribution.points}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        {getStatusBadge(contribution.status)}
+                      </div>
+                    </div>
+
+                    {contribution.status === "pending" && (
+                      <div className="flex gap-2 pt-4 border-t border-east-bay/50">
+                        <button
+                          onClick={() =>
+                            updateContributionStatus(contribution.id, "approved")
+                          }
+                          className="px-4 py-2 bg-green-600/20 text-green-400 border border-green-600/50 rounded-md hover:bg-green-600/30 transition-colors flex items-center gap-2"
+                        >
+                          <CheckCircle className="w-4 h-4" />
+                          Approve
+                        </button>
+                        <button
+                          onClick={() =>
+                            updateContributionStatus(contribution.id, "rejected")
                           }
                           className="px-4 py-2 bg-red-600/20 text-red-400 border border-red-600/50 rounded-md hover:bg-red-600/30 transition-colors flex items-center gap-2"
                         >
