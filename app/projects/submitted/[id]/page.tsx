@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { NavWrapper } from "../../../components/nav-wrapper";
 import { Footer } from "../../../components/footer";
 import { Card } from "../../../components/card";
-import { GitBranch, ExternalLink, User, Calendar, Mail, ArrowLeft } from "lucide-react";
+import { GitBranch, ExternalLink, User, Calendar, Mail, ArrowLeft, Users } from "lucide-react";
 import Link from "next/link";
 import { SubmittedProject } from "../../utils";
 import { Metadata } from "next";
@@ -174,6 +174,67 @@ export default async function SubmittedProjectPage({
             </div>
           </div>
         </Card>
+
+        {/* Team Members */}
+        {project.projectType === "hackathon" && project.teamMembers && project.teamMembers.length > 0 && (
+          <Card>
+            <div className="p-6 space-y-4">
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5 text-lavender" />
+                <h2 className="text-xl font-semibold text-zinc-100">Team Members</h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {project.teamMembers.map((member, index) => (
+                  <div
+                    key={index}
+                    className="p-4 bg-zinc-900/50 rounded-lg border border-zinc-800 hover:border-lavender/30 transition-colors"
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <User className="w-4 h-4 text-lavender" />
+                        <span className="font-medium text-zinc-100">{member.name}</span>
+                      </div>
+                      <span className={`text-xs px-2 py-1 rounded-md font-medium ${
+                        index === 0
+                          ? "bg-lavender/20 text-lavender border border-lavender/30"
+                          : "bg-zinc-800 text-zinc-400"
+                      }`}>
+                        {member.role || `Member ${index + 1}`}
+                      </span>
+                    </div>
+
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-center gap-2 text-zinc-400">
+                        <Mail className="w-3 h-3" />
+                        <a
+                          href={`mailto:${member.email}`}
+                          className="hover:text-zinc-100 transition-colors"
+                        >
+                          {member.email}
+                        </a>
+                      </div>
+
+                      {member.github && (
+                        <div className="flex items-center gap-2 text-zinc-400">
+                          <GitBranch className="w-3 h-3" />
+                          <a
+                            href={`https://github.com/${member.github}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-zinc-100 transition-colors"
+                          >
+                            @{member.github}
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
+        )}
 
         {/* How to Contribute */}
         <Card>
