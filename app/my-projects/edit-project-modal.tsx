@@ -36,7 +36,7 @@ export function EditProjectModal({ project, onClose, onSave }: EditProjectModalP
     });
   };
 
-  const handleTeamMemberChange = (index: number, field: "name" | "email", value: string) => {
+  const handleTeamMemberChange = (index: number, field: "name" | "email" | "github" | "role", value: string) => {
     const updatedMembers = [...teamMembers];
     updatedMembers[index] = {
       ...updatedMembers[index],
@@ -47,7 +47,7 @@ export function EditProjectModal({ project, onClose, onSave }: EditProjectModalP
 
   const addTeamMember = () => {
     if (teamMembers.length < 4) {
-      setTeamMembers([...teamMembers, { name: "", email: "" }]);
+      setTeamMembers([...teamMembers, { name: "", email: "", github: "", role: "" }]);
     }
   };
 

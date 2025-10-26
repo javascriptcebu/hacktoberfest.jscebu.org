@@ -44,7 +44,7 @@ export async function GET(): Promise<NextResponse> {
     console.log("Fetching submissions - Pending:", pendingIds.length, "Approved:", approvedIds.length, "Rejected:", rejectedIds.length);
 
     // Combine all IDs and remove duplicates
-    const allIds = [...new Set([...pendingIds, ...approvedIds, ...rejectedIds])];
+    const allIds = Array.from(new Set([...pendingIds, ...approvedIds, ...rejectedIds]));
 
     console.log("Total unique IDs:", allIds.length, "Before dedup:", pendingIds.length + approvedIds.length + rejectedIds.length);
 
