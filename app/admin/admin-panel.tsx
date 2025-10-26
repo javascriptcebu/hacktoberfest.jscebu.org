@@ -20,6 +20,13 @@ import { useEffect, useState } from "react";
 
 import { Card } from "../components/card";
 
+interface TeamMember {
+  name: string;
+  email: string;
+  github: string;
+  role: string;
+}
+
 interface Submission {
   id: string;
   title: string;
@@ -33,6 +40,7 @@ interface Submission {
   status: "pending" | "approved" | "rejected";
   year: number;
   projectType?: "hackathon" | "existing";
+  teamMembers?: TeamMember[];
 }
 
 interface Volunteer {
@@ -541,6 +549,63 @@ export function AdminPanel() {
                         <p className="text-sm text-space-dust mb-4">
                           {submission.description}
                         </p>
+                        {submission.projectType === "hackathon" &&
+                          submission.teamMembers &&
+                          submission.teamMembers.length > 0 && (
+                            <div className="mb-4 p-4 bg-lavender/5 border border-lavender/20 rounded-lg">
+                              <h4 className="text-sm font-semibold text-lavender mb-3 flex items-center gap-2">
+                                <Users className="w-4 h-4" />
+                                Team Members ({submission.teamMembers.length})
+                              </h4>
+                              <div className="space-y-3">
+                                {submission.teamMembers.map((member, index) => (
+                                  <div
+                                    key={index}
+                                    className="flex items-start gap-3 text-xs"
+                                  >
+                                    <div className="flex-shrink-0">
+                                      <span
+                                        className={`inline-flex items-center px-2 py-1 rounded-md font-medium ${
+                                          index === 0
+                                            ? "bg-melrose/20 text-melrose border border-melrose/30"
+                                            : "bg-blue-violet/20 text-space-white border border-blue-violet/30"
+                                        }`}
+                                      >
+                                        {member.role || `Member ${index + 1}`}
+                                      </span>
+                                    </div>
+                                    <div className="flex-1 space-y-1">
+                                      <div className="flex items-center gap-2">
+                                        <User className="w-3 h-3 text-melrose" />
+                                        <span className="text-space-white font-medium">
+                                          {member.name}
+                                        </span>
+                                      </div>
+                                      <div className="flex items-center gap-2">
+                                        <Mail className="w-3 h-3 text-space-haze" />
+                                        <span className="text-space-dust">
+                                          {member.email}
+                                        </span>
+                                      </div>
+                                      {member.github && (
+                                        <div className="flex items-center gap-2">
+                                          <GitBranch className="w-3 h-3 text-space-haze" />
+                                          <a
+                                            href={`https://github.com/${member.github}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-lavender hover:text-melrose underline"
+                                          >
+                                            @{member.github}
+                                          </a>
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                           <div className="space-y-2">
                             <div className="flex items-start gap-2">

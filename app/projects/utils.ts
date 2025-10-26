@@ -39,6 +39,13 @@ export function getProjectsByYear(projects: Project[], year: number) {
 	return sortProjectsByDate(filtered);
 }
 
+export interface TeamMember {
+	name: string;
+	email: string;
+	github: string;
+	role: string;
+}
+
 export interface SubmittedProject {
 	id: string;
 	title: string;
@@ -56,7 +63,7 @@ export interface SubmittedProject {
 	category?: string;
 	techStack?: string;
 	lookingFor?: string;
-	teamMembers?: Array<{ name: string; email: string }>;
+	teamMembers?: TeamMember[];
 	lastUpdatedAt?: string;
 }
 
