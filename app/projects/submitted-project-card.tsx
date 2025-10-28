@@ -14,7 +14,7 @@ export function SubmittedProjectCard({ project }: { project: SubmittedProject })
             <h3 className="text-xl font-bold text-zinc-100 group-hover:text-white">
               {project.title}
             </h3>
-            <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-green-400 bg-green-900/50 border border-green-800 rounded-full">
+            <span className="flex-shrink-0 inline-flex items-center px-2 py-1 text-xs font-medium text-green-400 bg-green-900/50 border border-green-800 rounded-full">
               Open for PRs
             </span>
           </div>
