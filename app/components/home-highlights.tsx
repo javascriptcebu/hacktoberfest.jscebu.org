@@ -16,34 +16,44 @@ interface HighlightCard {
 
 const highlights: HighlightCard[] = [
   {
-    icon: "🥇",
+    icon: "🏆",
     title: "Best Overall Project",
-    subtitle: "Varo.dev",
-    description: "AI-powered developer matchmaking platform",
-    team: "Team Mugnavo: Nathaniel Tampus, Josh Dimpas, Khent Amancio, Marion Buhat",
+    subtitle: "Totoo Ba Ito?",
+    description: "An AI-powered Product and Industry Verification Checker using the official FDA Datasets",
+    team: "Neil-urk12",
     bgGradient:
-      "bg-gradient-to-br from-yellow-900/20 to-zinc-800/50 border-yellow-800/50",
-    titleColor: "text-yellow-400",
+      "bg-gradient-to-br from-green-900/20 to-zinc-800/50 border-green-800/50",
+    titleColor: "text-green-400",
   },
   {
-    icon: "🥈",
-    title: "Best Use of AI",
-    subtitle: "What Can I Cook",
-    description: "Recipe suggestions based on available ingredients",
-    team: "Team Solucion: Mac Dylan Balagtas, Niño Angelo Balagtas, John Laurence Sison",
-    bgGradient:
-      "bg-gradient-to-br from-gray-700/20 to-zinc-800/50 border-gray-600/50",
-    titleColor: "text-gray-300",
-  },
-  {
-    icon: "🥉",
-    title: "Most Fun / Best Easter Egg",
-    subtitle: "Helpful Tooltips Extension",
-    description: "Browser extension with humorous security insights",
-    team: "Team AI-MARRK: Arcgel Chavez, Rowen Borgonia, Kent Otadoy, Manuel Cando",
+    icon: "⛓️",
+    title: "Best Use of Blockchain",
+    subtitle: "Barangay Konek",
+    description: "Revolutionizes barangay services through AI and blockchain, bringing convenience, transparency, and accessibility",
+    team: "robwilsoncaldosa",
     bgGradient:
       "bg-gradient-to-br from-orange-900/20 to-zinc-800/50 border-orange-800/50",
     titleColor: "text-orange-400",
+  },
+  {
+    icon: "🤖",
+    title: "Best Use of AI",
+    subtitle: "Quiz Attack",
+    description: "A competitive 1v1 quiz battle web app where students challenge each other using AI-generated lectures and quizzes",
+    team: "EdocEdoc",
+    bgGradient:
+      "bg-gradient-to-br from-blue-900/20 to-zinc-800/50 border-blue-800/50",
+    titleColor: "text-blue-400",
+  },
+  {
+    icon: "🎉",
+    title: "Best Easter Egg",
+    subtitle: "BayanihanCebu",
+    description: "A blockchain-powered disaster relief platform that enhances transparency, coordination, and accountability during calamities",
+    team: "chelsepit",
+    bgGradient:
+      "bg-gradient-to-br from-purple-900/20 to-zinc-800/50 border-purple-800/50",
+    titleColor: "text-purple-400",
   },
 ];
 
@@ -52,17 +62,16 @@ export function HomeHighlights() {
     <section className="py-12">
       <ScrollAnimation animation="fade-up">
         <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-4 text-center">
-          🏆 Hacktoberfest 2024 Highlights
+          🏆 Hacktoberfest 2025 Winners
         </h2>
       </ScrollAnimation>
       <ScrollAnimation animation="fade-up" delay={0.1}>
         <p className="text-base sm:text-lg text-zinc-400 text-center max-w-3xl mx-auto mb-12">
-          Last year was incredible! Over 100 developers, 5+ teams, and 7+
-          amazing open source projects created in just 21 days.
+          Celebrating our amazing winners from this year's hackathon! These talented developers created incredible projects during our 20-day challenge.
         </p>
       </ScrollAnimation>
 
-      <div className="grid lg:grid-cols-3 gap-6 mb-12">
+      <div className="grid lg:grid-cols-2 gap-6 mb-12">
         {highlights.map((highlight, index) => (
           <ScrollAnimation
             key={index}
@@ -96,35 +105,34 @@ export function HomeHighlights() {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h4 className="text-base sm:text-lg font-bold text-green-400 mb-4">
-                  🌟 Best Overall Contribution
+                  🌟 Best Open Source Contribution
                 </h4>
                 <p className="text-zinc-200 font-medium mb-2">
-                  dorelljames/event-ni (PR #5)
+                  To Be Announced
                 </p>
                 <p className="text-zinc-400 text-sm">
-                  Implemented Sort by Month and Year Feature for better event
-                  organization
+                  The winner for Best Open Source Contribution will be announced soon. Stay tuned!
                 </p>
               </div>
               <div>
                 <h4 className="text-base sm:text-lg font-bold text-zinc-100 mb-4">
-                  📊 2024 Impact
+                  📊 2025 Impact
                 </h4>
                 <ul className="space-y-2 text-zinc-400 text-sm">
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 7+ open
+                    <span className="text-green-500 mr-2">✓</span> 15+ open
                     source projects created
                   </li>
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 7+ teams
+                    <span className="text-green-500 mr-2">✓</span> 20+ teams
                     participated in the hackathon
                   </li>
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 100+
+                    <span className="text-green-500 mr-2">✓</span> 150+
                     developers engaged
                   </li>
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 10+ partner
+                    <span className="text-green-500 mr-2">✓</span> 15+ partner
                     communities involved
                   </li>
                 </ul>
@@ -136,10 +144,10 @@ export function HomeHighlights() {
 
       <div className="mt-8 text-center">
         <Link
-          href="/projects/2024"
+          href="/projects"
           className="inline-flex items-center justify-center px-6 py-3 border border-zinc-700 text-zinc-300 rounded-md font-medium hover:bg-zinc-800 transition-colors"
         >
-          View Last Year's Projects →
+          View All 2025 Projects →
         </Link>
       </div>
     </section>
