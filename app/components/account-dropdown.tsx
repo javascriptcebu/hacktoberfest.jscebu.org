@@ -22,15 +22,18 @@ export default function AccountDropdown({ userEmail, userName, isAdmin, onSignOu
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    if (isOpen && buttonRef.current) {
+  const handleToggle = () => {
+    if (!isOpen && buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
       setDropdownPosition({
         top: rect.bottom + 8,
         right: window.innerWidth - rect.right,
       });
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
     }
-  }, [isOpen]);
+  };
 
   const menuItems = [
     {
@@ -74,9 +77,10 @@ export default function AccountDropdown({ userEmail, userName, isAdmin, onSignOu
   const displayName = userName || userEmail?.split('@')[0] || 'Account';
 
   return (
-    <div className="relative z-[300]">
+    <div className="relative">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        ref={buttonRef}
+        onClick={handleToggle}
         onBlur={() => setTimeout(() => setIsOpen(false), 200)}
         className="inline-flex items-center px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg text-space-dust hover:text-melrose hover:bg-east-bay/50 border border-transparent hover:border-blue-violet/30"
         aria-label="Account menu"
@@ -86,8 +90,14 @@ export default function AccountDropdown({ userEmail, userName, isAdmin, onSignOu
         <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
-      {isOpen && (
-        <div className="absolute right-0 z-[300] mt-2">
+      {mounted && isOpen && createPortal(
+        <div 
+          className="fixed z-[9999]" 
+          style={{ 
+            top: `${dropdownPosition.top}px`, 
+            right: `${dropdownPosition.right}px` 
+          }}
+        >
           <div className="bg-void/95 backdrop-blur shadow-lg min-w-[200px] text-sm py-2 border border-blue-violet/30 rounded-lg">
             {/* User info section */}
             {userEmail && (
@@ -146,7 +156,8 @@ export default function AccountDropdown({ userEmail, userName, isAdmin, onSignOu
               </>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
