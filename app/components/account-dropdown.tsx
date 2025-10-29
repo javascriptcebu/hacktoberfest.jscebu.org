@@ -3,6 +3,7 @@
 import { User, LogOut, FolderOpen, Settings, ChevronDown, Shield, GitPullRequest, Users } from "lucide-react";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 interface AccountDropdownProps {
   userEmail?: string;
