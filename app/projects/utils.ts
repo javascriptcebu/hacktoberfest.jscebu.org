@@ -53,6 +53,7 @@ export interface SubmittedProject {
 	repository: string;
 	url?: string;
 	image?: string;
+	videoUrl?: string;
 	email: string;
 	submittedBy: string;
 	submittedAt: string;
