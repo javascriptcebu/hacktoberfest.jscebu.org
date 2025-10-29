@@ -15,21 +15,13 @@ export default function AccountDropdown({ userEmail, userName, isAdmin, onSignOu
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, right: 0 });
+  // Removed unused dropdownPosition state
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    if (isOpen && buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect();
-      setDropdownPosition({
-        top: rect.bottom + 8,
-        right: window.innerWidth - rect.right,
-      });
-    }
-  }, [isOpen]);
+  // Removed unused dropdownPosition useEffect
 
   const menuItems = [
     {
