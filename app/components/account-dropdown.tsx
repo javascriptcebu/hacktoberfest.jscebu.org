@@ -5,6 +5,14 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 
 interface AccountDropdownProps {
+  userEmail?: string;
+  userName?: string;
+  isAdmin?: boolean;
+  onSignOut?: () => Promise<void>;
+}
+
+export default function AccountDropdown({ userEmail, userName, isAdmin, onSignOut }: AccountDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const menuItems = [
     {
       label: "My Projects",
