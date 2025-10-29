@@ -105,15 +105,23 @@ export function HomeHighlights() {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h4 className="text-base sm:text-lg font-bold text-green-400 mb-4">
-                  🌟 Best Open Source Contribution
+                  🌟 Best Open Source Contributions
                 </h4>
-                <p className="text-zinc-200 font-medium mb-2">
-                  To Be Announced
-                </p>
+                <Link target="_blank" rel="noopener noreferrer" href="https://github.com/javascriptcebu/hacktoberfest.jscebu.org/pull/31#issue-3545498769" >
+                  <p className="mt-2 text-zinc-200 font-medium mb-2">javascriptcebu/hacktoberfest.jscebu.org (PR #31) </p>
+                  <p className="text-zinc-400 text-sm mb-3">
+                      Added a new Criteria page that displays both Contribute and Create evaluation tables side-by-side with an interactive focus/tab.
+                  </p>
+                </Link>
+                            
+                <Link target="_blank" rel="noopener noreferrer" href="https://github.com/dotnize/prompt-ui/pull/2" >
+                  <p className="text-zinc-200 font-medium mb-2 mt-3">dotnize/prompt-ui (PR #2)</p>
                 <p className="text-zinc-400 text-sm">
-                  The winner for Best Open Source Contribution will be announced soon. Stay tuned!
-                </p>
+                      Removed required and minLength attributes from the textarea to allow custom toast validation messages to display correctly instead of native browser validation.
+                   </p>
+                </Link>
               </div>
+             
               <div>
                 <h4 className="text-base sm:text-lg font-bold text-zinc-100 mb-4">
                   📊 2025 Impact

@@ -217,19 +217,25 @@ export default async function ProjectsPage() {
 
         
         <Card>
-          <Link href="#">
-            <article className="p-4 md:p-8">
-              <div className="mt-2 flex items-center justify-between gap-2">
-                <span className="ml-2 text-xs text-zinc-100 bg-green-900 px-2 py-1 rounded-md">🌟 Best Open Source Contribution</span>
+          <article className="mx-2 p-4 md:p-8">
+             <div className="mt-2 flex items-center justify-between gap-2">
+                <span className="text-xs text-zinc-100 bg-green-900 px-2 py-1 rounded-md">🌟 Best Open Source Contribution</span>
               </div>
-              <h2 className="mt-2 z-20 text-xl font-medium duration-1000 lg:text-2xl text-zinc-200 group-hover:text-white font-display">
-                <div className="flex items-center justify-center gap-2">
-                  <GithubIcon /> {contributionWinner.title}
-                </div>
-              </h2>
-              <p className="mt-4 text-zinc-400 text-center">{contributionWinner.description}</p>
-            </article>
-          </Link>
+            <Link target="_blank" rel="noopener noreferrer" href="https://github.com/javascriptcebu/hacktoberfest.jscebu.org/pull/31#issue-3545498769" >
+              <p className="mt-4 text-zinc-200 font-medium mb-2">javascriptcebu/hacktoberfest.jscebu.org (PR #31) </p>
+              <p className="text-zinc-400 text-sm mb-3">
+              Added a new Criteria page that displays both Contribute and Create evaluation tables side-by-side with an interactive focus/tab.
+            </p>
+            </Link>
+            
+            <Link target="_blank" rel="noopener noreferrer" href="https://github.com/dotnize/prompt-ui/pull/2" >
+              <p className="text-zinc-200 font-medium mb-2 mt-3">dotnize/prompt-ui (PR #2)</p>
+              <p className="text-zinc-400 text-sm">
+              Removed required and minLength attributes from the textarea to allow custom toast validation messages to display correctly instead of native browser validation.
+            </p>
+            </Link>
+            
+          </article>
         </Card>
 
         {/* Hackathon Projects Section */}
