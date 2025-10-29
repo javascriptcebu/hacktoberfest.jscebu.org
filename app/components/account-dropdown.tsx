@@ -49,6 +49,7 @@ interface AccountDropdownProps {
   return (
     <div className="relative z-[300]">
       <button
+        ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
         onBlur={() => setTimeout(() => setIsOpen(false), 200)}
         className="inline-flex items-center px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg text-space-dust hover:text-melrose hover:bg-east-bay/50 border border-transparent hover:border-blue-violet/30"
