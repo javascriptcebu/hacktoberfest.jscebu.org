@@ -38,24 +38,22 @@ export function EventsContent() {
       id: 4,
       title: "🐘 PHPxCebu: Ai Ai Captain!",
       date: "October 25, 2025",
-      status: "upcoming" as const,
-      badge: "SPECIAL EVENT",
+      status: "completed" as const,
+      attendees: "70+ Attended",
       description: "Special PHP community event exploring AI integration in PHP applications. Join PHP developers and learn about the latest trends in AI-powered web development.",
       links: [
-        { label: "View on Cebby", url: "https://www.getcebby.com/events/phpxcebu-ai-ai-captain?utm_source=copy&utm_medium=share&utm_campaign=share"},
-        { label: "RSVP on Luma", url: "https://luma.com/sst27zom?tk=6vvm4B"}
+        { label: "View on Youtube", url: "https://www.youtube.com/live/nkIF1cdh7E8?si=mtKpiWyHCIYDzpO3"},
       ]
     },
     {
       id: 5,
       title: "🏆 Cebu Hacktoberfest Awarding Day",
       date: "October 26, 2025",
-      status: "upcoming" as const,
-      badge: "MAIN EVENT",
+      status: "completed" as const,
+      attendees: "70+ Attended",
       highlight: true,
       description: "The grand finale! Demo Day showcase where teams present their projects. Awards ceremony recognizing outstanding contributions, innovative solutions, and celebrating a month of open-source excellence.",
       links: [
-        { label: "RSVP on Cebby", url: "https://www.getcebby.com/events/cebu-hacktoberfest-2025-awarding-ceremony--4739784?utm_source=copy&utm_medium=share&utm_campaign=share" },
         { label: "View on Facebook", url: "https://www.facebook.com/share/19xoMAAAEE/" }
       ]
     }
@@ -106,11 +104,11 @@ export function EventsContent() {
                     {event.attendees}
                   </span>
                 )}
-                {event.badge && (
+                {/* {event.badge && (
                   <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-lavender/20 text-lavender border border-lavender/30">
                     {event.badge}
                   </span>
-                )}
+                )} */}
               </div>
 
               {/* Title */}
