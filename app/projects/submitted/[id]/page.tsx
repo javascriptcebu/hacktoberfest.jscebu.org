@@ -10,6 +10,45 @@ import { Metadata } from "next";
 
 const redis = Redis.fromEnv();
 
+// Static mapping of project titles to video URLs
+const PROJECT_VIDEO_MAPPING: { [key: string]: string } = {
+  "bayanihancebu": "https://youtu.be/riHq0HgD0iA",
+  "barangay konek": "https://youtu.be/qRyh4UJRBvI",
+  "the_adaptifork": "https://youtu.be/alLE0aPBeuc",
+  "sabot": "https://youtu.be/SOUhmg-Kqlo",
+  "finding dormy": "https://youtu.be/QJYk7eg1DGE",
+  "trustchain": "https://youtu.be/hPOnchVn22I",
+  "totoo ba ito": "https://youtu.be/CbO9pHo4uVQ",
+  "marshal": "https://youtu.be/Qo1ETgeX6QY",
+};
+
+// Helper function to get video URL for a project
+function getVideoUrlForProject(title: string): string | undefined {
+  const normalizedTitle = title.toLowerCase().trim();
+  
+  // Direct match first
+  if (PROJECT_VIDEO_MAPPING[normalizedTitle]) {
+    return PROJECT_VIDEO_MAPPING[normalizedTitle];
+  }
+  
+  // Check if title contains any of the mapped keys
+  for (const [key, url] of Object.entries(PROJECT_VIDEO_MAPPING)) {
+    if (normalizedTitle.includes(key) || key.includes(normalizedTitle)) {
+      return url;
+    }
+  }
+  
+  return undefined;
+}
+
+// Helper function to convert YouTube URL to embed format
+function getYouTubeEmbedUrl(url: string): string {
+  return url
+    .replace('youtu.be/', 'youtube.com/embed/')
+    .replace('watch?v=', 'embed/')
+    .replace('youtube.com/embed/embed/', 'youtube.com/embed/');
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -67,6 +106,9 @@ export default async function SubmittedProjectPage({
   if (!project) {
     notFound();
   }
+
+  // Get video URL from mapping or from project data
+  const videoUrl = project.videoUrl || getVideoUrlForProject(project.title);
 
   return (
     <div className="relative pb-16">
@@ -174,6 +216,24 @@ export default async function SubmittedProjectPage({
             </div>
           </div>
         </Card>
+
+        {/* Project Video */}
+        {videoUrl && (
+          <Card>
+            <div className="p-6 space-y-4">
+              <h2 className="text-xl font-semibold text-zinc-100">Project Demo Video</h2>
+              <div className="aspect-video w-full">
+                <iframe
+                  src={getYouTubeEmbedUrl(videoUrl)}
+                  title={`${project.title} Demo Video`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full rounded-lg border-0"
+                />
+              </div>
+            </div>
+          </Card>
+        )}
 
         {/* Team Members */}
         {project.projectType === "hackathon" && project.teamMembers && project.teamMembers.length > 0 && (
