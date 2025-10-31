@@ -128,19 +128,19 @@ export function HomeHighlights() {
                 </h4>
                 <ul className="space-y-2 text-zinc-400 text-sm">
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 15+ open
+                    <span className="text-green-500 mr-2">✓</span> 13 open
                     source projects created
                   </li>
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 20+ teams
+                    <span className="text-green-500 mr-2">✓</span> 13 teams
                     participated in the hackathon
                   </li>
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 150+
+                    <span className="text-green-500 mr-2">✓</span> 50+
                     developers engaged
                   </li>
                   <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span> 15+ partner
+                    <span className="text-green-500 mr-2">✓</span> 14 partner
                     communities involved
                   </li>
                 </ul>
