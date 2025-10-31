@@ -181,7 +181,7 @@ export default async function ProjectsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2">
+        <div className="grid grid-rows-1 gap-8 mx-auto lg:grid-rows-2">
           {/* Best Overall Project - Large Featured Card */}
           <WinnersCard
             winner={winners.BestOverall}
@@ -190,29 +190,31 @@ export default async function ProjectsPage() {
             size="large"
           />
 
-          {/* Best Use of Blockchain - Large Card */}
-          <WinnersCard
-            winner={winners.BestBlockchain}
-            badge="⛓️ Best Use of Blockchain"
-            badgeColor="bg-orange-900"
-            size="large"
-          />
+          <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-3">
+             {/* Best Use of Blockchain - Large Card */}
+            <WinnersCard
+              winner={winners.BestBlockchain}
+              badge="⛓️ Best Use of Blockchain"
+              badgeColor="bg-orange-900"
+              size="large"
+            />
 
-          {/* Best Use of AI - Medium Card */}
-          <WinnersCard
-            winner={winners.BestAI}
-            badge="🤖 Best Use of AI"
-            badgeColor="bg-blue-900"
-            size="medium"
-          />
+            {/* Best Use of AI - Medium Card */}
+            <WinnersCard
+              winner={winners.BestAI}
+              badge="🤖 Best Use of AI"
+              badgeColor="bg-blue-900"
+              size="medium"
+            />
 
-          {/* Best Easter Egg - Medium Card */}
-          <WinnersCard
-            winner={winners.BestEasterEgg}
-            badge="🎉 Best Easter Egg"
-            badgeColor="bg-purple-900"
-            size="medium"
-          />
+            {/* Best Easter Egg - Medium Card */}
+            <WinnersCard
+              winner={winners.BestEasterEgg}
+              badge="🎉 Best Easter Egg"
+              badgeColor="bg-purple-900"
+              size="medium"
+            />
+          </div>
         </div>
 
         
