@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { NavWrapper } from "../../../components/nav-wrapper";
 import { Footer } from "../../../components/footer";
 import { Card } from "../../../components/card";
-import { GitBranch, ExternalLink, User, Calendar, Mail, ArrowLeft, Users } from "lucide-react";
+import { GitBranch, ExternalLink, User, Calendar, Mail, ArrowLeft, Users, Github } from "lucide-react";
 import Link from "next/link";
 import { SubmittedProject } from "../../utils";
 import { Metadata } from "next";
@@ -109,6 +109,21 @@ export default async function SubmittedProjectPage({
 
   // Get video URL from mapping or from project data
   const videoUrl = project.videoUrl || getVideoUrlForProject(project.title);
+  
+  // Determine submitter display name:
+  // Prefer GitHub handle of lead team member, then name of lead,
+  // then the email local-part, then the raw submittedBy value.
+  const submitterDisplay = (() => {
+    if (project.teamMembers && project.teamMembers.length > 0) {
+      const lead = project.teamMembers.find((m) => /lead/i.test(m.role)) || project.teamMembers[0];
+      if (lead.github) return `${lead.github}`;
+      if (lead.name) return lead.name;
+    }
+    if (project.submittedBy && project.submittedBy.includes("@")) {
+      return project.submittedBy.split("@")[0];
+    }
+    return project.submittedBy;
+  })();
 
   return (
     <div className="relative pb-16">
@@ -150,7 +165,7 @@ export default async function SubmittedProjectPage({
           <div className="flex flex-wrap gap-6 text-sm text-zinc-400">
             <div className="flex items-center gap-2">
               <User className="w-4 h-4" />
-              <span>Submitted by {project.submittedBy}</span>
+              <span>Submitted by {submitterDisplay}</span>
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
@@ -164,12 +179,12 @@ export default async function SubmittedProjectPage({
             </div>
             {project.email && (
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4" />
+                <Github className="w-4 h-4" />
                 <a
-                  href={`mailto:${project.email}`}
+                  href={`${project.repository}`} target="_blank"
                   className="hover:text-zinc-100 transition-colors"
                 >
-                  Contact maintainer
+                  Repository
                 </a>
               </div>
             )}
@@ -265,7 +280,7 @@ export default async function SubmittedProjectPage({
                     </div>
 
                     <div className="space-y-2 text-sm">
-                      <div className="flex items-center gap-2 text-zinc-400">
+                      {/* <div className="flex items-center gap-2 text-zinc-400">
                         <Mail className="w-3 h-3" />
                         <a
                           href={`mailto:${member.email}`}
@@ -273,7 +288,7 @@ export default async function SubmittedProjectPage({
                         >
                           {member.email}
                         </a>
-                      </div>
+                      </div> */}
 
                       {member.github && (
                         <div className="flex items-center gap-2 text-zinc-400">
