@@ -22,23 +22,21 @@ export function HomeContributions({
         <p className="text-base sm:text-lg text-zinc-400 text-center max-w-3xl mx-auto mb-12">
           Make your mark in the open source community!{" "}
           <span className="text-zinc-200 font-semibold">
-            Contributions to Cebu-based projects count double
+            Contributions to Cebu-based projects earn +10 points
           </span>{" "}
           towards recognition.
         </p>
       </ScrollAnimation>
 
-      <div className="grid lg:grid-cols-3 gap-6 mb-8">
+      <div className="mb-8">
         <ScrollAnimation animation="fade-up" delay={0.2}>
-          <Card>
-            <div className="p-6 bg-gradient-to-br from-blue-900/20 to-zinc-800/50 border border-blue-800/30">
-              <div className="text-2xl mb-3">🏆</div>
+          <Card className="lg:col-span-2">
+            <div className="p-6 bg-gradient-to-br from-blue-900/20 to-zinc-800/50 border border-blue-800/30 text-center">
               <h4 className="text-lg font-bold text-blue-400 mb-2">
-                Best Local Contribution
+                🏆 Best Open Source Contribution (2 Winners)
               </h4>
-              <p className="text-zinc-300 text-sm mb-2">
-                Award for the best contribution to a Cebu-based open source
-                project
+              <p className="text-zinc-300 text-sm mb-2 max-w-2xl mx-auto">
+                Award for the best contributions to open source projects that make meaningful impact in the community.
               </p>
               <p className="text-zinc-500 text-xs">
                 Priority given to projects submitted during Hacktoberfest
@@ -47,7 +45,8 @@ export function HomeContributions({
           </Card>
         </ScrollAnimation>
 
-        <ScrollAnimation animation="fade-up" delay={0.3}>
+
+        {/* <ScrollAnimation animation="fade-up" delay={0.3}>
           <Card>
             <div className="p-6 bg-gradient-to-br from-purple-900/20 to-zinc-800/50 border border-purple-800/30">
               <div className="text-2xl mb-3">🔥</div>
@@ -78,7 +77,7 @@ export function HomeContributions({
               <p className="text-zinc-500 text-xs">Quality over quantity</p>
             </div>
           </Card>
-        </ScrollAnimation>
+        </ScrollAnimation> */}
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
