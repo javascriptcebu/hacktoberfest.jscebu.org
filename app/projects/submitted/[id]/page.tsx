@@ -157,9 +157,11 @@ export default async function SubmittedProjectPage({
             >
               {project.title}
             </h1>
-            <span className="flex-shrink-0 inline-flex items-center px-3 py-1 text-sm font-medium text-green-400 bg-green-900/50 border border-green-800 rounded-full">
-              Open for PRs
-            </span>
+            {project.projectType !== "hackathon" && (
+              <span className="flex-shrink-0 inline-flex items-center px-3 py-1 text-sm font-medium text-green-400 bg-green-900/50 border border-green-800 rounded-full">
+                Open for PRs
+              </span>
+            )}
           </div>
 
           <p className="text-lg text-zinc-400 leading-relaxed">
@@ -240,9 +242,11 @@ export default async function SubmittedProjectPage({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="break-all transition-colors"
-                      style={project.awards && project.awards.length > 0 ? {
-                        color: 'var(--award-primary, #60a5fa)'
-                      } : undefined}
+                      style={{
+                      color: project.awards && project.awards.length > 0
+                        ? 'var(--award-primary, #60a5fa)' // Award color (blueish)
+                        : '#ffffff' // White color if no award
+                    }}
                     >
                       {project.url}
                     </a>
@@ -332,42 +336,44 @@ export default async function SubmittedProjectPage({
           </Card>
         )}
 
-        {/* How to Contribute */}
-        <Card>
-          <div className="p-6 space-y-4">
-            <h2 className="text-xl font-semibold text-zinc-100">How to Contribute</h2>
-            <ol className="space-y-3 text-zinc-400">
-              <li className="flex gap-3">
-                <span className="text-lavender font-semibold">1.</span>
-                <div>
-                  <p className="font-medium text-zinc-300">Fork the repository</p>
-                  <p className="text-sm mt-1">Create your own copy of the project on GitHub</p>
-                </div>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-lavender font-semibold">2.</span>
-                <div>
-                  <p className="font-medium text-zinc-300">Find an issue or create one</p>
-                  <p className="text-sm mt-1">Check the repository's issues tab for tasks to work on</p>
-                </div>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-lavender font-semibold">3.</span>
-                <div>
-                  <p className="font-medium text-zinc-300">Create a pull request</p>
-                  <p className="text-sm mt-1">Submit your changes for review</p>
-                </div>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-lavender font-semibold">4.</span>
-                <div>
-                  <p className="font-medium text-zinc-300">Get it merged</p>
-                  <p className="text-sm mt-1">Once approved, your contribution will be part of the project!</p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </Card>
+        {/* How to Contribute (only for existing projects) */}
+        {project.projectType !== "hackathon" && (
+          <Card>
+            <div className="p-6 space-y-4">
+              <h2 className="text-xl font-semibold text-zinc-100">How to Contribute</h2>
+              <ol className="space-y-3 text-zinc-400">
+                <li className="flex gap-3">
+                  <span className="text-lavender font-semibold">1.</span>
+                  <div>
+                    <p className="font-medium text-zinc-300">Fork the repository</p>
+                    <p className="text-sm mt-1">Create your own copy of the project on GitHub</p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-lavender font-semibold">2.</span>
+                  <div>
+                    <p className="font-medium text-zinc-300">Find an issue or create one</p>
+                    <p className="text-sm mt-1">Check the repository's issues tab for tasks to work on</p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-lavender font-semibold">3.</span>
+                  <div>
+                    <p className="font-medium text-zinc-300">Create a pull request</p>
+                    <p className="text-sm mt-1">Submit your changes for review</p>
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-lavender font-semibold">4.</span>
+                  <div>
+                    <p className="font-medium text-zinc-300">Get it merged</p>
+                    <p className="text-sm mt-1">Once approved, your contribution will be part of the project!</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </Card>
+        )}
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
