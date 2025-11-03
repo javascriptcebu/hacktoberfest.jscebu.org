@@ -12,6 +12,7 @@ import {
   Linkedin,
   Mail,
   Phone,
+  Trash,
   User,
   Users,
   XCircle,
@@ -328,6 +329,58 @@ export function AdminPanel() {
       }
 
       alert("Failed to update contribution status");
+    }
+  };
+
+  const deleteSubmission = async (id: string, title: string) => {
+    if (!confirm(`Are you sure you want to delete "${title}"?\n\nThis action cannot be undone.`)) {
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/admin/submissions", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ submissionId: id }),
+      });
+
+      if (response.ok) {
+        await fetchSubmissions();
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to delete submission: ${errorData.error || "Unknown error"}`);
+      }
+    } catch (err) {
+      console.error("Delete submission error:", err);
+      alert("Failed to delete submission");
+    }
+  };
+
+  const deleteContribution = async (id: string, projectName: string) => {
+    if (!confirm(`Are you sure you want to delete contribution to "${projectName}"?\n\nThis action cannot be undone.`)) {
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/admin/contributions", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ contributionId: id }),
+      });
+
+      if (response.ok) {
+        await fetchContributions();
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to delete contribution: ${errorData.error || "Unknown error"}`);
+      }
+    } catch (err) {
+      console.error("Delete contribution error:", err);
+      alert("Failed to delete contribution");
     }
   };
 
@@ -689,8 +742,20 @@ export function AdminPanel() {
                           <XCircle className="w-4 h-4" />
                           Reject
                         </button>
+                        <button
+                          onClick={() =>
+                            deleteSubmission(submission.id, submission.title)
+                          }
+                          className="px-4 py-2 bg-gray-600/20 text-gray-400 border border-gray-600/50 rounded-md hover:bg-red-600/30 hover:text-red-400 hover:border-red-600/50 transition-colors flex items-center gap-2"
+                        >
+                            <Trash className="w-4 h-4" />
+                            Delete
+                        </button>
+
                       </div>
                     )}
+                    
+                    
                   </div>
                 </Card>
               ))
@@ -1078,8 +1143,19 @@ export function AdminPanel() {
                           <XCircle className="w-4 h-4" />
                           Reject
                         </button>
+                        <button
+                          onClick={() =>
+                            deleteContribution(contribution.id, contribution.projectName)
+                          }
+                          className="px-4 py-2 bg-gray-600/20 text-gray-400 border border-gray-600/50 rounded-md hover:bg-red-600/30 hover:text-red-400 hover:border-red-600/50 transition-colors flex items-center gap-2"
+                        >
+                          <Trash className="w-4 h-4" />
+                          Delete
+                        </button>
                       </div>
                     )}
+                    
+                   
                   </div>
                 </Card>
               ))
