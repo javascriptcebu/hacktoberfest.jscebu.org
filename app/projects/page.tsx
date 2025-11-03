@@ -139,8 +139,8 @@ export default async function ProjectsPage() {
   };
 
 
-  // Featured projects from contentlayer (local developers' projects)
-  const featured = allProjects
+  // Featured project - Cebby only
+  const featured = allProjects.find((project) => project.slug === "cebby") || allProjects
     .filter((project) => project.published)
     .sort((a, b) => {
       if (new Date(a.date ?? Number.POSITIVE_INFINITY).getTime() > new Date(b.date ?? Number.POSITIVE_INFINITY).getTime()) {
@@ -149,23 +149,23 @@ export default async function ProjectsPage() {
       return 1;
     })[0];
 
-  const BestBlockchain = allProjects
-    .filter((project) => project.published)
-    .sort((a, b) => {
-      if (new Date(a.date ?? Number.POSITIVE_INFINITY).getTime() > new Date(b.date ?? Number.POSITIVE_INFINITY).getTime()) {
-        return -1;
-      }
-      return 1;
-    })[1];
+  // const BestBlockchain = allProjects
+  //   .filter((project) => project.published)
+  //   .sort((a, b) => {
+  //     if (new Date(a.date ?? Number.POSITIVE_INFINITY).getTime() > new Date(b.date ?? Number.POSITIVE_INFINITY).getTime()) {
+  //       return -1;
+  //     }
+  //     return 1;
+  //   })[1];
 
-  const BestAI = allProjects
-    .filter((project) => project.published)
-    .sort((a, b) => {
-      if (new Date(a.date ?? Number.POSITIVE_INFINITY).getTime() > new Date(b.date ?? Number.POSITIVE_INFINITY).getTime()) {
-        return -1;
-      }
-      return 1;
-    })[2];
+  // const BestAI = allProjects
+  //   .filter((project) => project.published)
+  //   .sort((a, b) => {
+  //     if (new Date(a.date ?? Number.POSITIVE_INFINITY).getTime() > new Date(b.date ?? Number.POSITIVE_INFINITY).getTime()) {
+  //       return -1;
+  //     }
+  //     return 1;
+  //   })[2];
 
   return (
     <div className="relative pb-16">
@@ -342,7 +342,7 @@ export default async function ProjectsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
+        <div className="grid grid-cols-1 gap-8 max-w-2xl">
           <Card>
             <Link href={`/projects/${featured.slug}`}>
               <article className="relative w-full h-full p-4 md:p-8">
@@ -372,7 +372,7 @@ export default async function ProjectsPage() {
                 >
                   {featured.title}
                 </h2>
-                <p className="mt-4 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
+                <p className="mt-4 mb-12 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
                   {featured.description}
                 </p>
                 <div className="absolute bottom-4 md:bottom-8">
@@ -383,14 +383,6 @@ export default async function ProjectsPage() {
               </article>
             </Link>
           </Card>
-
-          <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
-            {[BestBlockchain, BestAI].map((project) => (
-              <Card key={project.slug}>
-                <Article project={project} views={views[project.slug] ?? 0} />
-              </Card>
-            ))}
-          </div>
         </div>
       </div>
       <Footer />
