@@ -6,7 +6,7 @@ import { Card } from "../../../components/card";
 import { WinnerBanner } from "../../../components/winner-banner";
 import { AwardThemeWrapper } from "../../../components/award-theme-wrapper";
 import { ThemedBackButton } from "../../../components/themed-back-button";
-import { GitBranch, ExternalLink, User, Calendar, Mail, Users, Github } from "lucide-react";
+import { GitBranch, ExternalLink, User, Calendar, Mail, ArrowLeft, Users, Github } from "lucide-react";
 import Link from "next/link";
 import { SubmittedProject } from "../../utils";
 import { Metadata } from "next";
