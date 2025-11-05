@@ -66,6 +66,7 @@ export interface SubmittedProject {
 	lookingFor?: string;
 	teamMembers?: TeamMember[];
 	lastUpdatedAt?: string;
+	awards?: string[]; // Array of award names won by this project
 }
 
 export async function getApprovedSubmittedProjects(): Promise<SubmittedProject[]> {

@@ -19,5 +19,37 @@
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
   }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* Award Theme Styles - Apply when award-theme-active class is present */
+  .award-theme-active {
+    /* Theme will be applied via CSS variables set by AwardThemeWrapper */
+  }
+
+  /* Glow effect for award-themed pages */
+  @keyframes award-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px var(--award-glow, rgba(160, 160, 255, 0.3));
+    }
+    50% {
+      box-shadow: 0 0 40px var(--award-glow, rgba(160, 160, 255, 0.5));
+    }
+  }
+
+  .award-glow {
+    animation: award-glow 3s ease-in-out infinite;
+  }
 } 
 
