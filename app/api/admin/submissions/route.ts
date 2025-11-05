@@ -185,3 +185,65 @@ export async function PATCH(req: NextRequest): Promise<NextResponse> {
     );
   }
 }
+
+export async function DELETE(req: NextRequest): Promise<NextResponse> {
+  try {
+    const isAdmin = await checkAdmin();
+    if (!isAdmin) {
+      console.log("DELETE request denied - not an admin");
+      return NextResponse.json({ error: "Unauthorized - Admin access required" }, { status: 401 });
+    }
+
+    const body = await req.json();
+    const { submissionId } = body;
+
+    console.log("DELETE request - Submission ID:", submissionId);
+
+    if (!submissionId) {
+      return NextResponse.json(
+        { error: "Invalid submission ID" },
+        { status: 400 }
+      );
+    }
+
+    // Check if submission exists
+    const submissionData = await redis.get(`submission:${submissionId}`);
+    if (!submissionData) {
+      console.error(`Submission not found with ID: ${submissionId}`);
+      return NextResponse.json(
+        { error: `Submission not found with ID: ${submissionId}` },
+        { status: 404 }
+      );
+    }
+
+    const submission = typeof submissionData === 'string'
+      ? JSON.parse(submissionData)
+      : submissionData;
+
+    console.log(`Deleting submission: ${submission.title} (ID: ${submissionId})`);
+
+    // Remove from all lists
+    await Promise.all([
+      redis.lrem("pending-submissions", 0, submissionId),
+      redis.lrem("approved-submissions", 0, submissionId),
+      redis.lrem("rejected-submissions", 0, submissionId)
+    ]);
+
+    // Delete the submission data
+    await redis.del(`submission:${submissionId}`);
+
+    console.log(`Successfully deleted submission: ${submissionId}`);
+
+    return NextResponse.json({
+      success: true,
+      message: `Submission deleted successfully`
+    });
+
+  } catch (error) {
+    console.error("Admin submission delete error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}

@@ -138,3 +138,65 @@ export async function PATCH(req: NextRequest): Promise<NextResponse> {
     );
   }
 }
+
+export async function DELETE(req: NextRequest): Promise<NextResponse> {
+  try {
+    const isAdmin = await checkAdmin();
+    if (!isAdmin) {
+      console.log("DELETE request denied - not an admin");
+      return NextResponse.json({ error: "Unauthorized - Admin access required" }, { status: 401 });
+    }
+
+    const body = await req.json();
+    const { contributionId } = body;
+
+    console.log("DELETE request - Contribution ID:", contributionId);
+
+    if (!contributionId) {
+      return NextResponse.json(
+        { error: "Invalid contribution ID" },
+        { status: 400 }
+      );
+    }
+
+    // Check if contribution exists
+    const contributionData = await redis.get(`contribution:${contributionId}`);
+    if (!contributionData) {
+      console.error(`Contribution not found with ID: ${contributionId}`);
+      return NextResponse.json(
+        { error: `Contribution not found with ID: ${contributionId}` },
+        { status: 404 }
+      );
+    }
+
+    const contribution = typeof contributionData === 'string'
+      ? JSON.parse(contributionData)
+      : contributionData;
+
+    console.log(`Deleting contribution: ${contribution.projectName} (ID: ${contributionId})`);
+
+    // Remove from all lists
+    await Promise.all([
+      redis.lrem("pending-contributions", 0, contributionId),
+      redis.lrem("approved-contributions", 0, contributionId),
+      redis.lrem("rejected-contributions", 0, contributionId)
+    ]);
+
+    // Delete the contribution data
+    await redis.del(`contribution:${contributionId}`);
+
+    console.log(`Successfully deleted contribution: ${contributionId}`);
+
+    return NextResponse.json({
+      success: true,
+      message: `Contribution deleted successfully`
+    });
+
+  } catch (error) {
+    console.error("Admin contribution delete error:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
