@@ -28,7 +28,7 @@ const categories = [
   { name: "Best Overall Project", icon: "🏆" },
   { name: "Best Use of AI", icon: "🤖" },
   { name: "Most Fun / Best Easter Egg", icon: "🎮" },
-  { name: "Best Open Source Contribution", icon: "🌟" },
+  { name: "Best Use of Blockchain", icon: "⛓️" },
 ];
 
 export function HomeHackathon() {
