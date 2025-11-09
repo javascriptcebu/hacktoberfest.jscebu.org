@@ -172,7 +172,7 @@ export default async function SubmittedProjectPage({
           {project.specialNote && (
             <div className="p-4 bg-lavender/10 rounded-lg border border-lavender/20">
               <p className="text-sm font-semibold text-lavender mb-2">Special Note from Maintainer:</p>
-              <p className="text-zinc-300">{project.specialNote}</p>
+              <p className="text-zinc-300 break-words">{project.specialNote}</p>
             </div>
           )}
 
