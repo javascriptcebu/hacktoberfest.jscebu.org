@@ -52,11 +52,7 @@ export function SubmittedProjectCard({ project }: { project: SubmittedProject })
           <div className="mt-4 pt-4 border-t border-zinc-800">
             <div className="flex items-center justify-between">
               <span className="text-xs text-zinc-500">
-                Submitted {new Date(project.submittedAt).toLocaleDateString(undefined, {
-                              year: 'numeric',
-                              month: 'numeric',
-                              day: 'numeric'
-                          })}
+                Submitted {new Date(project.submittedAt).toLocaleDateString()}
               </span>
               <div className="flex gap-2">
                 <button
