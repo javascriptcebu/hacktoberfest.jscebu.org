@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Navigation } from "../components/nav";
 import { Footer } from "../components/footer";
 import { Card } from "../components/card";
-import { SubmittedProject } from "../projects/utils";
+import { SubmittedProject, generateSlug } from "../projects/utils";
 import { Pencil, Trash2, Eye, ExternalLink, GitBranch, Plus, Loader2, Users, Code, Calendar } from "lucide-react";
 import Link from "next/link";
 import { EditProjectModal } from "./edit-project-modal";
@@ -266,7 +266,7 @@ export function MyProjectsClient({ isAuthenticated, userEmail, onSignOut }: MyPr
                     <div className="flex gap-2">
                       {project.status === "approved" && (
                         <Link
-                          href={`/projects/submitted/${project.id}`}
+                          href={`/projects/submitted/${project.slug || generateSlug(project.title)}`}
                           className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors"
                           title="View public page"
                         >

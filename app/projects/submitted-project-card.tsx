@@ -3,12 +3,14 @@
 import { ExternalLink, GitBranch, GithubIcon } from "lucide-react";
 import Link from "next/link";
 import { Card } from "../components/card";
-import { SubmittedProject } from "./utils";
+import { SubmittedProject, generateSlug } from "./utils";
 
 export function SubmittedProjectCard({ project }: { project: SubmittedProject }) {
+  const slug = project.slug || generateSlug(project.title);
+  
   return (
     <Card>
-      <Link href={`/projects/submitted/${project.id}`}>
+      <Link href={`/projects/submitted/${slug}`}>
         <div className="p-6">
           <div className="flex items-start justify-between mb-4">
             <h3 className="text-xl font-bold text-zinc-100 group-hover:text-white">
