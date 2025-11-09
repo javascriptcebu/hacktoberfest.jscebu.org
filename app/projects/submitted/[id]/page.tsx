@@ -184,13 +184,14 @@ export default async function SubmittedProjectPage({
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              <span>
-                Submitted {new Date(project.submittedAt).toLocaleDateString(undefined, {
+              <time dateTime={project.submittedAt}>
+                {new Date(project.submittedAt).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric',
+                  timeZone: 'Asia/Manila'
                 })}
-              </span>
+              </time>
             </div>
             {project.email && (
               <div className="flex items-center gap-2">
