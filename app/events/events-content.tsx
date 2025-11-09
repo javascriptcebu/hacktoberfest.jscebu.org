@@ -60,7 +60,7 @@ export function EventsContent() {
   ];
 
   return (
-    <div className="px-6 pt-20 mx-auto max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
+    <div className="px-6 pt-20 pb-16 mx-auto max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
       <div className="max-w-4xl mx-auto text-center mb-12">
         <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-900/20 to-orange-900/20 px-4 py-2 rounded-full mb-6 border border-yellow-800/30">
           <span className="text-yellow-400">🎉</span>

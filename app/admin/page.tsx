@@ -3,6 +3,7 @@ import { logtoConfig } from "../logto";
 import { NavWrapper } from "../components/nav-wrapper";
 import { AdminPanel } from "./admin-panel";
 import { redirect } from "next/navigation";
+import { Footer } from "../components/footer";
 
 // Get admin emails from environment variable (comma-separated)
 const ADMIN_EMAILS = process.env.ADMIN_EMAILS 
@@ -17,9 +18,9 @@ export default async function AdminPage() {
   }
 
   return (
-    <div className="relative pb-16">
+    <div className="relative">
       <NavWrapper />
-      <div className="px-6 pt-20 mx-auto max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
+      <div className="px-6 pt-20 pb-16 mx-auto max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="mb-8">
           <h1 className="text-3xl font-bold tracking-tight text-space-white sm:text-4xl">
             Admin Dashboard
@@ -31,6 +32,7 @@ export default async function AdminPage() {
 
         <AdminPanel />
       </div>
+      <Footer/>
     </div>
   );
 }

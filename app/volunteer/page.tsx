@@ -6,14 +6,15 @@ import { NavWrapper } from "../components/nav-wrapper";
 import { VolunteerForm } from "./volunteer-form";
 import { getLogtoContext } from "@logto/next/server-actions";
 import { logtoConfig } from "../logto";
+import { Footer } from "../components/footer";
 
 export default async function VolunteerPage() {
   const { isAuthenticated, claims } = await getLogtoContext(logtoConfig);
 
   return (
-    <div className="relative pb-16">
+    <div className="relative">
       <NavWrapper />
-      <div className="px-6 pt-20 mx-auto max-w-6xl lg:px-8 md:pt-24 lg:pt-32">
+      <div className="px-6 pt-20 pb-16 mx-auto max-w-6xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold tracking-wider text-space-haze uppercase">
@@ -330,6 +331,7 @@ export default async function VolunteerPage() {
           )}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
