@@ -32,9 +32,9 @@ export function SponsorContent() {
     },
     {
       id: 3,
-      name: "Innodata Knowledge Services, Inc.",
-      logo: "/images/sponsor-logo/Innodatalogo.webp",
-      facebook: "https://www.facebook.com/innodataksi",
+      name: "CoDev Philippines",
+      logo: "/images/sponsor-logo/CoDevLogoFull.png",
+      facebook: "https://www.facebook.com/CoDevPH",
       tier: "gold",
     },
 
@@ -61,9 +61,9 @@ export function SponsorContent() {
     },
     {
       id: 7,
-      name: "CoDev Philippines",
-      logo: "/images/sponsor-logo/CoDevLogoFull.png",
-      facebook: "https://www.facebook.com/CoDevPH",
+      name: "Innodata Knowledge Services, Inc.",
+      logo: "/images/sponsor-logo/Innodatalogo.webp",
+      facebook: "https://www.facebook.com/innodataksi",
       tier: "gold",
     },
 
@@ -97,7 +97,7 @@ export function SponsorContent() {
       id: 11,
       name: "PHPXCEBU",
       logo: "/images/sponsor-logo/PHPXCEBUlogo.jpg",
-      facebook: "",
+      facebook: "https://phpxcebu.com/",
       tier: "community",
     },
     {
@@ -191,7 +191,7 @@ export function SponsorContent() {
   const communityPartners = sponsors.filter(s => s.tier === "community");
 
   return (
-    <div className="px-6 pt-20 mx-auto max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
+    <div className="px-6 pt-20 pb-16 mx-auto max-w-7xl lg:px-8 md:pt-24 lg:pt-32">
       <div className="max-w-6xl mx-auto">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -223,11 +223,10 @@ export function SponsorContent() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {goldSponsors.map((sponsor) => (
-              <Card key={sponsor.id} className="group overflow-hidden">
+              <Card key={sponsor.id} className="group overflow-hidden ">
+                {/* Gradient Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-600/20 to-yellow-600/20 opacity-50 group-hover:opacity-100 transition-opacity" />
                 <div className="relative">
-                  {/* Gradient Background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-600/20 to-yellow-600/20 opacity-50 group-hover:opacity-100 transition-opacity" />
-                  
                   <div className="relative p-8 flex flex-col items-center justify-center min-h-[280px]">
                     {/* Logo Container */}
                     <div className="w-full h-32 mb-6 relative bg-white rounded-lg flex items-center justify-center border border-amber-500/30 group-hover:border-amber-400/50 transition-colors p-4">
@@ -278,7 +277,7 @@ export function SponsorContent() {
               <Card key={sponsor.id} className="group overflow-hidden">
                 <div className="relative">
                   {/* Gradient Background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-600/20 to-slate-600/20 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-600/50 to-slate-600/50 opacity-50 group-hover:opacity-100 transition-opacity" />
                   
                   <div className="relative p-6 flex flex-col items-center justify-center min-h-[240px]">
                     {/* Logo Container */}

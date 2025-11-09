@@ -7,6 +7,7 @@ import Link from "next/link";
 import { NavWrapper } from "../../components/nav-wrapper";
 import React from "react";
 import { allProjects } from "contentlayer/generated";
+import { Footer } from "../../components/footer";
 
 const YEAR = 2024;
 
@@ -36,9 +37,9 @@ export default async function ProjectsPage() {
   );
 
   return (
-    <div className="relative pb-16">
+    <div className="relative">
       <NavWrapper />
-      <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
+      <div className="px-6 pt-20 mx-auto pb-16 space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
         <div className="max-w-4xl mx-auto lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
             Open Source Projects Winners
@@ -223,6 +224,7 @@ export default async function ProjectsPage() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

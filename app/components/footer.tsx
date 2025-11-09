@@ -74,7 +74,7 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="relative mt-16 border-t border-blue-violet/30 bg-gradient-to-b from-east-bay/20 to-void backdrop-blur-sm">
+    <footer className="relative w-full mt-16 border-t border-blue-violet/30 bg-gradient-to-b from-east-bay/20 to-void backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         {/* Top Section - Event Info */}
         <div className="mb-12 text-center">

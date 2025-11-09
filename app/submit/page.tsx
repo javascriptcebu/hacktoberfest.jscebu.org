@@ -5,14 +5,15 @@ import { SubmissionForm } from "./submission-form";
 import { Card } from "../components/card";
 import Link from "next/link";
 import { Trophy, Users, Star, Zap, GitBranch, TrendingUp, Award, Sparkles, Shield, ArrowRight } from "lucide-react";
+import { Footer } from "../components/footer";
 
 export default async function SubmitPage() {
   const { isAuthenticated, claims } = await getLogtoContext(logtoConfig);
 
   return (
-    <div className="relative pb-16">
+    <div className="relative">
       <NavWrapper />
-      <div className="px-6 pt-20 mx-auto max-w-4xl lg:px-8 md:pt-24 lg:pt-32">
+      <div className="px-6 pt-20 pb-16 mx-auto max-w-4xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="max-w-3xl mx-auto">
           <div className="mb-8">
             <span className="text-sm font-semibold tracking-wider text-space-haze uppercase">
@@ -174,6 +175,7 @@ export default async function SubmitPage() {
           )}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

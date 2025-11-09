@@ -53,3 +53,10 @@
   }
 } 
 
+/* Prevent accidental horizontal scroll caused by 100vw/w-screen usage
+   and scrollbar width calculations elsewhere in the layout. This keeps
+   the page visually full-width while avoiding the tiny extra space. */
+html, body, #__next {
+  overflow-x: hidden;
+}
+
