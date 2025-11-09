@@ -208,7 +208,7 @@ export function HomeSponsors() {
               Co-Presenters
             </h4>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {coPresenters.map((sponsor) => (
                 <Card key={sponsor.id} className="group overflow-hidden">
                   {sponsor.facebook && (
@@ -216,7 +216,7 @@ export function HomeSponsors() {
                       {/* Gradient Background */}
                       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-zinc-800/50"></div>
                       <div className="relative"> 
-                        <div className="relative p-8 flex flex-col items-center justify-center min-h-[200px]">
+                        <div className="relative p-6 flex flex-col items-center justify-center min-h-[200px]">
                           {/* Logo Container */}
                           <div className="w-full h-32 mb-6 relative bg-white rounded-lg flex items-center justify-center border border-purple-500/30 group-hover:border-purple-400/50 transition-colors p-4">
                             <Image
@@ -266,7 +266,7 @@ export function HomeSponsors() {
             <h4 className="text-2xl font-semibold text-amber-400 mb-4 mt-12 text-center">
               Gold Sponsors
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {goldSponsors.map((sponsor) => (
                 <Card key={sponsor.id} className="group overflow-hidden ">
                    {sponsor.facebook && (
@@ -276,7 +276,7 @@ export function HomeSponsors() {
                       <div className="relative">
                         <div className="relative p-6 flex flex-col items-center justify-center min-h-[150px]">
                           {/* Logo Container */}
-                          <div className="w-full h-24 mb-4 relative bg-white rounded-lg flex items-center justify-center border border-amber-500/30 group-hover:border-amber-400/50 transition-colors p-4">
+                          <div className="w-full h-24 mb-4 relative bg-white rounded-lg flex items-center justify-center border border-amber-500/30 group-hover:border-amber-400/50 transition-colors p-2">
                             <Image
                               src={sponsor.logo}
                               alt={sponsor.name}
@@ -305,13 +305,13 @@ export function HomeSponsors() {
              <h4 className="text-2xl font-semibold text-gray-300 mb-4 mt-12 text-center">
               Silver Sponsors
               </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
               {silverSponsors.map((sponsor) => (
                 <Card key={sponsor.id} className="group overflow-hidden ">
                    {sponsor.facebook && (
                       <Link href={sponsor.facebook} target="_blank" rel="noopener noreferrer">
                       {/* Gradient Background */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-600/50 to-slate-600/50 opacity-50 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-600/50 to-slate-600/50" />
                       <div className="relative">
                         <div className="relative p-4 flex flex-col items-center justify-center min-h-[100px]">
                           {/* Logo Container */}
@@ -351,11 +351,11 @@ export function HomeSponsors() {
                    {sponsor.facebook && (
                       <Link href={sponsor.facebook} target="_blank" rel="noopener noreferrer">
                       {/* Gradient Background */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-lavender/50 to-melrose/50 opacity-50 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-lavender/30 to-melrose/30" />
                       <div className="relative">
                         <div className="relative p-2 flex flex-col items-center justify-center min-h-[100px]">
                           {/* Logo Container */}
-                          <div className="w-full h-16 mb-4 relative bg-white rounded-lg flex items-center justify-center border border-lavender/30 group-hover:border-lavender/50 transition-colors p-2">
+                          <div className="w-full h-16 mb-4 relative bg-white rounded-lg flex items-center justify-center border border-lavender/10 group-hover:border-lavender/30 transition-colors p-1">
                             <Image
                               src={sponsor.logo}
                               alt={sponsor.name}
