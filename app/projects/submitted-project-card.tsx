@@ -54,7 +54,13 @@ export function SubmittedProjectCard({ project }: { project: SubmittedProject })
           <div className="mt-4 pt-4 border-t border-zinc-800">
             <div className="flex items-center justify-between">
               <span className="text-xs text-zinc-500">
-                Submitted {new Date(project.submittedAt).toLocaleDateString()}
+                Submitted {new Date(project.submittedAt).toLocaleDateString(undefined, {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                  // Explicitly forcing Asia/Manila time zone
+                  timeZone: 'Asia/Manila' 
+                })}
               </span>
               <div className="flex gap-2">
                 <button

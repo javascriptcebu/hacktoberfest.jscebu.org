@@ -11,12 +11,13 @@ import {
 
 import Link from "next/link";
 import { NavWrapper } from "../components/nav-wrapper";
+import { Footer } from "../components/footer";
 
 export default function JoinPage() {
   return (
-    <div className="relative pb-16">
+    <div className="relative">
       <NavWrapper />
-      <div className="px-6 pt-20 mx-auto max-w-6xl lg:px-8 md:pt-24 lg:pt-32">
+      <div className="px-6 pt-20 pb-16 mx-auto max-w-6xl lg:px-8 md:pt-24 lg:pt-32">
         <div className="max-w-5xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-16">
@@ -276,6 +277,7 @@ export default function JoinPage() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -322,7 +322,7 @@ export default async function Home() {
 
           <HomeSponsors />
 
-          <HomeRegistration isAuthenticated={isAuthenticated} />
+          {/* <HomeRegistration isAuthenticated={isAuthenticated} /> */}
 
           <HomeFAQ />
         </div>
