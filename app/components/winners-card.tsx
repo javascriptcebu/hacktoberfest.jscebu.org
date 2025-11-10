@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Card } from "./card";
+import { generateSlug } from "../projects/utils";
 
 export type WinnerProject = {
   id: string;
@@ -11,6 +12,7 @@ export type WinnerProject = {
   submittedAt: string;
   status: string;
   year: number;
+  slug?: string;
 };
 
 type WinnersCardProps = {
@@ -22,10 +24,11 @@ type WinnersCardProps = {
 
 export function WinnersCard({ winner, badge, badgeColor, size = "medium" }: WinnersCardProps) {
   const isLarge = size === "large";
+  const slug = winner.slug || generateSlug(winner.title);
 
   return (
     <Card>
-      <Link href={`/projects/submitted/${winner.id}`}>
+      <Link href={`/projects/submitted/${slug}`}>
         <article className={`relative w-full h-full p-4 md:p-8`}>
           <div className="flex items-center justify-between gap-2">
             <div className="text-xs text-zinc-100">

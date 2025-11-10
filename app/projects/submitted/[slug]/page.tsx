@@ -1,4 +1,3 @@
-import { Redis } from "@upstash/redis";
 import { notFound } from "next/navigation";
 import { NavWrapper } from "../../../components/nav-wrapper";
 import { Footer } from "../../../components/footer";
@@ -8,10 +7,8 @@ import { AwardThemeWrapper } from "../../../components/award-theme-wrapper";
 import { ThemedBackButton } from "../../../components/themed-back-button";
 import { GitBranch, ExternalLink, User, Calendar, Mail, ArrowLeft, Users, Github } from "lucide-react";
 import Link from "next/link";
-import { SubmittedProject } from "../../utils";
+import { SubmittedProject, getSubmittedProjectBySlug, generateSlug } from "../../utils";
 import { Metadata } from "next";
-
-const redis = Redis.fromEnv();
 
 // Static mapping of project titles to video URLs
 const PROJECT_VIDEO_MAPPING: { [key: string]: string } = {
@@ -55,9 +52,9 @@ function getYouTubeEmbedUrl(url: string): string {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: { slug: string };
 }): Promise<Metadata> {
-  const project = await getSubmittedProject(params.id);
+  const project = await getSubmittedProjectBySlug(params.slug);
 
   if (!project) {
     return {
@@ -71,40 +68,17 @@ export async function generateMetadata({
     openGraph: {
       title: project.title,
       description: project.description,
-      url: `https://hacktoberfest.jscebu.org/projects/submitted/${project.id}`,
+      url: `https://hacktoberfest.jscebu.org/projects/submitted/${project.slug || generateSlug(project.title)}`,
     },
   };
-}
-
-async function getSubmittedProject(id: string): Promise<SubmittedProject | null> {
-  try {
-    const submissionData = await redis.get(`submission:${id}`);
-    if (!submissionData) {
-      return null;
-    }
-
-    const parsed = typeof submissionData === 'string'
-      ? JSON.parse(submissionData)
-      : submissionData;
-
-    // Only show approved projects
-    if (parsed.status !== 'approved') {
-      return null;
-    }
-
-    return parsed as SubmittedProject;
-  } catch (error) {
-    console.error("Error fetching project:", error);
-    return null;
-  }
 }
 
 export default async function SubmittedProjectPage({
   params,
 }: {
-  params: { id: string };
+  params: { slug: string };
 }) {
-  const project = await getSubmittedProject(params.id);
+  const project = await getSubmittedProjectBySlug(params.slug);
 
   if (!project) {
     notFound();

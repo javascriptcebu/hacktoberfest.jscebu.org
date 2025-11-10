@@ -1,11 +1,19 @@
 import { Redis } from "@upstash/redis";
 import { Project } from "contentlayer/generated";
 
-const redis = Redis.fromEnv();
+// Lazy initialization of Redis to avoid client-side errors
+let redis: Redis | null = null;
+
+function getRedis(): Redis {
+	if (!redis) {
+		redis = Redis.fromEnv();
+	}
+	return redis;
+}
 
 export async function getProjectViews(projects: Project[]) {
 	const views = (
-		await redis.mget<number[]>(
+		await getRedis().mget<number[]>(
 			...projects.map((p) => ["pageviews", "projects", p.slug].join(":")),
 		)
 	).reduce((acc, v, i) => {
@@ -67,12 +75,69 @@ export interface SubmittedProject {
 	teamMembers?: TeamMember[];
 	lastUpdatedAt?: string;
 	awards?: string[]; // Array of award names won by this project
+	slug?: string; // URL-friendly slug generated from title
+}
+
+// Generate a URL-friendly slug from a project title
+export function generateSlug(title: string): string {
+	return title
+		.toLowerCase()
+		.trim()
+		.replace(/[^\w\s-]/g, '') // Remove special characters
+		.replace(/\s+/g, '-') // Replace spaces with hyphens
+		.replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+		.replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+}
+
+// Get a submitted project by its slug
+export async function getSubmittedProjectBySlug(slug: string): Promise<SubmittedProject | null> {
+	try {
+		// Get all approved submission IDs
+		const approvedIds = await getRedis().lrange("approved-submissions", 0, -1) as string[];
+
+		if (approvedIds.length === 0) {
+			return null;
+		}
+
+		// Search through approved submissions to find matching slug
+		for (const id of approvedIds) {
+			try {
+				const submissionData = await getRedis().get(`submission:${id}`);
+				if (submissionData) {
+					const parsed = typeof submissionData === 'string'
+						? JSON.parse(submissionData)
+						: submissionData;
+					
+					const project = parsed as SubmittedProject;
+					
+					// Generate slug if not present
+					const projectSlug = project.slug || generateSlug(project.title);
+					
+					// Check if slug matches
+					if (projectSlug === slug && project.status === 'approved') {
+						// Add slug to project object if not present
+						if (!project.slug) {
+							project.slug = projectSlug;
+						}
+						return project;
+					}
+				}
+			} catch (e) {
+				console.error(`Error fetching submission ${id}:`, e);
+			}
+		}
+
+		return null;
+	} catch (error) {
+		console.error("Error fetching project by slug:", error);
+		return null;
+	}
 }
 
 export async function getApprovedSubmittedProjects(): Promise<SubmittedProject[]> {
 	try {
 		// Get all approved submission IDs
-		const approvedIds = await redis.lrange("approved-submissions", 0, -1) as string[];
+		const approvedIds = await getRedis().lrange("approved-submissions", 0, -1) as string[];
 
 		if (approvedIds.length === 0) {
 			return [];
@@ -82,12 +147,19 @@ export async function getApprovedSubmittedProjects(): Promise<SubmittedProject[]
 		const approvedProjects = await Promise.all(
 			approvedIds.map(async (id) => {
 				try {
-					const submissionData = await redis.get(`submission:${id}`);
+					const submissionData = await getRedis().get(`submission:${id}`);
 					if (submissionData) {
 						const parsed = typeof submissionData === 'string'
 							? JSON.parse(submissionData)
 							: submissionData;
-						return parsed as SubmittedProject;
+						const project = parsed as SubmittedProject;
+						
+						// Generate slug if not present
+						if (!project.slug) {
+							project.slug = generateSlug(project.title);
+						}
+						
+						return project;
 					}
 				} catch (e) {
 					console.error(`Error fetching submission ${id}:`, e);
@@ -126,7 +198,7 @@ export interface ApprovedContribution {
 export async function getApprovedContributions(): Promise<ApprovedContribution[]> {
 	try {
 		// Get all approved contribution IDs
-		const approvedIds = await redis.lrange("approved-contributions", 0, -1) as string[];
+		const approvedIds = await getRedis().lrange("approved-contributions", 0, -1) as string[];
 
 		if (approvedIds.length === 0) {
 			return [];
@@ -136,7 +208,7 @@ export async function getApprovedContributions(): Promise<ApprovedContribution[]
 		const approvedContributions = await Promise.all(
 			approvedIds.map(async (id) => {
 				try {
-					const contributionData = await redis.get(`contribution:${id}`);
+					const contributionData = await getRedis().get(`contribution:${id}`);
 					if (contributionData) {
 						const parsed = typeof contributionData === 'string'
 							? JSON.parse(contributionData)
