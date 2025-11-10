@@ -86,6 +86,7 @@ export default async function ProjectsPage() {
         submittedAt: "October 22, 2025",
         status: "approved",
         year: 2025,
+        awards: ["Best Overall Project"],
       },
       BestBlockchain: hackathonProjects.find((p) => p.title.toLowerCase().includes("barangay konek")) || {
           id: "placeholder-blockchain",
@@ -95,6 +96,7 @@ export default async function ProjectsPage() {
           submittedAt: "October 11, 2025",
           status: "approved",
           year: 2025,
+          awards: ["Best Use of Blockchain"],
       },
       BestAI: hackathonProjects.find((p) => p.title.toLowerCase().includes("quiz attack")) || {
         id: "placeholder-2",
@@ -186,7 +188,7 @@ export default async function ProjectsPage() {
           <WinnersCard
             winner={winners.BestOverall}
             badge="🏆 Best Overall Project"
-            badgeColor="bg-green-900"
+            award="Best Overall Project"
             size="large"
           />
 
@@ -195,7 +197,7 @@ export default async function ProjectsPage() {
             <WinnersCard
               winner={winners.BestBlockchain}
               badge="⛓️ Best Use of Blockchain"
-              badgeColor="bg-orange-900"
+              award="Best Use of Blockchain"
               size="large"
             />
 
@@ -203,7 +205,7 @@ export default async function ProjectsPage() {
             <WinnersCard
               winner={winners.BestAI}
               badge="🤖 Best Use of AI"
-              badgeColor="bg-blue-900"
+              award="Best Use of AI"
               size="medium"
             />
 
@@ -211,7 +213,7 @@ export default async function ProjectsPage() {
             <WinnersCard
               winner={winners.BestEasterEgg}
               badge="🎉 Best Easter Egg"
-              badgeColor="bg-purple-900"
+              award="Best Easter Egg"
               size="medium"
             />
           </div>
@@ -219,25 +221,46 @@ export default async function ProjectsPage() {
 
         
         <Card>
-          <article className="mx-2 p-4 md:p-8">
-             <div className="mt-2 flex items-center justify-between gap-2">
-                <span className="text-xs text-zinc-100 bg-green-900 px-2 py-1 rounded-md">🌟 Best Open Source Contribution</span>
+          <Link href={`/contributions/best-open-source-contribution/${YEAR}`}>
+            <article className="relative w-full h-full mx-2 p-4 md:p-8 transition-all duration-200 hover:scale-[1.01]">
+              <div className="flex items-center justify-between gap-2">
+                <div className="text-xs text-zinc-100">
+                  <time dateTime={new Date(2024, 9, 22).toISOString()}>
+                    {Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(new Date(2024, 9, 22))}
+                  </time>
+                  <span className="ml-2 text-xs text-zinc-100 bg-blue-900 px-2 py-1 rounded-md">
+                    🌟 Best Open Source Contribution
+                  </span>
+                </div>
               </div>
-            <Link target="_blank" rel="noopener noreferrer" href="https://github.com/javascriptcebu/hacktoberfest.jscebu.org/pull/31#issue-3545498769" >
-              <p className="mt-4 text-zinc-200 font-medium mb-2">javascriptcebu/hacktoberfest.jscebu.org (PR #31) </p>
-              <p className="text-zinc-400 text-sm mb-3">
-              Added a new Criteria page that displays both Contribute and Create evaluation tables side-by-side with an interactive focus/tab.
-            </p>
-            </Link>
-            
-            <Link target="_blank" rel="noopener noreferrer" href="https://github.com/dotnize/prompt-ui/pull/2" >
-              <p className="text-zinc-200 font-medium mb-2 mt-3">dotnize/prompt-ui (PR #2)</p>
-              <p className="text-zinc-400 text-sm">
-              Removed required and minLength attributes from the textarea to allow custom toast validation messages to display correctly instead of native browser validation.
-            </p>
-            </Link>
-            
-          </article>
+              
+              <h2 className="mt-4 text-2xl sm:text-3xl font-bold text-zinc-100 group-hover:text-white font-display">
+                Best Open Source Contribution Winners
+              </h2>
+              
+              <div className="mt-4 space-y-3">
+                <div className="border-l-2 border-blue-500 pl-3">
+                  <p className="text-zinc-200 font-medium mb-1">javascriptcebu/hacktoberfest.jscebu.org (PR #31)</p>
+                  <p className="text-zinc-400 text-sm">
+                    Added a new Criteria page that displays both Contribute and Create evaluation tables side-by-side with an interactive focus/tab.
+                  </p>
+                </div>
+                
+                <div className="border-l-2 border-blue-500 pl-3">
+                  <p className="text-zinc-200 font-medium mb-1">dotnize/prompt-ui (PR #2)</p>
+                  <p className="text-zinc-400 text-sm">
+                    Removed required and minLength attributes from the textarea to allow custom toast validation messages to display correctly instead of native browser validation.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="mt-6">
+                <p className="text-blue-400 hover:text-blue-300 transition-colors">
+                  View full details <span aria-hidden="true">&rarr;</span>
+                </p>
+              </div>
+            </article>
+          </Link>
         </Card>
 
         {/* Hackathon Projects Section */}
