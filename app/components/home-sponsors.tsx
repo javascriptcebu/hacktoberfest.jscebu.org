@@ -208,7 +208,7 @@ export function HomeSponsors() {
               Co-Presenters
             </h4>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {coPresenters.map((sponsor) => (
                 <Card key={sponsor.id} className="group overflow-hidden">
                   {sponsor.facebook && (
@@ -216,7 +216,7 @@ export function HomeSponsors() {
                       {/* Gradient Background */}
                       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-zinc-800/50"></div>
                       <div className="relative"> 
-                        <div className="relative p-8 flex flex-col items-center justify-center min-h-[200px]">
+                        <div className="relative p-6 flex flex-col items-center justify-center min-h-[200px]">
                           {/* Logo Container */}
                           <div className="w-full h-32 mb-6 relative bg-white rounded-lg flex items-center justify-center border border-purple-500/30 group-hover:border-purple-400/50 transition-colors p-4">
                             <Image
@@ -228,7 +228,7 @@ export function HomeSponsors() {
                             />
                           </div>
                           
-                          <h3 className="text-xl font-bold text-violet-500 text-center mb-4 group-hover:text-violet-400 transition-colors">
+                          <h3 className="text-xl font-bold text-violet-500 text-center group-hover:text-violet-400 transition-colors">
                             {sponsor.name}
                           </h3>
                         </div>
@@ -266,7 +266,7 @@ export function HomeSponsors() {
             <h4 className="text-2xl font-semibold text-amber-400 mb-4 mt-12 text-center">
               Gold Sponsors
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {goldSponsors.map((sponsor) => (
                 <Card key={sponsor.id} className="group overflow-hidden ">
                    {sponsor.facebook && (
@@ -274,9 +274,9 @@ export function HomeSponsors() {
                       {/* Gradient Background */}
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-600/20 to-yellow-600/20 opacity-50 group-hover:opacity-100 transition-opacity" />
                       <div className="relative">
-                        <div className="relative p-8 flex flex-col items-center justify-center min-h-[150px]">
+                        <div className="relative p-6 flex flex-col items-center justify-center min-h-[150px]">
                           {/* Logo Container */}
-                          <div className="w-full h-24 mb-6 relative bg-white rounded-lg flex items-center justify-center border border-amber-500/30 group-hover:border-amber-400/50 transition-colors p-4">
+                          <div className="w-full h-24 mb-4 relative bg-white rounded-lg flex items-center justify-center border border-amber-500/30 group-hover:border-amber-400/50 transition-colors p-2">
                             <Image
                               src={sponsor.logo}
                               alt={sponsor.name}
@@ -287,7 +287,7 @@ export function HomeSponsors() {
                           </div>
                           
                           {/* Sponsor Name */}
-                          <h3 className="text-lg font-bold text-amber-400 text-center mb-4 group-hover:text-amber-300 transition-colors">
+                          <h3 className="text-lg font-bold text-amber-400 text-center group-hover:text-amber-300 transition-colors">
                             {sponsor.name}
                           </h3>  
                         </div>
@@ -305,17 +305,17 @@ export function HomeSponsors() {
              <h4 className="text-2xl font-semibold text-gray-300 mb-4 mt-12 text-center">
               Silver Sponsors
               </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
               {silverSponsors.map((sponsor) => (
                 <Card key={sponsor.id} className="group overflow-hidden ">
                    {sponsor.facebook && (
                       <Link href={sponsor.facebook} target="_blank" rel="noopener noreferrer">
                       {/* Gradient Background */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-600/50 to-slate-600/50 opacity-50 group-hover:opacity-100 transition-opacity" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-600/50 to-slate-600/50" />
                       <div className="relative">
-                        <div className="relative p-8 flex flex-col items-center justify-center min-h-[100px]">
+                        <div className="relative p-4 flex flex-col items-center justify-center min-h-[100px]">
                           {/* Logo Container */}
-                          <div className="w-full h-20 mb-6 relative bg-white rounded-lg flex items-center justify-center border border-gray-500/30 group-hover:border-gray-400/50 transition-colors p-4">
+                          <div className="w-full h-20 mb-6 relative bg-white rounded-lg flex items-center justify-center border border-gray-500/30 group-hover:border-gray-400/50 transition-colors p-2">
                             <Image
                               src={sponsor.logo}
                               alt={sponsor.name}
@@ -326,7 +326,47 @@ export function HomeSponsors() {
                           </div>
                           
                           {/* Sponsor Name */}
-                          <h3 className="font-bold text-gray-400 text-center mb-4 group-hover:text-gray-300 transition-colors">
+                          <h3 className="font-bold text-gray-400 text-center group-hover:text-gray-300 transition-colors">
+                            {sponsor.name}
+                          </h3>  
+                        </div>
+                      </div>
+                    </Link>
+                  )}
+                </Card>
+              ))}
+            </div>
+          </div>
+        </ScrollAnimation>
+
+        
+        <ScrollAnimation animation="fade-up" delay={0.4}>
+          <div> 
+             <h4 className="text-2xl font-semibold text-lavender mb-4 mt-12 text-center">
+              Community Partners
+              </h4>
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {communityPartners.map((sponsor) => (
+                <Card key={sponsor.id} className="group overflow-hidden ">
+                   {sponsor.facebook && (
+                      <Link href={sponsor.facebook} target="_blank" rel="noopener noreferrer">
+                      {/* Gradient Background */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-lavender/30 to-melrose/30" />
+                      <div className="relative">
+                        <div className="relative p-2 flex flex-col items-center justify-center min-h-[100px]">
+                          {/* Logo Container */}
+                          <div className="w-full h-16 mb-4 relative bg-white rounded-lg flex items-center justify-center border border-lavender/10 group-hover:border-lavender/30 transition-colors p-1">
+                            <Image
+                              src={sponsor.logo}
+                              alt={sponsor.name}
+                              width={120}
+                              height={80}
+                              className="object-contain max-w-full max-h-full"
+                            />
+                          </div>
+                          
+                          {/* Sponsor Name */}
+                          <h3 className="font-bold text-sm text-lavender/100 text-center group-hover:text-lavender/80 transition-colors">
                             {sponsor.name}
                           </h3>  
                         </div>
