@@ -24,10 +24,10 @@ const PROJECT_VIDEO_MAPPING: { [key: string]: string } = {
 
 // Static mapping of project titles to winner photos
 const PROJECT_PHOTO_MAPPING: { [key: string]: string } = {
-  "totoo ba ito": "/images/winners/2025/totoo-ba-ito-team.png",
-  "barangay konek": "/images/winners/2025/barangay-konek-team.png",
-  "quiz attack": "/images/winners/2025/quiz-attack-team.png",
-  "bayanihancebu": "/images/winners/2025/bayanihancebu-team.png",
+  "totoo ba ito": "/images/winners/2025/totoo-ba-ito-team.jpg",
+  "barangay konek": "/images/winners/2025/barangay-konek-team.jpg",
+  "quiz attack": "/images/winners/2025/quiz-attack-team.jpg",
+  "bayanihancebu": "/images/winners/2025/bayanihancebu-team.jpg",
 };
 
 // Helper function to get video URL for a project
