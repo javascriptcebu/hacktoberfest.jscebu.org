@@ -76,6 +76,7 @@ export interface SubmittedProject {
 	lastUpdatedAt?: string;
 	awards?: string[]; // Array of award names won by this project
 	slug?: string; // URL-friendly slug generated from title
+	winnerPhoto?: string; // Team photo URL for award winners
 }
 
 // Generate a URL-friendly slug from a project title
@@ -231,4 +232,47 @@ export async function getApprovedContributions(): Promise<ApprovedContribution[]
 		console.error("Error fetching approved contributions:", error);
 		return [];
 	}
+}
+
+// Contribution Winner Interface
+export interface ContributionWinner {
+	name: string;
+	github: string;
+	contribution: string;
+	prUrl: string;
+	prTitle: string;
+	description: string;
+	submittedAt: string;
+	photo?: string;
+}
+
+// Contribution Winners Data by Year
+export const CONTRIBUTION_WINNERS_BY_YEAR: Record<number, ContributionWinner[]> = {
+	2025: [
+		{
+			name: "Yurii Yankin (Represented by Proxy)",
+			github: "yonken4405",
+			contribution: "javascriptcebu/hacktoberfest.jscebu.org",
+			prUrl: "https://github.com/javascriptcebu/hacktoberfest.jscebu.org/pull/31",
+			prTitle: "Added Criteria Page with Interactive Tables",
+			description: "Added a new Criteria page that displays both Contribute and Create evaluation tables side-by-side with an interactive focus/tab system. This enhancement improved the user experience by making evaluation criteria easily accessible and visually organized.",
+			submittedAt: "2025-10-24",
+			photo: "/images/winners/2025/yurii.png",
+		},
+		{
+			name: "Neil Vallecer",
+			github: "Neil-urk12",
+			contribution: "dotnize/prompt-ui",
+			prUrl: "https://github.com/dotnize/prompt-ui/pull/2",
+			prTitle: "Fix Textarea Validation for Custom Toast Messages",
+			description: "Removed required and minLength attributes from the textarea to allow custom toast validation messages to display correctly instead of native browser validation. This fix improved the error handling and user feedback in the form component.",
+			submittedAt: "2025-10-11",
+			photo: "/images/winners/2025/neil.png",
+		},
+	],
+};
+
+// Helper to get contribution winners by year
+export function getContributionWinnersByYear(year: number): ContributionWinner[] {
+	return CONTRIBUTION_WINNERS_BY_YEAR[year] || [];
 }

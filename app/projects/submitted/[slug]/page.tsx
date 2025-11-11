@@ -22,6 +22,14 @@ const PROJECT_VIDEO_MAPPING: { [key: string]: string } = {
   "marshal": "https://youtu.be/Qo1ETgeX6QY",
 };
 
+// Static mapping of project titles to winner photos
+const PROJECT_PHOTO_MAPPING: { [key: string]: string } = {
+  "totoo ba ito": "/images/winners/2025/totoo-ba-ito-team.png",
+  "barangay konek": "/images/winners/2025/barangay-konek-team.png",
+  "quiz attack": "/images/winners/2025/quiz-attack-team.png",
+  "bayanihancebu": "/images/winners/2025/bayanihancebu-team.png",
+};
+
 // Helper function to get video URL for a project
 function getVideoUrlForProject(title: string): string | undefined {
   const normalizedTitle = title.toLowerCase().trim();
@@ -33,6 +41,25 @@ function getVideoUrlForProject(title: string): string | undefined {
   
   // Check if title contains any of the mapped keys
   for (const [key, url] of Object.entries(PROJECT_VIDEO_MAPPING)) {
+    if (normalizedTitle.includes(key) || key.includes(normalizedTitle)) {
+      return url;
+    }
+  }
+  
+  return undefined;
+}
+
+// Helper function to get winner photo URL for a project
+function getWinnerPhotoForProject(title: string): string | undefined {
+  const normalizedTitle = title.toLowerCase().trim();
+  
+  // Direct match first
+  if (PROJECT_PHOTO_MAPPING[normalizedTitle]) {
+    return PROJECT_PHOTO_MAPPING[normalizedTitle];
+  }
+  
+  // Check if title contains any of the mapped keys
+  for (const [key, url] of Object.entries(PROJECT_PHOTO_MAPPING)) {
     if (normalizedTitle.includes(key) || key.includes(normalizedTitle)) {
       return url;
     }
@@ -87,6 +114,9 @@ export default async function SubmittedProjectPage({
   // Get video URL from mapping or from project data
   const videoUrl = project.videoUrl || getVideoUrlForProject(project.title);
   
+  // Get winner photo from static mapping or from project data
+  const winnerPhoto = project.winnerPhoto || getWinnerPhotoForProject(project.title);
+  
   // Determine submitter display name:
   // Prefer GitHub handle of lead team member, then name of lead,
   // then the email local-part, then the raw submittedBy value.
@@ -118,6 +148,36 @@ export default async function SubmittedProjectPage({
         {/* Winner Banner - shown if project has awards */}
         {project.awards && project.awards.length > 0 && (
           <WinnerBanner awards={project.awards} />
+        )}
+
+        {/* Winner Photo Hero - shown if winner photo exists */}
+        {winnerPhoto && project.awards && project.awards.length > 0 && (
+          <Card>
+            <div className="relative overflow-hidden">
+              <div 
+                className="absolute inset-0 opacity-20"
+                style={{
+                  background: 'var(--award-gradient, linear-gradient(135deg, rgba(160, 160, 255, 0.3) 0%, rgba(90, 90, 181, 0.1) 100%))'
+                }}
+              />
+              <div className="relative p-6 md:p-8">
+                <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">
+                  🎉 Meet the Winners 🎉
+                </h2>
+                <div className="relative w-full max-w-3xl mx-auto rounded-xl overflow-hidden border-2 award-glow"
+                  style={{
+                    borderColor: 'var(--award-primary, rgba(160, 160, 255, 0.5))'
+                  }}
+                >
+                  <img
+                    src={winnerPhoto}
+                    alt={`${project.title} - Award Winners Team Photo`}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </Card>
         )}
 
         {/* Project Header */}
