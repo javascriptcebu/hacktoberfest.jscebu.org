@@ -14,6 +14,7 @@ import { HomePartners } from "./components/home-partners";
 import { HomeRegistration } from "./components/home-registration";
 import { HomeSponsors } from "./components/home-sponsors";
 import { HomeWhyJoin } from "./components/home-why-join";
+import { WinnerCarousel } from "./components/winner-carousel";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { NavWrapper } from "./components/nav-wrapper";
@@ -220,7 +221,8 @@ export default async function Home() {
         </div>
 
         <div className="w-full max-w-6xl px-4 space-y-16">
-          <HomeHighlights />
+          {/* Winner Carousel - First Interaction! */}
+          <WinnerCarousel />
 
           {/* Quick Links Section */}
           <section className="py-12">

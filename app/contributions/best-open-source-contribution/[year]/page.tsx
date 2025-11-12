@@ -169,7 +169,7 @@ export default function BestOpenSourceContributionPage({ params }: Props) {
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-md font-medium transition-colors"
                         style={{
                           backgroundColor: 'var(--award-primary, rgba(96, 165, 250, 0.2))',
-                          color: '#000000',
+                          color: '#FFFFFF',
                           border: '1px solid var(--award-primary, rgba(96, 165, 250, 0.5))'
                         }}
                       >

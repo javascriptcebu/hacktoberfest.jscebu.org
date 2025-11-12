@@ -267,7 +267,7 @@ export const CONTRIBUTION_WINNERS_BY_YEAR: Record<number, ContributionWinner[]> 
 			prTitle: "Fix Textarea Validation for Custom Toast Messages",
 			description: "Removed required and minLength attributes from the textarea to allow custom toast validation messages to display correctly instead of native browser validation. This fix improved the error handling and user feedback in the form component.",
 			submittedAt: "2025-10-11",
-			photo: "/images/winners/2025/neil.png",
+			photo: "/images/winners/2025/neil.jpg",
 		},
 	],
 };
