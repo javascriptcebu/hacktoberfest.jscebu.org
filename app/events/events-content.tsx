@@ -13,7 +13,7 @@ export function EventsContent() {
       attendees: "170+ Attended",
       description: "Kick off a month of open-source celebration! Learn about contributing to open source, form your hackathon team, and connect with Cebu's vibrant developer community.",
       links: [
-        { label: "View on Facebook", url: "https://www.facebook.com/share/v/19kQHaVJ1d/" }
+        { label: "View on Facebook", url: "https://www.facebook.com/reel/830149926020420" }
       ]
     },
     {
@@ -23,7 +23,7 @@ export function EventsContent() {
       status: "completed" as const,
       attendees: "60+ Attended",
       description: "Teams pitched their project ideas to the community and received feedback. A great opportunity to refine concepts and get early validation.",
-      links: [{ label: "View on Facebook", url: "https://www.facebook.com/share/v/1BBK5vwERd/" }]
+      links: [{ label: "View on Facebook", url: "https://www.facebook.com/share/p/17aYvhSdUs/" }]
     },
     {
       id: 3,
@@ -32,7 +32,7 @@ export function EventsContent() {
       status: "completed" as const,
       attendees: "40+ Attended",
       description: "Focused session on deploying projects to production. Teams learned best practices for deployment, CI/CD, and making their projects accessible to the world.",
-      links: [{ label: "View on Facebook", url: "https://www.facebook.com/share/v/1Zs9VDEumi/" }]
+      links: [{ label: "View on Facebook", url: "https://fb.me/e/3uTufdhwg" }]
     },
     {
       id: 4,
@@ -42,7 +42,7 @@ export function EventsContent() {
       attendees: "70+ Attended",
       description: "Special PHP community event exploring AI integration in PHP applications. Join PHP developers and learn about the latest trends in AI-powered web development.",
       links: [
-        { label: "View on Youtube", url: "https://www.youtube.com/live/nkIF1cdh7E8?si=mtKpiWyHCIYDzpO3"},
+        { label: "View on Youtube", url: "https://www.youtube.com/live/nkIF1cdh7E8"},
       ]
     },
     {
@@ -54,7 +54,7 @@ export function EventsContent() {
       highlight: true,
       description: "The grand finale! Demo Day showcase where teams present their projects. Awards ceremony recognizing outstanding contributions, innovative solutions, and celebrating a month of open-source excellence.",
       links: [
-        { label: "View on Facebook", url: "https://www.facebook.com/share/19xoMAAAEE/" }
+        { label: "View on Facebook", url: "https://www.facebook.com/JavaScriptCebu/posts/pfbid034knCVkcRS6yzTTQ3XL7PknqKTCZ4Z7JEKJVMbbxLBHM2pJfvcun6RPhqK6CUB6hwl" }
       ]
     }
   ];
